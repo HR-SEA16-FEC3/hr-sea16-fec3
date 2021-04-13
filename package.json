@@ -1,0 +1,29 @@
+{
+  "name": "fec3_project_catwalk",
+  "version": "1.0.0",
+  "description": "Front End Capstone Project for group 3 (Jun Park, Tony Ly, Zubair Akbar)",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HR-SEA16-FEC3/hr-sea16-fec3-project-catwalk.git"
+  },
+  "author": "Jun Park",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HR-SEA16-FEC3/hr-sea16-fec3-project-catwalk/issues"
+  },
+  "homepage": "https://github.com/HR-SEA16-FEC3/hr-sea16-fec3-project-catwalk#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "babel": "^6.23.0",
+    "express": "^4.17.1",
+    "jquery": "^3.6.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "underscore": "^1.13.0",
+    "webpack": "^5.32.0"
+  }
+}
