@@ -1,34 +1,30 @@
 // Generated using webpack-cli http://github.com/webpack-cli
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const entryDir = path.resolve(__dirname, 'client', 'App.jsx')
+const outputDir = path.resolve(__dirname, 'public')
+
 
 module.exports = {
     mode: 'development',
-    entry: './client/index.js',
+    entry: entryDir,
     output: {
-        path: path.resolve(__dirname, 'public'),
+        filename: 'bundle.js',
+        path: outputDir
     },
-    devServer: {
-        open: true,
-        host: 'localhost',
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: 'index.html',
-        }),
-
-        // Add your plugins here
-        // Learn more obout plugins from https://webpack.js.org/configuration/plugins/
-    ],
     module: {
         rules: [
             {
-                test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/,
-                type: 'asset',
+                test: /\.(js|jsx|eot|svg|ttf|woff|woff2|png|jpg|gif)$/,
+                exclude: /node_modules/,
+                use: ['babel-loader']
             },
 
             // Add your rules for custom modules here
             // Learn more about loaders from https://webpack.js.org/loaders/
         ],
+    },
+    resolve: {
+        extensions: ['.js', '.jsx']
     },
 };
