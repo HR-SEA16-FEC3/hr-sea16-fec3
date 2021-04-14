@@ -4,7 +4,8 @@
   "description": "Front End Capstone Project for group 3 (Jun Park, Tony Ly, Zubair Akbar)",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "npm test",
+    "server": "node server/index.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
     "babel": "^6.23.0",
     "express": "^4.17.1",
     "jquery": "^3.6.0",
+    "nodemon": "^2.0.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "underscore": "^1.13.0",
