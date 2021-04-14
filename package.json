@@ -5,14 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "npm test",
-<<<<<<< HEAD
-    "server": "node server/index.js",
-    "webpack": "webpack"
-=======
     "server": "nodemon server/index.js",
     "webpack": "webpack",
     "webpack-watch": "webpack -w"
->>>>>>> 144e1ee7a1fe3bbb06fe0e401a30eb6897682634
   },
   "repository": {
     "type": "git",
