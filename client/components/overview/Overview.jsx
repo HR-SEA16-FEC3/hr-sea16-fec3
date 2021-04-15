@@ -2,7 +2,7 @@ import React from 'react';
 
 const Overview = () => (
 
-  <div>Product Overview Section coming soon!</div>
+  <div data-testid="Overview">Product Overview Section coming soon!</div>
 
 );
 

@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Questions = (props) => (
+const Questions = () => (
 
-  <div>Q&amp;A Section coming soon!</div>
+  <div data-testid="QA">Q&amp;A Section coming soon!</div>
 
 );
 

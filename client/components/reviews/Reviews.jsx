@@ -2,7 +2,7 @@ import React from 'react';
 
 const Reviews = () => (
 
-  <div>Reivews Section coming soon!</div>
+  <div data-testid="Reviews">Reivews Section coming soon!</div>
 
 );
 

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
 
 import Overview from './components/overview/Overview';
 import Questions from './components/Q&A/Q&A';
@@ -23,9 +22,9 @@ const App = () => {
   );
 };
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('App'),
-);
+// ReactDOM.render(
+//   <App />,
+//   document.getElementById('App'),
+// );
 
 export default App;
