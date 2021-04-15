@@ -1,5 +1,4 @@
 const path = require('path');
-
 const entryDir = path.resolve(__dirname, 'client', 'index.jsx');
 const outputDir = path.resolve(__dirname, 'public');
 
@@ -17,6 +16,7 @@ module.exports = {
         exclude: /node_modules/,
         use: ['babel-loader'],
       },
+
     ],
   },
   resolve: {

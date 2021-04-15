@@ -26,5 +26,4 @@ const App = () => {
 //   <App />,
 //   document.getElementById('App'),
 // );
-
 export default App;
