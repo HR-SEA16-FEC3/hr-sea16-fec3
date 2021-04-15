@@ -1,25 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
-class App extends React.Component {
-  constructor() {
-    super();
-  }
+import Overview from './components/overview/Overview';
+import Questions from './components/Q&A/Q&A';
+import Reviews from './components/reviews/Reviews';
 
-  render() {
-    return (
-      <div>
-        Hello World!
-      </div>
-    )
-  }
+const App = () => {
+  const [countTest, setCountTest] = useState(0);
 
-}
-
+  return (
+    <div>
+      <Overview />
+      <Questions />
+      <Reviews />
+      <button
+        type="button"
+        onClick={() => setCountTest(countTest + 1)}
+      >
+        {countTest}
+      </button>
+    </div>
+  );
+};
 
 ReactDOM.render(
   <App />,
-  document.getElementById('App')
+  document.getElementById('App'),
 );
 
 export default App;
