@@ -1,21 +1,9 @@
 import React from 'react';
 
-class Overview extends React.Component {
-  constructor() {
-    super();
+const Overview = () => (
 
-    this.state = {
+  <div data-testid="Overview">Product Overview Section coming soon!</div>
 
-    };
-  }
-
-  render() {
-    return (
-      <div>
-        Overview Template
-      </div>
-    );
-  }
-}
+);
 
 export default Overview;
