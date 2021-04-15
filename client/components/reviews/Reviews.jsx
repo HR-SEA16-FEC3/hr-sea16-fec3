@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Reviews = (props) => (
+const Reviews = () => (
 
   <div>Reivews Section coming soon!</div>
 

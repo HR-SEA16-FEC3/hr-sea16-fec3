@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Overview = (props) => (
+const Overview = () => (
 
   <div>Product Overview Section coming soon!</div>
 
