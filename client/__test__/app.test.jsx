@@ -11,7 +11,7 @@ test('App renders without crashing', () => {
 
 test('App should render All 3 components', () => {
   const { queryByTestId } = render(<App />);
-  expect(queryByTestId(/Overview/)).toBeTruthy();
+  expect(queryByTaestId(/Overview/)).toBeTruthy();
   expect(queryByTestId(/QA/)).toBeTruthy();
   expect(queryByTestId(/Reviews/)).toBeTruthy();
 });
