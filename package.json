@@ -4,10 +4,11 @@
   "description": "Front End Capstone Project for group 3 (Jun Park, Tony Ly, Zubair Akbar)",
   "main": "index.js",
   "scripts": {
-    "test": "npm test",
+    "test": "jest",
     "server": "nodemon server/index.js",
     "webpack": "webpack",
-    "webpack-watch": "webpack -w"
+    "webpack-watch": "webpack -w",
+    "test:watch": "jest --watch"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.13.15",
+    "@babel/plugin-transform-runtime": "^7.13.15",
     "@babel/preset-env": "^7.13.15",
     "@babel/preset-react": "^7.13.13",
     "@testing-library/react": "^11.2.6",
@@ -47,6 +49,7 @@
     "nodemon": "^2.0.7",
     "npm-install-webpack-plugin": "^4.0.5",
     "react-test-renderer": "^17.0.2",
+    "supertest": "^6.1.3",
     "webpack": "^5.33.1",
     "webpack-cli": "^4.6.0"
   }
