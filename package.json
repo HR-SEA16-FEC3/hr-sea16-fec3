@@ -4,11 +4,11 @@
   "description": "Front End Capstone Project for group 3 (Jun Park, Tony Ly, Zubair Akbar)",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watchAll",
     "server": "nodemon server/index.js",
     "webpack": "webpack",
     "webpack-watch": "webpack -w",
-    "test:watch": "jest --watch"
+    "test": "jest",
+    "test-watch": "jest --watchAll"
   },
   "repository": {
     "type": "git",
