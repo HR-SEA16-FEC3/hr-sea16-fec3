@@ -18,8 +18,8 @@
   "bugs": {
     "url": "https://github.com/HR-SEA16-FEC3/hr-sea16-fec3-project-catwalk/issues"
   },
-  "eslintIgnore": ["*.test.jsx", "*.test.js"],
-  "homepage": "https://github.com/HR-SEA16-FEC3/hr-sea16-fec3-project-catwalk#readme",
+  "eslintIgnore": ["*.test.jsx", "*.test.js", "*config.js"],
+  "homepage": "https://github.com/HR-SEA16-FEC3w/hr-sea16-fec3-project-catwalk#readme",
   "dependencies": {
     "axios": "^0.21.1",
     "babel": "^6.23.0",
