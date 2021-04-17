@@ -7,8 +7,8 @@ import InfoExample from './product_info_example.json';
 import StylesExample from './product_styles_example.json';
 
 function Overview() {
+  // JS here
 
-  // js here
   return (
     <div data-testid="Overview">
       <p>Product Overview Section:</p>
@@ -17,10 +17,10 @@ function Overview() {
       <Gallery />
 
       {/* Product Information */}
-      <Information infoList={InfoExample} stylesList={StylesExample} />
+      <Information infoList={InfoExample} />
 
       {/* Style Selector */}
-      <Style />
+      <Style stylesList={StylesExample} />
 
       {/* Add to Cart */}
       <Cart />
