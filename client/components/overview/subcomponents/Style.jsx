@@ -9,7 +9,10 @@ import PropTypes from 'prop-types';
 const Style = (props) => {
   const {
     stylesList: {
-      product_id: id,
+      product_id: productId,
+      results: [{
+        style_id: styleId,
+      }],
     },
   } = props;
 
@@ -17,7 +20,8 @@ const Style = (props) => {
 
     <div data-testid="Style">
       <div>Overview: Style Selector</div>
-      {id}
+      <p>Product ID: {productId}</p>
+      <p>Style ID: {styleId}</p>
       <br />
     </div>
 

@@ -25,13 +25,13 @@ function Information(props) {
       <div>Overview: Product Information</div>
       {/* Star Rating (# of reviews) */}
       {/* Product Category */}
-      <p>{category}</p>
-      <p>{name}</p>
+      <p>Category: {category}</p>
+      <p>Product Name: {name}</p>
       <p>
-        ${price}
+        Price: ${price}
       </p>
       {/* Product Overview */}
-      <p>ID {id}</p>
+      <p>Product ID: {id}</p>
       {/* Share on Social Media */}
       <br />
     </div>
