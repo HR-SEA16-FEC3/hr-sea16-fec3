@@ -1,7 +1,7 @@
 const express = require('express');
 const axios = require('axios');
 const path = require('path');
-const QandA = require('./components/Q&A');
+const QandA = require('./components/Q&A/Q&A');
 
 const app = express();
 
