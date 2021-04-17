@@ -1,6 +1,6 @@
 const express = require('express');
 const axios = require('axios');
-const config = require('../../config');
+const config = require('../../../config');
 
 const QandA = express.Router();
 const apiUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sea';
