@@ -1,6 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// each product_id will have several sub style_id's
+// will need to render styles separately
+// can rename this to StylesList
+// then map out and render each style separately (based on selected style)
+
 const Style = (props) => {
   const {
     stylesList: {
@@ -22,7 +27,7 @@ const Style = (props) => {
 Style.propTypes = {
   stylesList: PropTypes.shape({
     product_id: PropTypes.string.isRequired,
-  })
+  }),
 };
 
 export default Style;
