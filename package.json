@@ -8,7 +8,7 @@
     "webpack": "webpack",
     "webpack-watch": "webpack -w",
     "test": "jest",
-    "test-watch": "jest --watchAll"
+    "test-watch": "jest --watchAll --collect-coverage"
   },
   "repository": {
     "type": "git",
