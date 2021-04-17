@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Information = () => (
+const Information = (props) => (
 
   <div data-testid="Information">
     <div>Overview: Product Information</div>
@@ -10,6 +10,7 @@ const Information = () => (
     {/* Price */}
     {/* Product Overview */}
     {/* Share on Social Media */}
+    {props.infoList.id}
     <br />
   </div>
 

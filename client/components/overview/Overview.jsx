@@ -1,30 +1,34 @@
 import React from 'react';
-import Gallery from './Gallery';
-import Information from './Information';
-import Style from './Style';
-import Cart from './Cart';
+import Gallery from './subcomponents/Gallery';
+import Information from './subcomponents/Information';
+import Style from './subcomponents/Style';
+import Cart from './subcomponents/Cart';
+import InfoExample from './product_info_example.json';
+import StylesExample from './product_styles_example.json';
 
+function Overview() {
 
-const Overview = () => (
+  // js here
+  return (
+    <div data-testid="Overview">
+      <p>Product Overview Section:</p>
 
-  <div data-testid="Overview">
-    <p>Product Overview Section:</p>
+      {/* Image Gallery */}
+      <Gallery />
 
-    {/* Image Gallery */}
-    <Gallery />
+      {/* Product Information */}
+      <Information infoList={InfoExample} stylesList={StylesExample} />
 
-    {/* Product Information */}
-    <Information />
+      {/* Style Selector */}
+      <Style />
 
-    {/* Style Selector */}
-    <Style />
+      {/* Add to Cart */}
+      <Cart />
 
-    {/* Add to Cart */}
-    <Cart />
+      <br />
+    </div>
 
-    <br />
-  </div>
-
-);
+  );
+}
 
 export default Overview;
