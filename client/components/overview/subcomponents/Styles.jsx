@@ -7,15 +7,6 @@ import styled from 'styled-components';
 // can rename this to StylesList
 // then map out and render each style separately (based on selected style)
 
-// const Button = styled.button`
-//     border: 1px;
-//     padding: 8px 8px;
-//     background: lightblue;
-//     &:hover{
-//       background: grey;
-//     }
-//   `;
-
 // const Selector = styled.div`
 //   /* display: none; */
 //   border: 1px solid black;
@@ -40,15 +31,12 @@ const Styles = (props) => {
 };
 
 Styles.propTypes = {
-  stylesList: PropTypes.shape({
-    product_id: PropTypes.string.isRequired,
-    results: PropTypes.shape(
-      [
-        {
-          style_id: PropTypes.number.isRequired,
-        }
-      ]
-    ),
+  style: PropTypes.shape({
+    style_id: PropTypes.number,
+    name: PropTypes.string,
+    original_price: PropTypes.string,
+    sale_price: PropTypes.string,
+    'default?': PropTypes.boolean,
   }),
 };
 

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const Button = styled.button`
     border: 1px solid black;
-    padding: 8px 8px;
+    padding: 8px;
     background: lightblue;
     margin-right: 6px;
     &:hover{
@@ -13,7 +13,6 @@ const Button = styled.button`
   `;
 
 const Select = styled.select`
-  /* display: none; */
   border: 1px solid black;
   margin-right: 6px;
   background: white;
@@ -26,12 +25,12 @@ const Cart = () => (
     <div>Overview: Add to Cart</div>
 
     {/* Size Selector Dropdown */}
-    <Select>
+    <Select data-testid="sizeDropdown">
       <option>Select Size</option>
     </Select>
 
     {/* Quantity Selector */}
-    <Select>
+    <Select data-testid="quantityDropdown">
       <option>Quantity</option>
     </Select>
 
