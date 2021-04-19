@@ -4,12 +4,10 @@ import App from '../../../App';
 
 const { queryByTestId } = render(<App />);
 
-test('Style module should render the Add to Cart button', () => {
-  expect(screen.findByTestId('btnAddToCart')).toBeTruthy();
-});
+/* TESTS TO INCLUDE:
+ * - shows only one selected style
+*/
 
-test('Style module should render the Star button', () => {
-  expect(screen.findByTestId('btnStar')).toBeTruthy();
+test('Style module should render the list of styles', () => {
+  expect(screen.findByTestId('StylesList')).toBeTruthy();
 });
-
-// test('Test', () => { /* assertions */ }); // test template
