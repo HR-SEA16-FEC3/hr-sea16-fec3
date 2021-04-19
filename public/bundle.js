@@ -247,51 +247,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var _subcomponents_ReviewList_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./subcomponents/ReviewList.jsx */ \"./client/components/reviews/subcomponents/ReviewList.jsx\");\n/* harmony import */ var _subcomponents_ReviewMeta_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./subcomponents/ReviewMeta.jsx */ \"./client/components/reviews/subcomponents/ReviewMeta.jsx\");\n/* harmony import */ var _subcomponents_DummyData_product_reviews_example__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./subcomponents/DummyData/product_reviews_example */ \"./client/components/reviews/subcomponents/DummyData/product_reviews_example.js\");\n/* harmony import */ var _subcomponents_DummyData_product_metaData_example__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./subcomponents/DummyData/product_metaData_example */ \"./client/components/reviews/subcomponents/DummyData/product_metaData_example.js\");\n\n\n\n\n\nconsole.log(_subcomponents_DummyData_product_reviews_example__WEBPACK_IMPORTED_MODULE_3__.default.results);\nconsole.log(_subcomponents_DummyData_product_metaData_example__WEBPACK_IMPORTED_MODULE_4__.default.ratings);\n\nfunction Reviews() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", {\n    \"data-testid\": \"Reviews\"\n  }, \"Reviews Section!\", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_subcomponents_ReviewMeta_jsx__WEBPACK_IMPORTED_MODULE_2__.default, {\n    metaDummyData: _subcomponents_DummyData_product_metaData_example__WEBPACK_IMPORTED_MODULE_4__.default\n  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_subcomponents_ReviewList_jsx__WEBPACK_IMPORTED_MODULE_1__.default, {\n    dummyData: _subcomponents_DummyData_product_reviews_example__WEBPACK_IMPORTED_MODULE_3__.default\n  }));\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Reviews);\n\n//# sourceURL=webpack://fec3_project_catwalk/./client/components/reviews/Reviews.jsx?");
-
-/***/ }),
-
-/***/ "./client/components/reviews/subcomponents/DummyData/product_metaData_example.js":
-/*!***************************************************************************************!*\
-  !*** ./client/components/reviews/subcomponents/DummyData/product_metaData_example.js ***!
-  \***************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nvar metaData = {\n  product_id: '20100',\n  ratings: {\n    3: '2',\n    4: '1',\n    5: '9'\n  },\n  recommended: {\n    \"false\": '1',\n    \"true\": '11'\n  },\n  characteristics: {\n    Fit: {\n      id: 67497,\n      value: '4.8333333333333333'\n    },\n    Length: {\n      id: 67498,\n      value: '4.7500000000000000'\n    },\n    Comfort: {\n      id: 67499,\n      value: '5.0000000000000000'\n    },\n    Quality: {\n      id: 67500,\n      value: '4.8333333333333333'\n    }\n  }\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (metaData);\n\n//# sourceURL=webpack://fec3_project_catwalk/./client/components/reviews/subcomponents/DummyData/product_metaData_example.js?");
-
-/***/ }),
-
-/***/ "./client/components/reviews/subcomponents/DummyData/product_reviews_example.js":
-/*!**************************************************************************************!*\
-  !*** ./client/components/reviews/subcomponents/DummyData/product_reviews_example.js ***!
-  \**************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nvar data = {\n  product: '20100',\n  page: 0,\n  count: 5,\n  results: [{\n    review_id: 288021,\n    rating: 5,\n    summary: 'Love the onsie',\n    recommend: true,\n    response: null,\n    body: \"First - best onsie I have ever owned, it is so comfortable, wouldn't buy anything else, really grateful to have bbought this item, trying to make this 50 characters long\",\n    date: '2021-03-04T00:00:00.000Z',\n    reviewer_name: 'luci13',\n    helpfulness: 7,\n    photos: []\n  }, {\n    review_id: 248267,\n    rating: 4,\n    summary: 'This product was ok!',\n    recommend: false,\n    response: '',\n    body: 'Second - I really did not like this product solely because I am tiny and do not fit into it.',\n    date: '2019-01-11T00:00:00.000Z',\n    reviewer_name: 'mymainstreammother',\n    helpfulness: 3,\n    photos: []\n  }, {\n    review_id: 288022,\n    rating: 5,\n    summary: 'Love the onsie',\n    recommend: true,\n    response: null,\n    body: \"Third - best onsie I have ever owned, it is so comfortable, wouldn't buy anything else, really grateful to have bbought this item, trying to make this 50 characters long\",\n    date: '2021-03-04T00:00:00.000Z',\n    reviewer_name: 'luci13',\n    helpfulness: 1,\n    photos: []\n  }, {\n    review_id: 288020,\n    rating: 5,\n    summary: 'Love the onsie',\n    recommend: true,\n    response: null,\n    body: \"Fourth - trying out image!!!!! best onsie I have ever owned, it is so comfortable, wouldn't buy anything else, really grateful to have bbought this item, trying to make this 50 characters long\",\n    date: '2021-03-04T00:00:00.000Z',\n    reviewer_name: 'luci13',\n    helpfulness: 0,\n    photos: []\n  }, {\n    review_id: 288018,\n    rating: 3,\n    summary: 'Love the onsie',\n    recommend: true,\n    response: null,\n    body: \"Fifth - best onsie I have ever owned, it is so comfortable, wouldn't buy anything else, really grateful to have bbought this item, trying to make this 50 characters long\",\n    date: '2021-03-04T00:00:00.000Z',\n    reviewer_name: 'luci13',\n    helpfulness: 0,\n    photos: []\n  }]\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (data);\n\n//# sourceURL=webpack://fec3_project_catwalk/./client/components/reviews/subcomponents/DummyData/product_reviews_example.js?");
-
-/***/ }),
-
-/***/ "./client/components/reviews/subcomponents/ReviewList.jsx":
-/*!****************************************************************!*\
-  !*** ./client/components/reviews/subcomponents/ReviewList.jsx ***!
-  \****************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var _DummyData_product_reviews_example__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DummyData/product_reviews_example */ \"./client/components/reviews/subcomponents/DummyData/product_reviews_example.js\");\n\n\n\nvar ReviewList = function ReviewList(props) {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", {\n    className: \"review-list\"\n  }, props.dummyData.results.slice(0, 2).map(function (item, i) {\n    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", {\n      className: \"review-tile\",\n      key: i\n    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", {\n      className: \"review-rating\"\n    }, item.rating), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", {\n      className: \"reviewer-name\"\n    }, item.reviewer_name, item.date.slice(0, 10)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", {\n      className: \"review-title\"\n    }, item.summary), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", {\n      className: \"review-body\"\n    }, item.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", {\n      className: \"review-helpful\"\n    }, item.helpfulness));\n  })));\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ReviewList);\n\n//# sourceURL=webpack://fec3_project_catwalk/./client/components/reviews/subcomponents/ReviewList.jsx?");
-
-/***/ }),
-
-/***/ "./client/components/reviews/subcomponents/ReviewMeta.jsx":
-/*!****************************************************************!*\
-  !*** ./client/components/reviews/subcomponents/ReviewMeta.jsx ***!
-  \****************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var _DummyData_product_reviews_example__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DummyData/product_reviews_example */ \"./client/components/reviews/subcomponents/DummyData/product_reviews_example.js\");\n\n\n\nvar ReviewMeta = function ReviewMeta(props) {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", {\n    className: \"review-Meta\"\n  }, props.metaDummyData.recommended[\"true\"]));\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ReviewMeta); //\n\n//# sourceURL=webpack://fec3_project_catwalk/./client/components/reviews/subcomponents/ReviewMeta.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\nvar Reviews = function Reviews() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", {\n    \"data-testid\": \"Reviews\"\n  }, \"Reivews Section coming soon!\");\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Reviews);\n\n//# sourceURL=webpack://fec3_project_catwalk/./client/components/reviews/Reviews.jsx?");
 
 /***/ }),
 
@@ -403,6 +359,7 @@ eval("\n\nfunction checkDCE() {\n  /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */\n
 eval("/** @license React v16.13.1\n * react-is.development.js\n *\n * Copyright (c) Facebook, Inc. and its affiliates.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE file in the root directory of this source tree.\n */\n\n\n\n\n\nif (true) {\n  (function() {\n'use strict';\n\n// The Symbol used to tag the ReactElement-like types. If there is no native Symbol\n// nor polyfill, then a plain number is used for performance.\nvar hasSymbol = typeof Symbol === 'function' && Symbol.for;\nvar REACT_ELEMENT_TYPE = hasSymbol ? Symbol.for('react.element') : 0xeac7;\nvar REACT_PORTAL_TYPE = hasSymbol ? Symbol.for('react.portal') : 0xeaca;\nvar REACT_FRAGMENT_TYPE = hasSymbol ? Symbol.for('react.fragment') : 0xeacb;\nvar REACT_STRICT_MODE_TYPE = hasSymbol ? Symbol.for('react.strict_mode') : 0xeacc;\nvar REACT_PROFILER_TYPE = hasSymbol ? Symbol.for('react.profiler') : 0xead2;\nvar REACT_PROVIDER_TYPE = hasSymbol ? Symbol.for('react.provider') : 0xeacd;\nvar REACT_CONTEXT_TYPE = hasSymbol ? Symbol.for('react.context') : 0xeace; // TODO: We don't use AsyncMode or ConcurrentMode anymore. They were temporary\n// (unstable) APIs that have been removed. Can we remove the symbols?\n\nvar REACT_ASYNC_MODE_TYPE = hasSymbol ? Symbol.for('react.async_mode') : 0xeacf;\nvar REACT_CONCURRENT_MODE_TYPE = hasSymbol ? Symbol.for('react.concurrent_mode') : 0xeacf;\nvar REACT_FORWARD_REF_TYPE = hasSymbol ? Symbol.for('react.forward_ref') : 0xead0;\nvar REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;\nvar REACT_SUSPENSE_LIST_TYPE = hasSymbol ? Symbol.for('react.suspense_list') : 0xead8;\nvar REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;\nvar REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;\nvar REACT_BLOCK_TYPE = hasSymbol ? Symbol.for('react.block') : 0xead9;\nvar REACT_FUNDAMENTAL_TYPE = hasSymbol ? Symbol.for('react.fundamental') : 0xead5;\nvar REACT_RESPONDER_TYPE = hasSymbol ? Symbol.for('react.responder') : 0xead6;\nvar REACT_SCOPE_TYPE = hasSymbol ? Symbol.for('react.scope') : 0xead7;\n\nfunction isValidElementType(type) {\n  return typeof type === 'string' || typeof type === 'function' || // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.\n  type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || typeof type === 'object' && type !== null && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_FUNDAMENTAL_TYPE || type.$$typeof === REACT_RESPONDER_TYPE || type.$$typeof === REACT_SCOPE_TYPE || type.$$typeof === REACT_BLOCK_TYPE);\n}\n\nfunction typeOf(object) {\n  if (typeof object === 'object' && object !== null) {\n    var $$typeof = object.$$typeof;\n\n    switch ($$typeof) {\n      case REACT_ELEMENT_TYPE:\n        var type = object.type;\n\n        switch (type) {\n          case REACT_ASYNC_MODE_TYPE:\n          case REACT_CONCURRENT_MODE_TYPE:\n          case REACT_FRAGMENT_TYPE:\n          case REACT_PROFILER_TYPE:\n          case REACT_STRICT_MODE_TYPE:\n          case REACT_SUSPENSE_TYPE:\n            return type;\n\n          default:\n            var $$typeofType = type && type.$$typeof;\n\n            switch ($$typeofType) {\n              case REACT_CONTEXT_TYPE:\n              case REACT_FORWARD_REF_TYPE:\n              case REACT_LAZY_TYPE:\n              case REACT_MEMO_TYPE:\n              case REACT_PROVIDER_TYPE:\n                return $$typeofType;\n\n              default:\n                return $$typeof;\n            }\n\n        }\n\n      case REACT_PORTAL_TYPE:\n        return $$typeof;\n    }\n  }\n\n  return undefined;\n} // AsyncMode is deprecated along with isAsyncMode\n\nvar AsyncMode = REACT_ASYNC_MODE_TYPE;\nvar ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;\nvar ContextConsumer = REACT_CONTEXT_TYPE;\nvar ContextProvider = REACT_PROVIDER_TYPE;\nvar Element = REACT_ELEMENT_TYPE;\nvar ForwardRef = REACT_FORWARD_REF_TYPE;\nvar Fragment = REACT_FRAGMENT_TYPE;\nvar Lazy = REACT_LAZY_TYPE;\nvar Memo = REACT_MEMO_TYPE;\nvar Portal = REACT_PORTAL_TYPE;\nvar Profiler = REACT_PROFILER_TYPE;\nvar StrictMode = REACT_STRICT_MODE_TYPE;\nvar Suspense = REACT_SUSPENSE_TYPE;\nvar hasWarnedAboutDeprecatedIsAsyncMode = false; // AsyncMode should be deprecated\n\nfunction isAsyncMode(object) {\n  {\n    if (!hasWarnedAboutDeprecatedIsAsyncMode) {\n      hasWarnedAboutDeprecatedIsAsyncMode = true; // Using console['warn'] to evade Babel and ESLint\n\n      console['warn']('The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 17+. Update your code to use ' + 'ReactIs.isConcurrentMode() instead. It has the exact same API.');\n    }\n  }\n\n  return isConcurrentMode(object) || typeOf(object) === REACT_ASYNC_MODE_TYPE;\n}\nfunction isConcurrentMode(object) {\n  return typeOf(object) === REACT_CONCURRENT_MODE_TYPE;\n}\nfunction isContextConsumer(object) {\n  return typeOf(object) === REACT_CONTEXT_TYPE;\n}\nfunction isContextProvider(object) {\n  return typeOf(object) === REACT_PROVIDER_TYPE;\n}\nfunction isElement(object) {\n  return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;\n}\nfunction isForwardRef(object) {\n  return typeOf(object) === REACT_FORWARD_REF_TYPE;\n}\nfunction isFragment(object) {\n  return typeOf(object) === REACT_FRAGMENT_TYPE;\n}\nfunction isLazy(object) {\n  return typeOf(object) === REACT_LAZY_TYPE;\n}\nfunction isMemo(object) {\n  return typeOf(object) === REACT_MEMO_TYPE;\n}\nfunction isPortal(object) {\n  return typeOf(object) === REACT_PORTAL_TYPE;\n}\nfunction isProfiler(object) {\n  return typeOf(object) === REACT_PROFILER_TYPE;\n}\nfunction isStrictMode(object) {\n  return typeOf(object) === REACT_STRICT_MODE_TYPE;\n}\nfunction isSuspense(object) {\n  return typeOf(object) === REACT_SUSPENSE_TYPE;\n}\n\nexports.AsyncMode = AsyncMode;\nexports.ConcurrentMode = ConcurrentMode;\nexports.ContextConsumer = ContextConsumer;\nexports.ContextProvider = ContextProvider;\nexports.Element = Element;\nexports.ForwardRef = ForwardRef;\nexports.Fragment = Fragment;\nexports.Lazy = Lazy;\nexports.Memo = Memo;\nexports.Portal = Portal;\nexports.Profiler = Profiler;\nexports.StrictMode = StrictMode;\nexports.Suspense = Suspense;\nexports.isAsyncMode = isAsyncMode;\nexports.isConcurrentMode = isConcurrentMode;\nexports.isContextConsumer = isContextConsumer;\nexports.isContextProvider = isContextProvider;\nexports.isElement = isElement;\nexports.isForwardRef = isForwardRef;\nexports.isFragment = isFragment;\nexports.isLazy = isLazy;\nexports.isMemo = isMemo;\nexports.isPortal = isPortal;\nexports.isProfiler = isProfiler;\nexports.isStrictMode = isStrictMode;\nexports.isSuspense = isSuspense;\nexports.isValidElementType = isValidElementType;\nexports.typeOf = typeOf;\n  })();\n}\n\n\n//# sourceURL=webpack://fec3_project_catwalk/./node_modules/react-is/cjs/react-is.development.js?");
 
 /***/ }),
+<<<<<<< HEAD
 
 /***/ "./node_modules/react-is/index.js":
 /*!****************************************!*\
@@ -415,6 +372,20 @@ eval("\n\nif (false) {} else {\n  module.exports = __webpack_require__(/*! ./cjs
 
 /***/ }),
 
+=======
+
+/***/ "./node_modules/react-is/index.js":
+/*!****************************************!*\
+  !*** ./node_modules/react-is/index.js ***!
+  \****************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+eval("\n\nif (false) {} else {\n  module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ \"./node_modules/react-is/cjs/react-is.development.js\");\n}\n\n\n//# sourceURL=webpack://fec3_project_catwalk/./node_modules/react-is/index.js?");
+
+/***/ }),
+
+>>>>>>> main
 /***/ "./node_modules/react/cjs/react.development.js":
 /*!*****************************************************!*\
   !*** ./node_modules/react/cjs/react.development.js ***!
@@ -506,7 +477,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
-/******/ 	
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/ 		// Check if module is in cache
@@ -520,14 +491,14 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};
-/******/ 	
+/******/
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/ 	
+/******/
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
@@ -540,7 +511,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 			return getter;
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -552,12 +523,12 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 			}
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
@@ -568,13 +539,13 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /************************************************************************/
-/******/ 	
+/******/
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
 /******/ 	var __webpack_exports__ = __webpack_require__("./client/index.jsx");
-/******/ 	
+/******/
 /******/ })()
 ;
