@@ -18,10 +18,10 @@ const StylesList = (props) => {
 
   return (
     <div data-testid="StylesList">
-      <div>Overview: Style Selector</div>
-      <p>
+      {/* <div>Overview: Style Selector</div> */}
+      <span>
         STYLE > {results[0].name} {/* DEFAULTS TO 1ST ITEM */}
-      </p>
+      </span>
       <div>
         <CircleSpacing>
           {results.map((style) => (
