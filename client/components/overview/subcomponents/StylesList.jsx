@@ -5,8 +5,7 @@ import styled from 'styled-components';
 
 const CircleSpacing = styled.div`
   display: flex;
-  margin: 50px 0;
-
+  margin: 15px 0;
 `;
 
 const StylesList = (props) => {
@@ -21,8 +20,7 @@ const StylesList = (props) => {
     <div data-testid="StylesList">
       <div>Overview: Style Selector</div>
       <p>
-        Product ID:
-        {productId}
+        STYLE > {results[0].name} {/* DEFAULTS TO 1ST ITEM */}
       </p>
       <div>
         <CircleSpacing>
