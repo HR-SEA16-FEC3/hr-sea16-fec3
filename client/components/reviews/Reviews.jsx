@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ReviewList from './subcomponents/ReviewList.jsx';
+import dummyData from './subcomponents/DummyData/product_reviews_example';
 
-const Reviews = () => (
+console.log(dummyData.results);
+console.log(dummyData.results.summary);
+function Reviews() {
+  return (
 
-  <div data-testid="Reviews">Reivews Section coming soon!</div>
+    <div data-testid="Reviews">
+      Reviews Section coming soon!
+      <ReviewList dummyData={dummyData} />
 
-);
+    </div>
+
+  );
+}
 
 export default Reviews;

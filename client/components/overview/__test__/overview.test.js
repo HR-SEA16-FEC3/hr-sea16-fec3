@@ -9,19 +9,19 @@ test('Overview shows the welcome message placeholder', () => {
   expect(screen.getByText('Product Overview Section:')).toBeTruthy();
 });
 
-test('Overview should render the Image Gallery module', () => {
+test('Overview renders the Image Gallery module', () => {
   expect(screen.findByTestId(/Gallery/)).toBeTruthy();
 });
 
-test('Overview should render the Product Information module', () => {
+test('Overview renders the Product Information module', () => {
   expect(screen.findByTestId(/Information/)).toBeTruthy();
 });
 
-test('Overview should render the Style Selector module', () => {
-  expect(screen.findByTestId(/Style/)).toBeTruthy();
+test('Overview renders the Style Selector module', () => {
+  expect(screen.findByTestId(/StylesList/)).toBeTruthy();
 });
 
-test('Overview should render the Add to Cart module', () => {
+test('Overview renders the Add to Cart module', () => {
   expect(screen.findByTestId(/Cart/)).toBeTruthy();
 });
 
