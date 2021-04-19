@@ -12,6 +12,11 @@ import styled from 'styled-components';
 //   border: 1px solid black;
 // `;
 
+const Circle = styled.div`
+  display: flex;
+  text-align: center;
+`;
+
 const Styles = (props) => {
   const {
     style: {
@@ -20,13 +25,29 @@ const Styles = (props) => {
       original_price: originalPrice,
       sale_price: salePrice,
       'default?': isDefault,
+      photos: [{
+        thumbnail_url: thumbnailUrl,
+      }]
     },
   } = props;
 
+  const ThumbnailCircle = styled.span`
+    display: flex;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    margin-right: 15px;
+    align-items: center;
+    justify-content: center;
+    background-color: lightsteelblue;
+    /* color: black; */
+    /* background-image: url(${thumbnailUrl}); */
+  `;
+
   return (
-    <div data-testid="Styles">
-      {styleId}, {name}, {originalPrice}
-    </div>
+    <Circle>
+      <ThumbnailCircle>{styleId}</ThumbnailCircle>
+    </Circle>
   );
 };
 
@@ -37,6 +58,9 @@ Styles.propTypes = {
     original_price: PropTypes.string,
     sale_price: PropTypes.string,
     'default?': PropTypes.boolean,
+    photos: PropTypes.arrayOf(PropTypes.shape({
+      thumbnail_url: PropTypes.string,
+    })),
   }),
 };
 

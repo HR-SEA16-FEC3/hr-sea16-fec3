@@ -1,7 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Styles from './Styles';
-// import styled from 'styled-components';
+import styled from 'styled-components';
+
+const CircleSpacing = styled.div`
+  display: flex;
+  margin: 50px 0;
+
+`;
 
 const StylesList = (props) => {
   const {
@@ -18,11 +24,13 @@ const StylesList = (props) => {
         Product ID:
         {productId}
       </p>
-
-      {results.map((style) => (
-        <Styles style={style} key={style.style_id} />
-      ))}
-
+      <p>
+        <CircleSpacing>
+          {results.map((style) => (
+            <Styles style={style} key={style.style_id} />
+          ))}
+        </CircleSpacing>
+      </p>
       <br />
     </div>
   );
