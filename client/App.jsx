@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import Overview from './components/overview/Overview';
-import Questions from './components/Q&A/Q&A';
+import QandA from './components/Q&A/Q&A';
 import Reviews from './components/reviews/Reviews';
 
 const App = () => {
@@ -10,7 +10,7 @@ const App = () => {
   return (
     <div>
       <Overview />
-      <Questions />
+      <QandA />
       <Reviews />
       <button
         type="button"

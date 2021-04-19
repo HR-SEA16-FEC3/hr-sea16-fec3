@@ -1,13 +1,21 @@
 import React from 'react';
+import AnswersList from './AnswersList'
 
-const Question = (
+const Question = (props) => (
+  <div>
+    {/* Question */}
+    <div>{props.question.question_body}</div>
 
-  <div>Question coming soon!</div>
-  // Question
-  // Answer List
-  // Was the question helpful?
-  // Add an answer
-  // Load more answers
+    {/* Answer List */}
+    <p>Helpful?</p>
+    <p>
+      Yes (
+      {props.question.question_helpfulness}
+      )
+    </p>
+    <p>Add An Answer</p>
+    <p>Load more answers</p>
+  </div>
 
 );
 
