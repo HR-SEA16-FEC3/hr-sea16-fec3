@@ -6,15 +6,18 @@ const ReviewList = (props) => (
     <div className="review-list">
       {props.dummyData.results.slice(0, 2).map((item, i) => (
         <div className="review-tile" key={i}>
+          <div className="review-rating">{item.rating}</div>
+          <div className="reviewer-name">
+            {item.reviewer_name}
+            {item.date.slice(0, 10)}
+          </div>
           <div className="review-title">{item.summary}</div>
           <div className="review-body">{item.body}</div>
+          <div className="review-helpful">{item.helpfulness}</div>
         </div>
       ))}
     </div>
   </div>
 );
-
-// {data.map((item, i) => (
-// console.log(dummyData[0].results);
 
 export default ReviewList;
