@@ -7,7 +7,7 @@ import exampleData from './questions_example.json';
 const QandA = () => (
 
   <div data-testid="QA">
-    <p>Q&amp;A Section coming soon! hmm</p>
+
     {/* Search Questions */}
     <div className="search-bar">
       <FontAwesomeIcon icon={faSearch} />
