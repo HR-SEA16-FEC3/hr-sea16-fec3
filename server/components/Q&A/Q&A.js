@@ -1,5 +1,6 @@
 const express = require('express');
 const axios = require('axios');
+/* istanbul ignore next */
 const config = require('../../../config');
 
 const QandA = express.Router();
