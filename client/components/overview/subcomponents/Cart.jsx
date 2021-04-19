@@ -2,22 +2,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+const Select = styled.select`
+  border: 1px solid black;
+  margin-top: 15px;
+  margin-right: 15px;
+  background: white;
+  padding: 15px;
+  text-transform: uppercase;
+`;
+
 const Button = styled.button`
     border: 1px solid black;
-    padding: 8px;
+    padding: 15px;
     background: lightblue;
-    margin-right: 6px;
+    margin-top: 15px;
+    margin-right: 15px;
+    text-transform: uppercase;
     &:hover{
       background: grey;
     }
   `;
-
-const Select = styled.select`
-  border: 1px solid black;
-  margin-right: 6px;
-  background: white;
-  padding: 8px;
-`;
 
 const Cart = () => (
 
@@ -33,10 +37,10 @@ const Cart = () => (
     <Select data-testid="quantityDropdown">
       <option>Quantity</option>
     </Select>
-
+    <br/>
     {/* Add to Cart button */}
     <span><Button data-testid="btnAddToCart">Add to Cart</Button></span>
-    <span><Button data-testid="btnStar">Star</Button></span>
+    <span><Button data-testid="btnStar">☆</Button></span>
     <br />
   </div>
 
