@@ -18,7 +18,7 @@ test('Overview should render the Product Information module', () => {
 });
 
 test('Overview should render the Style Selector module', () => {
-  expect(screen.findByTestId(/Style/)).toBeTruthy();
+  expect(screen.findByTestId(/StylesList/)).toBeTruthy();
 });
 
 test('Overview should render the Add to Cart module', () => {

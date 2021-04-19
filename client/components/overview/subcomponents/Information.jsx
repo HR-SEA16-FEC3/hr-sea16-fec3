@@ -1,12 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import Description from './Description';
 
 // Star Rating (# of reviews)
 // Product Category
 // Product Title
 // Price
-// Product Overview
+// Product Overview/Description
 // Share on Social Media
+
+// STYLED-COMPONENTS
+const Section = styled.section`
+  text-align: center;
+  background: cornflowerblue;
+  padding: 0.25em;
+  border-radius: 3px;
+`;
 
 function Information(props) {
   const {
@@ -22,17 +32,25 @@ function Information(props) {
 
   return (
     <div data-testid="Information">
-      <div>Overview: Product Information</div>
-      {/* Star Rating (# of reviews) */}
-      {/* Product Category */}
-      <p>Category: {category}</p>
-      <p>Product Name: {name}</p>
-      <p>
-        Price: ${price}
-      </p>
-      {/* Product Overview */}
-      <p>Product ID: {id}</p>
-      {/* Share on Social Media */}
+      <Section>
+        <div><h1>Overview: Product Information</h1></div>
+
+        {/* Star Rating (# of reviews) */}
+        <span>3.5/5 stars </span>
+        <span>Read all reviews </span>
+
+        {/* Product Category */}
+        <p>Category: {category}</p>
+        <p>Product Name: {name}</p>
+        <p>
+          Price: ${price}
+        </p>
+        {/* Product Overview/Description */}
+        <Description slogan={slogan} description={description} />
+
+        <p>Product ID: {id}</p>
+        {/* Share on Social Media */}
+      </Section>
       <br />
     </div>
 
@@ -41,11 +59,11 @@ function Information(props) {
 
 Information.propTypes = {
   infoList: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    slogan: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    category: PropTypes.string.isRequired,
-    default_price: PropTypes.string.isRequired,
+    id: PropTypes.number,
+    slogan: PropTypes.string,
+    description: PropTypes.string,
+    category: PropTypes.string,
+    default_price: PropTypes.string,
   })
 };
 
