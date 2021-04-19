@@ -24,13 +24,13 @@ const StylesList = (props) => {
         Product ID:
         {productId}
       </p>
-      <p>
+      <div>
         <CircleSpacing>
           {results.map((style) => (
             <Styles style={style} key={style.style_id} />
           ))}
         </CircleSpacing>
-      </p>
+      </div>
       <br />
     </div>
   );
