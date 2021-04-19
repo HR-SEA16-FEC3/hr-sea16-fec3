@@ -26,8 +26,6 @@ const Button = styled.button`
 const Cart = () => (
 
   <div data-testid="Cart">
-    <div>Overview: Add to Cart</div>
-
     {/* Size Selector Dropdown */}
     <Select data-testid="sizeDropdown">
       <option>Select Size</option>
