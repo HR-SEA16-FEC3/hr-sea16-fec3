@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Description from './Description';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { faSearch, faStar, faHashtag } from '@fortawesome/free-solid-svg-icons';
+// import Description from './Description';
+
 
 // Star Rating (# of reviews)
 // Product Category
@@ -11,12 +15,21 @@ import Description from './Description';
 // Share on Social Media
 
 // STYLED-COMPONENTS
-const Section = styled.section`
-  text-align: center;
+const Section = styled.div`
+  /* text-align: center; */
   /* background: cornflowerblue; */
   background: ${props => props.background};
-  padding: 0.25em;
+  /* padding: 0.25em; */
   border-radius: 3px;
+`;
+
+const Category = styled.div`
+  text-transform: uppercase;
+`;
+
+const ProductName = styled.div`
+  font-weight: bold;
+  font-size: 24px;
 `;
 
 function Information(props) {
@@ -34,29 +47,38 @@ function Information(props) {
   return (
     <div data-testid="Information">
       <Section>
-        <div><h1>Overview: Product Information</h1></div>
-
         {/* Star Rating (# of reviews) */}
-        <span>3.5/5 stars </span>
-        <span>Read all reviews </span>
+        <span>
+          <FontAwesomeIcon icon={faStar} />
+          <FontAwesomeIcon icon={faStar} />
+          <FontAwesomeIcon icon={faStar} />
+          <FontAwesomeIcon icon={faStar} inverse />
+          <FontAwesomeIcon icon={faStar} inverse />
+          {'  '}
+        </span>
+        <span>Read all reviews</span>
+        <br />
+        <br />
 
         {/* Product Category */}
-        <p>Category: {category}</p>
-        <p>Product Name: {name}</p>
-        <p>
-          Price: ${price}
-        </p>
+        <Category>{category}</Category>
+        <ProductName>{name}</ProductName>
+        <p>${price}</p>
+
         {/* Product Overview/Description */}
-        <Description slogan={slogan} description={description} />
+        {/* <Description slogan={slogan} description={description} /> */}
 
-        <p>Product ID: {id}</p>
         {/* Share on Social Media */}
-      </Section>
-      <br />
-    </div>
+        <span>
+          Yolo: <FontAwesomeIcon icon={faHashtag} />
+          <FontAwesomeIcon icon={["fab", "twitter"]} />
 
+        </span>
+      </Section>
+    </div>
   );
 }
+
 
 Information.propTypes = {
   infoList: PropTypes.shape({
