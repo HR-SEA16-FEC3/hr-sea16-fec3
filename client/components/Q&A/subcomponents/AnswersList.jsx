@@ -20,7 +20,7 @@ const AnswersList = (props) => {
   const twoAnswers = sortedAnswers.slice(0, 2);
 
   return (
-    twoAnswers.map((item) => <Answer answer={item} />)
+    twoAnswers.map((item) => <Answer answer={item} key={item.id} />)
   );
 };
 

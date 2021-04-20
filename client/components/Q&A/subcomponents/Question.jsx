@@ -5,12 +5,13 @@ const Question = (props) => (
   <div>
     {/* Question */}
     <div>{props.question.question_body}</div>
-    <p>Helpful?</p>
     <p>
-      Yes (
-      {props.question.question_helpfulness}
+      Helpful?&ensp;Yes (
+      <span>{props.question.question_helpfulness}</span>
       )
-    </p>
+      &ensp;|&ensp;
+      <span>Add Answer</span>
+      </p>
     {/* Answer List */}
     <AnswersList list={props.question.answers} />
     <p>Add An Answer</p>
