@@ -8,17 +8,57 @@ import metaDummyData from './subcomponents/DummyData/product_metaData_example';
 console.log(dummyData.results);
 console.log(metaDummyData.ratings);
 
+const ReviewListStyle = styled.section`
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: row;
+`;
+const LeftSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  order: 1;
+  flex-basis: 30%;
+`;
+
+const RightSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  order: 2;
+  flex-basis: 70%;
+`;
+
+const Button = styled.button`
+flex-direction:column
+  border: 1px solid black;
+  margin-top: 15px;
+  margin-right: 15px;
+  background: white;
+  padding: 15px;
+  text-transform: uppercase;
+  &:hover{ background: lightgrey }
+`;
+
+const ButtonStyle = styled.div`
+  flex-direction: column;
+`;
+
 function Reviews() {
   return (
 
     <div data-testid="Reviews">
-      Reviews Section!
-      <ReviewMeta metaDummyData={metaDummyData} />
-
-      <ReviewList dummyData={dummyData} />
-
+      <ReviewListStyle>
+        <LeftSection>
+          <ReviewMeta metaDummyData={metaDummyData} />
+        </LeftSection>
+        <RightSection>
+          <ReviewList dummyData={dummyData.results} />
+          <ButtonStyle>
+            <span><Button type="button">More Reviews</Button></span>
+            <span><Button type="button">Add A Review +</Button></span>
+          </ButtonStyle>
+        </RightSection>
+      </ReviewListStyle>
     </div>
-
   );
 }
 

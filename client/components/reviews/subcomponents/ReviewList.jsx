@@ -1,28 +1,32 @@
 import React from 'react';
 import styled from 'styled-components';
+import RatingStar from './RatingStar.jsx';
 
 const RightFloat = styled.div`
   float: right;
+  text-transform: capitalize;
   `;
 
-const ReviewTitle = styled.h1`
-
+const ReviewListStyling = styled.div`
+  border-bottom: 2px solid grey;
+  padding-top: 20px;
   `;
 
 const ReviewList = (props) => (
-  <div>
-    <div className="review-list">
-      {props.dummyData.results.slice(0, 2).map((item, i) => (
-        <div className="review-tile" key={i}>
-
-          <div className="review-reviewer">
-            {item.rating}
-            <RightFloat>
-              <span>
-                {item.reviewer_name}
-              </span>
-              <span>
-                {
+  <div className="review-list">
+    {props.dummyData.slice(0, 2).map((item, i) => (
+      <ReviewListStyling className="review-tile" key={i}>
+        <div className="review-reviewer">
+          <RatingStar />
+          Review -&ensp;
+          {item.rating}
+          <RightFloat>
+            <span>
+              {item.reviewer_name}
+              ,&nbsp;
+            </span>
+            <span>
+              {
                   new Date(item.date).toLocaleDateString(
                     'en-US',
                     {
@@ -32,26 +36,27 @@ const ReviewList = (props) => (
                     },
                   )
                 }
-              </span>
-            </RightFloat>
-          </div>
-          <div className="review-title">
-            <h1>
-              {item.summary}
-            </h1>
-          </div>
-          <div className="review-body">
-            <p>
-              {item.body}
-            </p>
-          </div>
-          <div className="review-helpful">
-            Helpful?&ensp
-            {item.helpfulness}
-          </div>
+            </span>
+          </RightFloat>
         </div>
-      ))}
-    </div>
+        <div className="review-title">
+          <h1>
+            {item.summary}
+          </h1>
+        </div>
+        <div className="review-body">
+          <p>
+            {item.body}
+          </p>
+        </div>
+        <div className="review-helpful">
+          Helpful?&ensp;Yes (
+          {item.helpfulness}
+          )
+        </div>
+        <br />
+      </ReviewListStyling>
+    ))}
   </div>
 );
 
