@@ -2,15 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-// each product_id will have several sub style_id's
-// will need to render styles separately
-// can rename this to StylesList
-// then map out and render each style separately (based on selected style)
-
-// const Selector = styled.div`
-//   /* display: none; */
-//   border: 1px solid black;
-// `;
+const ThumbnailCircle = styled.span`
+    display: flex;
+    border-radius: 50%;
+    height: 75px;
+    width: 75px;
+    margin-right: 15px;
+    align-items: center;
+    justify-content: center;
+    color: cornflowerblue;
+    font-weight: bold;
+    background-image: url(${props => props.image});
+    /* background-color: lightsteelblue; */
+  `;
 
 const Styles = (props) => {
   const {
@@ -20,13 +24,16 @@ const Styles = (props) => {
       original_price: originalPrice,
       sale_price: salePrice,
       'default?': isDefault,
+      photos: [{
+        thumbnail_url: thumbnailUrl,
+      }],
     },
   } = props;
 
   return (
-    <div data-testid="Styles">
-      {styleId}, {name}, {originalPrice}
-    </div>
+    <>
+      <ThumbnailCircle image={thumbnailUrl}>{styleId}</ThumbnailCircle>
+    </>
   );
 };
 
@@ -37,6 +44,9 @@ Styles.propTypes = {
     original_price: PropTypes.string,
     sale_price: PropTypes.string,
     'default?': PropTypes.boolean,
+    photos: PropTypes.arrayOf(PropTypes.shape({
+      thumbnail_url: PropTypes.string,
+    })),
   }),
 };
 

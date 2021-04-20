@@ -1,5 +1,5 @@
 const QA = require('../Q&A');
 
-it('initializes', () => {
+xit('initializes', () => {
   expect('Hello World!').toBe('Hello World!')
 })

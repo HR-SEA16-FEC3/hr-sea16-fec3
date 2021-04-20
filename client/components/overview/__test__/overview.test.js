@@ -4,9 +4,8 @@ import App from '../../../App';
 
 const { queryByTestId } = render(<App />);
 
-test('Overview shows the welcome message placeholder', () => {
+test('Overview module is rendered', () => {
   expect(queryByTestId(/Overview/)).toBeTruthy();
-  expect(screen.getByText('Product Overview Section:')).toBeTruthy();
 });
 
 test('Overview renders the Image Gallery module', () => {

@@ -13,7 +13,8 @@ import Description from './Description';
 // STYLED-COMPONENTS
 const Section = styled.section`
   text-align: center;
-  background: cornflowerblue;
+  /* background: cornflowerblue; */
+  background: ${props => props.background};
   padding: 0.25em;
   border-radius: 3px;
 `;
