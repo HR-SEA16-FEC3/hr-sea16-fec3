@@ -5,15 +5,15 @@ import styled from 'styled-components';
 const ThumbnailCircle = styled.span`
     display: flex;
     border-radius: 50%;
-    height: 100px;
-    width: 100px;
+    height: 75px;
+    width: 75px;
     margin-right: 15px;
     align-items: center;
     justify-content: center;
-    /* background-color: lightsteelblue; */
     color: cornflowerblue;
     font-weight: bold;
     background-image: url(${props => props.image});
+    /* background-color: lightsteelblue; */
   `;
 
 const Styles = (props) => {
