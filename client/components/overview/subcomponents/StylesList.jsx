@@ -20,7 +20,7 @@ const StylesList = (props) => {
     <div data-testid="StylesList">
       {/* <div>Overview: Style Selector</div> */}
       <span>
-        STYLE > {results[0].name} {/* DEFAULTS TO 1ST ITEM */}
+        STYLE &gt; {results[0].name} {/* DEFAULTS TO 1ST ITEM */}
       </span>
       <div>
         <CircleSpacing>
