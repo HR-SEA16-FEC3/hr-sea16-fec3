@@ -1,7 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Styles from './Styles';
-// import styled from 'styled-components';
+import styled from 'styled-components';
+
+const CircleSpacing = styled.div`
+  display: flex;
+  margin: 10px 0;
+`;
 
 const StylesList = (props) => {
   const {
@@ -13,16 +18,17 @@ const StylesList = (props) => {
 
   return (
     <div data-testid="StylesList">
-      <div>Overview: Style Selector</div>
-      <p>
-        Product ID:
-        {productId}
-      </p>
-
-      {results.map((style) => (
-        <Styles style={style} key={style.style_id} />
-      ))}
-
+      {/* <div>Overview: Style Selector</div> */}
+      <span>
+        STYLE &gt; {results[0].name} {/* DEFAULTS TO 1ST ITEM */}
+      </span>
+      <div>
+        <CircleSpacing>
+          {results.map((style) => (
+            <Styles style={style} key={style.style_id} />
+          ))}
+        </CircleSpacing>
+      </div>
       <br />
     </div>
   );
