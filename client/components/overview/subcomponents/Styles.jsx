@@ -2,19 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const ThumbnailCircle = styled.span`
-    display: flex;
-    border-radius: 50%;
-    height: 75px;
-    width: 75px;
-    margin-right: 15px;
-    align-items: center;
-    justify-content: center;
-    color: cornflowerblue;
-    font-weight: bold;
-    background-image: url(${props => props.image});
-    /* background-color: lightsteelblue; */
-  `;
+const ThumbnailCircle = styled.div`
+  display: flex;
+  border-radius: 50%;
+  height: 75px;
+  width: 75px;
+  object-fit: contain;
+  margin-right: 15px;
+  align-items: center;
+  justify-content: center;
+  color: cornflowerblue;
+  font-weight: bold;
+  background-image: url(${props => props.image});
+  background-size: cover;
+  background-position: center;
+`;
 
 const Styles = (props) => {
   const {
