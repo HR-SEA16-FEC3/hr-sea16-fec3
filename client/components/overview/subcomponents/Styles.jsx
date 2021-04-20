@@ -2,10 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const Circle = styled.div`
-  display: flex;
-  text-align: center;
-`;
+const ThumbnailCircle = styled.span`
+    display: flex;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    margin-right: 15px;
+    align-items: center;
+    justify-content: center;
+    /* background-color: lightsteelblue; */
+    color: cornflowerblue;
+    font-weight: bold;
+    background-image: url(${props => props.image});
+  `;
 
 const Styles = (props) => {
   const {
@@ -21,24 +30,10 @@ const Styles = (props) => {
     },
   } = props;
 
-  const ThumbnailCircle = styled.span`
-    display: flex;
-    border-radius: 50%;
-    height: 100px;
-    width: 100px;
-    margin-right: 15px;
-    align-items: center;
-    justify-content: center;
-    /* background-color: lightsteelblue; */
-    color: cornflowerblue;
-    font-weight: bold;
-    background-image: url(${thumbnailUrl});
-  `;
-
   return (
-    <Circle>
-      <ThumbnailCircle>{styleId}</ThumbnailCircle>
-    </Circle>
+    <>
+      <ThumbnailCircle image={thumbnailUrl}>{styleId}</ThumbnailCircle>
+    </>
   );
 };
 
