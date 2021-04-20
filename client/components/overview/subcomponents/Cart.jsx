@@ -12,16 +12,14 @@ const Select = styled.select`
 `;
 
 const Button = styled.button`
-    border: 1px solid black;
-    padding: 15px;
-    background: lightblue;
-    margin-top: 15px;
-    margin-right: 15px;
-    text-transform: uppercase;
-    &:hover{
-      background: grey;
-    }
-  `;
+  border: 1px solid black;
+  margin-top: 15px;
+  margin-right: 15px;
+  background: white;
+  padding: 15px;
+  text-transform: uppercase;
+  &:hover{ background: lightgrey }
+`;
 
 const Cart = () => (
 
