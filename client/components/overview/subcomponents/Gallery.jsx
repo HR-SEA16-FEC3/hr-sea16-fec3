@@ -13,7 +13,7 @@ const Thumbnail = styled.button`
 
 const MainImage = styled.div`
   border: 1px solid black;
-  margin-top: 30px;
+  margin-top: 0;
   margin-right: 30px;
   background: white;
   padding: 30px;
@@ -29,12 +29,13 @@ const FlexElement = styled.div`
 const Gallery = () => (
 
   <div data-testid="Gallery">
-    <div>Overview: Image Gallery</div>
-    <br />
+
     <FlexElement>
       <MainImage>Main Image</MainImage>
     </FlexElement>
+
     <br />
+
     {/* MAP THUMBNAILS, RENDER INDIVIDUALLY */}
     <FlexElement>
       <Thumbnail>THUMB 1</Thumbnail>
@@ -45,7 +46,6 @@ const Gallery = () => (
       <Thumbnail>THUMB 6</Thumbnail>
     </FlexElement>
 
-    <br />
   </div>
 
 );

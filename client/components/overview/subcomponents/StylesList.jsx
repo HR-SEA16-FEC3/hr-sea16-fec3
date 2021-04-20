@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 const CircleSpacing = styled.div`
   display: flex;
+  flex-direction: row;
   margin: 10px 0;
 `;
 
@@ -29,7 +30,6 @@ const StylesList = (props) => {
           ))}
         </CircleSpacing>
       </div>
-      <br />
     </div>
   );
 };
