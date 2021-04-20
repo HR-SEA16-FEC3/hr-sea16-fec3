@@ -32,7 +32,7 @@ const Styles = (props) => {
 
   return (
     <>
-      <ThumbnailCircle image={thumbnailUrl}>{styleId}</ThumbnailCircle>
+      <ThumbnailCircle image={thumbnailUrl} />
     </>
   );
 };

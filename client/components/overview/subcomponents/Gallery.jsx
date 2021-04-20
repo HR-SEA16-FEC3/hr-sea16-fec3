@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Thumbnail = styled.button`
@@ -16,7 +17,7 @@ const MainImage = styled.div`
   margin-top: 0;
   margin-right: 30px;
   background: white;
-  padding: 30px;
+  padding: 15px;
   &:hover{ background: lightgrey }
 `;
 
@@ -26,28 +27,50 @@ const FlexElement = styled.div`
   flex-flow: row wrap;
 `;
 
-const Gallery = () => (
+const Gallery = (props) => {
+  const {
+    styles: {
+      product_id: productId,
+      results,
+    },
+  } = props;
 
-  <div data-testid="Gallery">
+  const firstImage = results[0].photos[0].url;
+  const productName = results[0].name;
 
-    <FlexElement>
-      <MainImage>Main Image</MainImage>
-    </FlexElement>
+  return (
 
-    <br />
+    <div data-testid="Gallery">
 
-    {/* MAP THUMBNAILS, RENDER INDIVIDUALLY */}
-    <FlexElement>
-      <Thumbnail>THUMB 1</Thumbnail>
-      <Thumbnail>THUMB 2</Thumbnail>
-      <Thumbnail>THUMB 3</Thumbnail>
-      <Thumbnail>THUMB 4</Thumbnail>
-      <Thumbnail>THUMB 5</Thumbnail>
-      <Thumbnail>THUMB 6</Thumbnail>
-    </FlexElement>
+      <FlexElement>
+        {/* <MainImage>Main Image</MainImage> */}
+        <MainImage><img src={firstImage} height="500px" alt={productName}/></MainImage>
+      </FlexElement>
 
-  </div>
+      <br />
 
-);
+      {/* MAP THUMBNAILS, RENDER INDIVIDUALLY */}
+      <FlexElement>
+        <Thumbnail>THUMB 1</Thumbnail>
+        <Thumbnail>THUMB 2</Thumbnail>
+        <Thumbnail>THUMB 3</Thumbnail>
+        <Thumbnail>THUMB 4</Thumbnail>
+        <Thumbnail>THUMB 5</Thumbnail>
+        <Thumbnail>THUMB 6</Thumbnail>
+      </FlexElement>
+
+    </div>
+
+  );
+};
+
+Gallery.propTypes = {
+  styles: PropTypes.shape({
+    product_id: PropTypes.string,
+    results: PropTypes.arrayOf(PropTypes.shape({
+      style_id: PropTypes.number,
+    })),
+  }),
+};
 
 export default Gallery;

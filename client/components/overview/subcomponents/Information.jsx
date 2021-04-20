@@ -4,8 +4,6 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { faSearch, faStar, faHashtag } from '@fortawesome/free-solid-svg-icons';
-// import Description from './Description';
-
 
 // Star Rating (# of reviews)
 // Product Category
@@ -70,8 +68,8 @@ function Information(props) {
 
         {/* Share on Social Media */}
         <span>
-          Yolo: <FontAwesomeIcon icon={faHashtag} />
-          <FontAwesomeIcon icon={["fab", "twitter"]} />
+          Socials: <FontAwesomeIcon icon={faHashtag} />
+          {/* <FontAwesomeIcon icon={["fab", "twitter"]} /> */}
 
         </span>
       </Section>
