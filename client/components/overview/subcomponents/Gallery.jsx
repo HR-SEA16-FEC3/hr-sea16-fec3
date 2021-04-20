@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight } from '@styled-icons/octicons';
 
 const Thumbnail = styled.button`
   border: 1px solid black;
@@ -24,6 +25,7 @@ const FlexElement = styled.div`
   display: flex;
   justify-content: space-evenly;
   flex-flow: row wrap;
+  align-items: center;
 `;
 
 const Gallery = (props) => {
@@ -44,14 +46,18 @@ const Gallery = (props) => {
 
       <FlexElement>
         {/* <MainImage>Main Image</MainImage> */}
+        <ArrowLeft size="20" />
         <MainImage><img src={firstImage} height="500px" alt={productName}/></MainImage>
+        <ArrowRight size="20" />
       </FlexElement>
 
       {/* MAP THUMBNAILS, RENDER INDIVIDUALLY */}
       <FlexElement>
+      <ChevronLeft size="20" />
         {firstStyleThumbnails.photos.map((photo, key) => (
           <Thumbnail key={key}><img src={photo.url} height="50px" /></Thumbnail>
         ))}
+        <ChevronRight size="20" />
       </FlexElement>
 
     </div>
