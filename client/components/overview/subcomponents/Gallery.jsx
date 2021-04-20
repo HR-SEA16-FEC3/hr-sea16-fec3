@@ -12,10 +12,10 @@ const Thumbnail = styled.button`
 
 const MainImage = styled.image`
   border: 1px solid black;
-  margin-top: 15px;
-  margin-right: 15px;
+  margin-top: 30px;
+  margin-right: 30px;
   background: white;
-  padding: 15px;
+  padding: 30px;
   &:hover{ background: lightgrey }
 `;
 
@@ -27,7 +27,7 @@ const Gallery = () => (
     <p>
       <MainImage>Main Image</MainImage>
     </p>
-
+    <br />
     {/* MAP THUMBNAILS, RENDER INDIVIDUALLY */}
     <div>
       <Thumbnail>THUMB 1</Thumbnail>
