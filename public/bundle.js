@@ -335,7 +335,51 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\nvar Reviews = function Reviews() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", {\n    \"data-testid\": \"Reviews\"\n  }, \"Reivews Section coming soon!\");\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Reviews);\n\n//# sourceURL=webpack://fec3_project_catwalk/./client/components/reviews/Reviews.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var _subcomponents_ReviewList_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./subcomponents/ReviewList.jsx */ \"./client/components/reviews/subcomponents/ReviewList.jsx\");\n/* harmony import */ var _subcomponents_ReviewMeta_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./subcomponents/ReviewMeta.jsx */ \"./client/components/reviews/subcomponents/ReviewMeta.jsx\");\n/* harmony import */ var _subcomponents_DummyData_product_reviews_example__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./subcomponents/DummyData/product_reviews_example */ \"./client/components/reviews/subcomponents/DummyData/product_reviews_example.js\");\n/* harmony import */ var _subcomponents_DummyData_product_metaData_example__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./subcomponents/DummyData/product_metaData_example */ \"./client/components/reviews/subcomponents/DummyData/product_metaData_example.js\");\n\n\n\n\n\nconsole.log(_subcomponents_DummyData_product_reviews_example__WEBPACK_IMPORTED_MODULE_3__.default.results);\nconsole.log(_subcomponents_DummyData_product_metaData_example__WEBPACK_IMPORTED_MODULE_4__.default.ratings);\n\nfunction Reviews() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", {\n    \"data-testid\": \"Reviews\"\n  }, \"Reviews Section!\", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_subcomponents_ReviewMeta_jsx__WEBPACK_IMPORTED_MODULE_2__.default, {\n    metaDummyData: _subcomponents_DummyData_product_metaData_example__WEBPACK_IMPORTED_MODULE_4__.default\n  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_subcomponents_ReviewList_jsx__WEBPACK_IMPORTED_MODULE_1__.default, {\n    dummyData: _subcomponents_DummyData_product_reviews_example__WEBPACK_IMPORTED_MODULE_3__.default\n  }));\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Reviews);\n\n//# sourceURL=webpack://fec3_project_catwalk/./client/components/reviews/Reviews.jsx?");
+
+/***/ }),
+
+/***/ "./client/components/reviews/subcomponents/DummyData/product_metaData_example.js":
+/*!***************************************************************************************!*\
+  !*** ./client/components/reviews/subcomponents/DummyData/product_metaData_example.js ***!
+  \***************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nvar metaData = {\n  product_id: '20100',\n  ratings: {\n    3: '2',\n    4: '1',\n    5: '9'\n  },\n  recommended: {\n    \"false\": '1',\n    \"true\": '11'\n  },\n  characteristics: {\n    Fit: {\n      id: 67497,\n      value: '4.8333333333333333'\n    },\n    Length: {\n      id: 67498,\n      value: '4.7500000000000000'\n    },\n    Comfort: {\n      id: 67499,\n      value: '5.0000000000000000'\n    },\n    Quality: {\n      id: 67500,\n      value: '4.8333333333333333'\n    }\n  }\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (metaData);\n\n//# sourceURL=webpack://fec3_project_catwalk/./client/components/reviews/subcomponents/DummyData/product_metaData_example.js?");
+
+/***/ }),
+
+/***/ "./client/components/reviews/subcomponents/DummyData/product_reviews_example.js":
+/*!**************************************************************************************!*\
+  !*** ./client/components/reviews/subcomponents/DummyData/product_reviews_example.js ***!
+  \**************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nvar data = {\n  product: '20100',\n  page: 0,\n  count: 5,\n  results: [{\n    review_id: 288021,\n    rating: 5,\n    summary: 'Love the onsie',\n    recommend: true,\n    response: null,\n    body: \"First - best onsie I have ever owned, it is so comfortable, wouldn't buy anything else, really grateful to have bbought this item, trying to make this 50 characters long\",\n    date: '2021-03-04T00:00:00.000Z',\n    reviewer_name: 'luci13',\n    helpfulness: 7,\n    photos: []\n  }, {\n    review_id: 248267,\n    rating: 4,\n    summary: 'This product was ok!',\n    recommend: false,\n    response: '',\n    body: 'Second - I really did not like this product solely because I am tiny and do not fit into it.',\n    date: '2019-01-11T00:00:00.000Z',\n    reviewer_name: 'mymainstreammother',\n    helpfulness: 3,\n    photos: []\n  }, {\n    review_id: 288022,\n    rating: 5,\n    summary: 'Love the onsie',\n    recommend: true,\n    response: null,\n    body: \"Third - best onsie I have ever owned, it is so comfortable, wouldn't buy anything else, really grateful to have bbought this item, trying to make this 50 characters long\",\n    date: '2021-03-04T00:00:00.000Z',\n    reviewer_name: 'luci13',\n    helpfulness: 1,\n    photos: []\n  }, {\n    review_id: 288020,\n    rating: 5,\n    summary: 'Love the onsie',\n    recommend: true,\n    response: null,\n    body: \"Fourth - trying out image!!!!! best onsie I have ever owned, it is so comfortable, wouldn't buy anything else, really grateful to have bbought this item, trying to make this 50 characters long\",\n    date: '2021-03-04T00:00:00.000Z',\n    reviewer_name: 'luci13',\n    helpfulness: 0,\n    photos: []\n  }, {\n    review_id: 288018,\n    rating: 3,\n    summary: 'Love the onsie',\n    recommend: true,\n    response: null,\n    body: \"Fifth - best onsie I have ever owned, it is so comfortable, wouldn't buy anything else, really grateful to have bbought this item, trying to make this 50 characters long\",\n    date: '2021-03-04T00:00:00.000Z',\n    reviewer_name: 'luci13',\n    helpfulness: 0,\n    photos: []\n  }]\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (data);\n\n//# sourceURL=webpack://fec3_project_catwalk/./client/components/reviews/subcomponents/DummyData/product_reviews_example.js?");
+
+/***/ }),
+
+/***/ "./client/components/reviews/subcomponents/ReviewList.jsx":
+/*!****************************************************************!*\
+  !*** ./client/components/reviews/subcomponents/ReviewList.jsx ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var _DummyData_product_reviews_example__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DummyData/product_reviews_example */ \"./client/components/reviews/subcomponents/DummyData/product_reviews_example.js\");\n\n\n\nvar ReviewList = function ReviewList(props) {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", {\n    className: \"review-list\"\n  }, props.dummyData.results.slice(0, 2).map(function (item, i) {\n    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", {\n      className: \"review-tile\",\n      key: i\n    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", {\n      className: \"review-rating\"\n    }, item.rating), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", {\n      className: \"reviewer-name\"\n    }, item.reviewer_name, item.date.slice(0, 10)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", {\n      className: \"review-title\"\n    }, item.summary), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", {\n      className: \"review-body\"\n    }, item.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", {\n      className: \"review-helpful\"\n    }, item.helpfulness));\n  })));\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ReviewList);\n\n//# sourceURL=webpack://fec3_project_catwalk/./client/components/reviews/subcomponents/ReviewList.jsx?");
+
+/***/ }),
+
+/***/ "./client/components/reviews/subcomponents/ReviewMeta.jsx":
+/*!****************************************************************!*\
+  !*** ./client/components/reviews/subcomponents/ReviewMeta.jsx ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var _DummyData_product_reviews_example__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DummyData/product_reviews_example */ \"./client/components/reviews/subcomponents/DummyData/product_reviews_example.js\");\n\n\n\nvar ReviewMeta = function ReviewMeta(props) {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", {\n    className: \"review-Meta\"\n  }, props.metaDummyData.recommended[\"true\"]));\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ReviewMeta); //\n\n//# sourceURL=webpack://fec3_project_catwalk/./client/components/reviews/subcomponents/ReviewMeta.jsx?");
 
 /***/ }),
 
@@ -550,7 +594,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
-/******/ 	
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/ 		// Check if module is in cache
@@ -564,14 +608,14 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};
-/******/ 	
+/******/
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/ 	
+/******/
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
@@ -584,7 +628,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 			return getter;
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -596,7 +640,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 			}
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/global */
 /******/ 	(() => {
 /******/ 		__webpack_require__.g = (function() {
@@ -608,12 +652,12 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 			}
 /******/ 		})();
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
@@ -624,13 +668,13 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /************************************************************************/
-/******/ 	
+/******/
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
 /******/ 	var __webpack_exports__ = __webpack_require__("./client/index.jsx");
-/******/ 	
+/******/
 /******/ })()
 ;
