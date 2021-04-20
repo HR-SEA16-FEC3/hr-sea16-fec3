@@ -26,7 +26,7 @@ const Category = styled.div`
 
 const ProductName = styled.div`
   font-weight: bold;
-  font-size: 24px;
+  font-size: 40px;
 `;
 
 const Socials = styled.div`
@@ -58,7 +58,7 @@ function Information(props) {
           <FontAwesomeIcon icon={faStar} color="orange" />
           <FontAwesomeIcon icon={faStar} color="lightgrey" />
           <FontAwesomeIcon icon={faStar} color="lightgrey" />
-          {'  '}
+          {'    '}
         </span>
         <span>Read all reviews</span>
         <br />

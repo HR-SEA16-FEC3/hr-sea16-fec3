@@ -9,6 +9,10 @@ const CircleSpacing = styled.div`
   margin: 10px 0;
 `;
 
+const StyleName = styled.span`
+  text-transform: uppercase;
+`;
+
 const StylesList = (props) => {
   const {
     stylesList: {
@@ -21,7 +25,8 @@ const StylesList = (props) => {
     <div data-testid="StylesList">
       {/* <div>Overview: Style Selector</div> */}
       <span>
-        STYLE &gt; {results[0].name} {/* DEFAULTS TO 1ST ITEM */}
+        <strong>STYLE &gt;  </strong>
+        <StyleName>{results[0].name}</StyleName> {/* DEFAULTS TO 1ST ITEM */}
       </span>
       <div>
         <CircleSpacing>
