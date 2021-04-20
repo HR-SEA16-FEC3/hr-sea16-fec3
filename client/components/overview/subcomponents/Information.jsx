@@ -16,10 +16,7 @@ import { Twitter, FacebookMessenger } from '@styled-icons/fa-brands';
 
 // STYLED-COMPONENTS
 const Section = styled.div`
-  /* text-align: center; */
-  /* background: cornflowerblue; */
   background: ${props => props.background};
-  /* padding: 0.25em; */
   border-radius: 3px;
 `;
 
@@ -33,7 +30,7 @@ const ProductName = styled.div`
 `;
 
 const Socials = styled.div`
-  color: cornflowerblue;
+  color: orange;
   display: flex;
   flex-flow: row wrap;
   margin-right: 10;

@@ -4,18 +4,17 @@ import styled from 'styled-components';
 
 const Thumbnail = styled.button`
   border: 1px solid black;
-  margin-top: 15px;
-  margin-right: 15px;
+  /* margin-top: 15px;
+  margin-right: 15px; */
   background: white;
-  padding: 15px;
-  &:hover{ background: lightgrey }
-
+  padding: 0px;
 `;
 
 const MainImage = styled.div`
   border: 1px solid black;
   margin-top: 0;
   margin-right: 30px;
+  margin-bottom: 30px;
   background: white;
   padding: 15px;
   &:hover{ background: lightgrey }
@@ -37,6 +36,7 @@ const Gallery = (props) => {
 
   const firstImage = results[0].photos[0].url;
   const productName = results[0].name;
+  const firstStyleThumbnails = results[0];
 
   return (
 
@@ -47,16 +47,11 @@ const Gallery = (props) => {
         <MainImage><img src={firstImage} height="500px" alt={productName}/></MainImage>
       </FlexElement>
 
-      <br />
-
       {/* MAP THUMBNAILS, RENDER INDIVIDUALLY */}
       <FlexElement>
-        <Thumbnail>THUMB 1</Thumbnail>
-        <Thumbnail>THUMB 2</Thumbnail>
-        <Thumbnail>THUMB 3</Thumbnail>
-        <Thumbnail>THUMB 4</Thumbnail>
-        <Thumbnail>THUMB 5</Thumbnail>
-        <Thumbnail>THUMB 6</Thumbnail>
+        {firstStyleThumbnails.photos.map((photo, key) => (
+          <Thumbnail key={key}><img src={photo.url} height="50px" /></Thumbnail>
+        ))}
       </FlexElement>
 
     </div>
