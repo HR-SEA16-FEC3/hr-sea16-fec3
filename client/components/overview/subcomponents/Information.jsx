@@ -40,15 +40,28 @@ function Information(props) {
         <span>Read all reviews </span>
 
         {/* Product Category */}
-        <p>Category: {category}</p>
-        <p>Product Name: {name}</p>
         <p>
-          Price: ${price}
+          Category:
+          {' '}
+          {category}
+        </p>
+        <p>
+          Product Name:
+          {' '}
+          {name}
+        </p>
+        <p>
+          Price: $
+          {price}
         </p>
         {/* Product Overview/Description */}
         <Description slogan={slogan} description={description} />
 
-        <p>Product ID: {id}</p>
+        <p>
+          Product ID:
+          {' '}
+          {id}
+        </p>
         {/* Share on Social Media */}
       </Section>
       <br />
@@ -64,7 +77,7 @@ Information.propTypes = {
     description: PropTypes.string,
     category: PropTypes.string,
     default_price: PropTypes.string,
-  })
+  }),
 };
 
 export default Information;
