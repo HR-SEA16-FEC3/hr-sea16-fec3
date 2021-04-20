@@ -67,7 +67,9 @@ function Information(props) {
         {/* Product Category */}
         <Category>{category}</Category>
         <ProductName>{name}</ProductName>
-        <p>${price}</p>
+        <p>
+          ${Number(price)} {/* CONVERTED TO NUMBER, RENDERS AS WHOLE INTEGER */}
+        </p>
 
         {/* Product Overview/Description */}
         {/* <Description slogan={slogan} description={description} /> */}
