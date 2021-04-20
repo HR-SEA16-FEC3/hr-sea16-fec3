@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import Answer from './Answer';
 
 const AnswersList = (props) => {
@@ -20,8 +21,13 @@ const AnswersList = (props) => {
   const twoAnswers = sortedAnswers.slice(0, 2);
 
   return (
-    twoAnswers.map((item) => <Answer answer={item} key={item.id} />)
+    <Wrapper>
+      {twoAnswers.map((item) => <Answer answer={item} key={item.id} />)}
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+`;
 
 export default AnswersList;
