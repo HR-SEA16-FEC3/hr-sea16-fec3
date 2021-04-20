@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const ThumbnailCircle = styled.div`
+  border: 1px solid black;
   display: flex;
   border-radius: 50%;
   height: 75px;
@@ -13,7 +14,7 @@ const ThumbnailCircle = styled.div`
   justify-content: center;
   color: cornflowerblue;
   font-weight: bold;
-  background-image: url(${props => props.image});
+  background-image: url(${(props) => props.image});
   background-size: cover;
   background-position: center;
 `;
