@@ -1,5 +1,4 @@
 import React from 'react';
-// import styled, { ThemeProvider } from 'styled-components';
 import styled from 'styled-components';
 import Gallery from './subcomponents/Gallery';
 import Information from './subcomponents/Information';
@@ -30,7 +29,7 @@ const RightSection = styled.div`
 
 const Subcomponent = styled.div`
   background: ${(props) => props.background};
-  order: ${(props) => props.order}
+  order: ${(props) => props.order};
 `;
 
 function Overview() {
