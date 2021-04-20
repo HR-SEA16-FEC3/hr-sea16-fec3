@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { fab } from '@fortawesome/free-brands-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
 import { faSearch, faStar, faHashtag } from '@fortawesome/free-solid-svg-icons';
+import { Twitter, FacebookMessenger } from '@styled-icons/fa-brands';
 
 // Star Rating (# of reviews)
 // Product Category
@@ -30,6 +32,13 @@ const ProductName = styled.div`
   font-size: 24px;
 `;
 
+const Socials = styled.div`
+  color: cornflowerblue;
+  display: flex;
+  flex-flow: row wrap;
+  margin-right: 10;
+`;
+
 function Information(props) {
   const {
     infoList: { // nested destructuring
@@ -47,11 +56,11 @@ function Information(props) {
       <Section>
         {/* Star Rating (# of reviews) */}
         <span>
-          <FontAwesomeIcon icon={faStar} />
-          <FontAwesomeIcon icon={faStar} />
-          <FontAwesomeIcon icon={faStar} />
-          <FontAwesomeIcon icon={faStar} inverse />
-          <FontAwesomeIcon icon={faStar} inverse />
+          <FontAwesomeIcon icon={faStar} color="orange" />
+          <FontAwesomeIcon icon={faStar} color="orange" />
+          <FontAwesomeIcon icon={faStar} color="orange" />
+          <FontAwesomeIcon icon={faStar} color="lightgrey" />
+          <FontAwesomeIcon icon={faStar} color="lightgrey" />
           {'  '}
         </span>
         <span>Read all reviews</span>
@@ -67,16 +76,15 @@ function Information(props) {
         {/* <Description slogan={slogan} description={description} /> */}
 
         {/* Share on Social Media */}
-        <span>
-          Socials: <FontAwesomeIcon icon={faHashtag} />
-          {/* <FontAwesomeIcon icon={["fab", "twitter"]} /> */}
-
-        </span>
+        Share:
+        <Socials>
+          <Twitter size="20" />
+          <FacebookMessenger size="20" />
+        </Socials>
       </Section>
     </div>
   );
 }
-
 
 Information.propTypes = {
   infoList: PropTypes.shape({
