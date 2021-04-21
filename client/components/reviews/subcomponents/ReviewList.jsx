@@ -1,22 +1,62 @@
 import React from 'react';
-import data from './DummyData/product_reviews_example';
+import styled from 'styled-components';
+import RatingStar from './RatingStar.jsx';
+
+const RightFloat = styled.div`
+  float: right;
+  text-transform: capitalize;
+  `;
+
+const ReviewListStyling = styled.div`
+  border-bottom: 2px solid grey;
+  padding-top: 20px;
+  `;
 
 const ReviewList = (props) => (
-  <div>
-    <div className="review-list">
-      {props.dummyData.results.slice(0, 2).map((item, i) => (
-        <div className="review-tile" key={i}>
-          <div className="review-rating">{item.rating}</div>
-          <div className="reviewer-name">
-            {item.reviewer_name}
-            {item.date.slice(0, 10)}
-          </div>
-          <div className="review-title">{item.summary}</div>
-          <div className="review-body">{item.body}</div>
-          <div className="review-helpful">{item.helpfulness}</div>
+  <div className="review-list">
+    {props.dummyData.slice(0, 2).map((item, i) => (
+      <ReviewListStyling className="review-tile" key={i}>
+        <div className="review-reviewer">
+          <RatingStar />
+          Review -&ensp;
+          {item.rating}
+          <RightFloat>
+            <span>
+              {item.reviewer_name}
+              ,&nbsp;
+            </span>
+            <span>
+              {
+                  new Date(item.date).toLocaleDateString(
+                    'en-US',
+                    {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                    },
+                  )
+                }
+            </span>
+          </RightFloat>
         </div>
-      ))}
-    </div>
+        <div className="review-title">
+          <h1>
+            {item.summary}
+          </h1>
+        </div>
+        <div className="review-body">
+          <p>
+            {item.body}
+          </p>
+        </div>
+        <div className="review-helpful">
+          Helpful?&ensp;Yes (
+          {item.helpfulness}
+          )
+        </div>
+        <br />
+      </ReviewListStyling>
+    ))}
   </div>
 );
 
