@@ -1,29 +1,47 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import styled from 'styled-components';
 import QuestionsList from './subcomponents/QuestionsList';
 import exampleData from './questions_example.json';
+import Searchbar from './subcomponents/Searchbar';
 
 const QandA = () => (
+  <Wrapper data-testid="QA">
 
-  <div data-testid="QA">
+    <Title>Q &amp; A</Title>
 
     {/* Search Questions */}
-    <div className="search-bar">
-      <FontAwesomeIcon icon={faSearch} />
-      <input data-testid="search" type="search" id="question-search" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..." />
-      <button type="submit">Search</button>
-    </div>
+    <Searchbar />
     {/* Questions List */}
     <div>
       <QuestionsList questionsList={exampleData.results} />
       {/* More Answered Questions Button */}
-      <button type="button">MORE ANSWERED QUESTIONS</button>
+      <Button type="button">MORE ANSWERED QUESTIONS</Button>
       {/* Add a question button */}
-      <button type="button">ADD A QUESTION +</button>
+      <Button type="button">ADD A QUESTION +</Button>
     </div>
 
-  </div>
+  </Wrapper>
 );
+const Button = styled.button`
+  border: 1px solid black;
+  margin-top: 15px;
+  margin-right: 15px;
+  background: white;
+  padding: 15px;
+  text-transform: uppercase;
+  &:hover{ background: lightgrey }
+`;
+
+const Wrapper = styled.section`
+padding: 1em;
+background: #e6e6e6;
+font-family: sans-serif;
+`;
+
+const Title = styled.h1`
+  font-size: 22px;
+`;
 
 export default QandA;
