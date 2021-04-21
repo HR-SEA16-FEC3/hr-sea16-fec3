@@ -58,24 +58,24 @@ function Overview() {
           <TopSection>
             <LeftSection>
               {/* Image Gallery */}
-              <Subcomponent/* background="orange" */>
+              <Subcomponent>
                 <Gallery styles={StylesExample} />
               </Subcomponent>
             </LeftSection>
 
             <RightSection>
               {/* Product Information */}
-              <Subcomponent/* background="cornflowerblue" */>
+              <Subcomponent>
                 <Information infoList={InfoExample} />
               </Subcomponent>
 
               {/* Style Selector */}
-              <Subcomponent/* background="yellow" */>
+              <Subcomponent>
                 <StylesList stylesList={StylesExample} />
               </Subcomponent>
 
               {/* Add to Cart */}
-              <Subcomponent/* background="orange" */>
+              <Subcomponent>
                 <Cart />
               </Subcomponent>
             </RightSection>
