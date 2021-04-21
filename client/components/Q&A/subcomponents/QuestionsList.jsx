@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import Question from './Question';
 
 const QuestionsList = (props) => {
@@ -7,9 +8,11 @@ const QuestionsList = (props) => {
   props.questionsList.slice(0, 4);
 
   return (
-    props.questionsList.map((item) => (
-      <Question question={item} key={item.question_id} />
-    ))
+    <Wrapper>
+      {props.questionsList.map((item) => (
+        <Question question={item} key={item.question_id} />
+      ))}
+    </Wrapper>
   );
 };
 
@@ -19,5 +22,9 @@ QuestionsList.propTypes = {
 QuestionsList.defaultProps = {
   questionsList: [],
 };
+
+const Wrapper = styled.div`
+padding: 0em;
+`;
 
 export default QuestionsList;

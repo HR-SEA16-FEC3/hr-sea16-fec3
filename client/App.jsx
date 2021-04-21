@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 
 import Overview from './components/overview/Overview';
 import QandA from './components/Q&A/Q&A';
@@ -8,22 +9,27 @@ const App = () => {
   const [countTest, setCountTest] = useState(0);
 
   return (
-    <div>
+    <Wrapper>
       <Overview />
+      <Divider />
       <QandA />
+      <Divider />
       <Reviews />
-      <button
-        type="button"
-        onClick={() => setCountTest(countTest + 1)}
-      >
-        {countTest}
-      </button>
-    </div>
+    </Wrapper>
   );
 };
 
-// ReactDOM.render(
-//   <App />,
-//   document.getElementById('App'),
-// );
+const Divider = styled.hr`
+display: block;
+height: 1px;
+border: 0;
+border-top: 2px solid #ccc;
+margin: 0;
+padding: 0;
+`;
+
+const Wrapper = styled.div`
+margin:0;
+`;
+
 export default App;

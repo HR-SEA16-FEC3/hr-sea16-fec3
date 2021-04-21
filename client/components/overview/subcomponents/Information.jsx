@@ -16,7 +16,11 @@ import { Twitter, FacebookMessenger } from '@styled-icons/fa-brands';
 
 // STYLED-COMPONENTS
 const Section = styled.div`
+<<<<<<< HEAD
   background: ${(props) => props.background};
+=======
+  background: ${props => props.background};
+>>>>>>> 884e200c9eb6883c6b9fa81f06a495863915f4ac
   border-radius: 3px;
 `;
 
@@ -69,10 +73,14 @@ function Information(props) {
         <Category>{category}</Category>
         <ProductName>{name}</ProductName>
         <p>
+<<<<<<< HEAD
           $
           {Number(price)}
           {' '}
           {/* CONVERTED TO NUMBER, RENDERS AS WHOLE INTEGER */}
+=======
+          ${Number(price)} {/* CONVERTED TO NUMBER, RENDERS AS WHOLE INTEGER */}
+>>>>>>> 884e200c9eb6883c6b9fa81f06a495863915f4ac
         </p>
 
         {/* Product Overview/Description */}
@@ -98,7 +106,7 @@ Information.propTypes = {
     description: PropTypes.string,
     category: PropTypes.string,
     default_price: PropTypes.string,
-  }),
+  })
 };
 
 export default Information;
