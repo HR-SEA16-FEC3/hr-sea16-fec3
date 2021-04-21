@@ -1,10 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import Features from './Features';
 
 const SloganStyled = styled.section`
   text-transform: uppercase;
   font-weight: bold;
+`;
+
+const BottomSection = styled.section`
+  display: flex;
+`;
+
+const Left = styled.section`
+  flex-basis: 60%;
+`;
+
+const Right = styled.section`
+  flex-basis: 40%;
 `;
 
 function Description(props) {
@@ -12,14 +25,28 @@ function Description(props) {
     descExample: {
       description,
       slogan,
+      features: allFeatures,
     },
   } = props;
 
   return (
     <>
-      <SloganStyled>{slogan}</SloganStyled>
-      <br />
-      {description}
+      <BottomSection>
+        {/* DESCRIPTION */}
+        <Left>
+          <SloganStyled>{slogan}</SloganStyled>
+          <br />
+          {description}
+        </Left>
+
+        {/* FEATURES */}
+        <Right>
+          {allFeatures.map((feature, i) => (
+            <Features feature={feature} key={i} />
+          ))}
+        </Right>
+      </BottomSection>
+
       <br />
     </>
   );
@@ -29,6 +56,7 @@ Description.propTypes = {
   descExample: PropTypes.shape({
     slogan: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
+    features: PropTypes.array,
   })
 };
 
