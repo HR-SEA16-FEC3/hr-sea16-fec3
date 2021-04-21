@@ -17,6 +17,7 @@ const ThumbnailCircle = styled.div`
   background-image: url(${(props) => props.image});
   background-size: cover;
   background-position: center;
+  margin: 10px 10px;
 `;
 
 const Styles = (props) => {

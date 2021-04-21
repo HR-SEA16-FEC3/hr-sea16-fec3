@@ -6,6 +6,7 @@ import styled from 'styled-components';
 const CircleSpacing = styled.div`
   display: flex;
   flex-direction: row;
+  flex-flow: row wrap;
   margin: 10px 0;
 `;
 

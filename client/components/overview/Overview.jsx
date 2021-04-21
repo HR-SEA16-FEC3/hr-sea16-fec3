@@ -12,6 +12,7 @@ const OverviewStyle = styled.section`
   font-family: sans-serif;
   display: flex;
   flex-direction: column;
+  background: whitesmoke;
 `;
 
 const TopSection = styled.div`
@@ -21,6 +22,8 @@ const TopSection = styled.div`
 
 const BottomSection = styled.div`
   /* flex-direction: row; */
+  /* margin-left: 20px; */
+  justify-content: center;
 `;
 
 const LeftSection = styled.div`
@@ -28,12 +31,14 @@ const LeftSection = styled.div`
   order: 1;
   flex-basis: 60%;
   flex-grow: 1; /* REEVALUATE */
+  margin: 10px;
 `;
 
 const RightSection = styled.div`
   flex-direction: column;
   order: 2;
   flex-basis: 40%;
+  margin: 10px;
 `;
 
 const Subcomponent = styled.div`
@@ -53,34 +58,34 @@ function Overview() {
           <TopSection>
             <LeftSection>
               {/* Image Gallery */}
-              <Subcomponent /* background="orange" */ order="1">
+              <Subcomponent/* background="orange" */>
                 <Gallery styles={StylesExample} />
               </Subcomponent>
             </LeftSection>
 
             <RightSection>
               {/* Product Information */}
-              <Subcomponent /* background="cornflowerblue" */ order="1">
+              <Subcomponent/* background="cornflowerblue" */>
                 <Information infoList={InfoExample} />
               </Subcomponent>
 
               {/* Style Selector */}
-              <Subcomponent /* background="yellow" */ order="2">
+              <Subcomponent/* background="yellow" */>
                 <StylesList stylesList={StylesExample} />
               </Subcomponent>
 
               {/* Add to Cart */}
-              <Subcomponent /* background="orange" */ order="3">
+              <Subcomponent/* background="orange" */>
                 <Cart />
               </Subcomponent>
             </RightSection>
           </TopSection>
 
-          {/* Product Description */}
           <BottomSection>
-            <Subcomponent /* background="cornflowerblue" */ order="3">
+            {/* Product Description */}
+            <LeftSection>
               <Description descExample={InfoExample} />
-            </Subcomponent>
+            </LeftSection>
           </BottomSection>
 
         </OverviewStyle>

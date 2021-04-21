@@ -16,24 +16,27 @@ import { Twitter, FacebookMessenger } from '@styled-icons/fa-brands';
 
 // STYLED-COMPONENTS
 const Section = styled.div`
-  background: ${props => props.background};
+  background: ${(props) => props.background};
   border-radius: 3px;
 `;
 
 const Category = styled.div`
   text-transform: uppercase;
+  margin: 10px 0;
 `;
 
 const ProductName = styled.div`
   font-weight: bold;
   font-size: 40px;
+  margin: 10px 0;
 `;
 
 const Socials = styled.span`
   color: orange;
   display: flex;
   flex-flow: row wrap;
-  padding: 10px;
+  padding: 10px 0;
+  margin: 10px 0;
   /* justify-content: center; */
 `;
 
@@ -76,10 +79,9 @@ function Information(props) {
         {/* <Description slogan={slogan} description={description} /> */}
 
         {/* Share on Social Media */}
-
         <Socials>
           <Twitter size="40" />
-          <Twitter size="10" color="white" />
+          <Twitter size="10" color="whitesmoke" /> {/* MOVE TO BELOW CART SUBCOMPONENT */}
           <FacebookMessenger size="40" />
         </Socials>
 
@@ -95,7 +97,7 @@ Information.propTypes = {
     description: PropTypes.string,
     category: PropTypes.string,
     default_price: PropTypes.string,
-  })
+  }),
 };
 
 export default Information;

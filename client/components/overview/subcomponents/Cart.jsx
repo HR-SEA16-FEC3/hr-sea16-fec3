@@ -8,6 +8,7 @@ const Select = styled.select`
   background: white;
   padding: 15px;
   text-transform: uppercase;
+  font-weight: bold;
 `;
 
 const Button = styled.button`
@@ -17,6 +18,7 @@ const Button = styled.button`
   background: white;
   padding: 15px;
   text-transform: uppercase;
+  font-weight: bold;
   &:hover{ background: lightgrey }
 `;
 

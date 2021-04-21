@@ -3,19 +3,34 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight } from '@styled-icons/octicons';
 
-const Thumbnail = styled.button`
+const Thumbnail = styled.div`
   border: 1px solid black;
   /* margin-top: 15px;
   margin-right: 15px; */
   background: white;
-  padding: 0px;
+  padding: 0;
+`;
+
+const ThumbnailCircle = styled.div`
+  border: 1px solid black;
+  display: flex;
+  flex-flow: row wrap;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  margin: 10px 10px;
+  object-fit: contain;
+  justify-content: center;
+  color: cornflowerblue;
+  font-weight: bold;
+  background-image: url(${(props) => props.image});
+  background-size: cover;
+  background-position: center;
 `;
 
 const MainImage = styled.div`
   border: 1px solid black;
-  margin-top: 0;
-  margin-right: 30px;
-  margin-bottom: 30px;
+  margin: 10px 10px;
   background: white;
   padding: 15px;
   &:hover{ background: lightgrey }
@@ -42,7 +57,7 @@ const Gallery = (props) => {
 
   return (
 
-    <div data-testid="Gallery">
+    <div data-testid="Gallery"> {/* ADD ENLARGE IMAGE ICON */}
 
       <FlexElement>
         {/* <MainImage>Main Image</MainImage> */}
@@ -55,7 +70,8 @@ const Gallery = (props) => {
       <FlexElement>
       <ChevronLeft size="20" />
         {firstStyleThumbnails.photos.map((photo, key) => (
-          <Thumbnail key={key}><img src={photo.url} height="50px" /></Thumbnail>
+
+          <ThumbnailCircle key={key} image={photo.url} />
         ))}
         <ChevronRight size="20" />
       </FlexElement>
@@ -75,3 +91,5 @@ Gallery.propTypes = {
 };
 
 export default Gallery;
+
+// {<Thumbnail key={key}><img src={photo.url} height="50px" /></Thumbnail>}
