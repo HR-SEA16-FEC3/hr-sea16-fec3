@@ -12,6 +12,8 @@ const OverviewStyle = styled.section`
   font-family: sans-serif;
   display: flex;
   flex-direction: column;
+  /* background: #e6e6e6; */
+  background: whitesmoke;
 `;
 
 const TopSection = styled.div`
@@ -53,24 +55,24 @@ function Overview() {
           <TopSection>
             <LeftSection>
               {/* Image Gallery */}
-              <Subcomponent /* background="orange" */ order="1">
+              <Subcomponent/* background="orange" */>
                 <Gallery styles={StylesExample} />
               </Subcomponent>
             </LeftSection>
 
             <RightSection>
               {/* Product Information */}
-              <Subcomponent /* background="cornflowerblue" */ order="1">
+              <Subcomponent/* background="cornflowerblue" */>
                 <Information infoList={InfoExample} />
               </Subcomponent>
 
               {/* Style Selector */}
-              <Subcomponent /* background="yellow" */ order="2">
+              <Subcomponent/* background="yellow" */>
                 <StylesList stylesList={StylesExample} />
               </Subcomponent>
 
               {/* Add to Cart */}
-              <Subcomponent /* background="orange" */ order="3">
+              <Subcomponent/* background="orange" */>
                 <Cart />
               </Subcomponent>
             </RightSection>
@@ -78,7 +80,7 @@ function Overview() {
 
           {/* Product Description */}
           <BottomSection>
-            <Subcomponent /* background="cornflowerblue" */ order="3">
+            <Subcomponent/* background="cornflowerblue" */>
               <Description descExample={InfoExample} />
             </Subcomponent>
           </BottomSection>
