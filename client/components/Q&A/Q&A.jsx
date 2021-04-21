@@ -23,13 +23,14 @@ const QandA = () => (
   </Wrapper>
 );
 const Button = styled.button`
-  border: 1px solid black;
+  border: 0px solid lightgray;
   margin-top: 15px;
   margin-right: 15px;
-  background: white;
+  background: orange;
+  color: white;
   padding: 15px;
   text-transform: uppercase;
-  &:hover{ background: lightgrey }
+  &:hover{ background: white; color: black; }
 `;
 
 const Wrapper = styled.section`

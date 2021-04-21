@@ -24,7 +24,7 @@ const App = () => {
 
 const Header = styled.div`
   background:orange;
-  height: 45px;
+  height: 40px;
   display: flex;
   flex-direction: row;
   align-items: center;
