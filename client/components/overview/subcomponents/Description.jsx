@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const SloganStyled = styled.section`
-    text-transform: uppercase;
-    font-weight: bold;
-  `;
+  text-transform: uppercase;
+  font-weight: bold;
+`;
 
 function Description(props) {
   const {
@@ -18,6 +18,7 @@ function Description(props) {
   return (
     <>
       <SloganStyled>{slogan}</SloganStyled>
+      <br />
       {description}
       <br />
     </>

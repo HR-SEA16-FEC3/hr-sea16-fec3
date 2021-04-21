@@ -42,7 +42,7 @@ const Gallery = (props) => {
 
   return (
 
-    <div data-testid="Gallery">
+    <div data-testid="Gallery"> {/* ADD ENLARGE IMAGE ICON */}
 
       <FlexElement>
         {/* <MainImage>Main Image</MainImage> */}
