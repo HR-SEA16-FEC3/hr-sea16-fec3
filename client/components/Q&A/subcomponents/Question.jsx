@@ -22,7 +22,6 @@ const Question = (props) => (
       <AnswerBody>
         <AnswersList list={props.question.answers} />
         <AnswerButtons>
-          <Button>Add An Answer</Button>
           <Button>Load more answers</Button>
         </AnswerButtons>
       </AnswerBody>
@@ -31,14 +30,14 @@ const Question = (props) => (
 
 );
 const Button = styled.button`
-  border: 1px solid black;
+  border: 1px solid lightgrey;
   margin-top: 10px;
   margin-right: 10px;
   background: lightgrey;
   padding: 7px;
   font-size: 10px
   text-transform: uppercase;
-  &:hover{ background: white }
+  &:hover{ background: orange; color: white; border: 1px solid lightgrey }
 `;
 
 const Wrapper = styled.div`

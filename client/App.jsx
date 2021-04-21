@@ -6,18 +6,31 @@ import QandA from './components/Q&A/Q&A';
 import Reviews from './components/reviews/Reviews';
 
 const App = () => {
-  const [countTest, setCountTest] = useState(0);
+  const [productId, setProductId] = useState(0);
 
   return (
     <Wrapper>
-      <Overview />
+      <Header>
+        <h1>Project Catwalk</h1>
+      </Header>
+      <Overview productId={productId} />
       <Divider />
-      <QandA />
+      <QandA productId={productId} />
       <Divider />
-      <Reviews />
+      <Reviews productId={productId} />
     </Wrapper>
   );
 };
+
+const Header = styled.div`
+  background:orange;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: white;
+  padding: 5px;
+`;
 
 const Divider = styled.hr`
 display: block;
@@ -29,7 +42,7 @@ padding: 0;
 `;
 
 const Wrapper = styled.div`
-margin:0;
+font-family: sans-serif;
 `;
 
 export default App;

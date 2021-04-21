@@ -13,7 +13,7 @@ const Searchbar = () => {
   };
 
   return (
-    <form>
+    <form data-testid="Searchbar">
       <StyledInput className="inputWithIcon">
         <Input
           type="text"

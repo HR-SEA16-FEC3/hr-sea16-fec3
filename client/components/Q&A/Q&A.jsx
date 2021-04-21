@@ -1,6 +1,4 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 import QuestionsList from './subcomponents/QuestionsList';
 import exampleData from './questions_example.json';
@@ -17,21 +15,22 @@ const QandA = () => (
     <div>
       <QuestionsList questionsList={exampleData.results} />
       {/* More Answered Questions Button */}
-      <Button type="button">MORE ANSWERED QUESTIONS</Button>
+      <Button type="button" data-testid="MoreQuestion">MORE ANSWERED QUESTIONS</Button>
       {/* Add a question button */}
-      <Button type="button">ADD A QUESTION +</Button>
+      <Button type="button" data-testid="AddQuestion">ADD A QUESTION +</Button>
     </div>
 
   </Wrapper>
 );
 const Button = styled.button`
-  border: 1px solid black;
+  border: 0px solid lightgray;
   margin-top: 15px;
   margin-right: 15px;
-  background: white;
+  background: orange;
+  color: white;
   padding: 15px;
   text-transform: uppercase;
-  &:hover{ background: lightgrey }
+  &:hover{ background: white; color: black; }
 `;
 
 const Wrapper = styled.section`
