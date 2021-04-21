@@ -3,14 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight } from '@styled-icons/octicons';
 
-const Thumbnail = styled.div`
-  border: 1px solid black;
-  /* margin-top: 15px;
-  margin-right: 15px; */
-  background: white;
-  padding: 0;
-`;
-
 const ThumbnailCircle = styled.div`
   border: 1px solid black;
   display: flex;
@@ -91,5 +83,3 @@ Gallery.propTypes = {
 };
 
 export default Gallery;
-
-// {<Thumbnail key={key}><img src={photo.url} height="50px" /></Thumbnail>}
