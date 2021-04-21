@@ -6,15 +6,15 @@ import QandA from './components/Q&A/Q&A';
 import Reviews from './components/reviews/Reviews';
 
 const App = () => {
-  const [countTest, setCountTest] = useState(0);
+  const [productId, setProductId] = useState(0);
 
   return (
     <Wrapper>
-      <Overview />
+      <Overview productId={productId} />
       <Divider />
-      <QandA />
+      <QandA productId={productId} />
       <Divider />
-      <Reviews />
+      <Reviews productId={productId} />
     </Wrapper>
   );
 };

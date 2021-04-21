@@ -8,7 +8,7 @@ const QuestionsList = (props) => {
   props.questionsList.slice(0, 4);
 
   return (
-    <Wrapper>
+    <Wrapper data-testid="QuestionsList">
       {props.questionsList.map((item) => (
         <Question question={item} key={item.question_id} />
       ))}
