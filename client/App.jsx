@@ -10,6 +10,9 @@ const App = () => {
 
   return (
     <Wrapper>
+      <Header>
+        <h1>Project Catwalk</h1>
+      </Header>
       <Overview productId={productId} />
       <Divider />
       <QandA productId={productId} />
@@ -18,6 +21,16 @@ const App = () => {
     </Wrapper>
   );
 };
+
+const Header = styled.div`
+  background:orange;
+  height: 45px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: white;
+  padding: 5px;
+`;
 
 const Divider = styled.hr`
 display: block;
@@ -29,7 +42,7 @@ padding: 0;
 `;
 
 const Wrapper = styled.div`
-margin:0;
+font-family: sans-serif;
 `;
 
 export default App;
