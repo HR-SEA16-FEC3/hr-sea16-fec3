@@ -52,17 +52,16 @@ const Gallery = (props) => {
     <div data-testid="Gallery"> {/* ADD ENLARGE IMAGE ICON */}
 
       <FlexElement>
-        {/* <MainImage>Main Image</MainImage> */}
+        {/* SELECTED STYLE'S MAIN IMAGE */}
         <ArrowLeft size="20" />
-        <MainImage><img src={firstImage} height="500px" alt={productName}/></MainImage>
+        <MainImage><img src={firstImage} height="500px" alt={productName} /></MainImage>
         <ArrowRight size="20" />
       </FlexElement>
 
-      {/* MAP THUMBNAILS, RENDER INDIVIDUALLY */}
+      {/* SELECTED STYLE'S THUMBNAILS */}
       <FlexElement>
-      <ChevronLeft size="20" />
+        <ChevronLeft size="20" />
         {firstStyleThumbnails.photos.map((photo, key) => (
-
           <ThumbnailCircle key={key} image={photo.url} />
         ))}
         <ChevronRight size="20" />
