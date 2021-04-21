@@ -1,8 +1,9 @@
 import React from 'react'
 import {render, screen} from '@testing-library/react'
-import App from '../../../App';
+import StylesList from '../subcomponents/StylesList';
+import StylesExample from '../product_styles_example.json';
 
-const { queryByTestId } = render(<App />);
+const { queryByTestId } = render(<StylesList stylesList={StylesExample} />);
 
 /* TESTS TO INCLUDE:
  * - shows only one selected style
