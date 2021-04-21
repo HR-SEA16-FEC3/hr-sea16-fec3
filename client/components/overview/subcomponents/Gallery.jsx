@@ -14,7 +14,6 @@ const Thumbnail = styled.button`
 const MainImage = styled.div`
   border: 1px solid black;
   margin-top: 0;
-  margin-right: 30px;
   margin-bottom: 30px;
   background: white;
   padding: 15px;
