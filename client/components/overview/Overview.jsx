@@ -12,7 +12,6 @@ const OverviewStyle = styled.section`
   font-family: sans-serif;
   display: flex;
   flex-direction: column;
-  /* background: #e6e6e6; */
   background: whitesmoke;
 `;
 
@@ -32,12 +31,14 @@ const LeftSection = styled.div`
   order: 1;
   flex-basis: 60%;
   flex-grow: 1; /* REEVALUATE */
+  margin: 10px;
 `;
 
 const RightSection = styled.div`
   flex-direction: column;
   order: 2;
   flex-basis: 40%;
+  margin: 10px;
 `;
 
 const Subcomponent = styled.div`
