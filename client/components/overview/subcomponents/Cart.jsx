@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 const Select = styled.select`
   border: 1px solid black;
-  margin-top: 15px;
   margin-right: 15px;
   background: white;
   padding: 15px;
@@ -37,9 +36,7 @@ const Cart = () => (
     {/* Add to Cart button */}
     <span><Button data-testid="btnAddToCart">Add to Cart</Button></span>
     <span><Button data-testid="btnStar">☆</Button></span>
-    <br />
   </div>
-
 );
 
 export default Cart;

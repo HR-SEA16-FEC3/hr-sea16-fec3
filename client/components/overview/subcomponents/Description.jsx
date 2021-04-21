@@ -7,18 +7,28 @@ const SloganStyled = styled.section`
     font-weight: bold;
   `;
 
-function Description({ slogan, description }) {
+function Description(props) {
+  const {
+    descExample: {
+      description,
+      slogan,
+    },
+  } = props;
+
   return (
     <>
       <SloganStyled>{slogan}</SloganStyled>
       {description}
+      <br />
     </>
   );
 }
 
 Description.propTypes = {
-  slogan: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  descExample: PropTypes.shape({
+    slogan: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+  })
 };
 
 export default Description;
