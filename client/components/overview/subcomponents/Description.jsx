@@ -14,10 +14,13 @@ const BottomSection = styled.section`
 
 const Left = styled.section`
   flex-basis: 60%;
+  padding: 30px;
 `;
 
 const Right = styled.section`
   flex-basis: 40%;
+  padding: 30px;
+  border-left: 2px solid black;
 `;
 
 function Description(props) {
