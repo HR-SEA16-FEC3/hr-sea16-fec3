@@ -29,11 +29,12 @@ const ProductName = styled.div`
   font-size: 40px;
 `;
 
-const Socials = styled.div`
+const Socials = styled.span`
   color: orange;
   display: flex;
   flex-flow: row wrap;
-  margin-right: 10;
+  padding: 10px;
+  /* justify-content: center; */
 `;
 
 function Information(props) {
@@ -75,11 +76,13 @@ function Information(props) {
         {/* <Description slogan={slogan} description={description} /> */}
 
         {/* Share on Social Media */}
-        Share:
+
         <Socials>
-          <Twitter size="20" />
-          <FacebookMessenger size="20" />
+          <Twitter size="40" />
+          <Twitter size="10" color="white" />
+          <FacebookMessenger size="40" />
         </Socials>
+
       </Section>
     </div>
   );
