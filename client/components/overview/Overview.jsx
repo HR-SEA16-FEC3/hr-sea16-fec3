@@ -23,6 +23,8 @@ const TopSection = styled.div`
 
 const BottomSection = styled.div`
   /* flex-direction: row; */
+  /* margin-left: 20px; */
+  justify-content: center;
 `;
 
 const LeftSection = styled.div`
@@ -78,11 +80,11 @@ function Overview() {
             </RightSection>
           </TopSection>
 
-          {/* Product Description */}
           <BottomSection>
-            <Subcomponent/* background="cornflowerblue" */>
+            {/* Product Description */}
+            <LeftSection>
               <Description descExample={InfoExample} />
-            </Subcomponent>
+            </LeftSection>
           </BottomSection>
 
         </OverviewStyle>
