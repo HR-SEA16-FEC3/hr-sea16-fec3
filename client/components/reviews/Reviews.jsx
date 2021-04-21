@@ -5,19 +5,21 @@ import ReviewMeta from './subcomponents/ReviewMeta.jsx';
 import dummyData from './subcomponents/DummyData/product_reviews_example';
 import metaDummyData from './subcomponents/DummyData/product_metaData_example';
 
-console.log(dummyData.results);
-console.log(metaDummyData.ratings);
+// console.log(dummyData.results);
+// console.log(metaDummyData.ratings);
 
 const ReviewListStyle = styled.section`
   font-family: sans-serif;
   display: flex;
   flex-direction: row;
+  padding:24px;
 `;
 const LeftSection = styled.div`
   display: flex;
   flex-direction: column;
   order: 1;
   flex-basis: 30%;
+  padding:16px;
 `;
 
 const RightSection = styled.div`
@@ -25,6 +27,7 @@ const RightSection = styled.div`
   flex-direction: column;
   order: 2;
   flex-basis: 70%;
+  padding:16px;
 `;
 
 const Button = styled.button`
