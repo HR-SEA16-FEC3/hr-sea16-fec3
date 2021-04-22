@@ -14,6 +14,14 @@ test('Style module should render the list of styles', () => {
   expect(screen.findByTestId('StylesList')).toBeTruthy();
 });
 
+xtest('Should display a default style', () => {
+  expect().toBeTruthy();
+});
+
+xtest('Should update selected style based on user\'s input', () => {
+  expect().toBeTruthy();
+});
+
 describe('Tests using sample data from data dump', () => {
 
   it('Should render all styles for selected product', async () => {
