@@ -2,10 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { fab } from '@fortawesome/free-brands-svg-icons';
-import { far } from '@fortawesome/free-regular-svg-icons';
 import { faSearch, faStar, faHashtag } from '@fortawesome/free-solid-svg-icons';
-import { Twitter, Facebook, Instagram, Whatsapp, SnapchatGhost } from '@styled-icons/fa-brands';
+import { Twitter, Facebook, Instagram, Whatsapp } from '@styled-icons/fa-brands';
 import { Link } from '@styled-icons/boxicons-regular';
 import { Email } from '@styled-icons/material-outlined';
 
@@ -45,7 +43,7 @@ const Socials = styled.div`
 
 function Information(props) {
   const {
-    infoList: { // nested destructuring
+    infoList: { // NESTED DESTRUCTURING
       id,
       name,
       slogan,
