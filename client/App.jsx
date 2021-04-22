@@ -33,18 +33,17 @@ const Header = styled.div`
 `;
 
 const Divider = styled.hr`
-display: block;
-height: 1px;
-border: 0;
-border-top: 2px solid #ccc;
-margin: 0;
-padding: 0;
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 2px solid #ccc;
+  margin: 0;
+  padding: 0;
 `;
 
 const Wrapper = styled.div`
-font-family: sans-serif;
-scroll-behavior: smooth;
-
+  font-family: sans-serif;
+  scroll-behavior: smooth;
 `;
 
 export default App;
