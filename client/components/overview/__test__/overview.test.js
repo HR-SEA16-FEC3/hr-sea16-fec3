@@ -80,10 +80,6 @@ describe('Product Information Tests', () => {
       expect().toBe();
     });
 
-    xit('Should ', () => {
-      expect().toBe();
-    });
-
   });
 
   describe('Product Overview Test', () => {
@@ -101,11 +97,11 @@ describe('Product Information Tests', () => {
     });
 
     it('Should display icon to share this product on Twitter', () => {
-      expect(screen.findByTestId('icon-facebook')).toBeTruthy();
+      expect(screen.findByTestId('icon-twitter')).toBeTruthy();
     });
 
     it('Should display icon to share this product on Pinterest', () => {
-      expect(screen.findByTestId('icon-facebook')).toBeTruthy();
+      expect(screen.findByTestId('icon-pinterest')).toBeTruthy();
     });
 
   });
