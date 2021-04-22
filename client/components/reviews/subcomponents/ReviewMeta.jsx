@@ -3,11 +3,6 @@ import styled from 'styled-components';
 import data from './DummyData/product_reviews_example';
 import RatingStar from './RatingStar.jsx';
 
-const MetaHeader = styled.div`
-  flex-direction:row;
-  font-size: 30px;
-  `;
-
 const ReviewMeta = (props) => (
   <div>
     <h1>RATINGS AND REVIEWS</h1>
@@ -40,6 +35,11 @@ const ReviewMeta = (props) => (
     <br />
   </div>
 );
+
+const MetaHeader = styled.div`
+  flex-direction:row;
+  font-size: 30px;
+  `;
 
 export default ReviewMeta;
 //

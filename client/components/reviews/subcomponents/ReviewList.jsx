@@ -2,16 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import RatingStar from './RatingStar.jsx';
 
-const RightFloat = styled.div`
-  float: right;
-  text-transform: capitalize;
-  `;
-
-const ReviewListStyling = styled.div`
-  border-bottom: 2px solid grey;
-  padding-top: 20px;
-  `;
-
 const ReviewList = (props) => (
   <div className="review-list">
     {props.dummyData.slice(0, 2).map((item, i) => (
@@ -59,5 +49,15 @@ const ReviewList = (props) => (
     ))}
   </div>
 );
+
+const RightFloat = styled.div`
+  float: right;
+  text-transform: capitalize;
+  `;
+
+const ReviewListStyling = styled.div`
+  border-bottom: 2px solid grey;
+  padding-top: 20px;
+  `;
 
 export default ReviewList;

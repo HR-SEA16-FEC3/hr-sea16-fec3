@@ -5,8 +5,25 @@ import ReviewMeta from './subcomponents/ReviewMeta.jsx';
 import dummyData from './subcomponents/DummyData/product_reviews_example';
 import metaDummyData from './subcomponents/DummyData/product_metaData_example';
 
-// console.log(dummyData.results);
-// console.log(metaDummyData.ratings);
+function Reviews() {
+  return (
+
+    <div data-testid="Reviews">
+      <ReviewListStyle>
+        <LeftSection>
+          <ReviewMeta metaDummyData={metaDummyData} />
+        </LeftSection>
+        <RightSection>
+          <ReviewList dummyData={dummyData.results} />
+          <ButtonStyle>
+            <span><Button type="button">More Reviews</Button></span>
+            <span><Button type="button">Add A Review +</Button></span>
+          </ButtonStyle>
+        </RightSection>
+      </ReviewListStyle>
+    </div>
+  );
+}
 
 const ReviewListStyle = styled.section`
   font-family: sans-serif;
@@ -44,25 +61,5 @@ flex-direction:column
 const ButtonStyle = styled.div`
   flex-direction: column;
 `;
-
-function Reviews() {
-  return (
-
-    <div data-testid="Reviews">
-      <ReviewListStyle>
-        <LeftSection>
-          <ReviewMeta metaDummyData={metaDummyData} />
-        </LeftSection>
-        <RightSection>
-          <ReviewList dummyData={dummyData.results} />
-          <ButtonStyle>
-            <span><Button type="button">More Reviews</Button></span>
-            <span><Button type="button">Add A Review +</Button></span>
-          </ButtonStyle>
-        </RightSection>
-      </ReviewListStyle>
-    </div>
-  );
-}
 
 export default Reviews;

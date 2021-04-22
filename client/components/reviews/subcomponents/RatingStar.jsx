@@ -3,13 +3,6 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
-const Rating = styled.div`
-color: grey;
-    &:hover {
-      color: orange;
-    }
-  `;
-
 function RatingStar() {
   return (
     <Rating>
@@ -21,5 +14,12 @@ function RatingStar() {
     </Rating>
   );
 }
+
+const Rating = styled.div`
+color: grey;
+    &:hover {
+      color: orange;
+    }
+  `;
 
 export default RatingStar;
