@@ -1,6 +1,5 @@
 import React from 'react'
 import {render, screen} from '@testing-library/react'
-// import App from '../../../App';
 import Cart from '../subcomponents/Cart';
 
 const { queryByTestId } = render(<Cart />);
