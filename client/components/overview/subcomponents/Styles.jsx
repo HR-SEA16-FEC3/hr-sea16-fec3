@@ -36,7 +36,7 @@ const Styles = (props) => {
 
   return (
     <>
-      <ThumbnailCircle image={thumbnailUrl} />
+      <ThumbnailCircle image={thumbnailUrl} data-testid="style-thumbnail" />
     </>
   );
 };
