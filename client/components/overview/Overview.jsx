@@ -12,47 +12,45 @@ function Overview() {
   const [selectedStyle] = useState([]);
 
   return (
-    <>
-      <div data-testid="Overview">
-        <OverviewStyle>
+    <div data-testid="Overview">
+      <OverviewStyle>
 
-          <TopSection>
-            <LeftSection>
-              {/* Image Gallery */}
-              <Subcomponent>
-                <Gallery styles={StylesExample} />
-              </Subcomponent>
-            </LeftSection>
+        <TopSection>
+          <LeftSection>
+            {/* Image Gallery */}
+            <Subcomponent>
+              <Gallery styles={StylesExample} />
+            </Subcomponent>
+          </LeftSection>
 
-            <RightSection>
-              {/* Product Information */}
-              <Subcomponent>
-                <Information infoList={InfoExample} />
-              </Subcomponent>
+          <RightSection>
+            {/* Product Information */}
+            <Subcomponent>
+              <Information infoList={InfoExample} />
+            </Subcomponent>
 
-              {/* Style Selector */}
-              <Subcomponent>
-                <StylesList stylesList={StylesExample} />
-              </Subcomponent>
+            {/* Style Selector */}
+            <Subcomponent>
+              <StylesList stylesList={StylesExample} />
+            </Subcomponent>
 
-              {/* Add to Cart */}
-              <Subcomponent>
-                <Cart />
-              </Subcomponent>
-            </RightSection>
-          </TopSection>
+            {/* Add to Cart */}
+            <Subcomponent>
+              <Cart />
+            </Subcomponent>
+          </RightSection>
+        </TopSection>
 
-          <BottomSection>
-            {/* Product Description */}
-            <LeftSection>
-              <Description descExample={InfoExample} />
-            </LeftSection>
-          </BottomSection>
+        <BottomSection>
+          {/* Product Description */}
+          <LeftSection>
+            <Description descExample={InfoExample} />
+          </LeftSection>
+        </BottomSection>
 
-        </OverviewStyle>
-        <br />
-      </div>
-    </>
+      </OverviewStyle>
+      <br />
+    </div>
   );
 }
 
