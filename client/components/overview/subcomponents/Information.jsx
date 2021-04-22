@@ -5,7 +5,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { faSearch, faStar, faHashtag } from '@fortawesome/free-solid-svg-icons';
-import { Twitter, FacebookMessenger } from '@styled-icons/fa-brands';
+import { Twitter, Facebook, Instagram, Whatsapp, SnapchatGhost } from '@styled-icons/fa-brands';
+import { Link } from '@styled-icons/boxicons-regular';
+import { Email } from '@styled-icons/material-outlined';
 
 // Star Rating (# of reviews)
 // Product Category
@@ -31,11 +33,12 @@ const ProductName = styled.div`
   margin: 10px 0;
 `;
 
-const Socials = styled.span`
+const Socials = styled.div`
   color: orange;
   display: flex;
   flex-flow: row wrap;
-  padding: 10px 0;
+  justify-content: space-between;
+  padding: 10px 10px;
   margin: 10px 0;
   /* justify-content: center; */
 `;
@@ -78,11 +81,14 @@ function Information(props) {
         {/* Product Overview/Description */}
         {/* <Description slogan={slogan} description={description} /> */}
 
-        {/* Share on Social Media */}
+        {/* Share on Social Media */} {/* MOVE TO BELOW CART SUBCOMPONENT */}
         <Socials>
-          <Twitter size="40" />
-          <Twitter size="10" color="whitesmoke" /> {/* MOVE TO BELOW CART SUBCOMPONENT */}
-          <FacebookMessenger size="40" />
+          <Twitter size="36" />
+          <Facebook size="36" />
+          <Instagram size="36" />
+          <Whatsapp size="36" />
+          <Email size="36" />
+          <Link size="36" />
         </Socials>
 
       </Section>
