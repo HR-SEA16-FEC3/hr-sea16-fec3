@@ -3,38 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight } from '@styled-icons/octicons';
 
-const ThumbnailCircle = styled.div`
-  border: 1px solid black;
-  display: flex;
-  flex-flow: row wrap;
-  border-radius: 50%;
-  height: 50px;
-  width: 50px;
-  margin: 10px 10px;
-  object-fit: contain;
-  justify-content: center;
-  color: cornflowerblue;
-  font-weight: bold;
-  background-image: url(${(props) => props.image});
-  background-size: cover;
-  background-position: center;
-`;
-
-const MainImage = styled.div`
-  border: 1px solid black;
-  margin: 10px 10px;
-  background: white;
-  padding: 15px;
-  &:hover{ background: lightgrey }
-`;
-
-const FlexElement = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  flex-flow: row wrap;
-  align-items: center;
-`;
-
 const Gallery = (props) => {
   const {
     styles: {
@@ -80,5 +48,37 @@ Gallery.propTypes = {
     })),
   }),
 };
+
+const ThumbnailCircle = styled.div`
+  border: 1px solid black;
+  display: flex;
+  flex-flow: row wrap;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  margin: 10px 10px;
+  object-fit: contain;
+  justify-content: center;
+  color: cornflowerblue;
+  font-weight: bold;
+  background-image: url(${(props) => props.image});
+  background-size: cover;
+  background-position: center;
+`;
+
+const MainImage = styled.div`
+  border: 1px solid black;
+  margin: 10px 10px;
+  background: white;
+  padding: 15px;
+  &:hover{ background: lightgrey }
+`;
+
+const FlexElement = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  flex-flow: row wrap;
+  align-items: center;
+`;
 
 export default Gallery;

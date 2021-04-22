@@ -2,10 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { CheckCircle } from '@styled-icons/octicons';
 
-const Feature = styled.div`
-  margin: 10px 0;
-`;
-
 function Features(props) {
   const {
     feature: {
@@ -20,5 +16,9 @@ function Features(props) {
     </Feature>
   );
 }
+
+const Feature = styled.div`
+  margin: 10px 0;
+`;
 
 export default Features;
