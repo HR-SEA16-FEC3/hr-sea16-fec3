@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Twitter, Facebook, Instagram, Whatsapp, Pinterest } from '@styled-icons/fa-brands';
-import { Link } from '@styled-icons/boxicons-regular';
+import { Link, Star } from '@styled-icons/boxicons-regular';
 import { Email } from '@styled-icons/material-outlined';
 
 const Cart = () => (
@@ -31,8 +31,9 @@ const Cart = () => (
 
     <p>
       {/* Add to Cart button */}
-      <span><Button data-testid="btnAddToCart">Add to Cart</Button></span>
-      <span><Button data-testid="btnStar">☆</Button></span>
+      <Button data-testid="btnAddToCart">Add to Cart</Button>
+      <Button data-testid="btnStar"><Star size="16px" /></Button> {/* TODO: RESIZE BUTTON */}
+      {/* <span><Button data-testid="btnStar">☆</Button></span> */}
     </p>
 
     {/* Share on Social Media */}
@@ -78,7 +79,7 @@ const Socials = styled.div`
 `;
 
 const Icon = styled.span` // ONCLICK SHOULD BE DARKER THAN REST STATE PER WIFE
-  margin: 10px 10px 0 16px;
+  margin: 10px 16px 0 0;
   &:hover{ color: #ffbf00 } // HOVER SHOULD BE A LIGHTER COLOR THAN REST STATE
 `;
 
