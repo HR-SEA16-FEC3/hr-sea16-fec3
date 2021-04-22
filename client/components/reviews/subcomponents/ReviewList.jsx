@@ -3,12 +3,13 @@ import styled from 'styled-components';
 import RatingStar from './RatingStar.jsx';
 
 const ReviewList = (props) => (
+
   <div className="review-list">
     {props.dummyData.slice(0, 2).map((item, i) => (
       <ReviewListStyling className="review-tile" key={i}>
         <div className="review-reviewer">
-          <RatingStar />
           Review -&ensp;
+          <RatingStar rating={item.rating} />
           {item.rating}
           <RightFloat>
             <span>

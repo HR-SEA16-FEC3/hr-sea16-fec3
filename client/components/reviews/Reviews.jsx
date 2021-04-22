@@ -7,13 +7,17 @@ import metaDummyData from './subcomponents/DummyData/product_metaData_example';
 
 function Reviews() {
   return (
-
     <div data-testid="Reviews">
       <ReviewListStyle>
         <LeftSection>
           <ReviewMeta metaDummyData={metaDummyData} />
         </LeftSection>
         <RightSection>
+          <RightTopSection>
+            <div>
+              x reviews, sorted by y
+            </div>
+          </RightTopSection>
           <ReviewList dummyData={dummyData.results} />
           <ButtonStyle>
             <span><Button type="button">More Reviews</Button></span>
@@ -47,6 +51,12 @@ const RightSection = styled.div`
   padding:16px;
 `;
 
+const RightTopSection = styled.div`
+display:flex;
+padding:16px;
+flex-direction: column;
+`;
+
 const Button = styled.button`
 flex-direction:column
   border: 1px solid black;
@@ -63,3 +73,5 @@ const ButtonStyle = styled.div`
 `;
 
 export default Reviews;
+
+// <ReviewSort />
