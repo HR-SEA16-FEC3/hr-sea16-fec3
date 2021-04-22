@@ -13,3 +13,16 @@ const { queryByTestId } = render(<StylesList stylesList={StylesExample} />);
 test('Style module should render the list of styles', () => {
   expect(screen.findByTestId('StylesList')).toBeTruthy();
 });
+
+describe('Tests using sample data from data dump', () => {
+
+  it('Should render all styles for selected product', async () => {
+    render(<StylesList stylesList={StylesExample} />);
+    const items = await screen.findAllByTestId('style-thumbnail');
+    expect(items).toHaveLength(6);
+    expect(items).toBeTruthy(); // can remove
+    expect(items).not.toHaveLength(0); // can remove
+  });
+
+});
+
