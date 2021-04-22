@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import Overview from './components/overview/Overview';
@@ -7,6 +7,10 @@ import Reviews from './components/reviews/Reviews';
 
 const App = () => {
   const [productId, setProductId] = useState(0);
+  useEffect(() => {
+    // TODO: Set product id based on the URL
+    setProductId(20100);
+  });
 
   return (
     <Wrapper>
@@ -18,6 +22,7 @@ const App = () => {
       <QandA productId={productId} />
       <Divider />
       <Reviews productId={productId} />
+      <Footer />
     </Wrapper>
   );
 };
@@ -31,6 +36,17 @@ const Header = styled.div`
   color: white;
   padding: 5px;
 `;
+
+const Footer = styled.div`
+  background:orange;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: white;
+  padding: 5px;
+`;
+
 
 const Divider = styled.hr`
 display: block;

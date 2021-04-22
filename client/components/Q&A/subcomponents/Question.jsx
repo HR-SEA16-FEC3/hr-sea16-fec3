@@ -8,13 +8,17 @@ const Question = (props) => (
     <QuestionSection>
       <QAHeader>Q:</QAHeader>
       <QuestionBody>{props.question.question_body}</QuestionBody>
-        <QuestionInteractions>
-          Helpful?&ensp;Yes (
-          <span>{props.question.question_helpfulness}</span>
-          )
-          &ensp;|&ensp;
-          <span>Add Answer</span>
-        </QuestionInteractions>
+      <QuestionInteractions>
+        Helpful?&ensp;
+        <HelpfulYes>Yes</HelpfulYes>
+        &nbsp;(
+        <span>{props.question.question_helpfulness}</span>
+        )
+        &ensp;|&ensp;
+        <span>Add Answer</span>
+        &ensp;|&ensp;
+        <span>Report</span>
+      </QuestionInteractions>
     </QuestionSection>
     {/* Answer List */}
     <AnswerSection>
@@ -39,7 +43,9 @@ const Button = styled.button`
   text-transform: uppercase;
   &:hover{ background: orange; color: white; border: 1px solid lightgrey }
 `;
-
+const HelpfulYes = styled.span`
+  text-decoration: underline;
+`;
 const Wrapper = styled.div`
 padding: 1em;
 background: white;

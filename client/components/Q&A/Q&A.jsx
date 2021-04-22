@@ -1,27 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import QuestionsList from './subcomponents/QuestionsList';
 import exampleData from './questions_example.json';
 import Searchbar from './subcomponents/Searchbar';
 
-const QandA = () => (
-  <Wrapper data-testid="QA">
+const QandA = (props) => {
+  const [questionsList, setQuestionsList] = useState([]);
+  useEffect(() => {
+    //TODO add a http request to get the live data
+    setQuestionsList(exampleData.results);
+  });
 
-    <Title>Q &amp; A</Title>
+  return (
+    <Wrapper data-testid="QA">
 
-    {/* Search Questions */}
-    <Searchbar />
-    {/* Questions List */}
-    <div>
-      <QuestionsList questionsList={exampleData.results} />
-      {/* More Answered Questions Button */}
-      <Button type="button" data-testid="MoreQuestion">MORE ANSWERED QUESTIONS</Button>
-      {/* Add a question button */}
-      <Button type="button" data-testid="AddQuestion">ADD A QUESTION +</Button>
-    </div>
+      <Title>Q &amp; A</Title>
 
-  </Wrapper>
-);
+      {/* Search Questions */}
+      <Searchbar />
+      {/* Questions List */}
+      <div>
+        <QuestionsList questionsList={questionsList} />
+        {/* More Answered Questions Button */}
+        <Button type="button" data-testid="MoreQuestion">MORE ANSWERED QUESTIONS</Button>
+        {/* Add a question button */}
+        <Button type="button" data-testid="AddQuestion">ADD A QUESTION +</Button>
+      </div>
+    </Wrapper>
+  );
+};
 const Button = styled.button`
   border: 0px solid lightgray;
   margin-top: 15px;

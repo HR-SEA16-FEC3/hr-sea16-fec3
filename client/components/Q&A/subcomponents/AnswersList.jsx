@@ -22,7 +22,9 @@ const AnswersList = (props) => {
 
   return (
     <Wrapper>
-      {twoAnswers.map((item) => <Answer answer={item} key={item.id} />)}
+      {twoAnswers.map((item) => (
+        <Answer answer={item} key={item.id} />
+      ))}
     </Wrapper>
   );
 };
