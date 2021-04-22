@@ -73,7 +73,7 @@ const Cart = () => (
       <Icon><Twitter size="36" /></Icon>
       <Icon><Facebook size="36" /></Icon>
       <Icon><Instagram size="36" /></Icon>
-      <Icon><Whatsapp size="36" /></Icon>
+      <Icon><Whatsapp size="36" /></Icon> {/* ADD ICON FOR PINTEREST PER BUSINESS DOC */}
       <Icon><Email size="36" /></Icon>
       <Icon><Link size="36" /></Icon>
     </Socials>

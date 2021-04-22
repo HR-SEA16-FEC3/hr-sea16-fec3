@@ -36,6 +36,7 @@ const Styles = (props) => {
 
   return (
     <>
+      {/* DISPLAY THUMBNAILS IN ROWS OF 4 */}
       <ThumbnailCircle image={thumbnailUrl} data-testid="style-thumbnail" />
     </>
   );
