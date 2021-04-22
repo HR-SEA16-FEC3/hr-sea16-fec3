@@ -43,6 +43,8 @@ padding: 0;
 
 const Wrapper = styled.div`
 font-family: sans-serif;
+scroll-behavior: smooth;
+
 `;
 
 export default App;
