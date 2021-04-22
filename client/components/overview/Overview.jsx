@@ -23,13 +23,15 @@ const TopSection = styled.div`
 const BottomSection = styled.div`
   /* flex-direction: row; */
   /* margin-left: 20px; */
+  display: flex;
+  flex-direction: row;
   justify-content: center;
 `;
 
 const LeftSection = styled.div`
   flex-direction: column;
   order: 1;
-  flex-basis: 60%;
+  width: 60%;
   flex-grow: 1; /* REEVALUATE */
   margin: 10px;
 `;
@@ -37,7 +39,7 @@ const LeftSection = styled.div`
 const RightSection = styled.div`
   flex-direction: column;
   order: 2;
-  flex-basis: 40%;
+  width: 40%;
   margin: 10px;
 `;
 
