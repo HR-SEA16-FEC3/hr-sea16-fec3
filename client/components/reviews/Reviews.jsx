@@ -48,7 +48,7 @@ const ButtonStyle = styled.div`
 function Reviews() {
   return (
 
-    <div data-testid="Reviews">
+    <div data-testid="Reviews" id="reviews">
       <ReviewListStyle>
         <LeftSection>
           <ReviewMeta metaDummyData={metaDummyData} />
