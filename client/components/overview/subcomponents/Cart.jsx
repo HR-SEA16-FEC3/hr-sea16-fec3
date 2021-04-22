@@ -34,29 +34,41 @@ const Socials = styled.div`
 `;
 
 const Icon = styled.span` // ONCLICK SHOULD BE DARKER THAN REST STATE PER WIFE
-  size: 36;
   margin: 10px 10px 0 16px;
   &:hover{ color: #ffbf00 } // HOVER SHOULD BE A LIGHTER COLOR THAN REST STATE
 `;
 
 const Cart = () => (
 
-  <div data-testid="Cart">
-    {/* Size Selector Dropdown */}
-    <Select data-testid="sizeDropdown">
-      <option>Select Size</option>
-    </Select>
+  <form data-testid="Cart">
+    <p>
+      {/* Size Selector Dropdown */}
+      <Select data-testid="sizeDropdown">
+        <option>Select Size</option>
+        <option>Small</option>
+        <option>Medium</option>
+        <option>Large</option>
+      </Select>
 
-    {/* Quantity Selector */}
-    <Select data-testid="quantityDropdown">
-      <option>Quantity</option>
-    </Select>
-    <br/>
-    {/* Add to Cart button */}
-    <span><Button data-testid="btnAddToCart">Add to Cart</Button></span>
-    <span><Button data-testid="btnStar">☆</Button></span>
+      {/* Quantity Selector */}
+      <Select data-testid="quantityDropdown">
+        <option>Quantity</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+      </Select>
+    </p>
 
-    {/* Share on Social Media */} {/* MOVE TO BELOW CART SUBCOMPONENT */}
+    <p>
+      {/* Add to Cart button */}
+      <span><Button data-testid="btnAddToCart">Add to Cart</Button></span>
+      <span><Button data-testid="btnStar">☆</Button></span>
+    </p>
+
+    {/* Share on Social Media */}
     <Socials>
       <Icon><Twitter size="36" /></Icon>
       <Icon><Facebook size="36" /></Icon>
@@ -65,7 +77,7 @@ const Cart = () => (
       <Icon><Email size="36" /></Icon>
       <Icon><Link size="36" /></Icon>
     </Socials>
-  </div>
+  </form>
 
 );
 
