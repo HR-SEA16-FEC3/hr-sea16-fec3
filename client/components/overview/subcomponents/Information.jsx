@@ -78,19 +78,6 @@ function Information(props) {
           ${Number(price)} {/* CONVERTED TO NUMBER, RENDERS AS WHOLE INTEGER */}
         </p>
 
-        {/* Product Overview/Description */}
-        {/* <Description slogan={slogan} description={description} /> */}
-
-        {/* Share on Social Media */} {/* MOVE TO BELOW CART SUBCOMPONENT */}
-        <Socials>
-          <Twitter size="36" />
-          <Facebook size="36" />
-          <Instagram size="36" />
-          <Whatsapp size="36" />
-          <Email size="36" />
-          <Link size="36" />
-        </Socials>
-
       </Section>
     </div>
   );
