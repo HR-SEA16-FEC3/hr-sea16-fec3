@@ -38,9 +38,10 @@ const Cart = () => (
 
     {/* Share on Social Media */}
     <Socials>
-      <Icon><Facebook size="36" /></Icon>
-      <Icon><Twitter size="36" /></Icon>
-      <Icon><Pinterest size="36" /></Icon>
+      {/* Facebook, Twitter, Pinterest = min required */}
+      <Icon><Facebook data-testid="icon-facebook" size="36" /></Icon>
+      <Icon><Twitter data-testid="icon-twitter" size="36" /></Icon>
+      <Icon><Pinterest data-testid="icon-pinterest" size="36" /></Icon>
       <Icon><Instagram size="36" /></Icon>
       <Icon><Whatsapp size="36" /></Icon>
       <Icon><Email size="36" /></Icon>

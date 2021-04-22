@@ -96,16 +96,16 @@ describe('Product Information Tests', () => {
 
   describe('Share on Social Media Tests', () => {
 
-    xit('Should display icon to share this product on Facebook', () => {
-      expect().toBe();
+    it('Should display icon to share this product on Facebook', () => {
+      expect(screen.findByTestId('icon-facebook')).toBeTruthy();
     });
 
-    xit('Should display icon to share this product on Twitter', () => {
-      expect().toBe();
+    it('Should display icon to share this product on Twitter', () => {
+      expect(screen.findByTestId('icon-facebook')).toBeTruthy();
     });
 
-    xit('Should display icon to share this product on Pinterest', () => {
-      expect().toBe();
+    it('Should display icon to share this product on Pinterest', () => {
+      expect(screen.findByTestId('icon-facebook')).toBeTruthy();
     });
 
   });
