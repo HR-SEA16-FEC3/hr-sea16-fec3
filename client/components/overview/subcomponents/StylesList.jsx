@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Styles from './Styles';
 import styled from 'styled-components';
 
+// pass down setStyle
+
 const StylesList = (props) => {
   const {
     stylesList: {
@@ -21,7 +23,7 @@ const StylesList = (props) => {
       <div>
         <CircleSpacing>
           {results.map((style) => (
-            <Styles style={style} key={style.style_id} />
+            <Styles style={style} key={style.style_id} /* index={results.indexOf(style)} *//>
           ))}
         </CircleSpacing>
       </div>

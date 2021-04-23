@@ -9,7 +9,10 @@ import InfoExample from './product_info_example.json';
 import StylesExample from './product_styles_example.json';
 
 function Overview() {
-  const [selectedStyle] = useState([]);
+  const [selectedStyle, setSelectedStyle] = useState(0);
+  // styles in an array
+  // setStyle
+  // function(setSelectedStyle), change index in styles array
 
   return (
     <div data-testid="Overview">
@@ -49,7 +52,6 @@ function Overview() {
         </BottomSection>
 
       </OverviewStyle>
-      <br />
     </div>
   );
 }
@@ -64,19 +66,20 @@ const OverviewStyle = styled.section`
 const TopSection = styled.div`
   display: flex;
   flex-direction: row;
+  margin: 8px 4px 4px 4px;
 `;
 
 const BottomSection = styled.div`
-  /* flex-direction: row; */
-  /* margin-left: 20px; */
+  flex-direction: row;
+  margin-left: 20px;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  margin: 4px 4px 8px 4px;
 `;
 
 const LeftSection = styled.div`
   flex-direction: column;
-  order: 1;
   width: 60%;
   flex-grow: 1; /* REEVALUATE */
   margin: 10px;
@@ -84,7 +87,6 @@ const LeftSection = styled.div`
 
 const RightSection = styled.div`
   flex-direction: column;
-  order: 2;
   width: 40%;
   margin: 10px;
 `;
