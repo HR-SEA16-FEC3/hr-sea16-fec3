@@ -32,7 +32,6 @@ const AnswersList = (props) => {
       <AnswerButtons>
         {(() => {
           if (sortedAnswers.length > 2
-            && shownAnswers >= 2
             && shownAnswers < sortedAnswers.length) {
             return (<Button onClick={handleShowMore}>Load more answers</Button>);
           }
