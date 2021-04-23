@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 
@@ -36,20 +36,17 @@ const Answer = (props) => {
     <Wrapper>
       <AnswerBody data-testid="AnswerBody">{props.answer.body}</AnswerBody>
       <AnswerInteraction>
-        by
-        {' '}
+        by&nbsp;
         <span>{props.answer.answerer_name}</span>
-        ,
-        {' '}
+        ,&nbsp;
         {formattedDate}
         &ensp;|&ensp;
         Helpful?&ensp;
         <HelpfulYes onClick={handleYesClick}>Yes</HelpfulYes>
         &nbsp;(
         <span>{helpfulness}</span>
-        )
-        &ensp;|&ensp;
-        <Report onClick={handleReport} reported={reported}>Report</Report>
+        )&ensp;|&ensp;
+        <Report onClick={handleReport} reported={reported}>{reported ? 'Reported' : 'Report'}</Report>
       </AnswerInteraction>
 
     </Wrapper>
@@ -74,7 +71,7 @@ font-size: 14px;
 margin: 7px 0%;
 `;
 const Wrapper = styled.div`
-margin: 1em 7px;
+margin: 5px 10px;
 `;
 
 export default Answer;

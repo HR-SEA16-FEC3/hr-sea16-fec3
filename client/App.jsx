@@ -47,10 +47,9 @@ const Footer = styled.div`
   padding: 5px;
 `;
 
-
 const Divider = styled.hr`
 display: block;
-height: 1px;
+height: 0px;
 border: 0;
 border-top: 2px solid #ccc;
 margin: 0;
