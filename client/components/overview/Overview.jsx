@@ -17,8 +17,8 @@ function Overview(props) {
 
   const [productsList, setProductsList] = useState([]);
   const [overviewProductId, setOverviewProductId] = useState(0);
-  const [styleId, setStyleId] = useState(0);
   const [stylesList, setStylesList] = useState(0);
+  const [styleId, setStyleId] = useState(0);
 
   // TODO: 4/23
   //   App passes productId to Overview
@@ -26,29 +26,31 @@ function Overview(props) {
   //     1. :productId
   //     2. :productId/:styles
   //   render the default style
+  // modal
 
+  // FETCH PRODUCTS LIST
   useEffect(() => {
     async function fetchProducts() {
       const results = await axios.get('/products');
+      console.log('product results:', results);
       setProductsList(results.data);
       setOverviewProductId(results.data[1].id); // sets first item as default product
     }
     fetchProducts();
+    // console.log('PRODUCT CHECK:', productsList, overviewProductId); // RUNS BEFORE FETCH
   }, []); // empty dependency array will run effect only once (similar to componentDidMount)
 
+  // FETCH STYLES LIST (AFTER PRODUCT LIST UPDATES)
   useEffect(() => {
     async function fetchStyles() {
-      const stylesList = await axios.get(`/products/${productId}/styles`);
-      setStylesList(stylesList.data.results);
-      // console.log('styles results', results);
+      const list = await axios.get(`/products/${productId}/styles`);
+      console.log('styles results:', list);
+      setStylesList(list.data.results);
     }
     fetchStyles();
+    // console.log('STYLES CHECK:', stylesList, styleId); // RUNS BEFORE FETCH
   }, [productId]);
 
-  // productId in url
-  // move useeffect to overview mod
-  // strategize on what to tackle next
-  // modal
 
   return (
     <div data-testid="Overview">
