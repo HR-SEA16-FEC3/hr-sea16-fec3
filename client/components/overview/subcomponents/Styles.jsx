@@ -2,24 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const ThumbnailCircle = styled.div`
-  border: 1px solid black;
-  display: flex;
-  border-radius: 50%;
-  height: 75px;
-  width: 75px;
-  object-fit: contain;
-  margin-right: 15px;
-  align-items: center;
-  justify-content: center;
-  color: cornflowerblue;
-  font-weight: bold;
-  background-image: url(${(props) => props.image});
-  background-size: cover;
-  background-position: center;
-  margin: 10px 10px;
-`;
-
 const Styles = (props) => {
   const {
     style: {
@@ -36,7 +18,8 @@ const Styles = (props) => {
 
   return (
     <>
-      <ThumbnailCircle image={thumbnailUrl} />
+      {/* DISPLAY THUMBNAILS IN ROWS OF 4 */}
+      <ThumbnailCircle image={thumbnailUrl} data-testid="style-thumbnail" />
     </>
   );
 };
@@ -53,5 +36,26 @@ Styles.propTypes = {
     })),
   }),
 };
+
+const ThumbnailCircle = styled.div`
+  border: 1px solid black;
+  display: flex;
+  border-radius: 50%;
+  height: 75px;
+  width: 75px;
+  object-fit: contain;
+  margin-right: 15px;
+  align-items: center;
+  justify-content: center;
+  color: cornflowerblue;
+  font-weight: bold;
+  background-image: url(${(props) => props.image});
+  background-size: cover;
+  background-position: center;
+  margin: 10px 10px;
+  flex-basis: auto;
+  flex-grow: 0;
+  flex-shrink: 0;
+`;
 
 export default Styles;

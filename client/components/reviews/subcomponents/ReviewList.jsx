@@ -8,9 +8,11 @@ const ReviewList = (props) => (
     {props.dummyData.slice(0, 2).map((item, i) => (
       <ReviewListStyling className="review-tile" key={i}>
         <div className="review-reviewer">
-          Review -&ensp;
-          <RatingStar rating={item.rating} />
-          {item.rating}
+          <RatingStar
+            rating={item.rating}
+            count={5}
+            size={40}
+          />
           <RightFloat>
             <span>
               {item.reviewer_name}

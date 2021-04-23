@@ -1,18 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
-import data from './DummyData/product_reviews_example';
 import RatingStar from './RatingStar.jsx';
 
+// }
+// const metaData = {
+//   product_id: '20100',
+//   ratings: {
+//     3: '2',
+//     4: '1',
+//     5: '9',
+//   },
 const ReviewMeta = (props) => (
+  // function averageRatings(props.metaDummyData) => {
+  //   const keys = Object.keys(metaDummyData.ratings)
+  //   const values = Object.values(metaDummyData.ratings)
   <div>
+    console.log(props.metaDummyData.ratings)
     <h1>RATINGS AND REVIEWS</h1>
     <MetaHeader className="review-Meta">
       <span>
         3.5&nbsp;
-
       </span>
     </MetaHeader>
-    <span><RatingStar /></span>
+    <RatingStar
+      rating={2}
+    />
     <br />
     100% of reviews recommended this product
     <br />
