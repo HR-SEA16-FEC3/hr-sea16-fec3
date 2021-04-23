@@ -9,18 +9,20 @@ import InfoExample from './product_info_example.json';
 import StylesExample from './product_styles_example.json';
 import axios from 'axios';
 
-function Overview() {
-  const [selectedStyle, setSelectedStyle] = useState(0);
-  const [productsList, setProductsList] = useState([]);
+function Overview(props) {
   // styles in an array
   // setStyle
   // function(setSelectedStyle), change index in styles array
 
-  useEffect(() => {
-    axios.get('/products')
-      .then((response) => setProductsList(response.data))
-      .catch(() => console.log('Failed to get products'));
-  }, []); // empty dependency array will run effect only once (similar to componentDidMount)
+  // const [selectedStyle, setSelectedStyle] = useState(0);
+  // const [productsList, setProductsList] = useState([]);
+
+  // TODO: 4/23
+  //   App passes productId to Overview
+  //   useEffect to perform two axios requests
+  //     1. :productId
+  //     2. :productId/:styles
+  //   render the default style
 
   return (
     <div data-testid="Overview">
