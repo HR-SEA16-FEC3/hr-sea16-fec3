@@ -1,50 +1,85 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 import AnswersList from './AnswersList';
 
-const Question = (props) => (
-  <Wrapper>
-    {/* Question */}
-    <QuestionSection>
-      <QAHeader>Q:</QAHeader>
-      <QuestionBody>{props.question.question_body}</QuestionBody>
+const Question = (props) => {
+  const [reported, setReported] = useState(false);
+  const [clickedYes, setClickedYes] = useState(false);
+  const [helpfulness, setHelpfulness] = useState(props.question.question_helpfulness);
+
+  const handleYesClick = () => {
+    if (!clickedYes) {
+      axios.put(`/qa/questions/${props.question.question_id}/helpful`)
+        .then(() => {
+          setHelpfulness(helpfulness + 1);
+          setClickedYes(true);
+        })
+        .catch(() => console.log('Failed to update'));
+    }
+  };
+  const handleReport = () => {
+    if (!reported) {
+      axios.put(`/qa/answers/${props.question.question_id}/report`)
+        .then(() => {
+          setReported(true);
+        })
+        .catch(() => console.log('Failed to update'));
+    }
+  };
+
+  return (
+    <Wrapper>
+      {/* Question */}
+      <QuestionSection>
+        <QAHeader>Q:</QAHeader>
+        <QuestionBody>{props.question.question_body}</QuestionBody>
         <QuestionInteractions>
-          Helpful?&ensp;Yes (
-          <span>{props.question.question_helpfulness}</span>
+          Helpful?&ensp;
+          <HelpfulYes onClick={handleYesClick}>Yes</HelpfulYes>
+          &nbsp;(
+          <span>{helpfulness}</span>
           )
           &ensp;|&ensp;
-          <span>Add Answer</span>
+          <span>Add an Answer</span>
+          &ensp;|&ensp;
+          <Report onClick={handleReport} reported={reported}>{reported ? 'Reported' : 'Report'}</Report>
         </QuestionInteractions>
-    </QuestionSection>
-    {/* Answer List */}
-    <AnswerSection>
-      <QAHeader>A:</QAHeader>
-      <AnswerBody>
-        <AnswersList list={props.question.answers} />
-        <AnswerButtons>
-          <Button>Load more answers</Button>
-        </AnswerButtons>
-      </AnswerBody>
-    </AnswerSection>
-  </Wrapper>
+      </QuestionSection>
+      {/* Answer List */}
+      {(() => {
+        if (Object.keys(props.question.answers).length === 0) {
+          return (
+            <AnswerSection>
+              There are no answers to this question currently.
+            </AnswerSection>
+          );
+        }
+        return (
+          <AnswerSection>
+            <QAHeader>A:</QAHeader>
+            <AnswersList list={props.question.answers} />
+          </AnswerSection>
+        );
+      })()}
+    </Wrapper>
+  );
+};
+const Report = styled.span`
+  cursor: pointer;
+  color: ${(props) => (props.reported ? 'red' : 'black')};;
+`;
 
-);
-const Button = styled.button`
-  border: 1px solid lightgrey;
-  margin-top: 10px;
-  margin-right: 10px;
-  background: lightgrey;
-  padding: 7px;
-  font-size: 10px
-  text-transform: uppercase;
-  &:hover{ background: orange; color: white; border: 1px solid lightgrey }
+const HelpfulYes = styled.span`
+  text-decoration: underline;
+  cursor: pointer;
 `;
 
 const Wrapper = styled.div`
 padding: 1em;
-background: white;
+background: whitesmoke;
 flex-direction: column;
-margin: 1em;
+margin: 10px;
 display: flex;
 `;
 
@@ -82,16 +117,6 @@ flex-direction: row;
 width: 100%;
 flex-wrap: wrap;
 align-items: baseline;
-`;
-
-const AnswerBody = styled.div`
-display: flex;
-flex-direction: column;
-`;
-
-const AnswerButtons = styled.div`
-display: flex;
-flex-direction: row;
 `;
 
 export default Question;
