@@ -20,6 +20,8 @@ QuestionsList.defaultProps = {
 
 const Wrapper = styled.div`
 padding: 0em;
+max-height: 65vh;
+overflow: auto;
 `;
 
 export default QuestionsList;

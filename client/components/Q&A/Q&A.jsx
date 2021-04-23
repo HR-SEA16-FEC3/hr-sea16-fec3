@@ -6,10 +6,10 @@ import Searchbar from './subcomponents/Searchbar';
 
 const QandA = (props) => {
   const [questionsList, setQuestionsList] = useState([]);
-  const [shownQuestions, setShownQuestions] = useState(4);
+  const [shownQuestions, setShownQuestions] = useState(2);
 
   const handleShowMore = () => setShownQuestions(shownQuestions + 2);
-  const handleShowLess = () => setShownQuestions(4);
+  const handleShowLess = () => setShownQuestions(2);
 
   useEffect(async () => {
     // TODO add a http request to get the live data
@@ -31,7 +31,7 @@ const QandA = (props) => {
         <QuestionsList questionsList={currentList} />
         {/* More Answered Questions Button */}
         {(() => {
-          if (questionsList.length > 4 && shownQuestions <= questionsList.length) {
+          if (questionsList.length > 2 && shownQuestions <= questionsList.length) {
             return (
               <Button type="button" data-testid="MoreQuestion" onClick={handleShowMore}>MORE ANSWERED QUESTIONS</Button>
             );
@@ -39,7 +39,7 @@ const QandA = (props) => {
           return null;
         })()}
         {(() => {
-          if (shownQuestions > 4) {
+          if (shownQuestions > 2) {
             return (
               <Button type="button" data-testid="MoreQuestion" onClick={handleShowLess}>SHOW LESS QUESTIONS</Button>
             );
@@ -72,6 +72,7 @@ const Wrapper = styled.section`
 padding: 1em;
 background: #e6e6e6;
 font-family: sans-serif;
+max-height: 100vh;
 `;
 
 const Title = styled.h1`
