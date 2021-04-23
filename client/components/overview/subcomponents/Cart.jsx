@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Twitter, Facebook, Instagram, Whatsapp, Pinterest } from '@styled-icons/fa-brands';
+import * as faBrands from '@styled-icons/fa-brands';
+import * as boxiconsSolid from '@styled-icons/boxicons-solid'; // boxiconsSolid.Heart WHEN ACTIVATED
 import { Link, Heart } from '@styled-icons/boxicons-regular';
 import { Email } from '@styled-icons/material-outlined';
 
@@ -33,17 +34,16 @@ const Cart = () => (
       {/* Add to Cart button */}
       <Button data-testid="btnAddToCart">Add to Cart</Button>
       <Button data-testid="btnStar"><Heart size="16px" /></Button> {/* TODO: RESIZE BUTTON */}
-      {/* <span><Button data-testid="btnStar">☆</Button></span> */}
     </p>
 
     {/* Share on Social Media */}
     <Socials>
       {/* Facebook, Twitter, Pinterest = min required */}
-      <Icon><Facebook data-testid="icon-facebook" size="36" /></Icon>
-      <Icon><Twitter data-testid="icon-twitter" size="36" /></Icon>
-      <Icon><Pinterest data-testid="icon-pinterest" size="36" /></Icon>
-      <Icon><Instagram size="36" /></Icon>
-      <Icon><Whatsapp size="36" /></Icon>
+      <Icon><faBrands.Facebook data-testid="icon-facebook" size="36" /></Icon>
+      <Icon><faBrands.Twitter data-testid="icon-twitter" size="36" /></Icon>
+      <Icon><faBrands.Pinterest data-testid="icon-pinterest" size="36" /></Icon>
+      <Icon><faBrands.Instagram size="36" /></Icon>
+      <Icon><faBrands.Whatsapp size="36" /></Icon>
       <Icon><Email size="36" /></Icon>
       <Icon><Link size="36" /></Icon>
     </Socials>
