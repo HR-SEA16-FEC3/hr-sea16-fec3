@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Twitter, Facebook, Instagram, Whatsapp, Pinterest } from '@styled-icons/fa-brands';
-import { Link, Star } from '@styled-icons/boxicons-regular';
+import { Link, Heart } from '@styled-icons/boxicons-regular';
 import { Email } from '@styled-icons/material-outlined';
 
 const Cart = () => (
@@ -32,7 +32,7 @@ const Cart = () => (
     <p>
       {/* Add to Cart button */}
       <Button data-testid="btnAddToCart">Add to Cart</Button>
-      <Button data-testid="btnStar"><Star size="16px" /></Button> {/* TODO: RESIZE BUTTON */}
+      <Button data-testid="btnStar"><Heart size="16px" /></Button> {/* TODO: RESIZE BUTTON */}
       {/* <span><Button data-testid="btnStar">☆</Button></span> */}
     </p>
 
@@ -53,19 +53,19 @@ const Cart = () => (
 
 const Select = styled.select`
   border: 1px solid black;
-  margin-right: 15px;
+  margin-right: 16px;
   background: white;
-  padding: 15px;
+  padding: 16px;
   text-transform: uppercase;
   font-weight: bold;
 `;
 
 const Button = styled.button`
   border: 1px solid black;
-  margin-top: 15px;
-  margin-right: 15px;
+  margin-top: 16px;
+  margin-right: 16px;
   background: orange;
-  padding: 15px;
+  padding: 16px;
   text-transform: uppercase;
   font-weight: bold;
   &:hover{ background: #ffbf00 }
@@ -75,7 +75,7 @@ const Socials = styled.div`
   color: orange;
   display: flex;
   flex-flow: row wrap;
-  padding: 10px 0;
+  padding: 8px 0;
   margin: 0;
 `;
 
