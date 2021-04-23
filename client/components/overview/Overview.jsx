@@ -9,48 +9,24 @@ import InfoExample from './product_info_example.json';
 import StylesExample from './product_styles_example.json';
 import axios from 'axios';
 
+// TODO: 4/23
+//   App passes productId to Overview
+//   useEffect to perform two axios requests
+//     1. :productId
+//     2. :productId/:styles
+//   render the default style
+// modal
+
 function Overview(props) {
   // styles in an array
   // setStyle
   // function(setSelectedStyle), change index in styles array
   const { productId } = props; // selected productId
 
-  const [productsList, setProductsList] = useState([]);
-  const [overviewProductId, setOverviewProductId] = useState(0);
-  const [stylesList, setStylesList] = useState(0);
+  const [stylesList, setStylesList] = StylesExample.results;
   const [styleId, setStyleId] = useState(0);
 
-  // TODO: 4/23
-  //   App passes productId to Overview
-  //   useEffect to perform two axios requests
-  //     1. :productId
-  //     2. :productId/:styles
-  //   render the default style
-  // modal
-
-  // FETCH PRODUCTS LIST
-  useEffect(() => {
-    async function fetchProducts() {
-      const results = await axios.get('/products');
-      console.log('product results:', results);
-      setProductsList(results.data);
-      setOverviewProductId(results.data[1].id); // sets first item as default product
-    }
-    fetchProducts();
-    // console.log('PRODUCT CHECK:', productsList, overviewProductId); // RUNS BEFORE FETCH
-  }, []); // empty dependency array will run effect only once (similar to componentDidMount)
-
-  // FETCH STYLES LIST (AFTER PRODUCT LIST UPDATES)
-  useEffect(() => {
-    async function fetchStyles() {
-      const list = await axios.get(`/products/${productId}/styles`);
-      console.log('styles results:', list);
-      setStylesList(list.data.results);
-    }
-    fetchStyles();
-    // console.log('STYLES CHECK:', stylesList, styleId); // RUNS BEFORE FETCH
-  }, [productId]);
-
+  // FETCH API DATA FOUND BELOW
 
   return (
     <div data-testid="Overview">
@@ -136,3 +112,30 @@ const Subcomponent = styled.div`
 `;
 
 export default Overview;
+
+/* ==================== READY TO GO LIVE ====================
+const [productsList, setProductsList] = useState([]);
+const [overviewProductId, setOverviewProductId] = useState(0);
+
+// FETCH PRODUCTS LIST
+  useEffect(() => {
+    axios.get('/products')
+      .then(async (products) => {
+        // console.log('product results:', results);
+        await setProductsList(products.data);
+        await setOverviewProductId(products.data[0].id); // sets first item as default product
+        await console.log('productsList updated:', productsList);
+      })
+      .catch((error) => console.log(error));
+  }, []); // empty dependency array will run effect only once (similar to componentDidMount)
+
+  // FETCH STYLES LIST (INVOKED ONLY AFTER PRODUCT LIST UPDATES)
+  useEffect(() => {
+    axios.get(`/products/${productId}/styles`)
+      .then(async (styles) => {
+        await setStylesList(styles.data.results);
+        await console.log('styles results:', styles);
+      })
+      .catch((error) => console.log(error));
+  }, [productId]);
+*/
