@@ -16,8 +16,8 @@ products.get('/products', (req, res) => {
       res.status(200).send(response.data);
     })
     .catch((error) => {
+      console.log('Error:', error);
       res.sendStatus(500);
-      throw error;
     });
 });
 
@@ -32,8 +32,8 @@ products.get('/products/:product_id/', (req, res) => {
       res.status(200).send(response.data);
     })
     .catch((error) => {
+      console.log('Error:', error);
       res.sendStatus(500);
-      throw error;
     });
 });
 
@@ -48,8 +48,8 @@ products.get('/products/:product_id/styles', (req, res) => {
       res.status(200).send(response.data);
     })
     .catch((error) => {
+      console.log('Error:', error);
       res.sendStatus(500);
-      throw error;
     });
 });
 

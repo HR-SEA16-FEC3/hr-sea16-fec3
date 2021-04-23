@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { fab } from '@fortawesome/free-brands-svg-icons';
-import { far } from '@fortawesome/free-regular-svg-icons';
 import { faSearch, faStar, faHashtag } from '@fortawesome/free-solid-svg-icons';
-import { Twitter, FacebookMessenger } from '@styled-icons/fa-brands';
+import { Twitter, Facebook, Instagram, Whatsapp, Pinterest } from '@styled-icons/fa-brands';
+import { Link } from '@styled-icons/boxicons-regular';
+import { Email } from '@styled-icons/material-outlined';
 
 // Star Rating (# of reviews)
 // Product Category
@@ -14,35 +14,9 @@ import { Twitter, FacebookMessenger } from '@styled-icons/fa-brands';
 // Product Overview/Description
 // Share on Social Media
 
-// STYLED-COMPONENTS
-const Section = styled.div`
-  background: ${(props) => props.background};
-  border-radius: 3px;
-`;
-
-const Category = styled.div`
-  text-transform: uppercase;
-  margin: 10px 0;
-`;
-
-const ProductName = styled.div`
-  font-weight: bold;
-  font-size: 40px;
-  margin: 10px 0;
-`;
-
-const Socials = styled.span`
-  color: orange;
-  display: flex;
-  flex-flow: row wrap;
-  padding: 10px 0;
-  margin: 10px 0;
-  /* justify-content: center; */
-`;
-
 function Information(props) {
   const {
-    infoList: { // nested destructuring
+    infoList: { // NESTED DESTRUCTURING
       id,
       name,
       slogan,
@@ -64,7 +38,7 @@ function Information(props) {
           <FontAwesomeIcon icon={faStar} color="lightgrey" />
           {'    '}
         </span>
-        <span>Read all reviews</span>
+        <a href="#reviews"><span>Read all reviews</span></a>
         <br />
         <br />
 
@@ -74,16 +48,6 @@ function Information(props) {
         <p>
           ${Number(price)} {/* CONVERTED TO NUMBER, RENDERS AS WHOLE INTEGER */}
         </p>
-
-        {/* Product Overview/Description */}
-        {/* <Description slogan={slogan} description={description} /> */}
-
-        {/* Share on Social Media */}
-        <Socials>
-          <Twitter size="40" />
-          <Twitter size="10" color="whitesmoke" /> {/* MOVE TO BELOW CART SUBCOMPONENT */}
-          <FacebookMessenger size="40" />
-        </Socials>
 
       </Section>
     </div>
@@ -99,5 +63,32 @@ Information.propTypes = {
     default_price: PropTypes.string,
   }),
 };
+
+// STYLED-COMPONENTS
+const Section = styled.div`
+  background: ${(props) => props.background};
+  border-radius: 3px;
+`;
+
+const Category = styled.div`
+  text-transform: uppercase;
+  margin: 10px 0;
+`;
+
+const ProductName = styled.div`
+  font-weight: bold;
+  font-size: 40px;
+  margin: 10px 0;
+`;
+
+const Socials = styled.div`
+  color: orange;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  padding: 10px 10px;
+  margin: 10px 0;
+  /* justify-content: center; */
+`;
 
 export default Information;

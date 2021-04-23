@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState/* , useEffect */ } from 'react';
 import styled from 'styled-components';
 import Gallery from './subcomponents/Gallery';
 import Information from './subcomponents/Information';
@@ -7,6 +7,54 @@ import Cart from './subcomponents/Cart';
 import Description from './subcomponents/Description';
 import InfoExample from './product_info_example.json';
 import StylesExample from './product_styles_example.json';
+
+function Overview() {
+  const [selectedStyle, setSelectedStyle] = useState(0);
+  // styles in an array
+  // setStyle
+  // function(setSelectedStyle), change index in styles array
+
+  return (
+    <div data-testid="Overview">
+      <OverviewStyle>
+
+        <TopSection>
+          <LeftSection>
+            {/* Image Gallery */}
+            <Subcomponent>
+              <Gallery styles={StylesExample} />
+            </Subcomponent>
+          </LeftSection>
+
+          <RightSection>
+            {/* Product Information */}
+            <Subcomponent>
+              <Information infoList={InfoExample} />
+            </Subcomponent>
+
+            {/* Style Selector */}
+            <Subcomponent>
+              <StylesList stylesList={StylesExample} />
+            </Subcomponent>
+
+            {/* Add to Cart */}
+            <Subcomponent>
+              <Cart />
+            </Subcomponent>
+          </RightSection>
+        </TopSection>
+
+        <BottomSection>
+          {/* Product Description */}
+          <LeftSection>
+            <Description descExample={InfoExample} />
+          </LeftSection>
+        </BottomSection>
+
+      </OverviewStyle>
+    </div>
+  );
+}
 
 const OverviewStyle = styled.section`
   font-family: sans-serif;
@@ -18,26 +66,28 @@ const OverviewStyle = styled.section`
 const TopSection = styled.div`
   display: flex;
   flex-direction: row;
+  margin: 8px 4px 4px 4px;
 `;
 
 const BottomSection = styled.div`
-  /* flex-direction: row; */
-  /* margin-left: 20px; */
+  flex-direction: row;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: row;
   justify-content: center;
+  margin: 4px 4px 8px 4px;
 `;
 
 const LeftSection = styled.div`
   flex-direction: column;
-  order: 1;
-  flex-basis: 60%;
+  width: 60%;
   flex-grow: 1; /* REEVALUATE */
   margin: 10px;
 `;
 
 const RightSection = styled.div`
   flex-direction: column;
-  order: 2;
-  flex-basis: 40%;
+  width: 40%;
   margin: 10px;
 `;
 
@@ -46,53 +96,5 @@ const Subcomponent = styled.div`
   order: ${(props) => props.order};
   padding: 10px 0;
 `;
-
-function Overview() {
-  // JS here
-
-  return (
-    <>
-      <div data-testid="Overview">
-        <OverviewStyle>
-
-          <TopSection>
-            <LeftSection>
-              {/* Image Gallery */}
-              <Subcomponent/* background="orange" */>
-                <Gallery styles={StylesExample} />
-              </Subcomponent>
-            </LeftSection>
-
-            <RightSection>
-              {/* Product Information */}
-              <Subcomponent/* background="cornflowerblue" */>
-                <Information infoList={InfoExample} />
-              </Subcomponent>
-
-              {/* Style Selector */}
-              <Subcomponent/* background="yellow" */>
-                <StylesList stylesList={StylesExample} />
-              </Subcomponent>
-
-              {/* Add to Cart */}
-              <Subcomponent/* background="orange" */>
-                <Cart />
-              </Subcomponent>
-            </RightSection>
-          </TopSection>
-
-          <BottomSection>
-            {/* Product Description */}
-            <LeftSection>
-              <Description descExample={InfoExample} />
-            </LeftSection>
-          </BottomSection>
-
-        </OverviewStyle>
-        <br />
-      </div>
-    </>
-  );
-}
 
 export default Overview;
