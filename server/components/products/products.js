@@ -39,13 +39,16 @@ products.get('/products/:product_id/', (req, res) => {
 
 // PRODUCT STYLES:  Returns the all styles available for the given product
 products.get('/products/:product_id/styles', (req, res) => {
-  axios.get(`${apiUrl}/products/${req.params.product_id}/styles`, {
+  const productId = req.params.product_id;
+  axios.get(`${apiUrl}/products/${productId}/styles`, {
     headers: {
       Authorization: config.TOKEN,
     },
   })
     .then((response) => {
-      res.status(200).send(response.data);
+      if (response.data.results.length === 0) {
+        res.status(500).send(`No styles found for selected productId: ${productId}`);
+      } else { res.status(200).send(response.data); }
     })
     .catch((error) => {
       console.log('Error:', error);
