@@ -1,12 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
 import Overview from './components/overview/Overview';
 import QandA from './components/Q&A/Q&A';
 import Reviews from './components/reviews/Reviews';
 
 const App = () => {
+  const [productsList, setProductsList] = useState([]);
   const [productId, setProductId] = useState(0);
+
+  useEffect(() => {
+    async function fetchProducts() {
+      const results = await axios.get('/products');
+      setProductsList(results.data);
+      setProductId(results.data[0].id); // sets first item as default product
+    }
+    return fetchProducts();
+  }, []); // empty dependency array will run effect only once (similar to componentDidMount)
 
   return (
     <Wrapper>
