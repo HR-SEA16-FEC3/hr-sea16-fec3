@@ -15,8 +15,8 @@ function Overview(props) {
   // function(setSelectedStyle), change index in styles array
 
   // const [selectedStyle, setSelectedStyle] = useState(0);
-  // const [productsList, setProductsList] = useState([]);
   const [productsList, setProductsList] = useState([]);
+  const [overviewProductId, setOverviewProductId] = useState(0);
 
   // TODO: 4/23
   //   App passes productId to Overview
@@ -29,7 +29,7 @@ function Overview(props) {
     async function fetchProducts() {
       const results = await axios.get('/products');
       setProductsList(results.data);
-      setProductId(results.data[0].id); // sets first item as default product
+      setOverviewProductId(results.data[1].id); // sets first item as default product
     }
     return fetchProducts();
   }, []); // empty dependency array will run effect only once (similar to componentDidMount)
