@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faStar, faHashtag } from '@fortawesome/free-solid-svg-icons';
 import { Twitter, Facebook, Instagram, Whatsapp, Pinterest } from '@styled-icons/fa-brands';
@@ -31,11 +32,11 @@ function Information(props) {
       <Section>
         {/* Star Rating (# of reviews) */}
         <span>
-          <FontAwesomeIcon icon={faStar} color="orange" />
-          <FontAwesomeIcon icon={faStar} color="orange" />
-          <FontAwesomeIcon icon={faStar} color="orange" />
-          <FontAwesomeIcon icon={faStar} color="lightgrey" />
-          <FontAwesomeIcon icon={faStar} color="lightgrey" />
+          <FontAwesomeIcon icon={faStar} data-testid="iconStar" color="orange" />
+          <FontAwesomeIcon icon={faStar} data-testid="iconStar" color="orange" />
+          <FontAwesomeIcon icon={faStar} data-testid="iconStar" color="orange" />
+          <FontAwesomeIcon icon={faStar} data-testid="iconStar" color="lightgrey" />
+          <FontAwesomeIcon icon={faStar} data-testid="iconStar" color="lightgrey" />
           {'    '}
         </span>
         <a href="#reviews"><span>Read all reviews</span></a>
