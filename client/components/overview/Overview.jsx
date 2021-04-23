@@ -13,10 +13,12 @@ function Overview(props) {
   // styles in an array
   // setStyle
   // function(setSelectedStyle), change index in styles array
+  const { productId } = props; // selected productId
 
-  // const [selectedStyle, setSelectedStyle] = useState(0);
   const [productsList, setProductsList] = useState([]);
   const [overviewProductId, setOverviewProductId] = useState(0);
+  const [styleId, setStyleId] = useState(0);
+  const [stylesList, setStylesList] = useState(0);
 
   // TODO: 4/23
   //   App passes productId to Overview
@@ -31,8 +33,17 @@ function Overview(props) {
       setProductsList(results.data);
       setOverviewProductId(results.data[1].id); // sets first item as default product
     }
-    return fetchProducts();
+    fetchProducts();
   }, []); // empty dependency array will run effect only once (similar to componentDidMount)
+
+  useEffect(() => {
+    async function fetchStyles() {
+      const stylesList = await axios.get(`/products/${productId}/styles`);
+      setStylesList(stylesList.data.results);
+      // console.log('styles results', results);
+    }
+    fetchStyles();
+  }, [productId]);
 
   // productId in url
   // move useeffect to overview mod
