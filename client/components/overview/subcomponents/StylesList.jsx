@@ -3,16 +3,7 @@ import PropTypes from 'prop-types';
 import Styles from './Styles';
 import styled from 'styled-components';
 
-const CircleSpacing = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-flow: row wrap;
-  margin: 10px 0;
-`;
-
-const StyleName = styled.span`
-  text-transform: uppercase;
-`;
+// pass down setStyle
 
 const StylesList = (props) => {
   const {
@@ -32,7 +23,7 @@ const StylesList = (props) => {
       <div>
         <CircleSpacing>
           {results.map((style) => (
-            <Styles style={style} key={style.style_id} />
+            <Styles style={style} key={style.style_id} /* index={results.indexOf(style)} *//>
           ))}
         </CircleSpacing>
       </div>
@@ -48,5 +39,15 @@ StylesList.propTypes = {
     })),
   }),
 };
+
+const CircleSpacing = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  margin: 10px 0;
+`;
+
+const StyleName = styled.span`
+  text-transform: uppercase;
+`;
 
 export default StylesList;
