@@ -81,6 +81,7 @@ const Input = styled.input`
   transition: 0.3s;
   padding-left: 50px;
   cursor: pointer;
+  background: whitesmoke;
 
   &:focus {
     border-color: dodgerBlue;
