@@ -61,7 +61,7 @@ function Overview(props) {
               <StylesList
                 stylesList={stylesList}
                 /* IF NO STYLE SELECTED, DISPLAY DEFAULT STYLE */
-                selectedStyle={selectedStyle === null ? defaultStyle : selectedStyle}
+                displayStyle={selectedStyle === null ? defaultStyle : selectedStyle}
                 setSelectedStyle={setSelectedStyle}
               />
             </Subcomponent>

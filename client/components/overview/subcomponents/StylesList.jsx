@@ -5,7 +5,7 @@ import Styles from './Styles';
 
 // pass down setStyle
 
-const StylesList = ({ stylesList, selectedStyle, setSelectedStyle }) => {
+const StylesList = ({ stylesList, displayStyle, setSelectedStyle }) => {
   const temp = null;
 
   return (
@@ -14,7 +14,7 @@ const StylesList = ({ stylesList, selectedStyle, setSelectedStyle }) => {
       <span>
         <strong>STYLE &gt;  </strong>
         <StyleName>
-          {!stylesList.length ? <div>LOADING</div> : stylesList[0].name}
+          {!displayStyle ? <span>LOADING</span> : <span>{displayStyle.name}</span>}
         </StyleName> {/* DEFAULTS TO 1ST ITEM */}
       </span>
       <div>
