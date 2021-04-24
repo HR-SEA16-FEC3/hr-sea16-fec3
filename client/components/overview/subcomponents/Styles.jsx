@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Styles = ({ style, setSelectedStyle }) => {
-  console.log(style);
   const {
     photos: [{
       thumbnail_url: thumbnailUrl,
@@ -12,7 +11,7 @@ const Styles = ({ style, setSelectedStyle }) => {
 
   function clickStyle(event) {
     event.preventDefault();
-    console.log('Clicked!');
+    console.log('Clicked on style:', style.name);
     setSelectedStyle(style);
   }
 

@@ -6,7 +6,7 @@ import Styles from './Styles';
 // pass down setStyle
 
 const StylesList = ({ stylesList, selectedStyle, setSelectedStyle }) => {
-  console.log('stylesList:', stylesList);
+  const temp = null;
 
   return (
     <div data-testid="StylesList">
