@@ -14,19 +14,35 @@ import axios from 'axios';
 
 function Overview(props) {
   const { productId } = props;
+  const { default_price: defaultPrice } = InfoExample;
 
   const [stylesList, setStylesList] = useState([]);
   const [defaultStyle, setDefaultStyle] = useState(null);
   const [selectedStyle, setSelectedStyle] = useState(null);
+  const [displayPrice, setDisplayPrice] = useState();
 
+  // Fetch: Styles List
   useEffect(() => {
     setStylesList(StylesExample.results);
+    setDisplayPrice(Number(defaultPrice));
   }, []);
 
+  // Fetch: Default Style
   useEffect(() => {
     const selectDefaultStyle = stylesList.find((object) => object['default?'] === true);
     setDefaultStyle(selectDefaultStyle);
   }, [stylesList]);
+
+  // Update: display price
+  useEffect(() => {
+    console.log('selectedStyle:', selectedStyle);
+    if (selectedStyle !== null) {
+      const originalPrice = selectedStyle.original_price;
+      const salePrice = selectedStyle.sale_price;
+      const price = salePrice === null ? originalPrice : salePrice;
+      setDisplayPrice(Number(price));
+    }
+  }, [selectedStyle]);
 
   // FETCH API DATA FOUND BELOW
 
