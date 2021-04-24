@@ -1,21 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import Modal from 'react-modal';
 import QuestionsList from './subcomponents/QuestionsList';
 // import exampleData from './questions_example.json';
 import Searchbar from './subcomponents/Searchbar';
+import AddAQuestionModal from './subcomponents/AddAQuestionModal';
 
 const QandA = ({ productId }) => {
   const [questionsList, setQuestionsList] = useState([]);
   const [shownQuestions, setShownQuestions] = useState(2);
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredList, setFilteredList] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const toggleModal = () => setIsModalOpen(!isModalOpen);
   const handleShowMore = () => setShownQuestions(shownQuestions + 2);
   const handleShowLess = () => setShownQuestions(2);
-
+  // Initialize questions list
   useEffect(() => {
-    // TODO add a http request to get the live data
     axios.get(`/qa/questions/${productId}`)
       .then((data) => (
         setQuestionsList(sortQuestionsList(data.data.results))
@@ -25,8 +28,10 @@ const QandA = ({ productId }) => {
       });
   }, [productId]);
 
+  // Initialize filtered list
   useEffect(() => setFilteredList(questionsList), [questionsList]);
 
+  // changes filtered list as searchterm changes
   useEffect(() => {
     if (searchTerm.length > 2 || searchTerm === '') {
       setFilteredList(questionsList.filter((item) => (
@@ -65,8 +70,34 @@ const QandA = ({ productId }) => {
           }
           return null;
         })()}
+        <Modal
+          isOpen={isModalOpen}
+          onRequestClose={toggleModal}
+          contentLabel="My dialog"
+          style={
+          {
+            content: {
+              width: '60vw',
+              height: 'max-content',
+              margin: 'auto',
+              background: 'whitesmoke',
+            },
+          }
+        }
+        >
+          <AddAQuestionModal
+            toggleModal={toggleModal}
+            productId={productId}
+          />
+        </Modal>
         {/* Add a question button */}
-        <Button type="button" data-testid="AddQuestion">ADD A QUESTION +</Button>
+        <Button
+          type="button"
+          data-testid="AddQuestion"
+          onClick={toggleModal}
+        >
+          ADD A QUESTION +
+        </Button>
       </div>
     </Wrapper>
   );

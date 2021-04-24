@@ -22,7 +22,7 @@ const Question = (props) => {
           setHelpfulness(helpfulness + 1);
           setClickedYes(true);
         })
-        .catch(() => console.log('Failed to update'));
+        .catch((error) => { throw error; });
     }
   };
   const handleReport = () => {
@@ -61,7 +61,7 @@ const Question = (props) => {
           {
             content: {
               width: '60vw',
-              height: '60vh',
+              height: 'max-content',
               margin: 'auto',
               background: 'whitesmoke',
             },
