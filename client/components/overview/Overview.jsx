@@ -19,7 +19,7 @@ function Overview(props) {
   const [stylesList, setStylesList] = useState([]);
   const [defaultStyle, setDefaultStyle] = useState(null);
   const [selectedStyle, setSelectedStyle] = useState(null);
-  const [displayPrice, setDisplayPrice] = useState();
+  const [displayPrice, setDisplayPrice] = useState(null);
 
   // Fetch: Styles List
   useEffect(() => {
@@ -35,12 +35,14 @@ function Overview(props) {
 
   // Update: display price
   useEffect(() => {
-    console.log('selectedStyle:', selectedStyle);
     if (selectedStyle !== null) {
       const originalPrice = selectedStyle.original_price;
       const salePrice = selectedStyle.sale_price;
       const price = salePrice === null ? originalPrice : salePrice;
       setDisplayPrice(Number(price));
+      return (
+        <Gallery style={selectedStyle === null ? defaultStyle : selectedStyle} />
+      );
     }
   }, [selectedStyle]);
 
@@ -54,7 +56,10 @@ function Overview(props) {
           <LeftSection>
             {/* Image Gallery */}
             <Subcomponent>
-              <Gallery styles={StylesExample} />
+              {selectedStyle === null
+                ? <span>LOADING</span>
+                : <Gallery style={selectedStyle === null ? defaultStyle : selectedStyle} />
+              }
             </Subcomponent>
           </LeftSection>
 
