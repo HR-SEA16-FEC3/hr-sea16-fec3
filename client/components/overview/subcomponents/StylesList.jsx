@@ -2,9 +2,6 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Styles from './Styles';
-// import { HandIndexFill } from '@styled-icons/bootstrap';
-
-// pass down setStyle
 
 const StylesList = ({ stylesList, displayStyle, setSelectedStyle }) => {
   const temp = null;

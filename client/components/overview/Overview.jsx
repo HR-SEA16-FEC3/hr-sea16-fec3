@@ -9,19 +9,11 @@ import InfoExample from './product_info_example.json';
 import StylesExample from './product_styles_example.json';
 import axios from 'axios';
 
-// TODO: 4/23
-//   App passes productId to Overview
-//   useEffect to perform two axios requests
-//     1. :productId
-//     2. :productId/:styles
-//   render the default style
-// modal
+// TODO:
+//   modal
 
 function Overview(props) {
-  // styles in an array
-  // setStyle
-  // function(setSelectedStyle), change index in styles array
-  const { productId } = props; // selected productId
+  const { productId } = props;
 
   const [stylesList, setStylesList] = useState([]);
   const [defaultStyle, setDefaultStyle] = useState(null);
