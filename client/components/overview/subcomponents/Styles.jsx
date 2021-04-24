@@ -54,6 +54,10 @@ const ThumbnailCircle = styled.span`
   flex-basis: auto;
   flex-grow: 0;
   flex-shrink: 0;
+  &:hover{
+    cursor: pointer;
+    opacity: 0.75;
+  };
 `;
 
 export default Styles;
