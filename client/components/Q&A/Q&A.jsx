@@ -1,21 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 import QuestionsList from './subcomponents/QuestionsList';
 import exampleData from './questions_example.json';
 import Searchbar from './subcomponents/Searchbar';
 
-const QandA = (props) => {
+const QandA = ({ productId }) => {
   const [questionsList, setQuestionsList] = useState([]);
   const [shownQuestions, setShownQuestions] = useState(2);
 
   const handleShowMore = () => setShownQuestions(shownQuestions + 2);
   const handleShowLess = () => setShownQuestions(2);
 
-  useEffect(async () => {
+  useEffect(() => {
     // TODO add a http request to get the live data
-    await setQuestionsList(exampleData.results);
-    await sortQuestionsList(questionsList);
-  });
+    axios.get(`/qa/questions/${productId}`)
+      .then((data) => {
+        setQuestionsList(sortQuestionsList(data.data.results));
+      });
+  }, [productId]);
 
   const currentList = questionsList.slice(0, shownQuestions);
 
@@ -54,7 +57,8 @@ const QandA = (props) => {
 };
 
 const sortQuestionsList = (list) => {
-  list.sort((a, b) => b.question_helpfulness - a.question_helpfulness);
+  const newList = list.sort((a, b) => b.question_helpfulness - a.question_helpfulness);
+  return newList;
 };
 
 const Button = styled.button`
