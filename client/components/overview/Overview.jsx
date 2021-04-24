@@ -61,7 +61,7 @@ function Overview(props) {
           <RightSection>
             {/* Product Information */}
             <Subcomponent>
-              <Information infoList={InfoExample} />
+              <Information infoList={InfoExample} price={displayPrice} />
             </Subcomponent>
 
             {/* Style Selector */}

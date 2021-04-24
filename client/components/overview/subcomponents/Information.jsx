@@ -15,7 +15,7 @@ import { Email } from '@styled-icons/material-outlined';
 // Product Overview/Description
 // Share on Social Media
 
-function Information({ infoList }) {
+function Information({ infoList, price }) {
   const {
     // infoList: { // NESTED DESTRUCTURING
     id,
@@ -25,6 +25,7 @@ function Information({ infoList }) {
   } = infoList;
 
   const defaultPrice = Number(default_price);
+  const onSale = price < defaultPrice;
 
   return (
     <div data-testid="Information">
@@ -45,9 +46,12 @@ function Information({ infoList }) {
         {/* Product Category */}
         <Category>{category}</Category>
         <ProductName>{name}</ProductName>
-        <p>
-          ${Number(defaultPrice)} {/* CONVERTED TO NUMBER, RENDERS AS WHOLE INTEGER */}
-        </p>
+        <Price>
+          {onSale === true
+            ? <span><Sale>${price} </Sale><Strike>${defaultPrice}</Strike></span>
+            : <span>${price}</span>
+          }
+        </Price>
 
       </Section>
     </div>
@@ -86,6 +90,19 @@ const Socials = styled.div`
   padding: 10px 10px;
   margin: 10px 0;
   /* justify-content: center; */
+`;
+
+const Price = styled.div`
+  margin-top: 16px;
+`;
+
+const Sale = styled.span`
+  color: red;
+  font-weight: bold;
+`;
+
+const Strike = styled.span`
+  text-decoration: line-through;
 `;
 
 export default Information;
