@@ -37,7 +37,7 @@ Styles.propTypes = {
   }),
 };
 
-const ThumbnailCircle = styled.div`
+const ThumbnailCircle = styled.span`
   border: 1px solid black;
   display: flex;
   border-radius: 50%;

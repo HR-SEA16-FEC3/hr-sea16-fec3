@@ -58,7 +58,11 @@ function Overview(props) {
 
             {/* Style Selector */}
             <Subcomponent>
-              <StylesList stylesList={StylesExample} />
+              <StylesList
+                stylesList={stylesList}
+                /* IF NO STYLE SELECTED, DISPLAY DEFAULT STYLE */
+                selectedStyle={selectedStyle === null ? defaultStyle : selectedStyle}
+              />
             </Subcomponent>
 
             {/* Add to Cart */}
