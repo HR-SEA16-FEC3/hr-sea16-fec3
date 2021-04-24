@@ -3,13 +3,15 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
-const Searchbar = () => {
-  const [text, setText] = useState('');
-  const handleChange = (event) => {
-    setText(event.target.value);
+const Searchbar = ({ searchTerm, setSearchTerm }) => {
+  //const [text, setText] = useState('');
+  const handleChange = async (event) => {
+    //setText(event.target.value);
+    setSearchTerm(event.target.value);
   };
-  const clearInput = () => {
-    setText('');
+  const clearInput = async () => {
+    //setText('');
+    setSearchTerm('');
   };
 
   return (
@@ -17,7 +19,7 @@ const Searchbar = () => {
       <StyledInput className="inputWithIcon">
         <Input
           type="text"
-          value={text}
+          value={searchTerm}
           onChange={handleChange}
           placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
         />

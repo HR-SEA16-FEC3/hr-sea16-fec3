@@ -68,7 +68,11 @@ const Question = (props) => {
           }
         }
       >
-        <AddAnAnswerModal toggleModal={toggleModal} question={props.question.question_body}/>
+        <AddAnAnswerModal
+          toggleModal={toggleModal}
+          question={props.question.question_body}
+          questionId={props.question.question_id}
+        />
       </Modal>
       {/* Answer List */}
       {(() => {

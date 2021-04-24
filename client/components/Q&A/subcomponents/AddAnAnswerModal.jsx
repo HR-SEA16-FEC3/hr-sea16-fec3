@@ -3,50 +3,76 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 
-const AddAnAnswerModal = (props) => (
-  <Wrapper onSubmit={props.toggleModal}>
-    <Title>Submit your Answer</Title>
-    <Subtitle>{props.question}</Subtitle>
-    <Label htmlFor="youranswer">
-      Your Answer*
+const AddAnAnswerModal = (props) => {
+  const [answerBody, setAnswerBody] = useState('');
+  const [nickname, setNickname] = useState('');
+  const [email, setEmail] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios.post(`/qa/questions/${props.questionId}/answers`,
+      {
+        body: answerBody,
+        name: nickname,
+        email,
+        photos: [],
+      })
+      .then(() => props.toggleModal())
+      .catch((error) => console.log(error));
+  };
+
+  return (
+    <Wrapper onSubmit={handleSubmit}>
+      <Title>Submit your Answer</Title>
+      <Subtitle>{props.question}</Subtitle>
+      <Label htmlFor="youranswer">
+        {/* Your Answer* */}
+        <br />
+        <BodyInput
+          as="textarea"
+          id="youranswer"
+          required
+          type="text"
+          value={answerBody}
+          onChange={(e) => setAnswerBody(e.target.value)}
+          placeholder="Enter your answer here"
+          maxLength="1000"
+        />
+      </Label>
       <br />
-      <BodyInput
-        as="textarea"
-        id="youranswer"
-        required
-        type="text"
-        placeholder="Enter your answer here"
-        maxLength="1000"
-      />
-    </Label>
-    <br />
-    <Label htmlFor="nickname">
-      What is your nickname?*
-      <br />
-      <Input
-        id="nickname"
-        required
-        type="text"
-        placeholder="Example: jack543!"
-        maxLength="60"
-      />
-      <br />
-      <Disclaimer>For privacy reasons, do not use your full name or email address</Disclaimer>
-    </Label>
-    <Label htmlFor="email">
-      Your email*
-      <br />
-      <Input
-        id="email"
-        required
-        type="email"
-        placeholder="Example: jack@email.com"
-      />
-      <Disclaimer>For authentication reasons, you will not be emailed</Disclaimer>
-    </Label>
-    <button type="submit">Submit Answer</button>
-  </Wrapper>
-);
+      <Label htmlFor="nickname">
+        What is your nickname?*
+        <br />
+        <Input
+          id="nickname"
+          required
+          type="text"
+          value={nickname}
+          onChange={(e) => setNickname(e.target.value)}
+          placeholder="Example: jack543!"
+          maxLength="60"
+        />
+        <br />
+        <Disclaimer>For privacy reasons, do not use your full name or email address</Disclaimer>
+      </Label>
+      <Label htmlFor="email">
+        Your email*
+        <br />
+        <Input
+          id="email"
+          required
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Example: jack@email.com"
+        />
+        <Disclaimer>For authentication reasons, you will not be emailed</Disclaimer>
+      </Label>
+      <Button type="submit">Submit Answer</Button>
+    </Wrapper>
+  );
+};
+
 const Label = styled.label`
   margin: 1em 0;
   font-size: 16px;
@@ -98,6 +124,20 @@ const Title = styled.h1`
 const Subtitle = styled.h3`
   font-weight: bold;
   font-size: 18px;
+`;
+
+const Button = styled.button`
+  border: 1px solid orange;
+  margin-top: 10px;
+  margin-right: 10px;
+  background: orange;
+  padding: 7px;
+  font-size: 10px;
+  color: white;
+  text-transform: uppercase;
+  width: 175px;
+  &:hover{ background: #ffc457; color: white; }
+  &:active{ background: darkorange; color: white; }
 `;
 
 export default AddAnAnswerModal;

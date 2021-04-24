@@ -52,4 +52,9 @@ QandA.put('/qa/:QorA/:answer_id/report', (req, res) => {
   res.status(204).send();
 });
 
+QandA.post('/qa/questions/:product_id/answers', (req, res) => {
+  console.log(req.body);
+  res.sendStatus(201);
+});
+
 module.exports = QandA;
