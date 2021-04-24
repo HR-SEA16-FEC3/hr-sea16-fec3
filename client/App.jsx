@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { LogoOctocat } from '@styled-icons/ionicons-solid';
 
 import Overview from './components/overview/Overview';
 import QandA from './components/Q&A/Q&A';
@@ -13,22 +14,23 @@ const App = () => {
   });
 
   return (
-    <Wrapper>
-      <Header>
-        <h1>Project Catwalk</h1>
-      </Header>
-      <Overview productId={productId} />
-      <Divider />
-      <QandA productId={productId} />
-      <Divider />
-      <Reviews productId={productId} />
-      <Footer />
-    </Wrapper>
+    <Outside>
+      <Wrapper>
+        <Header>
+          <h1><Logo><LogoOctocat size="36"/></Logo> Project Catwalk</h1>
+        </Header>
+        <Overview productId={productId} />
+        <Divider />
+        <QandA productId={productId} />
+        <Divider />
+        <Reviews productId={productId} />
+      </Wrapper>
+    </Outside>
   );
 };
 
 const Header = styled.div`
-  background:orange;
+  background: orange;
   height: 40px;
   display: flex;
   flex-direction: row;
@@ -37,28 +39,31 @@ const Header = styled.div`
   padding: 5px;
 `;
 
-const Footer = styled.div`
-  background:orange;
-  height: 100px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  color: white;
-  padding: 5px;
-`;
-
 const Divider = styled.hr`
-display: block;
-height: 0px;
-border: 0;
-border-top: 2px solid #ccc;
-margin: 0;
-padding: 0;
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 2px solid #ccc;
+  margin: 0;
+  padding: 0;
 `;
 
 const Wrapper = styled.div`
   font-family: sans-serif;
   scroll-behavior: smooth;
+  max-width: 1080px;
+  position: absolute;
+  left: 50%;
+  margin-left: -540px;
+`;
+
+const Outside = styled.div`
+  background: whitesmoke;
+`;
+
+const Logo = styled.span`
+  margin-left: 16px;
+  margin-right: 8px;
 `;
 
 export default App;

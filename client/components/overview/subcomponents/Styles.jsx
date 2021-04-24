@@ -2,42 +2,40 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const Styles = (props) => {
+const Styles = ({ style, setSelectedStyle }) => {
   const {
-    style: {
-      style_id: styleId,
-      name,
-      original_price: originalPrice,
-      sale_price: salePrice,
-      'default?': isDefault,
-      photos: [{
-        thumbnail_url: thumbnailUrl,
-      }],
-    },
-  } = props;
+    photos: [{
+      thumbnail_url: thumbnailUrl,
+    }],
+  } = style;
+
+  function clickStyle(event) {
+    event.preventDefault();
+    console.log('Clicked on style:', style.name);
+    setSelectedStyle(style);
+  }
 
   return (
     <>
       {/* DISPLAY THUMBNAILS IN ROWS OF 4 */}
-      <ThumbnailCircle image={thumbnailUrl} data-testid="style-thumbnail" />
+      <ThumbnailCircle
+        data-testid="style-thumbnail"
+        image={thumbnailUrl}
+        onClick={() => clickStyle(event)}
+      />
     </>
   );
 };
 
 Styles.propTypes = {
   style: PropTypes.shape({
-    style_id: PropTypes.number,
-    name: PropTypes.string,
-    original_price: PropTypes.string,
-    sale_price: PropTypes.string,
-    'default?': PropTypes.boolean,
     photos: PropTypes.arrayOf(PropTypes.shape({
       thumbnail_url: PropTypes.string,
     })),
   }),
 };
 
-const ThumbnailCircle = styled.div`
+const ThumbnailCircle = styled.span`
   border: 1px solid black;
   display: flex;
   border-radius: 50%;
@@ -56,6 +54,22 @@ const ThumbnailCircle = styled.div`
   flex-basis: auto;
   flex-grow: 0;
   flex-shrink: 0;
+  &:hover{
+    cursor: pointer;
+    opacity: 0.75;
+  };
 `;
 
 export default Styles;
+
+// style_id: styleId,
+// name,
+// original_price: originalPrice,
+// sale_price: salePrice,
+// 'default?': isDefault,
+
+// style_id: PropTypes.number,
+// name: PropTypes.string,
+// original_price: PropTypes.string,
+// sale_price: PropTypes.string,
+// 'default?': PropTypes.boolean,
