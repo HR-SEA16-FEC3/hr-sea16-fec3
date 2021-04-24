@@ -5,8 +5,8 @@ import Styles from './Styles';
 
 // pass down setStyle
 
-const StylesList = ({ stylesList, selectedStyle }) => {
-  console.log('props:', stylesList);
+const StylesList = ({ stylesList, selectedStyle, setSelectedStyle }) => {
+  console.log('stylesList:', stylesList);
 
   return (
     <div data-testid="StylesList">
@@ -22,7 +22,8 @@ const StylesList = ({ stylesList, selectedStyle }) => {
           {!stylesList.length /* WORKS WITHOUT CONDITIONAL */
             ? <div>LOADING</div>
             : stylesList.map((style) => (
-              <Styles style={style} key={style.style_id} /* index={results.indexOf(style)} */ />
+              <Styles style={style} key={style.style_id} setSelectedStyle={setSelectedStyle} />
+              /* index={results.indexOf(style)} */
             ))}
         </Circles>
       </div>

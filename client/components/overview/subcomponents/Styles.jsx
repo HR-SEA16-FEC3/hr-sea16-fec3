@@ -2,35 +2,34 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const Styles = (props) => {
+const Styles = ({ style, setSelectedStyle }) => {
+  console.log(style);
   const {
-    style: {
-      style_id: styleId,
-      name,
-      original_price: originalPrice,
-      sale_price: salePrice,
-      'default?': isDefault,
-      photos: [{
-        thumbnail_url: thumbnailUrl,
-      }],
-    },
-  } = props;
+    photos: [{
+      thumbnail_url: thumbnailUrl,
+    }],
+  } = style;
+
+  function clickStyle(event) {
+    event.preventDefault();
+    console.log('Clicked!');
+    setSelectedStyle(style);
+  }
 
   return (
     <>
       {/* DISPLAY THUMBNAILS IN ROWS OF 4 */}
-      <ThumbnailCircle image={thumbnailUrl} data-testid="style-thumbnail" />
+      <ThumbnailCircle
+        data-testid="style-thumbnail"
+        image={thumbnailUrl}
+        onClick={() => clickStyle(event)}
+      />
     </>
   );
 };
 
 Styles.propTypes = {
   style: PropTypes.shape({
-    style_id: PropTypes.number,
-    name: PropTypes.string,
-    original_price: PropTypes.string,
-    sale_price: PropTypes.string,
-    'default?': PropTypes.boolean,
     photos: PropTypes.arrayOf(PropTypes.shape({
       thumbnail_url: PropTypes.string,
     })),
@@ -59,3 +58,15 @@ const ThumbnailCircle = styled.span`
 `;
 
 export default Styles;
+
+// style_id: styleId,
+// name,
+// original_price: originalPrice,
+// sale_price: salePrice,
+// 'default?': isDefault,
+
+// style_id: PropTypes.number,
+// name: PropTypes.string,
+// original_price: PropTypes.string,
+// sale_price: PropTypes.string,
+// 'default?': PropTypes.boolean,
