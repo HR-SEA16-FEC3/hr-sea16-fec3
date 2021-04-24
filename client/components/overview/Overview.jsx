@@ -32,7 +32,7 @@ function Overview(props) {
   }, []);
 
   useEffect(() => {
-    const selectDefaultStyle = stylesList.find(object => object['default?'] === true);
+    const selectDefaultStyle = stylesList.find((object) => object['default?'] === true);
     setDefaultStyle(selectDefaultStyle);
   }, [stylesList]);
 
