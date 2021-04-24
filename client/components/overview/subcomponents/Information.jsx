@@ -15,17 +15,16 @@ import { Email } from '@styled-icons/material-outlined';
 // Product Overview/Description
 // Share on Social Media
 
-function Information(props) {
+function Information({ infoList }) {
   const {
-    infoList: { // NESTED DESTRUCTURING
-      id,
-      name,
-      slogan,
-      description,
-      category,
-      default_price: price, // use destructuring w/ alias to avoid snake_case
-    },
-  } = props;
+    // infoList: { // NESTED DESTRUCTURING
+    id,
+    name,
+    category,
+    default_price, // use destructuring w/ alias to avoid snake_case
+  } = infoList;
+
+  const defaultPrice = Number(default_price);
 
   return (
     <div data-testid="Information">
@@ -47,7 +46,7 @@ function Information(props) {
         <Category>{category}</Category>
         <ProductName>{name}</ProductName>
         <p>
-          ${Number(price)} {/* CONVERTED TO NUMBER, RENDERS AS WHOLE INTEGER */}
+          ${Number(defaultPrice)} {/* CONVERTED TO NUMBER, RENDERS AS WHOLE INTEGER */}
         </p>
 
       </Section>
@@ -56,13 +55,10 @@ function Information(props) {
 }
 
 Information.propTypes = {
-  infoList: PropTypes.shape({
     id: PropTypes.number,
-    slogan: PropTypes.string,
-    description: PropTypes.string,
+    name: PropTypes.string,
     category: PropTypes.string,
     default_price: PropTypes.string,
-  }),
 };
 
 // STYLED-COMPONENTS
