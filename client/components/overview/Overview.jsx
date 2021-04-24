@@ -23,8 +23,18 @@ function Overview(props) {
   // function(setSelectedStyle), change index in styles array
   const { productId } = props; // selected productId
 
-  const [stylesList, setStylesList] = StylesExample.results;
-  const [styleId, setStyleId] = useState(0);
+  const [stylesList, setStylesList] = useState([]);
+  const [defaultStyle, setDefaultStyle] = useState(null);
+  const [selectedStyle, setSelectedStyle] = useState(null);
+
+  useEffect(() => {
+    setStylesList(StylesExample.results);
+  }, []);
+
+  useEffect(() => {
+    const selectDefaultStyle = stylesList.find(object => object['default?'] === true);
+    setDefaultStyle(selectDefaultStyle);
+  }, [stylesList]);
 
   // FETCH API DATA FOUND BELOW
 
