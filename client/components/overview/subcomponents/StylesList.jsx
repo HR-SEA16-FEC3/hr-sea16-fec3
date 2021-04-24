@@ -10,7 +10,7 @@ const StylesList = ({ stylesList, selectedStyle }) => {
 
   return (
     <div data-testid="StylesList">
-      {/* <div>Overview: Style Selector</div> */}
+      {/* STYLE SELECTOR */}
       <span>
         <strong>STYLE &gt;  </strong>
         <StyleName>
@@ -18,34 +18,24 @@ const StylesList = ({ stylesList, selectedStyle }) => {
         </StyleName> {/* DEFAULTS TO 1ST ITEM */}
       </span>
       <div>
-        <CircleSpacing>
-          {!stylesList.length
+        <Circles>
+          {!stylesList.length /* WORKS WITHOUT CONDITIONAL */
             ? <div>LOADING</div>
             : stylesList.map((style) => (
               <Styles style={style} key={style.style_id} /* index={results.indexOf(style)} */ />
-            ))
-          }
-        </CircleSpacing>
+            ))}
+        </Circles>
       </div>
     </div>
   );
 };
 
-// StylesList.propTypes = {
-//   stylesList: PropTypes.shape([
-//     results: PropTypes.arrayOf(PropTypes.shape({
-//       style_id: PropTypes.number,
-//     })),
-//   ]),
-// };
+StylesList.propTypes = {
+  // stylesList: PropTypes.arrayOf,
+  // selectedStyle: PropTypes.shape,
+};
 
-/* INSIDE CIRCLESPACING
-  {results.map((style) => (
-    <Styles style={style} key={style.style_id} /* index={results.indexOf(style)} *\//>
-  ))}
-*/
-
-const CircleSpacing = styled.div`
+const Circles = styled.span`
   display: flex;
   flex-flow: row wrap;
   margin: 10px 0;
