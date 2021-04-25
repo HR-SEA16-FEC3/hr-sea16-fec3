@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import ReviewList from './subcomponents/ReviewList.jsx';
 import ReviewMeta from './subcomponents/ReviewMeta.jsx';
+import ReviewModal from './subcomponents/ReviewModal.jsx';
 import dummyData from './subcomponents/DummyData/product_reviews_example';
 import metaDummyData from './subcomponents/DummyData/product_metaData_example';
 
 // destructure the props, change var naming
 function Reviews({ metadata, data }) {
   const [tiles, setTiles] = useState(2);
+  const [modal, setModal] = useState(false);
 
   return (
     <div data-testid="Reviews">
@@ -31,8 +33,21 @@ function Reviews({ metadata, data }) {
                 More Reviews
               </Button>
             </span>
-            <span><Button type="button">Add A Review +</Button></span>
+            <span>
+              <Button
+                type="button"
+                onClick={() => setModal(true)}
+              >
+                Add A Review +
+              </Button>
+            </span>
           </ButtonStyle>
+          <ModalContent>
+            <ReviewModal
+              onClose={() => setModal(false)}
+              open={modal}
+            />
+          </ModalContent>
         </RightSection>
       </ReviewListStyle>
     </div>
@@ -80,6 +95,17 @@ flex-direction:column
 
 const ButtonStyle = styled.div`
   flex-direction: column;
+`;
+
+const ModalContent = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    color: #000000;
+  }
 `;
 
 export default Reviews;
