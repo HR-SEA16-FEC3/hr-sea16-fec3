@@ -35,7 +35,7 @@ describe('Product Information Tests', () => {
   describe('Star Rating Tests', () => {
 
     it('Should always display a total of 5 stars', async () => {
-      render(<Information infoList={InfoExample} />);
+      render(<Information infoList={InfoExample} setProductName={()={}}/>);
       const countStars = await screen.findAllByTestId('iconStar')
       expect(countStars).toHaveLength(5);
     });
