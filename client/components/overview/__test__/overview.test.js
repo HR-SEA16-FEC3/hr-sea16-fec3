@@ -4,7 +4,7 @@ import Overview from '../Overview';
 import Information from '../subcomponents/Information';
 import InfoExample from '../product_info_example.json';
 
-const { queryByTestId, findAllByTestId } = render(<Overview />);
+const { queryByTestId, findAllByTestId } = render(<Overview setProductName={() => {}}/>);
 
 describe('Overview Basic Tests', () => { // CONSOLIDATE THESE TESTS LATER
 
@@ -35,7 +35,7 @@ describe('Product Information Tests', () => {
   describe('Star Rating Tests', () => {
 
     it('Should always display a total of 5 stars', async () => {
-      render(<Information infoList={InfoExample} setProductName={()={}}/>);
+      render(<Information infoList={InfoExample} />);
       const countStars = await screen.findAllByTestId('iconStar')
       expect(countStars).toHaveLength(5);
     });
