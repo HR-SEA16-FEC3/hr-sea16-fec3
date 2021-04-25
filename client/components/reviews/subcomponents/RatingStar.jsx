@@ -1,36 +1,41 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const RatingStar = ({ rating }) => {
-  const [stars] = useState(rating);
-  const star = Array.from({ length: 5 }, () => '🟊');
+  const [ratingInteger] = useState(rating);
+  const emptyColor = '#ddd';
+  const size = 24;
+  const activeColor = '#eead0e';
+  const utfStar = <span>&#9733;</span>;
+
+  const star = Array.from({ length: 5 }, () => utfStar);
 
   return (
     <div>
-      {star.map((s, index) => {
-        let style = '#ddd';
-        if (index < stars) {
-          style = '#eead0e';
-        }
-        return (
-          <span
-            className="star"
-            key={index}
-            style={{
-              color: style, width: 24, height: 24, fontSize: 24,
-            }}
-          >
-            {s}
-          </span>
-        );
-      })}
+      {star.map((item, i) => (
+        <span
+          className="star"
+          key={i}
+          style={{
+            color: ((i < ratingInteger) ? activeColor : emptyColor),
+            width: '12px',
+            height: size,
+            // fontSize: size,
+          }}
+        >
+          {item}
+        </span>
+      ))}
     </div>
   );
 };
 
+RatingStar.propTypes = { rating: PropTypes.number.isRequired };
+
 const Rating = styled.div`
- filter: grayscale(100%); // maybe we want stars to become grey if inactive
-  opacity: .3; // maybe we want stars to become opaque
+ filter: grayscale(100%);
+  opacity: .3;
   color: grey;
     &:hover {
       color: orange;

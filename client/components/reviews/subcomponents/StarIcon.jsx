@@ -9,3 +9,5 @@ function StarIcon(props) {
 }
 
 export default StarIcon;
+
+// unlikely to be used as alternative is in place. Consider deleting file

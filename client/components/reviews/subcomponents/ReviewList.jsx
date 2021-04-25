@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import RatingStar from './RatingStar.jsx';
 
 const ReviewList = (props) => (
-
+// rename wrapper, use props
   <div className="review-list">
     {props.dummyData.slice(0, 2).map((item, i) => (
       <ReviewListStyling className="review-tile" key={i}>

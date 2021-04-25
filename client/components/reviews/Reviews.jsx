@@ -5,7 +5,8 @@ import ReviewMeta from './subcomponents/ReviewMeta.jsx';
 import dummyData from './subcomponents/DummyData/product_reviews_example';
 import metaDummyData from './subcomponents/DummyData/product_metaData_example';
 
-function Reviews() {
+// destructure the props, change var naming
+function Reviews({ metadata, data }) {
   return (
     <div data-testid="Reviews">
       <ReviewListStyle>
