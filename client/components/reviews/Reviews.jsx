@@ -7,6 +7,8 @@ import metaDummyData from './subcomponents/DummyData/product_metaData_example';
 
 // destructure the props, change var naming
 function Reviews({ metadata, data }) {
+  const [tiles, setTiles] = useState(2);
+
   return (
     <div data-testid="Reviews">
       <ReviewListStyle>
@@ -19,9 +21,16 @@ function Reviews({ metadata, data }) {
               x reviews, sorted by y
             </div>
           </RightTopSection>
-          <ReviewList dummyData={dummyData.results} />
+          <ReviewList dummyData={dummyData.results.slice(0, tiles)} />
           <ButtonStyle>
-            <span><Button type="button">More Reviews</Button></span>
+            <span>
+              <Button
+                type="button"
+                onClick={() => setTiles(tiles + 2)}
+              >
+                More Reviews
+              </Button>
+            </span>
             <span><Button type="button">Add A Review +</Button></span>
           </ButtonStyle>
         </RightSection>

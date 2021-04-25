@@ -22,25 +22,23 @@ const getAverageRating = ({ ratings }) => {
     count += keys[i] * values[i];
     accumulator += (+values[i]);
   }
-  return (count / accumulator).toFixed(1);
+  return Number((count / accumulator).toFixed(1));
 };
 
 const ReviewMeta = (props) => {
-  const keys = Object.keys(props.metaDummyData.ratings);
-  const values = Object.values(props.metaDummyData.ratings);
-  const rating = getAverageRating(props.metaDummyData);
+  const averageRating = getAverageRating(props.metaDummyData);
 
   return (
     <div>
       <h1>RATINGS AND REVIEWS</h1>
       <MetaHeader className="review-Meta">
         <span>
-          {rating}
+          {averageRating}
 &nbsp;
         </span>
       </MetaHeader>
       <RatingStar
-        rating={rating}
+        rating={averageRating}
       />
       <br />
       100% of reviews recommended this product
