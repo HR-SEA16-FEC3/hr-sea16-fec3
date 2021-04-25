@@ -8,6 +8,8 @@ import Reviews from './components/reviews/Reviews';
 
 const App = () => {
   const [productId, setProductId] = useState(0);
+  const [productName, setProductName] = useState('');
+
   useEffect(() => {
     // TODO: Set product id based on the URL
     setProductId(20100);
@@ -19,9 +21,9 @@ const App = () => {
         <Header>
           <h1><Logo><LogoOctocat size="36"/></Logo> Project Catwalk</h1>
         </Header>
-        <Overview productId={productId} />
+        <Overview productId={productId} setProductName={setProductName} />
         <Divider />
-        <QandA productId={productId} />
+        <QandA productId={productId} productName={productName} />
         <Divider />
         <Reviews productId={productId} />
       </Wrapper>

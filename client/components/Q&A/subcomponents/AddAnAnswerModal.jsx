@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import modalStyles from '../../../sharedStyles/modalStyles';
 
 const AddAnAnswerModal = (props) => {
   const [answerBody, setAnswerBody] = useState('');
@@ -22,13 +23,13 @@ const AddAnAnswerModal = (props) => {
   };
 
   return (
-    <Wrapper onSubmit={handleSubmit}>
-      <Title>Submit your Answer</Title>
-      <Subtitle>{props.question}</Subtitle>
-      <Label htmlFor="youranswer">
+    <modalStyles.Wrapper onSubmit={handleSubmit}>
+      <modalStyles.Title>Submit your Answer</modalStyles.Title>
+      <modalStyles.Subtitle>{props.question}</modalStyles.Subtitle>
+      <modalStyles.Label htmlFor="youranswer">
         {/* Your Answer* */}
         <br />
-        <BodyInput
+        <modalStyles.BodyInput
           as="textarea"
           id="youranswer"
           required
@@ -38,12 +39,12 @@ const AddAnAnswerModal = (props) => {
           placeholder="Enter your answer here"
           maxLength="1000"
         />
-      </Label>
+      </modalStyles.Label>
       <br />
-      <Label htmlFor="nickname">
+      <modalStyles.Label htmlFor="nickname">
         What is your nickname?*
         <br />
-        <Input
+        <modalStyles.Input
           id="nickname"
           required
           type="text"
@@ -53,12 +54,14 @@ const AddAnAnswerModal = (props) => {
           maxLength="60"
         />
         <br />
-        <Disclaimer>For privacy reasons, do not use your full name or email address</Disclaimer>
-      </Label>
-      <Label htmlFor="email">
+        <modalStyles.Disclaimer>
+          For privacy reasons, do not use your full name or email address
+        </modalStyles.Disclaimer>
+      </modalStyles.Label>
+      <modalStyles.Label htmlFor="email">
         Your email*
         <br />
-        <Input
+        <modalStyles.Input
           id="email"
           required
           type="email"
@@ -66,78 +69,13 @@ const AddAnAnswerModal = (props) => {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Example: jack@email.com"
         />
-        <Disclaimer>For authentication reasons, you will not be emailed</Disclaimer>
-      </Label>
-      <Button type="submit">Submit Answer</Button>
-    </Wrapper>
+        <modalStyles.Disclaimer>
+          For authentication reasons, you will not be emailed
+        </modalStyles.Disclaimer>
+      </modalStyles.Label>
+      <modalStyles.Button type="submit">Submit Answer</modalStyles.Button>
+    </modalStyles.Wrapper>
   );
 };
-
-const Label = styled.label`
-  margin: 1em 0;
-  font-size: 16px;
-  display: inline-block;
-  margin: .5em 0;
-  width: 100%;
-`;
-
-const Input = styled.input`
-  font-size: 16px;
-  width: 100%;
-  border: 2px solid #aaa;
-  margin: 0 0;
-  outline: none;
-  padding: 8px;
-  box-sizing: border-box;
-  transition: 0.3s;
-  cursor: pointer;
-  background: whitesmoke;
-  height: 30px;
-
-  &:focus {
-    border-color: dodgerBlue;
-    box-shadow: 0 0 8px 0 dodgerBlue;
-  }
-`;
-
-const Disclaimer = styled.p`
-  color: grey;
-  font-size: 12px;
-  margin: 1px
-`;
-
-const BodyInput = styled(Input)`
-  height: 90px;
-  font-family: sans-serif;
-`;
-
-const Wrapper = styled.form`
-  font-family: sans-serif;
-  scroll-behavior: smooth;
-`;
-
-const Title = styled.h1`
-  font-weight: bold;
-  font-size: 24px;
-`;
-
-const Subtitle = styled.h3`
-  font-weight: bold;
-  font-size: 18px;
-`;
-
-const Button = styled.button`
-  border: 1px solid orange;
-  margin-top: 10px;
-  margin-right: 10px;
-  background: orange;
-  padding: 7px;
-  font-size: 10px;
-  color: white;
-  text-transform: uppercase;
-  width: 175px;
-  &:hover{ background: #ffc457; color: white; }
-  &:active{ background: darkorange; color: white; }
-`;
 
 export default AddAnAnswerModal;

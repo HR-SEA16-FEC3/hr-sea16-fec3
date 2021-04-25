@@ -13,7 +13,7 @@ import axios from 'axios';
 //   modal
 
 function Overview(props) {
-  const { productId } = props;
+  const { productId, setProductName } = props;
   const { default_price: defaultPrice } = InfoExample;
 
   const [stylesList, setStylesList] = useState([]);
@@ -47,6 +47,9 @@ function Overview(props) {
   }, [selectedStyle]);
 
   // FETCH API DATA FOUND BELOW
+  useEffect(() => {
+    setProductName(InfoExample.name);
+  }, [productId]);
 
   return (
     <div data-testid="Overview">

@@ -7,7 +7,7 @@ import QuestionsList from './subcomponents/QuestionsList';
 import Searchbar from './subcomponents/Searchbar';
 import AddAQuestionModal from './subcomponents/AddAQuestionModal';
 
-const QandA = ({ productId }) => {
+const QandA = ({ productId, productName }) => {
   const [questionsList, setQuestionsList] = useState([]);
   const [shownQuestions, setShownQuestions] = useState(2);
   const [searchTerm, setSearchTerm] = useState('');
@@ -88,6 +88,7 @@ const QandA = ({ productId }) => {
           <AddAQuestionModal
             toggleModal={toggleModal}
             productId={productId}
+            productName={productName}
           />
         </Modal>
         {/* Add a question button */}
