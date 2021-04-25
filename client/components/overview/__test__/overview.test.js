@@ -1,8 +1,10 @@
 import React from 'react'
-import {render, screen} from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import Overview from '../Overview';
+import Information from '../subcomponents/Information';
+import InfoExample from '../product_info_example.json';
 
-const { queryByTestId } = render(<Overview />);
+const { queryByTestId, findAllByTestId } = render(<Overview />);
 
 describe('Overview Basic Tests', () => { // CONSOLIDATE THESE TESTS LATER
 
@@ -32,8 +34,10 @@ describe('Product Information Tests', () => {
 
   describe('Star Rating Tests', () => {
 
-    xit('Should always display a total of 5 stars', () => {
-      expect().toBe();
+    it('Should always display a total of 5 stars', async () => {
+      render(<Information infoList={InfoExample} />);
+      const countStars = await screen.findAllByTestId('iconStar')
+      expect(countStars).toHaveLength(5);
     });
 
     xit('Number of stars filled-in should correspond to the average rating rounded up to a quarter of a review point', () => {

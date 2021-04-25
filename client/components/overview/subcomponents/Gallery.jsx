@@ -1,19 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight } from '@styled-icons/octicons';
 
-const Gallery = (props) => {
-  const {
-    styles: {
-      product_id: productId,
-      results,
-    },
-  } = props;
+const Gallery = ({ style }) => {
+  const { name, photos } = style;
 
-  const firstImage = results[0].photos[0].url;
-  const productName = results[0].name;
-  const firstStyleThumbnails = results[0];
+  const [index, setIndex] = useState(0);
+
+  // TODO: display default image
 
   return (
 
@@ -22,15 +17,19 @@ const Gallery = (props) => {
       <FlexElement>
         {/* SELECTED STYLE'S MAIN IMAGE */}
         <ArrowLeft size="20" />
-        <MainImage><img src={firstImage} height="500px" alt={productName} /></MainImage>
+        <MainImage src={photos[index].url} alt={name} />
         <ArrowRight size="20" />
       </FlexElement>
 
       {/* SELECTED STYLE'S THUMBNAILS */}
       <FlexElement>
         <ChevronLeft size="20" />
-        {firstStyleThumbnails.photos.map((photo, key) => (
-          <ThumbnailCircle key={key} image={photo.url} />
+        {photos.map((photo, key) => (
+          <ThumbnailCircle key={key} image={photo.url} onClick={(event) => {
+            event.preventDefault();
+            setIndex(key);
+          }}
+          />
         ))}
         <ChevronRight size="20" />
       </FlexElement>
@@ -66,11 +65,15 @@ const ThumbnailCircle = styled.div`
   background-position: center;
 `;
 
-const MainImage = styled.div`
+const MainImage = styled.img`
   border: 1px solid black;
   margin: 10px 10px;
   background: white;
   padding: 15px;
+  max-height: 500px;
+  max-width: 500px;
+  height: auto;
+  width: auto;
   &:hover{ background: lightgrey }
 `;
 

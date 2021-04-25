@@ -3,7 +3,7 @@ import {render, screen} from '@testing-library/react'
 import StylesList from '../subcomponents/StylesList';
 import StylesExample from '../product_styles_example.json';
 
-const { queryByTestId } = render(<StylesList stylesList={StylesExample} />);
+const { queryByTestId } = render(<StylesList stylesList={StylesExample.results} />);
 
 /* TESTS TO INCLUDE:
  * - shows only one selected style
@@ -25,11 +25,11 @@ xtest('Should update selected style based on user\'s input', () => {
 describe('Tests using sample data from data dump', () => {
 
   it('Should render all styles for selected product', async () => {
-    render(<StylesList stylesList={StylesExample} />);
+    render(<StylesList stylesList={StylesExample.results} />);
     const items = await screen.findAllByTestId('style-thumbnail');
     expect(items).toHaveLength(6);
-    expect(items).toBeTruthy(); // can remove
-    expect(items).not.toHaveLength(0); // can remove
+    // expect(items).toBeTruthy(); // can remove
+    // expect(items).not.toHaveLength(0); // can remove
   });
 
 });

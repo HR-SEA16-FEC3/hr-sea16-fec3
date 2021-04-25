@@ -1,46 +1,40 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Styles from './Styles';
 import styled from 'styled-components';
+import Styles from './Styles';
 
-// pass down setStyle
-
-const StylesList = (props) => {
-  const {
-    stylesList: {
-      product_id: productId,
-      results,
-    },
-  } = props;
+const StylesList = ({ stylesList, displayStyle, setSelectedStyle }) => {
+  const temp = null;
 
   return (
     <div data-testid="StylesList">
-      {/* <div>Overview: Style Selector</div> */}
+      {/* STYLE SELECTOR */}
       <span>
         <strong>STYLE &gt;  </strong>
-        <StyleName>{results[0].name}</StyleName> {/* DEFAULTS TO 1ST ITEM */}
+        <StyleName>
+          {!displayStyle ? <span>LOADING</span> : <span>{displayStyle.name}</span>}
+        </StyleName> {/* DEFAULTS TO 1ST ITEM */}
       </span>
       <div>
-        <CircleSpacing>
-          {results.map((style) => (
-            <Styles style={style} key={style.style_id} /* index={results.indexOf(style)} *//>
-          ))}
-        </CircleSpacing>
+        <Circles>
+          {!stylesList.length /* WORKS WITHOUT CONDITIONAL */
+            ? <div>LOADING</div>
+            : stylesList.map((style) => (
+              <Styles style={style} key={style.style_id} setSelectedStyle={setSelectedStyle} />
+              /* index={results.indexOf(style)} */
+            ))}
+        </Circles>
       </div>
     </div>
   );
 };
 
 StylesList.propTypes = {
-  stylesList: PropTypes.shape({
-    product_id: PropTypes.string,
-    results: PropTypes.arrayOf(PropTypes.shape({
-      style_id: PropTypes.number,
-    })),
-  }),
+  // stylesList: PropTypes.arrayOf,
+  // selectedStyle: PropTypes.shape,
 };
 
-const CircleSpacing = styled.div`
+const Circles = styled.span`
   display: flex;
   flex-flow: row wrap;
   margin: 10px 0;
