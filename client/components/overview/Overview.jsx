@@ -15,7 +15,7 @@ import axios from 'axios';
 // - dynamically render size and quantity
 
 function Overview(props) {
-  const { productId } = props;
+  const { productId, setProductName } = props;
   const { default_price: defaultPrice } = InfoExample;
   const { results } = StylesExample; // TEMP FIX FOR 1ST IMAGE RENDER
   const tempStyle = results[0]; // TEMP FIX FOR 1ST IMAGE RENDER
@@ -54,6 +54,9 @@ function Overview(props) {
   */
 
   // FETCH API DATA FOUND BELOW
+  useEffect(() => {
+    setProductName(InfoExample.name);
+  }, [productId]);
 
   return (
     <div data-testid="Overview">
