@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import Modal from 'react-modal';
 import AnswersList from './AnswersList';
+import AddAnAnswerModal from './AddAnAnswerModal';
+
+Modal.setAppElement('body');
 
 const Question = (props) => {
   const [reported, setReported] = useState(false);
   const [clickedYes, setClickedYes] = useState(false);
   const [helpfulness, setHelpfulness] = useState(props.question.question_helpfulness);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const toggleModal = () => setIsModalOpen(!isModalOpen);
 
   const handleYesClick = () => {
     if (!clickedYes) {
@@ -15,7 +22,7 @@ const Question = (props) => {
           setHelpfulness(helpfulness + 1);
           setClickedYes(true);
         })
-        .catch(() => console.log('Failed to update'));
+        .catch((error) => { throw error; });
     }
   };
   const handleReport = () => {
@@ -41,11 +48,32 @@ const Question = (props) => {
           <span>{helpfulness}</span>
           )
           &ensp;|&ensp;
-          <span>Add an Answer</span>
+          <AddAnAnswer onClick={toggleModal}>Add an Answer</AddAnAnswer>
           &ensp;|&ensp;
           <Report onClick={handleReport} reported={reported}>{reported ? 'Reported' : 'Report'}</Report>
         </QuestionInteractions>
       </QuestionSection>
+      <Modal
+        isOpen={isModalOpen}
+        onRequestClose={toggleModal}
+        contentLabel="My dialog"
+        style={
+          {
+            content: {
+              width: '60vw',
+              height: 'max-content',
+              margin: 'auto',
+              background: 'whitesmoke',
+            },
+          }
+        }
+      >
+        <AddAnAnswerModal
+          toggleModal={toggleModal}
+          question={props.question.question_body}
+          questionId={props.question.question_id}
+        />
+      </Modal>
       {/* Answer List */}
       {(() => {
         if (Object.keys(props.question.answers).length === 0) {
@@ -65,6 +93,10 @@ const Question = (props) => {
     </Wrapper>
   );
 };
+
+const AddAnAnswer = styled.span`
+  cursor: pointer;
+`;
 const Report = styled.span`
   cursor: pointer;
   color: ${(props) => (props.reported ? 'red' : 'black')};;
