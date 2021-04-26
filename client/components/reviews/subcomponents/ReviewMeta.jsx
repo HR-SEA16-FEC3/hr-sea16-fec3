@@ -25,8 +25,14 @@ const getAverageRating = ({ ratings }) => {
   return Number((count / accumulator).toFixed(1));
 };
 
+const getAverageRecommendation = ({ recommended }) => {
+  const totalRecommendations = (Object.values(recommended)).reduce((a, b) => (Number(a) + Number(b)));
+  return (((recommended.true / totalRecommendations) * 100).toFixed(0));
+};
+
 const ReviewMeta = (props) => {
   const averageRating = getAverageRating(props.metaDummyData);
+  const averageRecommendation = getAverageRecommendation(props.metaDummyData);
 
   return (
     <div>
@@ -41,18 +47,25 @@ const ReviewMeta = (props) => {
         rating={averageRating}
       />
       <br />
-      100% of reviews recommended this product
+      {averageRecommendation}
+      % of reviews recommended this product
       <br />
       <br />
+
       5 Stars
+      <RatingsBar />
       <br />
       4 Stars
+      <RatingsBar />
       <br />
       3 Stars
+      <RatingsBar />
       <br />
       2 Stars
+      <RatingsBar />
       <br />
       1 Star
+      <RatingsBar />
       <br />
       <br />
       Size
