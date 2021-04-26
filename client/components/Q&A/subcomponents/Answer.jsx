@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 
+import AnswerImage from './AnswerImage';
+
 const Answer = (props) => {
   const date = new Date(props.answer.date);
   const mNames = ['January', 'February', 'March',
@@ -35,7 +37,9 @@ const Answer = (props) => {
   return (
     <Wrapper>
       <AnswerBody data-testid="AnswerBody">{props.answer.body}</AnswerBody>
-      {props.answer.photos.length > 0 ? <div>Images here!</div> : null}
+      {props.answer.photos.length > 0
+        ? <ImagesDiv>{props.answer.photos.map((url) => (<AnswerImage url={url} />))}</ImagesDiv>
+        : null}
       <AnswerInteraction>
         by&nbsp;
         <span>{props.answer.answerer_name}</span>
@@ -75,4 +79,8 @@ const Wrapper = styled.div`
 margin: 5px 10px;
 `;
 
+const ImagesDiv = styled.div`
+display: flex;
+flex-direction: row;
+`;
 export default Answer;

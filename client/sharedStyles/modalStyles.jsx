@@ -62,6 +62,8 @@ const BodyInput = styled(Input)`
 const Wrapper = styled.form`
   font-family: sans-serif;
   scroll-behavior: smooth;
+  display: flex;
+  flex-direction: column;
 `;
 
 export default {

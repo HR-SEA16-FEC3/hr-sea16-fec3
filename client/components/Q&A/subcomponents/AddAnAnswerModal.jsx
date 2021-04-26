@@ -28,7 +28,6 @@ const AddAnAnswerModal = (props) => {
       <modalStyles.Subtitle>{props.question}</modalStyles.Subtitle>
       <modalStyles.Label htmlFor="youranswer">
         {/* Your Answer* */}
-        <br />
         <modalStyles.BodyInput
           as="textarea"
           id="youranswer"
@@ -40,10 +39,8 @@ const AddAnAnswerModal = (props) => {
           maxLength="1000"
         />
       </modalStyles.Label>
-      <br />
       <modalStyles.Label htmlFor="nickname">
         What is your nickname?*
-        <br />
         <modalStyles.Input
           id="nickname"
           required
@@ -53,7 +50,6 @@ const AddAnAnswerModal = (props) => {
           placeholder="Example: jack543!"
           maxLength="60"
         />
-        <br />
         <modalStyles.Disclaimer>
           For privacy reasons, do not use your full name or email address
         </modalStyles.Disclaimer>
@@ -73,6 +69,7 @@ const AddAnAnswerModal = (props) => {
           For authentication reasons, you will not be emailed
         </modalStyles.Disclaimer>
       </modalStyles.Label>
+      <modalStyles.Button type="button">Add Images</modalStyles.Button>
       <modalStyles.Button type="submit">Submit Answer</modalStyles.Button>
     </modalStyles.Wrapper>
   );
