@@ -29,14 +29,13 @@ const ReviewModal = ({ open, onClose }) => {
           exit="exit"
           variants={modalVariant}
         >
-          <ModalContainer>
+          <ModalContainer variants={containerVariant}>
             <CloseButton
-              type="button"
               onClick={onClose}
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20.39 20.39"
             >
-              <title>close</title>
+              <title>Close</title>
               <line
                 x1="19.39"
                 y1="19.39"
