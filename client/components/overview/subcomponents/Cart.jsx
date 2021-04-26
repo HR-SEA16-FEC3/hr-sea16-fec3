@@ -32,8 +32,8 @@ const Cart = () => (
 
     <p>
       {/* Add to Cart button */}
-      <Button data-testid="btnAddToCart">Add to Cart</Button>
-      <Button data-testid="btnStar"><Heart size="16px" /></Button> {/* TODO: RESIZE BUTTON */}
+      <Button data-testid="btnAddToCart" onClick={ (e) => {e.preventDefault(); }}>Add to Cart</Button>
+      <Button data-testid="btnStar" onClick={ (e) => {e.preventDefault(); }}><Heart size="16px" /></Button> {/* TODO: RESIZE BUTTON */}
     </p>
 
     {/* Share on Social Media */}
