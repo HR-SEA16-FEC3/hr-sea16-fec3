@@ -10,14 +10,18 @@ import StylesExample from './product_styles_example.json';
 import axios from 'axios';
 
 // TODO:
-//   modal
+// - modal
+// - overlay checkmark on selected image's thumbnail
+// - dynamically render size and quantity
 
 function Overview(props) {
   const { productId } = props;
   const { default_price: defaultPrice } = InfoExample;
+  const { results } = StylesExample; // TEMP FIX FOR 1ST IMAGE RENDER
+  const tempStyle = results[0]; // TEMP FIX FOR 1ST IMAGE RENDER
 
   const [stylesList, setStylesList] = useState([]);
-  const [defaultStyle, setDefaultStyle] = useState(null);
+  const [defaultStyle, setDefaultStyle] = useState(tempStyle);
   const [selectedStyle, setSelectedStyle] = useState(null);
   const [displayPrice, setDisplayPrice] = useState(null);
 
@@ -40,11 +44,14 @@ function Overview(props) {
       const salePrice = selectedStyle.sale_price;
       const price = salePrice === null ? originalPrice : salePrice;
       setDisplayPrice(Number(price));
-      return (
-        <Gallery style={selectedStyle === null ? defaultStyle : selectedStyle} />
-      );
     }
+    return null;
   }, [selectedStyle]);
+
+  /* selectedStyle === null
+    ? <p>LOADING</p>
+    : <Gallery style={selectedStyle} />
+  */
 
   // FETCH API DATA FOUND BELOW
 
@@ -57,9 +64,8 @@ function Overview(props) {
             {/* Image Gallery */}
             <Subcomponent>
               {selectedStyle === null
-                ? <span>LOADING</span>
-                : <Gallery style={selectedStyle === null ? defaultStyle : selectedStyle} />
-              }
+                ? <Gallery style={tempStyle} /> // TEMP FIX FOR 1ST IMAGE RENDER
+                : <Gallery style={selectedStyle} />}
             </Subcomponent>
           </LeftSection>
 
