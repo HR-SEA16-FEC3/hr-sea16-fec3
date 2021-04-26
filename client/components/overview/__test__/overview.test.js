@@ -4,7 +4,7 @@ import Overview from '../Overview';
 import Information from '../subcomponents/Information';
 import InfoExample from '../product_info_example.json';
 
-const { queryByTestId, findAllByTestId } = render(<Overview setProductName={() => {}}/>);
+const { queryByTestId, findAllByTestId } = render(<Overview />);
 
 describe('Overview Basic Tests', () => { // CONSOLIDATE THESE TESTS LATER
 

@@ -48,7 +48,7 @@ const Input = styled.input`
   }
 `;
 
-const Disclaimer= styled.p`
+const Disclaimer = styled.p`
   color: grey;
   font-size: 12px;
   margin: 1px

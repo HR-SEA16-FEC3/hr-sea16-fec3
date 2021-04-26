@@ -35,6 +35,7 @@ const Answer = (props) => {
   return (
     <Wrapper>
       <AnswerBody data-testid="AnswerBody">{props.answer.body}</AnswerBody>
+      {props.answer.photos.length > 0 ? <div>Images here!</div> : null}
       <AnswerInteraction>
         by&nbsp;
         <span>{props.answer.answerer_name}</span>

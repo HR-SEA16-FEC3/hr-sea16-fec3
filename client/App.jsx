@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { LogoOctocat } from '@styled-icons/ionicons-solid';
-
+import axios from 'axios';
 import Overview from './components/overview/Overview';
 import QandA from './components/Q&A/Q&A';
 import Reviews from './components/reviews/Reviews';
@@ -9,19 +9,46 @@ import Reviews from './components/reviews/Reviews';
 const App = () => {
   const [productId, setProductId] = useState(0);
   const [productName, setProductName] = useState('');
-
+  const [productList, setProductList] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  // initializing
   useEffect(() => {
     // TODO: Set product id based on the URL
-    setProductId(20100);
-  });
+    axios.get('/products')
+      .then((result) => (setProductList(result.data)));
+  }, []);
+
+  useEffect(() => {
+    if (productList.length > 0) {
+      setProductName(productList[currentIndex].name);
+      setProductId(productList[currentIndex].id);
+    }
+  }, [productList, currentIndex]);
+
+  // automatically change name when id changes
 
   return (
     <Outside>
       <Wrapper>
         <Header>
-          <h1><Logo><LogoOctocat size="36"/></Logo> Project Catwalk</h1>
+          <h1>
+            <Logo>
+              <LogoOctocat size="36" />
+            </Logo>
+            Project Catwalk
+          </h1>
+          <select
+            value={currentIndex}
+            onChange={(e) => { setCurrentIndex(parseInt(e.target.value, 10)); }}
+          >
+            {productList.map((item) => (
+              <option key={item.id} value={productList.indexOf(item)}>
+                {item.name}
+              </option>
+            ))}
+          </select>
         </Header>
-        <Overview productId={productId} setProductName={setProductName} />
+        <Overview productId={productId} />
         <Divider />
         <QandA productId={productId} productName={productName} />
         <Divider />

@@ -47,9 +47,6 @@ function Overview(props) {
   }, [selectedStyle]);
 
   // FETCH API DATA FOUND BELOW
-  useEffect(() => {
-    setProductName(InfoExample.name);
-  }, [productId]);
 
   return (
     <div data-testid="Overview">
