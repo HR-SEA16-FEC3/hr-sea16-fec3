@@ -51,8 +51,8 @@ function Reviews({ metadata, data }) {
           <ReviewModal
             onClose={() => setModal(false)}
             open={modal}
+            reviewData={dummyData.results}
           />
-          <ModalContent />
         </RightSection>
       </ReviewListStyle>
     </div>

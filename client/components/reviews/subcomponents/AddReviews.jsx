@@ -1,101 +1,143 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import ReviewList from './ReviewList.jsx';
+import modalStyles from '../../../sharedStyles/modalStyles';
+import dummyData from './DummyData/product_reviews_example.js';
 
 const AddReviews = (props) => (
   <div className="Add-Review-Modal">
-    <p className="modal-header">
-      Submit your Review for a !
-    </p>
-    <form id="submit-answer-form">
-      <label htmlFor="Reviews-Summary">Add a headline</label>
+    <modalStyles.Title>
+      Submit your Review!
+    </modalStyles.Title>
+    <modalStyles.Wrapper
+      id="submit-answer-form"
+    >
+      <modalStyles.Label htmlFor="Reviews-Summary">
+        Add a headline
+        <br />
+        <modalStyles.Input
+          type="text"
+          id="Reviews-headline"
+          name="Reviews-headline"
+          maxLength="60"
+          placeholder="What's most important to know"
+          className="Reviews-headline"
+          required
+        />
+      </modalStyles.Label>
       <br />
-      <textarea
-        type="text"
-        id="Reviews-headline"
-        name="Reviews-headline"
-        maxLength="60"
-        placeholder="What's most important to know"
-        className="Reviews-headline"
-        required
-      />
+      <modalStyles.Label htmlFor="Reviews-Body">
+        Add your review
+        <br />
+        <modalStyles.Input
+          type="text"
+          id="Reviews-Body"
+          name="Reviews-Body"
+          maxLength="1000"
+          minLength="50"
+          placeholder="What did you like or dislike?"
+          className="Reviews-Body"
+          required
+        />
+      </modalStyles.Label>
       <br />
-      <label htmlFor="Reviews-Body">Add your review</label>
-      <br />
-      <textarea
-        type="text"
-        id="Reviews-Body"
-        name="Reviews-Body"
-        maxLength="1000"
-        minLength="50"
-        placeholder="What did you like or dislike?"
-        className="Reviews-Body"
-        required
-      />
-      <br />
-      <div>
+      <modalStyles.Label htmlFor="Reviews-recommend">
         Would you recommend this product?
-        <select id="recommends">
+        <Select id="recommends">
+          <option value="null">Select</option>
           <option value="yes">Yes</option>
           <option value="no">No</option>
-        </select>
-      </div>
+        </Select>
+      </modalStyles.Label>
       <br />
       <div>
-        How Would You Rate It? (Please Make Sure To Click!)
-        {/* <Rating /> */}
-        ;
+        How Would You Rate It?
+        <Select id="recommends">
+          <option value="null">Select</option>
+          <option value="5">5 Star</option>
+          <option value="4">4 Star</option>
+          <option value="3">3 Star</option>
+          <option value="2">2 Star</option>
+          <option value="1">1 Star</option>
+        </Select>
       </div>
       <br />
-      <label htmlFor="Reviews-nickname">Add a username</label>
+      <modalStyles.Label htmlFor="Reviews-nickname">
+        Add a username
+        <br />
+        <modalStyles.Input
+          type="text"
+          id="Reviews-nickname"
+          name="Reviews-nickname"
+          maxLength="60"
+          placeholder="Example:Berkut488"
+          required
+        />
+      </modalStyles.Label>
       <br />
-      <input
-        type="text"
-        id="Reviews-nickname"
-        name="Reviews-nickname"
-        maxLength="60"
-        placeholder="Example: Berkut488"
-        required
-      />
-      <br />
-      <p className="modal-privacy-warning">
+      <modalStyles.Disclaimer>
         Don't use your real name
-      </p>
-      <label htmlFor="Reviews-email">Your email address</label>
+      </modalStyles.Disclaimer>
+      <modalStyles.Label htmlFor="Reviews-email">
+        Your email address
+        <br />
+        <modalStyles.Input
+          type="text"
+          id="Reviews-email"
+          name="Reviews-email"
+          maxLength="60"
+          placeholder="Example:Shopper22@mail.com"
+          required
+        />
+      </modalStyles.Label>
       <br />
-      <input
-        type="text"
-        id="Reviews-email"
-        name="Reviews-email"
-        maxLength="60"
-        placeholder="Example: smith23@mail.com"
-        required
-      />
+      <modalStyles.Label htmlFor="Review-Photos">
+        Upload your photos
+        <br />
+        <modalStyles.Input
+          type="text"
+          id="photo-upload"
+          name="photo-upload"
+          placeholder="Link your image here"
+        />
+      </modalStyles.Label>
       <br />
-      <label htmlFor="Review-Photos">Upload your photos</label>
-      <br />
-      <input
-        type="text"
-        id="photo-upload"
-        name="photo-upload"
-        placeholder="Link your image here"
-      />
-      <br />
-      <button>
+      <modalStyles.Button
+        type="submit"
+      >
         Submit Photo
-      </button>
-      {/* {characteristicsRadio} */}
-      <div
-        className="photo-upload-preview-container"
-        id="photo-upload-preview-container"
-      />
-      <button>
+      </modalStyles.Button>
+      <modalStyles.Button
+        type="submit"
+      >
         Remove Photo
-      </button>
+      </modalStyles.Button>
       <br />
       <br />
 
-    </form>
+    </modalStyles.Wrapper>
   </div>
 );
+
+const Select = styled.select`
+  width: 100%;
+  height: 35px;
+  background: whitesmoke;
+  color: gray;
+  padding-left: 5px;
+  font-size: 14px;
+  border: solid;
+  border-width: 1px;
+  ;
+
+  option {
+    color: black;
+    background: whitesmoke;
+    display: flex;
+    white-space: pre;
+    min-height: 20px;
+    padding: 0px 2px 1px;
+  }
+`;
 
 export default AddReviews;

@@ -7,7 +7,7 @@ import AddReviews from './AddReviews.jsx';
 
 const modalVariant = {
   initial: { opacity: 0 },
-  open: { opacity: 1 },
+  open: { opacity: 6 },
   exit: { opacity: 0 },
 };
 const containerVariant = {
@@ -76,6 +76,10 @@ const Overlay = styled(motion.div)`
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.3);
+  padding: 16px;
+  font-family: sans-serif;
+  backdrop-filter: blur(6px);
+  box-sizing: border-box;
 `;
 const ModalContainer = styled(motion.div)`
   width: 50%;
@@ -86,6 +90,9 @@ const ModalContainer = styled(motion.div)`
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 12px;
+  padding: 16px;
+  font-size: 16px;
+  background: whitesmoke;
 `;
 const CloseButton = styled.svg`
   width: 20px;
