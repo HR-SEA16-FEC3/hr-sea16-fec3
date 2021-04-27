@@ -33,8 +33,8 @@ const Gallery = ({ style }) => {
       {/* MAIN IMAGE */}
       <MainContainer data-testid="Gallery"> {/* ADD ENLARGE IMAGE ICON */}
         <MainImage src={photos[index].url} alt={name} />
-        <LeftArrow><ArrowLeft size="20" /></LeftArrow>
-        <RightArrow><ArrowRight size="20" /></RightArrow>
+        <LeftArrow><ArrowLeft size="36" /></LeftArrow>
+        <RightArrow><ArrowRight size="36" /></RightArrow>
       </MainContainer>
 
     </OuterContainer>
@@ -60,6 +60,9 @@ const ThumbnailCircle = styled.div`
 
 const OuterContainer = styled.div`
   display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
 `;
 
 const MainContainer = styled.div`
@@ -67,8 +70,7 @@ const MainContainer = styled.div`
   position: relative;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  width: 100%;
+  align-content: center;
 `;
 
 const MainImage = styled.img`
@@ -88,23 +90,32 @@ const MainImage = styled.img`
   align-content: center;
 `;
 
-const Arrows = styled.span`
-  display: flex;
+const Arrows = styled.div`
+  /* display: flex; */
   /* justify-content: space-between; */
   /* align-self: center; */
 `;
 
 const LeftArrow = styled.div`
-  left: 36px;
+  left: 24px;
+  position: relative;
   top: 50%;
   position: absolute;
-
+  color: white;
+  /* border: 1px solid white; */
+  border-radius: 50%;
+  background-color:rgba(0, 0, 0, 0.25);
 `;
 
 const RightArrow = styled.div`
-  right: 36px;
+  right: 24px;
+  position: relative;
   top: 50%;
   position: absolute;
+  color: white;
+  /* border: 1px solid whitesmoke; */
+  border-radius: 50%;
+  background-color:rgba(0, 0, 0, 0.25);
 `;
 
 const ThumbnailContainer = styled.div`
