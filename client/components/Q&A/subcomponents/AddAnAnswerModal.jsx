@@ -8,6 +8,8 @@ const AddAnAnswerModal = (props) => {
   const [answerBody, setAnswerBody] = useState('');
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
+  const [file, setFile] = useState('');
+  const [imgPreviewUrl, setImgPreviewUrl] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,6 +24,17 @@ const AddAnAnswerModal = (props) => {
       .catch((error) => console.log(error));
   };
 
+  const handleImageUpload = (e) => {
+    e.preventDefault();
+    let reader = new FileReader();
+    let file = e.target.files[0];
+
+    reader.onloadend = () => {
+      setFile(file);
+      setImgPreviewUrl(reader.result);
+    };
+    reader.readAsDataURL(file);
+  };
   return (
     <modalStyles.Wrapper onSubmit={handleSubmit}>
       <modalStyles.Title>Submit your Answer</modalStyles.Title>
@@ -69,10 +82,51 @@ const AddAnAnswerModal = (props) => {
           For authentication reasons, you will not be emailed
         </modalStyles.Disclaimer>
       </modalStyles.Label>
-      <modalStyles.Button type="button">Add Images</modalStyles.Button>
+      <UploadLabel
+        htmlFor="image-upload"
+        className="custom-file-upload"
+      >
+        Upload Images
+      </UploadLabel>
+      <Upload
+        id="image-upload"
+        type="file"
+        accept="image/*"
+        multiple
+        onChange={handleImageUpload}
+      />
+      {imgPreviewUrl ? <div><UploadImg src={imgPreviewUrl} /></div> : null}
       <modalStyles.Button type="submit">Submit Answer</modalStyles.Button>
     </modalStyles.Wrapper>
   );
 };
+
+const UploadImg = styled.img`
+  height: 80px;
+  width: auto;
+  margin: 0 10px;
+  border-radius: 5px;
+  cursor: pointer;
+`;
+
+const Upload = styled.input`
+  display: none;
+`;
+
+const UploadLabel = styled.label`
+  border: 1px solid orange;
+  margin-top: 10px;
+  margin-right: 10px;
+  background: orange;
+  padding: 7px;
+  font-size: 10px;
+  display: block;
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
+  width: 159px;
+  &:hover{ background: #ffc457; color: white; }
+  &:active{ background: darkorange; color: white; }
+`;
 
 export default AddAnAnswerModal;

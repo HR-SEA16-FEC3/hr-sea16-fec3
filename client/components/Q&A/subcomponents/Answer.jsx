@@ -63,7 +63,7 @@ const HelpfulYes = styled.span`
 `;
 const Report = styled.span`
   cursor: pointer;
-  color: ${(props) => (props.reported ? 'red' : 'black')};;
+  color: ${(props) => (props.reported ? 'red' : 'black')};
 `;
 
 const AnswerInteraction = styled.p`

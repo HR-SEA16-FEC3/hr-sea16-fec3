@@ -9,7 +9,7 @@ const AnswerImage = (props) => {
 
   return (
     <div>
-      <AnswerImg src={props.url} onClick={toggleModal}/>
+      <AnswerImg src={props.url} onClick={toggleModal} alt="image posted by a user" />
       <Modal
         isOpen={isModalOpen}
         onRequestClose={toggleModal}
@@ -25,7 +25,7 @@ const AnswerImage = (props) => {
           }
         }
       >
-        <ModalImg src={props.url} onClick={toggleModal}/>
+        <ModalImg src={props.url} onClick={toggleModal} alt="image posted by a user" />
       </Modal>
     </div>
   );
