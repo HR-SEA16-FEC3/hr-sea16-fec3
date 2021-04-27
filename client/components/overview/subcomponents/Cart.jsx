@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import * as faBrands from '@styled-icons/fa-brands';
@@ -9,8 +9,19 @@ import { Email } from '@styled-icons/material-outlined';
 const Cart = ({ style }) => {
   const { skus } = style;
 
-  const [size, setSize] = useState(null);
-  const [quantity, setQuantity] = useState(0);
+  const [sku, setSku] = useState('none');
+  const [maxQuantity, setMaxQuantity] = useState(null);
+  const [selQuantity, setSelQuantity] = useState(null);
+  const [options, setOptions] = useState([]);
+
+  useEffect(() => {
+    const array = [];
+    for (let i = 1; i < maxQuantity + 1; i++) {
+      array.push(i);
+      if (i >= 15) { break; }
+    }
+    setOptions(array);
+  }, [maxQuantity]);
 
   return (
     <form data-testid="Cart">
@@ -19,30 +30,38 @@ const Cart = ({ style }) => {
         {/* Size Selector Dropdown */}
         <Select
           data-testid="sizeDropdown"
+          name="sizeDropdown"
           onChange={(e) => {
-            e.preventDefault();
-            console.log('e', e);
-            setSize(e.target.value);
+            setMaxQuantity(Number(event.target.selectedOptions[0].getAttribute('quantity')));
+            setSku(e.target.value);
           }}
         >
-          <option>Select Size</option>
+          <option value="none">Select Size</option>
           {Object.entries(skus).map(([key, value]) => (
-            <option key={key}>{value.size}</option>
+            <option key={key} value={value.size} quantity={value.quantity}>{value.size}</option>
           ))}
         </Select>
 
         {/* Quantity Selector */}
-        <Select data-testid="quantityDropdown">
-          <option>Quantity</option>
-          {/*
-            CONDITIONAL RENDERING:
-              IF SIZE === NULL; DISABLE QTY DROPDOWN AND SHOW '-'
-              ONCE SIZE IS SELECTED, DEFAULT TO QTY '1'
-          */}
-          {Object.entries(skus).map(([key, value]) => (
-            <option key={key}>{value.quantity}</option>
-          ))}
-        </Select>
+        {sku === 'none'
+          ? (
+            <Select data-testid="quantityDropdown" disabled>
+              <option value="none">-</option>
+            </Select>
+          )
+          : (
+            <Select
+              data-testid="quantityDropdown"
+              name="sizeDropdown"
+              onChange={(e) => {
+                setSelQuantity(Number(e.target.value));
+              }}
+            >
+              {options.map((num) => (
+                <option value={num} key={num}>{num}</option>
+              ))}
+            </Select>
+          )}
       </Dropdowns>
 
       {/* Add to Cart button */}
@@ -78,6 +97,7 @@ const Select = styled.select`
   padding: 16px;
   text-transform: uppercase;
   font-weight: bold;
+  /* text-align-last:center; */
 `;
 
 const Button = styled.button`
