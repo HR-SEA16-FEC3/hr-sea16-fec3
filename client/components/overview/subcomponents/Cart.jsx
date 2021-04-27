@@ -9,14 +9,22 @@ import { Email } from '@styled-icons/material-outlined';
 const Cart = ({ style }) => {
   const { skus } = style;
 
-  const [ size, setSize ] = useState(null);
-  const [ quantity, setQuantity ] = useState(0);
+  const [size, setSize] = useState(null);
+  const [quantity, setQuantity] = useState(0);
 
   return (
     <form data-testid="Cart">
-      <p>
+
+      <Dropdowns>
         {/* Size Selector Dropdown */}
-        <Select data-testid="sizeDropdown">
+        <Select
+          data-testid="sizeDropdown"
+          onChange={(e) => {
+            e.preventDefault();
+            console.log('e', e);
+            setSize(e.target.value);
+          }}
+        >
           <option>Select Size</option>
           {Object.entries(skus).map(([key, value]) => (
             <option key={key}>{value.size}</option>
@@ -26,17 +34,22 @@ const Cart = ({ style }) => {
         {/* Quantity Selector */}
         <Select data-testid="quantityDropdown">
           <option>Quantity</option>
+          {/*
+            CONDITIONAL RENDERING:
+              IF SIZE === NULL; DISABLE QTY DROPDOWN AND SHOW '-'
+              ONCE SIZE IS SELECTED, DEFAULT TO QTY '1'
+          */}
           {Object.entries(skus).map(([key, value]) => (
             <option key={key}>{value.quantity}</option>
           ))}
         </Select>
-      </p>
+      </Dropdowns>
 
-      <p>
-        {/* Add to Cart button */}
-        <Button data-testid="btnAddToCart" onClick={ (e) => {e.preventDefault(); }}>Add to Cart</Button>
-        <Button data-testid="btnStar" onClick={ (e) => {e.preventDefault(); }}><Heart size="16px" /></Button> {/* TODO: RESIZE BUTTON */}
-      </p>
+      {/* Add to Cart button */}
+      <Buttons>
+        <Button data-testid="btnAddToCart" onClick={(e) => { e.preventDefault(); }}>Add to Cart</Button> {/* TODO: RESIZE BUTTON */}
+        <Button data-testid="btnStar" onClick={(e) => { e.preventDefault(); }}><Heart size="16px" /></Button>
+      </Buttons>
 
       {/* Share on Social Media */}
       <Socials>
@@ -53,6 +66,10 @@ const Cart = ({ style }) => {
 
   );
 };
+
+const Dropdowns = styled.div``;
+
+const Buttons = styled.div``;
 
 const Select = styled.select`
   border: 1px solid black;
