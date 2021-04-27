@@ -15,14 +15,10 @@ const Gallery = ({ style }) => {
   // arrows part of main image div
 
   return (
-    <MainContainer data-testid="Gallery"> {/* ADD ENLARGE IMAGE ICON */}
-      {/* SELECTED STYLE'S MAIN IMAGE */}
-      <MainImage src={photos[index].url} alt={name} />
-      <LeftArrow><ArrowLeft size="20" /></LeftArrow>
-      <RightArrow><ArrowRight size="20" /></RightArrow>
+    <OuterContainer>
 
-      {/* SELECTED STYLE'S THUMBNAILS */}
-      <FlexElement>
+      {/* THUMBNAILS */}
+      <ThumbnailContainer>
         <ChevronUp size="20" />
         {photos.map((photo, key) => (
           <ThumbnailCircle key={key} image={photo.url} onClick={(event) => {
@@ -32,9 +28,16 @@ const Gallery = ({ style }) => {
           />
         ))}
         <ChevronDown size="20" />
-      </FlexElement>
+      </ThumbnailContainer>
 
-    </MainContainer>
+      {/* MAIN IMAGE */}
+      <MainContainer data-testid="Gallery"> {/* ADD ENLARGE IMAGE ICON */}
+        <MainImage src={photos[index].url} alt={name} />
+        <LeftArrow><ArrowLeft size="20" /></LeftArrow>
+        <RightArrow><ArrowRight size="20" /></RightArrow>
+      </MainContainer>
+
+    </OuterContainer>
   );
 };
 
@@ -55,20 +58,25 @@ const ThumbnailCircle = styled.div`
   background-position: center;
 `;
 
-const MainContainer = styled.div`
+const OuterContainer = styled.div`
   display: flex;
+`;
+
+const MainContainer = styled.div`
+  /* display: flex; */
   position: relative;
   justify-content: center;
   align-items: center;
-  width: 100%;
   height: 100%;
+  width: 100%;
 `;
 
 const MainImage = styled.img`
   display: block;
   border: 2px solid black;
-  margin-left: auto;
-  margin-right: auto;
+  /* margin-left: auto; */
+  /* margin-right: auto; */
+  margin: auto auto;
   /* padding: 15px; */
   max-height: 500px;
   max-width: 500px;
@@ -97,16 +105,15 @@ const RightArrow = styled.div`
   right: 36px;
   top: 50%;
   position: absolute;
-
 `;
 
-const FlexElement = styled.div`
-  /* display: flex; */
+const ThumbnailContainer = styled.div`
+  display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
-  align-content: flex-start;
-  /* align-self: flex-start; */
+  align-items: center;
+  /* align-content: center; */
+  /* align-self: center; */
 `;
 
 /* =============================================================================== */
