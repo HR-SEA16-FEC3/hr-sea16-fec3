@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { ArrowLeft, ArrowRight, ChevronUp, ChevronDown } from '@styled-icons/octicons';
 import { StarThreeQuarter } from '@styled-icons/fluentui-system-filled';
+import { Expand } from '@styled-icons/fa-solid';
 
 const Gallery = ({ style }) => {
   const { name, photos } = style;
@@ -35,10 +36,9 @@ const Gallery = ({ style }) => {
       {/* MAIN IMAGE */}
       <MainContainer data-testid="Gallery"> {/* ADD ENLARGE IMAGE ICON */}
         <MainImage src={photos[index].url} alt={name} />
-        <Arrows>
-          <LeftArrow><ArrowLeft size="36" /></LeftArrow>
-          <RightArrow><ArrowRight size="36" /></RightArrow>
-        </Arrows>
+        <ExpandContainer><Expand size="20" /></ExpandContainer>
+        <LeftArrow><ArrowLeft size="36" /></LeftArrow>
+        <RightArrow><ArrowRight size="36" /></RightArrow>
       </MainContainer>
 
     </OuterContainer>
@@ -77,7 +77,7 @@ const MainContainer = styled.div`
   /* display: block; */
   position: relative;
   width: 100%;
-
+  max-width: 768px;
   /* flex: 1 1 auto; */
   /* flex-flow: row wrap; */
   /* justify-content: center; */
@@ -99,6 +99,7 @@ const MainImage = styled.img`
 `;
 
 const Arrows = styled.div`
+  display: block;
   position: relative;
   /* justify-content: space-between; */
   /* align-self: center; */
@@ -129,6 +130,13 @@ const ThumbnailContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start; /* y-axis */
   align-items: center; /* x-axis */
+`;
+
+const ExpandContainer = styled.div`
+  display: block;
+  right: 0;
+  top: 0;
+  position: absolute;
 `;
 
 /* =============================================================================== */
