@@ -34,10 +34,12 @@ StylesList.propTypes = {
   // selectedStyle: PropTypes.shape,
 };
 
-const Circles = styled.span`
+const Circles = styled.div`
   display: flex;
-  flex-flow: row wrap;
-  margin: 10px 0;
+  flex-wrap: wrap;
+  margin: 8px 0;
+  justify-content: flex-start;
+  /* flex: 1 0 21% */
 `;
 
 const StyleName = styled.span`

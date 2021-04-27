@@ -22,7 +22,7 @@ const Gallery = ({ style }) => {
       <ThumbnailContainer>
         <ChevronUp size="20" />
         {photos.map((photo, key) => (
-          <ThumbnailCircle
+          <ThumbnailSquare
             key={key} image={photo.url}
             onClick={(event) => {
               event.preventDefault();
@@ -45,7 +45,7 @@ const Gallery = ({ style }) => {
   );
 };
 
-const ThumbnailCircle = styled.div`
+const ThumbnailSquare = styled.div`
   border: 1px solid black;
   display: flex;
   flex-flow: row wrap;
@@ -55,8 +55,6 @@ const ThumbnailCircle = styled.div`
   margin: 10px 10px;
   object-fit: contain;
   justify-content: center;
-  color: cornflowerblue;
-  font-weight: bold;
   background-image: url(${(props) => props.image});
   background-size: cover;
   background-position: center;
