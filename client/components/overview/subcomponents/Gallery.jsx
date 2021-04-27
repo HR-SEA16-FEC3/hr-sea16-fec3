@@ -34,9 +34,11 @@ const Gallery = ({ style }) => {
 
       {/* MAIN IMAGE */}
       <MainContainer data-testid="Gallery"> {/* ADD ENLARGE IMAGE ICON */}
-        <LeftArrow><ArrowLeft size="36" /></LeftArrow>
         <MainImage src={photos[index].url} alt={name} />
-        <RightArrow><ArrowRight size="36" /></RightArrow>
+        <Arrows>
+          <LeftArrow><ArrowLeft size="36" /></LeftArrow>
+          <RightArrow><ArrowRight size="36" /></RightArrow>
+        </Arrows>
       </MainContainer>
 
     </OuterContainer>
@@ -47,7 +49,7 @@ const ThumbnailCircle = styled.div`
   border: 1px solid black;
   display: flex;
   flex-flow: row wrap;
-  border-radius: 50%;
+  /* border-radius: 50%; */
   height: 50px;
   width: 50px;
   margin: 10px 10px;
@@ -67,61 +69,57 @@ const ThumbnailCircle = styled.div`
 const OuterContainer = styled.div`
   display: flex;
   justify-content: center;
-  width: 100%;
+  /* width: 100%; */
+  flex: auto;
 `;
 
 const MainContainer = styled.div`
-  display: flex;
-  flex: 1 1 auto;
-  /* position: relative; */
-  justify-content: center;
-  align-items: center;
-  align-content: center;
+  /* display: block; */
+  position: relative;
+  width: 100%;
+
+  /* flex: 1 1 auto; */
+  /* flex-flow: row wrap; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* align-content: center; */
 `;
 
 const MainImage = styled.img`
-  display: flex;
-  flex: 0 1 auto;
+  display: block;
   border: 2px solid black;
   /* margin-left: auto; */
   /* margin-right: auto; */
-  /* margin: auto auto; */
+  margin: auto auto;
   /* padding: 15px; */
   max-height: 500px;
   max-width: 500px;
   height: auto;
   width: auto;
-  &:hover{ background: lightgrey }
-  /* position: relative; */
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  position: relative;
-  align-self: flex-end;
 `;
 
 const Arrows = styled.div`
-  /* display: flex; */
+  position: relative;
   /* justify-content: space-between; */
   /* align-self: center; */
 `;
 
 const LeftArrow = styled.div`
-  left: 24px;
-  position: relative;
-  top: 50%;
+  display: block;
+  position: absolute;
+  left: 0;
+  /* top: 50%; */
   color: white;
-  /* border: 1px solid white; */
   border-radius: 50%;
   background-color:rgba(0, 0, 0, 0.25);
 `;
 
 const RightArrow = styled.div`
-  right: 24px;
-  position: relative;
-  top: 50%;
+  display: block;
+  position: absolute;
+  right: 0;
+  /* top: 50%; */
   color: white;
-  /* border: 1px solid whitesmoke; */
   border-radius: 50%;
   background-color:rgba(0, 0, 0, 0.25);
 `;
