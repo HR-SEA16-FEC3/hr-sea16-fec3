@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import * as faBrands from '@styled-icons/fa-brands';
@@ -9,7 +9,8 @@ import { Email } from '@styled-icons/material-outlined';
 const Cart = ({ style }) => {
   const { skus } = style;
 
-  console.log(skus);
+  const [ size, setSize ] = useState(null);
+  const [ quantity, setQuantity ] = useState(0);
 
   return (
     <form data-testid="Cart">
@@ -17,20 +18,17 @@ const Cart = ({ style }) => {
         {/* Size Selector Dropdown */}
         <Select data-testid="sizeDropdown">
           <option>Select Size</option>
-          <option>Small</option>
-          <option>Medium</option>
-          <option>Large</option>
+          {Object.entries(skus).map(([key, value]) => (
+            <option key={key}>{value.size}</option>
+          ))}
         </Select>
 
         {/* Quantity Selector */}
         <Select data-testid="quantityDropdown">
           <option>Quantity</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-          <option>6</option>
+          {Object.entries(skus).map(([key, value]) => (
+            <option key={key}>{value.quantity}</option>
+          ))}
         </Select>
       </p>
 
@@ -84,7 +82,7 @@ const Socials = styled.div`
   margin: 0;
 `;
 
-const Icon = styled.span` // ONCLICK SHOULD BE DARKER THAN REST STATE PER WIFE
+const Icon = styled.span` // ONCLICK SHOULD BE DARKER THAN REST STATE
   margin: 10px 16px 0 0;
   &:hover{ color: #ffbf00 } // HOVER SHOULD BE A LIGHTER COLOR THAN REST STATE
 `;
