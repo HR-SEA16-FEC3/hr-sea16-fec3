@@ -6,50 +6,55 @@ import * as boxiconsSolid from '@styled-icons/boxicons-solid'; // boxiconsSolid.
 import { Link, Heart } from '@styled-icons/boxicons-regular';
 import { Email } from '@styled-icons/material-outlined';
 
-const Cart = () => (
+const Cart = ({ style }) => {
+  const { skus } = style;
 
-  <form data-testid="Cart">
-    <p>
-      {/* Size Selector Dropdown */}
-      <Select data-testid="sizeDropdown">
-        <option>Select Size</option>
-        <option>Small</option>
-        <option>Medium</option>
-        <option>Large</option>
-      </Select>
+  console.log(skus);
 
-      {/* Quantity Selector */}
-      <Select data-testid="quantityDropdown">
-        <option>Quantity</option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-        <option>6</option>
-      </Select>
-    </p>
+  return (
+    <form data-testid="Cart">
+      <p>
+        {/* Size Selector Dropdown */}
+        <Select data-testid="sizeDropdown">
+          <option>Select Size</option>
+          <option>Small</option>
+          <option>Medium</option>
+          <option>Large</option>
+        </Select>
 
-    <p>
-      {/* Add to Cart button */}
-      <Button data-testid="btnAddToCart" onClick={ (e) => {e.preventDefault(); }}>Add to Cart</Button>
-      <Button data-testid="btnStar" onClick={ (e) => {e.preventDefault(); }}><Heart size="16px" /></Button> {/* TODO: RESIZE BUTTON */}
-    </p>
+        {/* Quantity Selector */}
+        <Select data-testid="quantityDropdown">
+          <option>Quantity</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+        </Select>
+      </p>
 
-    {/* Share on Social Media */}
-    <Socials>
-      {/* Facebook, Twitter, Pinterest = min required */}
-      <Icon><faBrands.Facebook data-testid="icon-facebook" size="36" /></Icon>
-      <Icon><faBrands.Twitter data-testid="icon-twitter" size="36" /></Icon>
-      <Icon><faBrands.Pinterest data-testid="icon-pinterest" size="36" /></Icon>
-      <Icon><faBrands.Instagram size="36" /></Icon>
-      <Icon><faBrands.Whatsapp size="36" /></Icon>
-      <Icon><Email size="36" /></Icon>
-      <Icon><Link size="36" /></Icon>
-    </Socials>
-  </form>
+      <p>
+        {/* Add to Cart button */}
+        <Button data-testid="btnAddToCart" onClick={ (e) => {e.preventDefault(); }}>Add to Cart</Button>
+        <Button data-testid="btnStar" onClick={ (e) => {e.preventDefault(); }}><Heart size="16px" /></Button> {/* TODO: RESIZE BUTTON */}
+      </p>
 
-);
+      {/* Share on Social Media */}
+      <Socials>
+        {/* Facebook, Twitter, Pinterest = min required */}
+        <Icon><faBrands.Facebook data-testid="icon-facebook" size="36" /></Icon>
+        <Icon><faBrands.Twitter data-testid="icon-twitter" size="36" /></Icon>
+        <Icon><faBrands.Pinterest data-testid="icon-pinterest" size="36" /></Icon>
+        <Icon><faBrands.Instagram size="36" /></Icon>
+        <Icon><faBrands.Whatsapp size="36" /></Icon>
+        <Icon><Email size="36" /></Icon>
+        <Icon><Link size="36" /></Icon>
+      </Socials>
+    </form>
+
+  );
+};
 
 const Select = styled.select`
   border: 1px solid black;

@@ -90,7 +90,9 @@ function Overview(props) {
 
             {/* Add to Cart */}
             <Subcomponent>
-              <Cart />
+              {selectedStyle === null
+                ? <Cart style={tempStyle} /> // TEMP FIX
+                : <Cart style={selectedStyle} />}
             </Subcomponent>
           </RightSection>
         </TopSection>
