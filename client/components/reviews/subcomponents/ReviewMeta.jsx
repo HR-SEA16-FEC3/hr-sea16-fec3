@@ -1,15 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import RatingStar from './RatingStar.jsx';
 import RatingsBar from './RatingBar.jsx';
-// }
-// const metaData = {
-//   product_id: '20100',
-//   ratings: {
-//     3: '2',
-//     4: '1',
-//     5: '9',
-//   },
 
 const getAverageRating = ({ ratings }) => {
   const keys = Object.keys(ratings);
@@ -30,9 +22,23 @@ const getAverageRecommendation = ({ recommended }) => {
   return (((recommended.true / totalRecommendations) * 100).toFixed(0));
 };
 
+const cloneObject = ({ ratings }) => {
+  const completeRatingObject = {
+    5: '0', 4: '0', 3: '0', 2: '0', 1: '0',
+  };
+  return Object.assign(completeRatingObject, ratings);
+};
+
+const maxWidth = ({ ratings }) => {
+  const values = Object.values(ratings);
+  return Math.max(...values);
+};
+
 const ReviewMeta = (props) => {
   const averageRating = getAverageRating(props.metaDummyData);
   const averageRecommendation = getAverageRecommendation(props.metaDummyData);
+  const clonedRatingObject = cloneObject(props.metaDummyData);
+  const maxRatingWidth = maxWidth(props.metaDummyData);
 
   return (
     <div>
@@ -51,22 +57,17 @@ const ReviewMeta = (props) => {
       % of reviews recommended this product
       <br />
       <br />
-
-      5 Stars
-      <RatingsBar />
-      <br />
-      4 Stars
-      <RatingsBar />
-      <br />
-      3 Stars
-      <RatingsBar />
-      <br />
-      2 Stars
-      <RatingsBar />
-      <br />
-      1 Star
-      <RatingsBar />
-      <br />
+      {(Object.entries(clonedRatingObject).reverse().map(([key, value], i) => (
+        <div>
+          {key}
+          &nbsp;Stars
+          <RatingsBar
+            rating={value}
+            maxRatingWidth={value / maxRatingWidth}
+            key={i}
+          />
+        </div>
+      )))}
       <br />
       Size
       <br />

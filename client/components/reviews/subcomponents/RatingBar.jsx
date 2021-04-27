@@ -1,23 +1,25 @@
 import React from 'react';
+import { reduce } from 'underscore';
 import metaDummyData from './DummyData/product_metaData_example.js';
 
 const RatingsBar = (props) => {
-  const { bgcolor, completed } = props;
+  const fillerWidth = (props.maxRatingWidth) * 100;
 
   const containerStyles = {
     height: 20,
-    width: '100%',
+    width: '75%',
     backgroundColor: '#e0e0de',
-    borderRadius: 50,
-    margin: 50,
+    borderRadius: 25,
+    margin: 4,
+
   };
 
   const fillerStyles = {
     height: '100%',
-    width: `${props.rating}%`,
-    backgroundColor: bgcolor,
+    width: `${fillerWidth}%`,
+    backgroundColor: '#eead0e',
     borderRadius: 'inherit',
-    textAlign: 'right',
+    textAlign: 'center',
   };
 
   const labelStyles = {
@@ -29,7 +31,7 @@ const RatingsBar = (props) => {
   return (
     <div style={containerStyles}>
       <div style={fillerStyles}>
-        <span style={labelStyles}>{`${props.rating}%`}</span>
+        <span style={labelStyles}>{`${props.rating}`}</span>
       </div>
     </div>
   );

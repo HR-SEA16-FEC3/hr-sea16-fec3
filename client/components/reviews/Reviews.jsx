@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import ReviewList from './subcomponents/ReviewList.jsx';
 import ReviewMeta from './subcomponents/ReviewMeta.jsx';
 import ReviewModal from './subcomponents/ReviewModal.jsx';
+import ReviewSort from './subcomponents/ReviewSort.jsx';
 import OpenModalButton from './subcomponents/OpenModalButton.jsx';
 import dummyData from './subcomponents/DummyData/product_reviews_example';
 import metaDummyData from './subcomponents/DummyData/product_metaData_example';
@@ -11,11 +12,6 @@ import metaDummyData from './subcomponents/DummyData/product_metaData_example';
 function Reviews({ metadata, data }) {
   const [tiles, setTiles] = useState(2);
   const [modal, setModal] = useState(false);
-
-  function handlOpenModal(open) {
-    console.log('close modal');
-    toggle(open);
-  }
 
   return (
     <div data-testid="Reviews">
@@ -26,7 +22,10 @@ function Reviews({ metadata, data }) {
         <RightSection>
           <RightTopSection>
             <div>
-              x reviews, sorted by y
+              <ReviewSort
+                dummyData={dummyData}
+              />
+
             </div>
           </RightTopSection>
           <ReviewList dummyData={dummyData.results.slice(0, tiles)} />
