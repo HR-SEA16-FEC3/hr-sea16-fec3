@@ -21,10 +21,12 @@ const Gallery = ({ style }) => {
       <ThumbnailContainer>
         <ChevronUp size="20" />
         {photos.map((photo, key) => (
-          <ThumbnailCircle key={key} image={photo.url} onClick={(event) => {
-            event.preventDefault();
-            setIndex(key);
-          }}
+          <ThumbnailCircle
+            key={key} image={photo.url}
+            onClick={(event) => {
+              event.preventDefault();
+              setIndex(key);
+            }}
           />
         ))}
         <ChevronDown size="20" />
@@ -32,8 +34,8 @@ const Gallery = ({ style }) => {
 
       {/* MAIN IMAGE */}
       <MainContainer data-testid="Gallery"> {/* ADD ENLARGE IMAGE ICON */}
-        <MainImage src={photos[index].url} alt={name} />
         <LeftArrow><ArrowLeft size="36" /></LeftArrow>
+        <MainImage src={photos[index].url} alt={name} />
         <RightArrow><ArrowRight size="36" /></RightArrow>
       </MainContainer>
 
@@ -56,38 +58,46 @@ const ThumbnailCircle = styled.div`
   background-image: url(${(props) => props.image});
   background-size: cover;
   background-position: center;
+  &:hover{
+    cursor: pointer;
+    opacity: 0.75;
+  };
 `;
 
 const OuterContainer = styled.div`
   display: flex;
   justify-content: center;
-  height: 100%;
   width: 100%;
 `;
 
 const MainContainer = styled.div`
-  /* display: flex; */
-  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+  /* position: relative; */
   justify-content: center;
   align-items: center;
   align-content: center;
 `;
 
 const MainImage = styled.img`
-  display: block;
+  display: flex;
+  flex: 0 1 auto;
   border: 2px solid black;
   /* margin-left: auto; */
   /* margin-right: auto; */
-  margin: auto auto;
+  /* margin: auto auto; */
   /* padding: 15px; */
   max-height: 500px;
   max-width: 500px;
   height: auto;
   width: auto;
   &:hover{ background: lightgrey }
-  position: relative;
+  /* position: relative; */
   justify-content: center;
   align-content: center;
+  align-items: center;
+  position: relative;
+  align-self: flex-end;
 `;
 
 const Arrows = styled.div`
@@ -100,7 +110,6 @@ const LeftArrow = styled.div`
   left: 24px;
   position: relative;
   top: 50%;
-  position: absolute;
   color: white;
   /* border: 1px solid white; */
   border-radius: 50%;
@@ -111,7 +120,6 @@ const RightArrow = styled.div`
   right: 24px;
   position: relative;
   top: 50%;
-  position: absolute;
   color: white;
   /* border: 1px solid whitesmoke; */
   border-radius: 50%;
@@ -121,10 +129,8 @@ const RightArrow = styled.div`
 const ThumbnailContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  /* align-content: center; */
-  /* align-self: center; */
+  justify-content: flex-start; /* y-axis */
+  align-items: center; /* x-axis */
 `;
 
 /* =============================================================================== */

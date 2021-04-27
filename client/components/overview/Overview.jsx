@@ -117,6 +117,8 @@ const OverviewStyle = styled.section`
 const TopSection = styled.div`
   display: flex;
   flex-direction: row;
+  height: 100%;
+  min-height: 768px;
   margin: 8px 4px 4px 4px;
 `;
 
@@ -131,14 +133,14 @@ const BottomSection = styled.div`
 
 const LeftSection = styled.div`
   flex-direction: column;
-  width: 60%;
-  flex-grow: 1; /* REEVALUATE */
+  /* width: 60%; */
+  flex: 1 1 60%;
   margin: 10px;
 `;
 
 const RightSection = styled.div`
   flex-direction: column;
-  width: 40%;
+  flex: 1 1 40%;
   margin: 10px;
 `;
 
