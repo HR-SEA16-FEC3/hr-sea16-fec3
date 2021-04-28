@@ -7,7 +7,7 @@ import QuestionsList from './subcomponents/QuestionsList';
 import Searchbar from './subcomponents/Searchbar';
 import AddAQuestionModal from './subcomponents/AddAQuestionModal';
 
-const QandA = ({ productId, productName }) => {
+const QandA = ({ productId, productName, colorScheme }) => {
   const [questionsList, setQuestionsList] = useState([]);
   const [shownQuestions, setShownQuestions] = useState(2);
   const [searchTerm, setSearchTerm] = useState('');
@@ -42,22 +42,48 @@ const QandA = ({ productId, productName }) => {
 
   const currentList = filteredList.slice(0, shownQuestions);
 
-  return (
-    <Wrapper data-testid="QA">
+  const handleAddQuestion = () => {
+    axios.get(`/qa/questions/${productId}`)
+      .then((data) => (
+        setQuestionsList(sortQuestionsList(data.data.results))
+      ))
+      .catch((error) => {
+        throw error;
+      });
+  };
 
-      <Title>Q &amp; A</Title>
+  return (
+    <Wrapper
+      data-testid="QA"
+      colorScheme={colorScheme}
+    >
+
+      <Title colorScheme={colorScheme}>Q &amp; A</Title>
 
       {/* Search Questions */}
       {questionsList.length > 0
-        ? <Searchbar searchTerm={searchTerm} setSearchTerm={setSearchTerm} /> : null}
+        ? (
+          <Searchbar
+            colorScheme={colorScheme}
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+          />
+        ) : null}
       {/* Questions List */}
       <div>
-        <QuestionsList questionsList={currentList} />
+        <QuestionsList questionsList={currentList} colorScheme={colorScheme} />
         {/* More Answered Questions Button */}
         {(() => {
           if (filteredList.length > 2 && shownQuestions <= filteredList.length) {
             return (
-              <Button type="button" data-testid="MoreQuestion" onClick={handleShowMore}>MORE ANSWERED QUESTIONS</Button>
+              <Button
+                type="button"
+                data-testid="MoreQuestion"
+                onClick={handleShowMore}
+                colorScheme={colorScheme}
+              >
+                MORE ANSWERED QUESTIONS
+              </Button>
             );
           }
           return null;
@@ -65,7 +91,14 @@ const QandA = ({ productId, productName }) => {
         {(() => {
           if (shownQuestions > 2 && currentList.length > 2) {
             return (
-              <Button type="button" data-testid="MoreQuestion" onClick={handleShowLess}>SHOW LESS QUESTIONS</Button>
+              <Button
+                type="button"
+                data-testid="MoreQuestion"
+                onClick={handleShowLess}
+                colorScheme={colorScheme}
+              >
+                SHOW LESS QUESTIONS
+              </Button>
             );
           }
           return null;
@@ -89,6 +122,7 @@ const QandA = ({ productId, productName }) => {
             toggleModal={toggleModal}
             productId={productId}
             productName={productName}
+            handleAddQuestion={handleAddQuestion}
           />
         </Modal>
         {/* Add a question button */}
@@ -96,6 +130,7 @@ const QandA = ({ productId, productName }) => {
           type="button"
           data-testid="AddQuestion"
           onClick={toggleModal}
+          colorScheme={colorScheme}
         >
           ADD A QUESTION +
         </Button>
@@ -110,25 +145,28 @@ const sortQuestionsList = (list) => {
 };
 
 const Button = styled.button`
-  border: 0px solid lightgray;
+  border: 0px;
   margin-top: 15px;
   margin-right: 15px;
-  background: orange;
-  color: white;
+  background: ${(props) => (props.colorScheme ? 'purple' : 'orange')};
+  color: whitesmoke;
   padding: 15px;
   text-transform: uppercase;
-  &:hover{ background: white; color: black; }
+  &:hover{ background: ${(props) => (props.colorScheme ? '#a64ca6' : '#ffc04c')}; }
+  &:active{ background: ${(props) => (props.colorScheme ? '#660066' : '#cc8400')}; }
 `;
 
 const Wrapper = styled.section`
 padding: 1em;
-background: #e6e6e6;
+background: ${(props) => (props.colorScheme ? '#ababab' : '#c4c4c4')};
+color: ${(props) => (props.colorScheme ? 'whitesmoke' : 'black')}
 font-family: sans-serif;
 max-height: 100vh;
 `;
 
 const Title = styled.h1`
   font-size: 22px;
+  color: ${(props) => (props.colorScheme ? 'whitesmoke' : 'black')};
 `;
 
 export default QandA;

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 
+import AnswerImage from './AnswerImage';
+
 const Answer = (props) => {
   const date = new Date(props.answer.date);
   const mNames = ['January', 'February', 'March',
@@ -12,7 +14,7 @@ const Answer = (props) => {
   const [helpfulness, setHelpfulness] = useState(props.answer.helpfulness);
   const handleYesClick = () => {
     if (!clickedYes) {
-      axios.put(`/qa/answers/${props.answer.id}/helpful`)
+      axios.put(`/qa/answers/${props.answer.id || props.answer.answer_id}/helpful`)
         .then(() => {
           setHelpfulness(helpfulness + 1);
           setClickedYes(true);
@@ -23,7 +25,7 @@ const Answer = (props) => {
 
   const handleReport = () => {
     if (!reported) {
-      axios.put(`/qa/answers/${props.answer.id}/report`)
+      axios.put(`/qa/answers/${props.answer.id || props.answer.answer_id}/report`)
         .then(() => {
           setReported(true);
         })
@@ -35,6 +37,15 @@ const Answer = (props) => {
   return (
     <Wrapper>
       <AnswerBody data-testid="AnswerBody">{props.answer.body}</AnswerBody>
+      {props.answer.photos.length > 0
+        ? (
+          <ImagesDiv>
+            {props.answer.photos.map(
+              (url) => (<AnswerImage url={url} key={url} />),
+            )}
+          </ImagesDiv>
+        )
+        : null}
       <AnswerInteraction>
         by&nbsp;
         <span>{props.answer.answerer_name}</span>
@@ -46,7 +57,7 @@ const Answer = (props) => {
         &nbsp;(
         <span>{helpfulness}</span>
         )&ensp;|&ensp;
-        <Report onClick={handleReport} reported={reported}>{reported ? 'Reported' : 'Report'}</Report>
+        <Report colorScheme={props.colorScheme} onClick={handleReport} reported={reported}>{reported ? 'Reported' : 'Report'}</Report>
       </AnswerInteraction>
 
     </Wrapper>
@@ -58,7 +69,7 @@ const HelpfulYes = styled.span`
 `;
 const Report = styled.span`
   cursor: pointer;
-  color: ${(props) => (props.reported ? 'red' : 'black')};;
+  color: ${(props) => (props.reported ? 'red' : (props.colorScheme ? 'whitesmoke': 'black'))};
 `;
 
 const AnswerInteraction = styled.p`
@@ -74,4 +85,8 @@ const Wrapper = styled.div`
 margin: 5px 10px;
 `;
 
+const ImagesDiv = styled.div`
+display: flex;
+flex-direction: row;
+`;
 export default Answer;

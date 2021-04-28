@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
-const Searchbar = ({ searchTerm, setSearchTerm }) => {
+const Searchbar = ({ searchTerm, setSearchTerm, colorScheme }) => {
   //const [text, setText] = useState('');
   const handleChange = async (event) => {
     //setText(event.target.value);
@@ -16,15 +16,16 @@ const Searchbar = ({ searchTerm, setSearchTerm }) => {
 
   return (
     <form data-testid="Searchbar">
-      <StyledInput className="inputWithIcon">
+      <StyledInput className="inputWithIcon" colorScheme={colorScheme}>
         <Input
           type="text"
           value={searchTerm}
+          colorScheme={colorScheme}
           onChange={handleChange}
           placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
         />
         <div className="left-icon">
-          <FontAwesomeIcon icon={faSearch} />
+          <FontAwesomeIcon icon={faSearch} style={{ color: (colorScheme ? 'whitesmoke' : 'black') }} />
         </div>
 
         <button type="button" className="right-icon" onClick={clearInput}>
@@ -51,7 +52,7 @@ const StyledInput = styled.div`
   top: 50%;
   transform: translateY(-50%);
   svg {
-    fill: black;
+    fill: ${(props) => (props.colorScheme ? 'whitesmoke' : 'black')};
     transition: 0.3s;
   }
 }
@@ -64,7 +65,7 @@ button.right-icon {
   top: 50%;
   transform: translateY(-50%);
   svg {
-    fill: black;
+    fill: ${(props) => (props.colorScheme ? 'whitesmoke' : 'black')};
     transition: 0.3s;
   }
 }
@@ -81,8 +82,16 @@ const Input = styled.input`
   box-sizing: border-box;
   transition: 0.3s;
   padding-left: 50px;
-  cursor: pointer;
-  background: whitesmoke;
+  cursor: auto;
+  color: ${(props) => (props.colorScheme ? 'whitesmoke' : 'black')};
+  background: ${(props) => (props.colorScheme ? '#494949' : 'whitesmoke')};
+  ::placeholder,
+  ::-webkit-input-placeholder {
+    color: ${(props) => (props.colorScheme ? 'lightgrey' : 'darkgrey')};
+  }
+  :-ms-input-placeholder {
+     color: ${(props) => (props.colorScheme ? 'lightgrey' : 'darkgrey')};
+  }
 
   &:focus {
     border-color: dodgerBlue;
