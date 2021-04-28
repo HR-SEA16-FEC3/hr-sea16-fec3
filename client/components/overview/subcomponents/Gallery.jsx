@@ -10,6 +10,7 @@ const Gallery = ({ style }) => {
 
   const [index, setIndex] = useState(0);
   const [display, setDisplay] = useState(null);
+  const [current, setCurrent] = useState(0);
 
   // TODO:
   // display default image upon initial render
@@ -18,27 +19,27 @@ const Gallery = ({ style }) => {
   return (
     <OuterContainer>
 
-      {/* THUMBNAILS */}
-      <ThumbnailContainer>
-        <ChevronUp size="20" />
-        {photos.map((photo, key) => (
-          <ThumbnailSquare
-            key={key} image={photo.url}
-            onClick={(event) => {
-              event.preventDefault();
-              setIndex(key);
-            }}
-          />
-        ))}
-        <ChevronDown size="20" />
-      </ThumbnailContainer>
-
       {/* MAIN IMAGE */}
       <MainContainer data-testid="Gallery"> {/* ADD ENLARGE IMAGE ICON */}
         <MainImage src={photos[index].url} alt={name} />
-        <ExpandContainer><Expand size="20" /></ExpandContainer>
+        <ExpandContainer><Expand size="24" /></ExpandContainer>
         <LeftArrow><ArrowLeft size="36" /></LeftArrow>
         <RightArrow><ArrowRight size="36" /></RightArrow>
+
+        {/* THUMBNAILS */}
+        <ThumbnailContainer>
+          <ChevronUp size="20" />
+          {photos.map((photo, key) => (
+            <ThumbnailSquare
+              key={key} image={photo.url}
+              onClick={(event) => {
+                event.preventDefault();
+                setIndex(key);
+              }}
+            />
+          ))}
+          <ChevronDown size="20" />
+        </ThumbnailContainer>
       </MainContainer>
 
     </OuterContainer>
@@ -76,6 +77,8 @@ const MainContainer = styled.div`
   position: relative;
   width: 100%;
   max-width: 768px;
+  color: white;
+
   /* flex: 1 1 auto; */
   /* flex-flow: row wrap; */
   /* justify-content: center; */
@@ -86,12 +89,9 @@ const MainContainer = styled.div`
 const MainImage = styled.img`
   display: block;
   border: 2px solid black;
-  /* margin-left: auto; */
-  /* margin-right: auto; */
   margin: auto auto;
-  /* padding: 15px; */
-  max-height: 500px;
-  max-width: 500px;
+  max-height: 100%;
+  max-width: 100%;
   height: auto;
   width: auto;
 `;
@@ -99,16 +99,13 @@ const MainImage = styled.img`
 const Arrows = styled.div`
   display: block;
   position: relative;
-  /* justify-content: space-between; */
-  /* align-self: center; */
 `;
 
 const LeftArrow = styled.div`
   display: block;
   position: absolute;
-  left: 0;
-  /* top: 50%; */
-  color: white;
+  left: 12px;
+  top: 50%;
   border-radius: 50%;
   background-color:rgba(0, 0, 0, 0.25);
 `;
@@ -116,25 +113,30 @@ const LeftArrow = styled.div`
 const RightArrow = styled.div`
   display: block;
   position: absolute;
-  right: 0;
-  /* top: 50%; */
-  color: white;
+  right: 12px;
+  top: 50%;
   border-radius: 50%;
   background-color:rgba(0, 0, 0, 0.25);
 `;
-
+// stop
 const ThumbnailContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; /* y-axis */
-  align-items: center; /* x-axis */
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color:rgba(0, 0, 0, 0.25);
+  text-align: center;
+  padding: 4px;
+  margin: 12px 12px;
 `;
 
 const ExpandContainer = styled.div`
   display: block;
-  right: 0;
-  top: 0;
+  right: 12px;
+  top: 12px;
   position: absolute;
+  padding: 4px;
+  background-color:rgba(0, 0, 0, 0.25);
 `;
 
 /* =============================================================================== */
