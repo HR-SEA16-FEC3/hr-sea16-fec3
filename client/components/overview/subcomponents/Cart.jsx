@@ -9,10 +9,16 @@ import { Email } from '@styled-icons/material-outlined';
 const Cart = ({ style }) => {
   const { skus } = style;
 
-  const [sku, setSku] = useState('none');
+  const [size, setSize] = useState('none');
   const [maxQuantity, setMaxQuantity] = useState(null);
   const [selQuantity, setSelQuantity] = useState(null);
+  const [selSku, setSelSku] = useState(null);
   const [options, setOptions] = useState([]);
+  const [cart, setCart] = useState([]);
+
+  useEffect(() => {
+
+  }, [size]);
 
   useEffect(() => {
     const array = [];
@@ -23,6 +29,19 @@ const Cart = ({ style }) => {
     setOptions(array);
   }, [maxQuantity]);
 
+  function addToCart(/* SKU, QTY */) {
+    const newCart = cart.slice();
+    const addItem = {};
+    addItem.item = size;
+    addItem.quantity = selQuantity;
+    newCart.push(addItem);
+    setCart(newCart);
+  };
+
+  // {Object.entries(skus).map(([key, value]) => (
+  //   <option key={key} value={value.size} quantity={value.quantity}>{value.size}</option>
+  // ))}
+
   return (
     <form data-testid="Cart">
 
@@ -31,9 +50,11 @@ const Cart = ({ style }) => {
         <Select
           data-testid="sizeDropdown"
           name="sizeDropdown"
+          value={selSku}
           onChange={(e) => {
             setMaxQuantity(Number(event.target.selectedOptions[0].getAttribute('quantity')));
-            setSku(e.target.value);
+            setSize(e.target.value);
+            setSelQuantity(1);
           }}
         >
           <option value="none">Select Size</option>
@@ -43,7 +64,7 @@ const Cart = ({ style }) => {
         </Select>
 
         {/* Quantity Selector */}
-        {sku === 'none'
+        {size === 'none'
           ? (
             <Select data-testid="quantityDropdown" disabled>
               <option value="none">-</option>
@@ -66,7 +87,7 @@ const Cart = ({ style }) => {
 
       {/* Add to Cart button */}
       <Buttons>
-        <Button data-testid="btnAddToCart" onClick={(e) => { e.preventDefault(); }}>Add to Cart</Button> {/* TODO: RESIZE BUTTON */}
+        <Button data-testid="btnAddToCart" onClick={(e) => { e.preventDefault(); addToCart(); }}>Add to Cart</Button> {/* TODO: RESIZE BUTTON */}
         <Button data-testid="btnStar" onClick={(e) => { e.preventDefault(); }}><Heart size="16px" /></Button>
       </Buttons>
 
