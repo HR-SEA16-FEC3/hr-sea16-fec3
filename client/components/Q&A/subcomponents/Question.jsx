@@ -12,6 +12,7 @@ const Question = (props) => {
   const [clickedYes, setClickedYes] = useState(false);
   const [helpfulness, setHelpfulness] = useState(props.question.question_helpfulness);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [answersList, setAnswersList] = useState(props.question.answers);
 
   const toggleModal = () => setIsModalOpen(!isModalOpen);
 
@@ -27,7 +28,7 @@ const Question = (props) => {
   };
   const handleReport = () => {
     if (!reported) {
-      axios.put(`/qa/answers/${props.question.question_id}/report`)
+      axios.put(`/qa/questions/${props.question.question_id}/report`)
         .then(() => {
           setReported(true);
         })
@@ -35,8 +36,16 @@ const Question = (props) => {
     }
   };
 
+  const handleAddAnswer = () => {
+    axios.get(`qa/questions/${props.question.question_id}/answers`)
+      .then((response) => {
+        setAnswersList(response.data.results);
+      })
+      .catch((error) => { throw error; });
+  };
+
   return (
-    <Wrapper>
+    <Wrapper colorScheme={props.colorScheme}>
       {/* Question */}
       <QuestionSection>
         <QAHeader>Q:</QAHeader>
@@ -50,7 +59,7 @@ const Question = (props) => {
           &ensp;|&ensp;
           <AddAnAnswer onClick={toggleModal}>Add an Answer</AddAnAnswer>
           &ensp;|&ensp;
-          <Report onClick={handleReport} reported={reported}>{reported ? 'Reported' : 'Report'}</Report>
+          <Report colorScheme={props.colorScheme} onClick={handleReport} reported={reported}>{reported ? 'Reported' : 'Report'}</Report>
         </QuestionInteractions>
       </QuestionSection>
       <Modal
@@ -72,6 +81,7 @@ const Question = (props) => {
           toggleModal={toggleModal}
           question={props.question.question_body}
           questionId={props.question.question_id}
+          handleAddAnswer={handleAddAnswer}
         />
       </Modal>
       {/* Answer List */}
@@ -86,7 +96,7 @@ const Question = (props) => {
         return (
           <AnswerSection>
             <QAHeader>A:</QAHeader>
-            <AnswersList list={props.question.answers} />
+            <AnswersList list={answersList} colorScheme={props.colorScheme} />
           </AnswerSection>
         );
       })()}
@@ -99,7 +109,7 @@ const AddAnAnswer = styled.span`
 `;
 const Report = styled.span`
   cursor: pointer;
-  color: ${(props) => (props.reported ? 'red' : 'black')};;
+  color: ${(props) => (props.reported ? 'red' : (props.colorScheme ? 'whitesmoke': 'black'))};
 `;
 
 const HelpfulYes = styled.span`
@@ -109,7 +119,8 @@ const HelpfulYes = styled.span`
 
 const Wrapper = styled.div`
 padding: 1em;
-background: whitesmoke;
+background: ${(props) => (props.colorScheme ? '#494949' : 'whitesmoke')};
+color: ${(props) => (props.colorScheme ? 'whitesmoke' : 'black')};
 flex-direction: column;
 margin: 10px;
 display: flex;

@@ -17,7 +17,10 @@ const AddAQuestionModal = (props) => {
         email,
         product_id: props.productId,
       })
-      .then(() => props.toggleModal())
+      .then(() => {
+        props.toggleModal();
+        props.handleAddQuestion();
+      })
       .catch((error) => console.log(error));
   };
 
@@ -26,6 +29,7 @@ const AddAQuestionModal = (props) => {
       <modalStyles.Title>Ask Your Question</modalStyles.Title>
       <modalStyles.Subtitle>
         About the
+        {' '}
         {props.productName}
       </modalStyles.Subtitle>
       <modalStyles.Label htmlFor="question">

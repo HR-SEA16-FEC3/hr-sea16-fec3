@@ -38,7 +38,7 @@ left: 50%;
 `;
 
 const Outside = styled.div`
-background: ${(props) => (props.colorScheme ? '#494949' : '#c4c4c4')};
+background: ${(props) => (props.colorScheme ? '#494949' : '#dcdcdc')};
 height: max-content;
 min-height:100vh;
 `;

@@ -27,20 +27,34 @@ const AnswersList = (props) => {
   return (
     <Wrapper>
       {sortedAnswers.slice(0, shownAnswers).map((item) => (
-        <Answer answer={item} key={item.id} />
+        <Answer colorScheme={props.colorScheme} answer={item} key={item.id || item.answer_id} />
       ))}
       <AnswerButtons>
         {(() => {
           if (sortedAnswers.length > 2
             && shownAnswers < sortedAnswers.length) {
-            return (<Button onClick={handleShowMore}>Load more answers</Button>);
+            return (
+              <Button
+                colorScheme={props.colorScheme}
+                onClick={handleShowMore}
+              >
+                Load more answers
+              </Button>
+            );
           }
           return null;
         })()}
         {(() => {
           if (sortedAnswers.length > 2
             && shownAnswers > 2) {
-            return (<Button onClick={handleShowLess}>Collapse Answers</Button>);
+            return (
+              <Button
+                colorScheme={props.colorScheme}
+                onClick={handleShowLess}
+              >
+                Collapse Answers
+              </Button>
+            );
           }
           return null;
         })()}
@@ -58,15 +72,17 @@ display: flex;
 flex-direction: row;
 `;
 const Button = styled.button`
-  border: 1px solid lightgrey;
+  border: 0px solid lightgrey;
   margin-top: 10px;
   margin-right: 10px;
-  background: lightgrey;
+  background: ${(props) => (props.colorScheme ? 'purple' : 'orange')};
   padding: 7px;
   font-size: 10px
   text-transform: uppercase;
+  color: whitesmoke;
   width: 175px;
-  &:hover{ background: orange; color: white; border: 1px solid lightgrey }
+  &:hover{ background: ${(props) => (props.colorScheme ? '#a64ca6' : '#ffc04c')}; }
+  &:active{ background: ${(props) => (props.colorScheme ? '#660066' : '#cc8400')}; }
 `;
 
 export default AnswersList;

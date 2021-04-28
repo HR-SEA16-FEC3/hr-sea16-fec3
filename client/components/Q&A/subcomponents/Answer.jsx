@@ -38,7 +38,13 @@ const Answer = (props) => {
     <Wrapper>
       <AnswerBody data-testid="AnswerBody">{props.answer.body}</AnswerBody>
       {props.answer.photos.length > 0
-        ? <ImagesDiv>{props.answer.photos.map((url) => (<AnswerImage url={url} />))}</ImagesDiv>
+        ? (
+          <ImagesDiv>
+            {props.answer.photos.map(
+              (url) => (<AnswerImage url={url} key={url} />),
+            )}
+          </ImagesDiv>
+        )
         : null}
       <AnswerInteraction>
         by&nbsp;
@@ -51,7 +57,7 @@ const Answer = (props) => {
         &nbsp;(
         <span>{helpfulness}</span>
         )&ensp;|&ensp;
-        <Report onClick={handleReport} reported={reported}>{reported ? 'Reported' : 'Report'}</Report>
+        <Report colorScheme={props.colorScheme} onClick={handleReport} reported={reported}>{reported ? 'Reported' : 'Report'}</Report>
       </AnswerInteraction>
 
     </Wrapper>
@@ -63,7 +69,7 @@ const HelpfulYes = styled.span`
 `;
 const Report = styled.span`
   cursor: pointer;
-  color: ${(props) => (props.reported ? 'red' : 'black')};
+  color: ${(props) => (props.reported ? 'red' : (props.colorScheme ? 'whitesmoke': 'black'))};
 `;
 
 const AnswerInteraction = styled.p`

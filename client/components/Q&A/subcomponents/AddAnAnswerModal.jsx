@@ -20,7 +20,10 @@ const AddAnAnswerModal = (props) => {
         email,
         photos: [],
       })
-      .then(() => props.toggleModal())
+      .then(() => {
+        props.toggleModal();
+        props.handleAddAnswer();
+      })
       .catch((error) => console.log(error));
   };
 

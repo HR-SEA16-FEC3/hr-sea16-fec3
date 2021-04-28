@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import Question from './Question';
 
 const QuestionsList = (props) => (
-    <Wrapper data-testid="QuestionsList">
+    <Wrapper colorScheme={props.colorScheme} data-testid="QuestionsList">
       {props.questionsList.map((item) => (
-        <Question question={item} key={item.question_id} />
+        <Question question={item} key={item.question_id} colorScheme={props.colorScheme} />
       ))}
     </Wrapper>
 );
@@ -22,6 +22,15 @@ const Wrapper = styled.div`
 padding: 0em;
 max-height: 67vh;
 overflow: auto;
+&::-webkit-scrollbar {
+  width: auto;
+  height: auto;
+}
+&::-webkit-scrollbar-thumb
+{
+  border-radius: 10px;
+  background-color: ${(props) => (props.colorScheme ? 'lightgrey' : 'darkgrey')};
+}
 `;
 
 export default QuestionsList;
