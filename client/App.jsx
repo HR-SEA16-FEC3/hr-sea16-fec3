@@ -53,10 +53,10 @@ const Divider = styled.hr`
 const Wrapper = styled.div`
   font-family: sans-serif;
   scroll-behavior: smooth;
-  max-width: 1080px;
+  max-width: 1200px;
   position: absolute;
   left: 50%;
-  margin-left: -540px;
+  margin-left: -600px;
 `;
 
 const Outside = styled.div`
