@@ -73,12 +73,14 @@ const ReviewMeta = (props) => {
       Size
       <br />
       <FitBar
-        values={props.metaDummyData}
+        data={props.metaDummyData.characteristics.Fit}
+        value="Fit"
       />
       <br />
       Comfort
       <FitBar
-        values={props.metaDummyData}
+        data={props.metaDummyData.characteristics.Comfort}
+        value="Comfort"
       />
       <br />
     </div>

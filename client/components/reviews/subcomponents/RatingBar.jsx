@@ -7,7 +7,7 @@ const RatingsBar = (props) => {
 
   const containerStyles = {
     height: 20,
-    width: '75%',
+    width: '100%',
     backgroundColor: '#e0e0de',
     borderRadius: 25,
     margin: 4,

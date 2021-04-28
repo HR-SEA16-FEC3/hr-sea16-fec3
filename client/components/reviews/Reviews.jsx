@@ -67,7 +67,7 @@ const LeftSection = styled.div`
   display: flex;
   flex-direction: column;
   order: 1;
-  flex-basis: 30%;
+  flex-basis: 20%;
   padding:16px;
 `;
 
