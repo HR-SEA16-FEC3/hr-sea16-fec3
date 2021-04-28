@@ -4,7 +4,6 @@ import ReviewList from './subcomponents/ReviewList.jsx';
 import ReviewMeta from './subcomponents/ReviewMeta.jsx';
 import ReviewModal from './subcomponents/ReviewModal.jsx';
 import ReviewSort from './subcomponents/ReviewSort.jsx';
-import OpenModalButton from './subcomponents/OpenModalButton.jsx';
 import dummyData from './subcomponents/DummyData/product_reviews_example';
 import metaDummyData from './subcomponents/DummyData/product_metaData_example';
 

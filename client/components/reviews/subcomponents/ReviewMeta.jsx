@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import RatingStar from './RatingStar.jsx';
 import RatingsBar from './RatingBar.jsx';
+import FitBar from './FitBar.jsx';
 
 const getAverageRating = ({ ratings }) => {
   const keys = Object.keys(ratings);
@@ -71,8 +72,14 @@ const ReviewMeta = (props) => {
       <br />
       Size
       <br />
+      <FitBar
+        values={props.metaDummyData}
+      />
       <br />
       Comfort
+      <FitBar
+        values={props.metaDummyData}
+      />
       <br />
     </div>
   );
