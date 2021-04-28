@@ -117,7 +117,6 @@ const TopSection = styled.div`
   display: flex;
   flex-direction: row;
   height: 100%;
-  /* min-height: 768px; */
   margin: 8px 4px 4px 4px;
 `;
 

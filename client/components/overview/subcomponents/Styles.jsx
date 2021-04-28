@@ -39,7 +39,7 @@ const ThumbnailCircle = styled.div`
   border: 1px solid black;
   display: block;
   border-radius: 50%;
-  height: 74px;
+  height: 84px;
   /* max-width: 74px; */
   width: auto;
   object-fit: contain;

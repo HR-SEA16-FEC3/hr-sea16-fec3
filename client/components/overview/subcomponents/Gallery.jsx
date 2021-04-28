@@ -50,15 +50,14 @@ const ThumbnailSquare = styled.div`
   border: 1px solid black;
   display: flex;
   flex-flow: row wrap;
-  /* border-radius: 50%; */
   height: 50px;
   width: 50px;
   margin: 10px 10px;
   object-fit: contain;
   justify-content: center;
   background-image: url(${(props) => props.image});
-  background-size: cover;
-  background-position: center;
+  background-size: 50px 50px;
+  background-position: cover;
   &:hover{
     cursor: pointer;
     opacity: 0.75;
@@ -69,7 +68,7 @@ const OuterContainer = styled.div`
   display: flex;
   justify-content: center;
   /* width: 100%; */
-  flex: auto;
+  /* flex: auto; */
 `;
 
 const MainContainer = styled.div`
@@ -78,22 +77,17 @@ const MainContainer = styled.div`
   width: 100%;
   max-width: 768px;
   color: white;
-
-  /* flex: 1 1 auto; */
-  /* flex-flow: row wrap; */
-  /* justify-content: center; */
-  /* align-items: center; */
-  /* align-content: center; */
 `;
 
 const MainImage = styled.img`
   display: block;
-  border: 2px solid black;
+  border: 1px solid black;
   margin: auto auto;
-  max-height: 100%;
+  max-height: 980px;
   max-width: 100%;
   height: auto;
   width: auto;
+  object-fit: contain;
 `;
 
 const Arrows = styled.div`
