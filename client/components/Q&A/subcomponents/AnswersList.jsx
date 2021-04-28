@@ -27,7 +27,7 @@ const AnswersList = (props) => {
   return (
     <Wrapper>
       {sortedAnswers.slice(0, shownAnswers).map((item) => (
-        <Answer colorScheme={props.colorScheme} answer={item} key={item.id || item.answer_id} />
+        <Answer colorScheme={props.colorScheme} answer={item} key={item.id ? item.id : item.answer_id} />
       ))}
       <AnswerButtons>
         {(() => {

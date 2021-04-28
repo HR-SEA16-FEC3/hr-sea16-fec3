@@ -14,7 +14,7 @@ const Answer = (props) => {
   const [helpfulness, setHelpfulness] = useState(props.answer.helpfulness);
   const handleYesClick = () => {
     if (!clickedYes) {
-      axios.put(`/qa/answers/${props.answer.id}/helpful`)
+      axios.put(`/qa/answers/${props.answer.id || props.answer.answer_id}/helpful`)
         .then(() => {
           setHelpfulness(helpfulness + 1);
           setClickedYes(true);
@@ -25,7 +25,7 @@ const Answer = (props) => {
 
   const handleReport = () => {
     if (!reported) {
-      axios.put(`/qa/answers/${props.answer.id}/report`)
+      axios.put(`/qa/answers/${props.answer.id || props.answer.answer_id}/report`)
         .then(() => {
           setReported(true);
         })
