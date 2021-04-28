@@ -120,7 +120,7 @@ const TopSection = styled.div`
   display: flex;
   flex-direction: row;
   height: 100%;
-  min-height: 768px;
+  /* min-height: 768px; */
   margin: 8px 4px 4px 4px;
 `;
 
@@ -143,7 +143,7 @@ const LeftSection = styled.div`
 const RightSection = styled.div`
   flex-direction: column;
   flex: 1 1 40%;
-  margin: 10px;
+  margin: 10px 40px;
 `;
 
 const Subcomponent = styled.div`
