@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 import Cart from '../subcomponents/Cart';
-import StylesExample from './product_styles_example.json';
+import StylesExample from '../product_styles_example.json';
 
 /* TESTS TO INCLUDE
  * - all sizes are available to select
