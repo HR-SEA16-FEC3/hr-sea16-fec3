@@ -2,11 +2,60 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import ReviewList from './subcomponents/ReviewList.jsx';
 import ReviewMeta from './subcomponents/ReviewMeta.jsx';
+import ReviewModal from './subcomponents/ReviewModal.jsx';
+import ReviewSort from './subcomponents/ReviewSort.jsx';
 import dummyData from './subcomponents/DummyData/product_reviews_example';
 import metaDummyData from './subcomponents/DummyData/product_metaData_example';
 
-// console.log(dummyData.results);
-// console.log(metaDummyData.ratings);
+// destructure the props, change var naming
+function Reviews({ metadata, data }) {
+  const [tiles, setTiles] = useState(2);
+  const [modal, setModal] = useState(false);
+
+  return (
+    <div data-testid="Reviews">
+      <ReviewListStyle>
+        <LeftSection>
+          <ReviewMeta metaDummyData={metaDummyData} />
+        </LeftSection>
+        <RightSection>
+          <RightTopSection>
+            <div>
+              <ReviewSort
+                dummyData={dummyData}
+              />
+
+            </div>
+          </RightTopSection>
+          <ReviewList dummyData={dummyData.results.slice(0, tiles)} />
+          <ButtonStyle>
+            <span>
+              <Button
+                type="button"
+                onClick={() => setTiles(tiles + 2)}
+              >
+                More Reviews
+              </Button>
+            </span>
+            <span>
+              <Button
+                type="button"
+                onClick={() => setModal(true)}
+              >
+                Add A Review +
+              </Button>
+            </span>
+          </ButtonStyle>
+          <ReviewModal
+            onClose={() => setModal(false)}
+            open={modal}
+            reviewData={dummyData.results}
+          />
+        </RightSection>
+      </ReviewListStyle>
+    </div>
+  );
+}
 
 const ReviewListStyle = styled.section`
   font-family: sans-serif;
@@ -30,6 +79,12 @@ const RightSection = styled.div`
   padding:16px;
 `;
 
+const RightTopSection = styled.div`
+display:flex;
+padding:16px;
+flex-direction: column;
+`;
+
 const Button = styled.button`
 flex-direction:column
   border: 1px solid black;
@@ -45,24 +100,17 @@ const ButtonStyle = styled.div`
   flex-direction: column;
 `;
 
-function Reviews() {
-  return (
-
-    <div data-testid="Reviews" id="reviews">
-      <ReviewListStyle>
-        <LeftSection>
-          <ReviewMeta metaDummyData={metaDummyData} />
-        </LeftSection>
-        <RightSection>
-          <ReviewList dummyData={dummyData.results} />
-          <ButtonStyle>
-            <span><Button type="button">More Reviews</Button></span>
-            <span><Button type="button">Add A Review +</Button></span>
-          </ButtonStyle>
-        </RightSection>
-      </ReviewListStyle>
-    </div>
-  );
-}
+const ModalContent = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    color: #000000;
+  }
+`;
 
 export default Reviews;
+
+// <ReviewSort />

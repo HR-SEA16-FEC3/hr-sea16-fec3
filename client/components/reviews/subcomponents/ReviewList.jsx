@@ -1,25 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import RatingStar from './RatingStar.jsx';
 
-const RightFloat = styled.div`
-  float: right;
-  text-transform: capitalize;
-  `;
-
-const ReviewListStyling = styled.div`
-  border-bottom: 2px solid grey;
-  padding-top: 20px;
-  `;
-
 const ReviewList = (props) => (
+  // rename wrapper, use props
   <div className="review-list">
-    {props.dummyData.slice(0, 2).map((item, i) => (
+    {props.dummyData.map((item, i) => (
       <ReviewListStyling className="review-tile" key={i}>
         <div className="review-reviewer">
-          <RatingStar />
-          Review -&ensp;
-          {item.rating}
+          <RatingStar
+            rating={item.rating}
+            count={5}
+            size={40}
+          />
           <RightFloat>
             <span>
               {item.reviewer_name}
@@ -59,5 +52,15 @@ const ReviewList = (props) => (
     ))}
   </div>
 );
+
+const RightFloat = styled.div`
+  float: right;
+  text-transform: capitalize;
+  `;
+
+const ReviewListStyling = styled.div`
+  border-bottom: 2px solid grey;
+  padding-top: 20px;
+  `;
 
 export default ReviewList;
