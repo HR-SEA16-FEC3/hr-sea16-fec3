@@ -35,25 +35,21 @@ Styles.propTypes = {
   }),
 };
 
-const ThumbnailCircle = styled.span`
+const ThumbnailCircle = styled.div`
   border: 1px solid black;
-  display: flex;
+  display: block;
   border-radius: 50%;
-  height: 75px;
-  width: 75px;
+  height: 74px;
+  /* max-width: 74px; */
+  width: auto;
   object-fit: contain;
-  margin-right: 15px;
   align-items: center;
   justify-content: center;
-  color: cornflowerblue;
-  font-weight: bold;
   background-image: url(${(props) => props.image});
   background-size: cover;
   background-position: center;
-  margin: 10px 10px;
-  flex-basis: auto;
-  flex-grow: 0;
-  flex-shrink: 0;
+  margin: 8px 12px 0 0;
+  flex: 0 0 21%;
   &:hover{
     cursor: pointer;
     opacity: 0.75;

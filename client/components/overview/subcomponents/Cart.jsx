@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import * as faBrands from '@styled-icons/fa-brands';
@@ -6,50 +6,89 @@ import * as boxiconsSolid from '@styled-icons/boxicons-solid'; // boxiconsSolid.
 import { Link, Heart } from '@styled-icons/boxicons-regular';
 import { Email } from '@styled-icons/material-outlined';
 
-const Cart = () => (
+const Cart = ({ style }) => {
+  const { skus } = style;
 
-  <form data-testid="Cart">
-    <p>
-      {/* Size Selector Dropdown */}
-      <Select data-testid="sizeDropdown">
-        <option>Select Size</option>
-        <option>Small</option>
-        <option>Medium</option>
-        <option>Large</option>
-      </Select>
+  const [sku, setSku] = useState('none');
+  const [maxQuantity, setMaxQuantity] = useState(null);
+  const [selQuantity, setSelQuantity] = useState(null);
+  const [options, setOptions] = useState([]);
 
-      {/* Quantity Selector */}
-      <Select data-testid="quantityDropdown">
-        <option>Quantity</option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-        <option>6</option>
-      </Select>
-    </p>
+  useEffect(() => {
+    const array = [];
+    for (let i = 1; i < maxQuantity + 1; i++) {
+      array.push(i);
+      if (i >= 15) { break; }
+    }
+    setOptions(array);
+  }, [maxQuantity]);
 
-    <p>
+  return (
+    <form data-testid="Cart">
+
+      <Dropdowns>
+        {/* Size Selector Dropdown */}
+        <Select
+          data-testid="sizeDropdown"
+          name="sizeDropdown"
+          onChange={(e) => {
+            setMaxQuantity(Number(event.target.selectedOptions[0].getAttribute('quantity')));
+            setSku(e.target.value);
+          }}
+        >
+          <option value="none">Select Size</option>
+          {Object.entries(skus).map(([key, value]) => (
+            <option key={key} value={value.size} quantity={value.quantity}>{value.size}</option>
+          ))}
+        </Select>
+
+        {/* Quantity Selector */}
+        {sku === 'none'
+          ? (
+            <Select data-testid="quantityDropdown" disabled>
+              <option value="none">-</option>
+            </Select>
+          )
+          : (
+            <Select
+              data-testid="quantityDropdown"
+              name="sizeDropdown"
+              onChange={(e) => {
+                setSelQuantity(Number(e.target.value));
+              }}
+            >
+              {options.map((num) => (
+                <option value={num} key={num}>{num}</option>
+              ))}
+            </Select>
+          )}
+      </Dropdowns>
+
       {/* Add to Cart button */}
-      <Button data-testid="btnAddToCart">Add to Cart</Button>
-      <Button data-testid="btnStar"><Heart size="16px" /></Button> {/* TODO: RESIZE BUTTON */}
-    </p>
+      <Buttons>
+        <Button data-testid="btnAddToCart" onClick={(e) => { e.preventDefault(); }}>Add to Cart</Button> {/* TODO: RESIZE BUTTON */}
+        <Button data-testid="btnStar" onClick={(e) => { e.preventDefault(); }}><Heart size="16px" /></Button>
+      </Buttons>
 
-    {/* Share on Social Media */}
-    <Socials>
-      {/* Facebook, Twitter, Pinterest = min required */}
-      <Icon><faBrands.Facebook data-testid="icon-facebook" size="36" /></Icon>
-      <Icon><faBrands.Twitter data-testid="icon-twitter" size="36" /></Icon>
-      <Icon><faBrands.Pinterest data-testid="icon-pinterest" size="36" /></Icon>
-      <Icon><faBrands.Instagram size="36" /></Icon>
-      <Icon><faBrands.Whatsapp size="36" /></Icon>
-      <Icon><Email size="36" /></Icon>
-      <Icon><Link size="36" /></Icon>
-    </Socials>
-  </form>
+      {/* Share on Social Media */}
+      <Socials>
+        {/* Facebook, Twitter, Pinterest = min required */}
+        <Icon><faBrands.Facebook data-testid="icon-facebook" size="36" /></Icon>
+        <Icon><faBrands.Twitter data-testid="icon-twitter" size="36" /></Icon>
+        <Icon><faBrands.Pinterest data-testid="icon-pinterest" size="36" /></Icon>
+        <Icon><faBrands.Instagram size="36" /></Icon>
+        <Icon><faBrands.Whatsapp size="36" /></Icon>
+        <Icon><Email size="36" /></Icon>
+        <Icon><Link size="36" /></Icon>
+      </Socials>
+    </form>
 
-);
+  );
+};
+
+const Dropdowns = styled.div``;
+
+const Buttons = styled.div``;
 
 const Select = styled.select`
   border: 1px solid black;
@@ -58,6 +97,7 @@ const Select = styled.select`
   padding: 16px;
   text-transform: uppercase;
   font-weight: bold;
+  /* text-align-last:center; */
 `;
 
 const Button = styled.button`
@@ -79,7 +119,7 @@ const Socials = styled.div`
   margin: 0;
 `;
 
-const Icon = styled.span` // ONCLICK SHOULD BE DARKER THAN REST STATE PER WIFE
+const Icon = styled.span` // ONCLICK SHOULD BE DARKER THAN REST STATE
   margin: 10px 16px 0 0;
   &:hover{ color: #ffbf00 } // HOVER SHOULD BE A LIGHTER COLOR THAN REST STATE
 `;

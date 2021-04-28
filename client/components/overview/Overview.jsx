@@ -10,14 +10,18 @@ import StylesExample from './product_styles_example.json';
 import axios from 'axios';
 
 // TODO:
-//   modal
+// - modal
+// - overlay checkmark on selected image's thumbnail
+// - dynamically render size and quantity
 
 function Overview(props) {
   const { productId, setProductName } = props;
   const { default_price: defaultPrice } = InfoExample;
+  const { results } = StylesExample; // TEMP FIX FOR 1ST IMAGE RENDER
+  const tempStyle = results[0]; // TEMP FIX FOR 1ST IMAGE RENDER
 
   const [stylesList, setStylesList] = useState([]);
-  const [defaultStyle, setDefaultStyle] = useState(null);
+  const [defaultStyle, setDefaultStyle] = useState(tempStyle);
   const [selectedStyle, setSelectedStyle] = useState(null);
   const [displayPrice, setDisplayPrice] = useState(null);
 
@@ -40,11 +44,14 @@ function Overview(props) {
       const salePrice = selectedStyle.sale_price;
       const price = salePrice === null ? originalPrice : salePrice;
       setDisplayPrice(Number(price));
-      return (
-        <Gallery style={selectedStyle === null ? defaultStyle : selectedStyle} />
-      );
     }
+    return null;
   }, [selectedStyle]);
+
+  /* selectedStyle === null
+    ? <p>LOADING</p>
+    : <Gallery style={selectedStyle} />
+  */
 
   // FETCH API DATA FOUND BELOW
   useEffect(() => {
@@ -60,9 +67,8 @@ function Overview(props) {
             {/* Image Gallery */}
             <Subcomponent>
               {selectedStyle === null
-                ? <span>LOADING</span>
-                : <Gallery style={selectedStyle === null ? defaultStyle : selectedStyle} />
-              }
+                ? <Gallery style={tempStyle} /> // TEMP FIX FOR 1ST IMAGE RENDER
+                : <Gallery style={selectedStyle} />}
             </Subcomponent>
           </LeftSection>
 
@@ -84,7 +90,9 @@ function Overview(props) {
 
             {/* Add to Cart */}
             <Subcomponent>
-              <Cart />
+              {selectedStyle === null
+                ? <Cart style={tempStyle} /> // TEMP FIX
+                : <Cart style={selectedStyle} />}
             </Subcomponent>
           </RightSection>
         </TopSection>
@@ -111,6 +119,8 @@ const OverviewStyle = styled.section`
 const TopSection = styled.div`
   display: flex;
   flex-direction: row;
+  height: 100%;
+  /* min-height: 768px; */
   margin: 8px 4px 4px 4px;
 `;
 
@@ -125,15 +135,15 @@ const BottomSection = styled.div`
 
 const LeftSection = styled.div`
   flex-direction: column;
-  width: 60%;
-  flex-grow: 1; /* REEVALUATE */
+  /* width: 60%; */
+  flex: 1 1 60%;
   margin: 10px;
 `;
 
 const RightSection = styled.div`
   flex-direction: column;
-  width: 40%;
-  margin: 10px;
+  flex: 1 1 40%;
+  margin: 10px 40px;
 `;
 
 const Subcomponent = styled.div`
