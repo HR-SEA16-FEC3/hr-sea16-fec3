@@ -6,7 +6,7 @@ const FitBar = (props) => {
   const fillerWidth = (props.maxRatingWidth) * 100;
 
   const containerStyles = {
-    height: 20,
+    height: 15,
     width: '75%',
     backgroundColor: '#e0e0de',
     borderRadius: 25,
@@ -15,8 +15,8 @@ const FitBar = (props) => {
   };
 
   const fillerStyles = {
-    height: '100%',
-    width: `${fillerWidth}%`,
+    height: '50%',
+    width: '50%',
     backgroundColor: '#eead0e',
     borderRadius: 'inherit',
     textAlign: 'center',
@@ -31,7 +31,7 @@ const FitBar = (props) => {
   return (
     <div style={containerStyles}>
       <div style={fillerStyles}>
-        <span style={labelStyles}>{`${props.rating}`}</span>
+        <span style={labelStyles}>{}</span>
       </div>
     </div>
   );

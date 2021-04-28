@@ -15,8 +15,6 @@ const ReviewSort = (props) => {
     }
   }, [sortMethod]);
 
-  // console.log(filteredData.sort((a, b) => new Date(b.date) - new Date(a.date)));
-
   return (
     <div>
       {props.dummyData.results.length}
