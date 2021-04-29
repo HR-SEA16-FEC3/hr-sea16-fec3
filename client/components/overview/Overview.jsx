@@ -12,32 +12,52 @@ import axios from 'axios';
 // TODO:
 // - modal
 // - overlay checkmark on selected image's thumbnail
-// - dynamically render size and quantity
 
 function Overview(props) {
   const { productId, setProductName } = props;
-  const { default_price: defaultPrice } = InfoExample;
-  const { results } = StylesExample; // TEMP FIX FOR 1ST IMAGE RENDER
-  const tempStyle = results[0]; // TEMP FIX FOR 1ST IMAGE RENDER
+  // const { default_price: defaultPrice } = InfoExample;
+  // const { results } = StylesExample; // TEMP FIX FOR 1ST IMAGE RENDER
+  // const tempStyle = results[0]; // TEMP FIX FOR 1ST IMAGE RENDER
 
-  const [stylesList, setStylesList] = useState([]);
-  const [defaultStyle, setDefaultStyle] = useState(tempStyle);
+  const [productInfo, setProductInfo] = useState({});
+  const [stylesList, setStylesList] = useState(StylesExample.results);
+  const [defaultStyle, setDefaultStyle] = useState(StylesExample.results[0]);
   const [selectedStyle, setSelectedStyle] = useState(null);
   const [displayPrice, setDisplayPrice] = useState(null);
+  const [skus, setSkus] = useState({});
+
+  // Fetch: Product Info
+  function fetchProductInfo() {
+    axios.get(`/products/${productId}`)
+      .then((product) => {
+        setProductInfo(product.data);
+        setDisplayPrice(Number(product.data.default_price));
+      })
+      .catch((error) => console.log('Product Info useEffect:', error));
+  }
 
   // Fetch: Styles List
-  useEffect(() => {
-    setStylesList(StylesExample.results);
-    setDisplayPrice(Number(defaultPrice));
-  }, []);
+  function fetchStylesInfo() {
+    axios.get(`/products/${productId}/styles`)
+      .then((styles) => { setStylesList(styles.data.results); })
+      .catch((error) => console.log('Styles useEffect:', error));
+  }
 
-  // Fetch: Default Style
+  // Initialize: Product Info, Styles List
   useEffect(() => {
-    const selectDefaultStyle = stylesList.find((object) => object['default?'] === true);
-    setDefaultStyle(selectDefaultStyle);
+    if (productId !== 0) {
+      fetchProductInfo();
+      fetchStylesInfo();
+    }
+  }, [productId]);
+
+  // Update: Default Style
+  useEffect(() => {
+    setDefaultStyle(stylesList[0]);
+    if (defaultStyle !== null) setSkus(stylesList[0].skus);
   }, [stylesList]);
 
-  // Update: display price
+  // Update: Display Price (upon selecting new style)
   useEffect(() => {
     if (selectedStyle !== null) {
       const originalPrice = selectedStyle.original_price;
@@ -48,13 +68,6 @@ function Overview(props) {
     return null;
   }, [selectedStyle]);
 
-  /* selectedStyle === null
-    ? <p>LOADING</p>
-    : <Gallery style={selectedStyle} />
-  */
-
-  // FETCH API DATA FOUND BELOW
-
   return (
     <div data-testid="Overview">
       <OverviewStyle>
@@ -64,7 +77,7 @@ function Overview(props) {
             {/* Image Gallery */}
             <Subcomponent>
               {selectedStyle === null
-                ? <Gallery style={tempStyle} /> // TEMP FIX FOR 1ST IMAGE RENDER
+                ? <Gallery style={defaultStyle} /> // TEMP FIX FOR 1ST IMAGE RENDER
                 : <Gallery style={selectedStyle} />}
             </Subcomponent>
           </LeftSection>
@@ -72,7 +85,7 @@ function Overview(props) {
           <RightSection>
             {/* Product Information */}
             <Subcomponent>
-              <Information infoList={InfoExample} price={displayPrice} />
+              <Information productInfo={productInfo} price={displayPrice} />
             </Subcomponent>
 
             {/* Style Selector */}
@@ -88,7 +101,7 @@ function Overview(props) {
             {/* Add to Cart */}
             <Subcomponent>
               {selectedStyle === null
-                ? <Cart style={tempStyle} /> // TEMP FIX
+                ? <Cart style={defaultStyle} /> // TEMP FIX
                 : <Cart style={selectedStyle} />}
             </Subcomponent>
           </RightSection>
@@ -149,30 +162,3 @@ const Subcomponent = styled.div`
 `;
 
 export default Overview;
-
-/* ==================== READY TO GO LIVE ====================
-const [productsList, setProductsList] = useState([]);
-const [overviewProductId, setOverviewProductId] = useState(0);
-
-// FETCH PRODUCTS LIST
-  useEffect(() => {
-    axios.get('/products')
-      .then(async (products) => {
-        // console.log('product results:', results);
-        await setProductsList(products.data);
-        await setOverviewProductId(products.data[0].id); // sets first item as default product
-        await console.log('productsList updated:', productsList);
-      })
-      .catch((error) => console.log(error));
-  }, []); // empty dependency array will run effect only once (similar to componentDidMount)
-
-  // FETCH STYLES LIST (INVOKED ONLY AFTER PRODUCT LIST UPDATES)
-  useEffect(() => {
-    axios.get(`/products/${productId}/styles`)
-      .then(async (styles) => {
-        await setStylesList(styles.data.results);
-        await console.log('styles results:', styles);
-      })
-      .catch((error) => console.log(error));
-  }, [productId]);
-*/
