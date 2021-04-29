@@ -15,14 +15,13 @@ import { Email } from '@styled-icons/material-outlined';
 // Product Overview/Description
 // Share on Social Media
 
-function Information({ infoList, price }) {
+function Information({ productInfo, price }) {
   const {
-    // infoList: { // NESTED DESTRUCTURING
     id,
     name,
     category,
     default_price, // use destructuring w/ alias to avoid snake_case
-  } = infoList;
+  } = productInfo;
 
   const defaultPrice = Number(default_price);
   const onSale = price < defaultPrice;
