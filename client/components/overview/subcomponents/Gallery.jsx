@@ -11,17 +11,19 @@ const Gallery = ({ style }) => {
   const [index, setIndex] = useState(0);
   const [display, setDisplay] = useState(null);
   const [current, setCurrent] = useState(0);
+  const [showModal, setShowModal] = useState(false);
 
   // TODO:
   // display default image upon initial render
   // arrows part of main image div
+  // display modal
 
   return (
     <OuterContainer>
 
       {/* MAIN IMAGE */}
       <MainContainer data-testid="Gallery"> {/* ADD ENLARGE IMAGE ICON */}
-        <MainImage src={photos[index].url} alt={name} />
+        <MainImage src={photos[index].url} alt={name} onClick={() => {setShowModal(true)}} />
         <ExpandContainer><Expand size="24" /></ExpandContainer>
         <LeftArrow><ArrowLeft size="36" /></LeftArrow>
         <RightArrow><ArrowRight size="36" /></RightArrow>
@@ -42,9 +44,42 @@ const Gallery = ({ style }) => {
         </ThumbnailContainer>
       </MainContainer>
 
+      {showModal && (
+        <Overlay>
+          <Dialog>
+            <button onClick={() => setShowModal(false)}>CLOSE MODAL</button>
+            <img src={photos[index].url} />
+          </Dialog>
+        </Overlay>
+      )}
+
     </OuterContainer>
   );
 };
+
+/* =================== MODAL =================== */
+
+const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.3);
+`;
+
+const Dialog = styled.div`
+  background: white;
+  border-radius: 5px;
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+`;
+
+/* =================== MODAL =================== */
 
 const ThumbnailSquare = styled.div`
   border: 1px solid black;
