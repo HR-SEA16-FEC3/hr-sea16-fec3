@@ -6,19 +6,19 @@ import * as boxiconsSolid from '@styled-icons/boxicons-solid'; // boxiconsSolid.
 import { Link, Heart } from '@styled-icons/boxicons-regular';
 import { Email } from '@styled-icons/material-outlined';
 
-const Cart = ({ style }) => {
+// TODO: pass in skus? challenge is render timing
+
+const Cart = ({ style /* skus */}) => {
+  if (style === null) return <div>Loading</div>;
+
   const { skus } = style;
 
   const [size, setSize] = useState('none');
   const [maxQuantity, setMaxQuantity] = useState(null);
   const [selQuantity, setSelQuantity] = useState(null);
-  const [selSku, setSelSku] = useState(null);
+  const [selSku, setSelSku] = useState(null); // may not need if importing skus from parent
   const [options, setOptions] = useState([]);
   const [cart, setCart] = useState([]);
-
-  useEffect(() => {
-
-  }, [size]);
 
   useEffect(() => {
     const array = [];
@@ -29,18 +29,14 @@ const Cart = ({ style }) => {
     setOptions(array);
   }, [maxQuantity]);
 
-  function addToCart(/* SKU, QTY */) {
+  function addToCart(/* SKU, QTY */) { // TODO: connect to Cart API
     const newCart = cart.slice();
     const addItem = {};
     addItem.item = size;
     addItem.quantity = selQuantity;
     newCart.push(addItem);
     setCart(newCart);
-  };
-
-  // {Object.entries(skus).map(([key, value]) => (
-  //   <option key={key} value={value.size} quantity={value.quantity}>{value.size}</option>
-  // ))}
+  }
 
   return (
     <form data-testid="Cart">
