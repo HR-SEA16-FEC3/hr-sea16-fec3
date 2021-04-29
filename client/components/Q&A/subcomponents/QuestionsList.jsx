@@ -6,7 +6,12 @@ import Question from './Question';
 const QuestionsList = (props) => (
     <Wrapper colorScheme={props.colorScheme} data-testid="QuestionsList">
       {props.questionsList.map((item) => (
-        <Question question={item} key={item.question_id} colorScheme={props.colorScheme} />
+        <Question
+          question={item}
+          key={item.question_id}
+          colorScheme={props.colorScheme}
+          searchTerm={props.searchTerm}
+        />
       ))}
     </Wrapper>
 );

@@ -48,6 +48,7 @@ const AddAnAnswerModal = (props) => {
           as="textarea"
           id="youranswer"
           required
+          colorScheme={props.colorScheme}
           type="text"
           value={answerBody}
           onChange={(e) => setAnswerBody(e.target.value)}
@@ -60,6 +61,7 @@ const AddAnAnswerModal = (props) => {
         <modalStyles.Input
           id="nickname"
           required
+          colorScheme={props.colorScheme}
           type="text"
           value={nickname}
           onChange={(e) => setNickname(e.target.value)}
@@ -76,6 +78,7 @@ const AddAnAnswerModal = (props) => {
         <modalStyles.Input
           id="email"
           required
+          colorScheme={props.colorScheme}
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -88,6 +91,7 @@ const AddAnAnswerModal = (props) => {
       <UploadLabel
         htmlFor="image-upload"
         className="custom-file-upload"
+        colorScheme={props.colorScheme}
       >
         Upload Images
       </UploadLabel>
@@ -99,7 +103,7 @@ const AddAnAnswerModal = (props) => {
         onChange={handleImageUpload}
       />
       {imgPreviewUrl ? <div><UploadImg src={imgPreviewUrl} /></div> : null}
-      <modalStyles.Button type="submit">Submit Answer</modalStyles.Button>
+      <modalStyles.Button colorScheme={props.colorScheme} type="submit">Submit Answer</modalStyles.Button>
     </modalStyles.Wrapper>
   );
 };
@@ -117,10 +121,10 @@ const Upload = styled.input`
 `;
 
 const UploadLabel = styled.label`
-  border: 1px solid orange;
+  border: 0px solid;
   margin-top: 10px;
   margin-right: 10px;
-  background: orange;
+  background: ${(props) => (props.colorScheme ? 'purple' : 'orange')};
   padding: 7px;
   font-size: 10px;
   display: block;
@@ -128,8 +132,8 @@ const UploadLabel = styled.label`
   color: white;
   text-transform: uppercase;
   width: 159px;
-  &:hover{ background: #ffc457; color: white; }
-  &:active{ background: darkorange; color: white; }
+  &:hover{ background: ${(props) => (props.colorScheme ? '#a64ca6' : '#ffc04c')}; }
+  &:active{ background: ${(props) => (props.colorScheme ? '#660066' : '#cc8400')}; }
 `;
 
 export default AddAnAnswerModal;

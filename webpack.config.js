@@ -3,7 +3,6 @@ const entryDir = path.resolve(__dirname, 'client', 'index.jsx');
 const outputDir = path.resolve(__dirname, 'public');
 
 module.exports = {
-  mode: 'development',
   entry: entryDir,
   output: {
     filename: 'bundle.js',
