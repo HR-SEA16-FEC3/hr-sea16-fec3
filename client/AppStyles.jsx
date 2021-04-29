@@ -46,6 +46,11 @@ min-height:100vh;
 const Logo = styled.span`
 margin-left: 16px;
 margin-right: 8px;
+color: whitesmoke;
+text-decoration: none;
+&:focus, &:hover, &:visited, &:link, &:active {
+  text-decoration: none;
+}
 `;
 
 export default {

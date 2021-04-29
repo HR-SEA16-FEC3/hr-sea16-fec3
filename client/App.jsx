@@ -35,9 +35,11 @@ const App = () => {
       <AppStyles.Wrapper>
         <AppStyles.Header colorScheme={colorScheme}>
           <h1>
-            <AppStyles.Logo>
-              <LogoOctocat size="36" />
-            </AppStyles.Logo>
+            <a href="/">
+              <AppStyles.Logo>
+                <LogoOctocat size="36" />
+              </AppStyles.Logo>
+            </a>
             Project Catwalk
           </h1>
         </AppStyles.Header>
