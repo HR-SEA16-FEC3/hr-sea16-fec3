@@ -110,7 +110,7 @@ function Overview(props) {
         <BottomSection>
           {/* Product Description */}
           <LeftSection>
-            <Description descExample={InfoExample} />
+            <Description descExample={InfoExample} /> {/* TODO: change to live data */}
           </LeftSection>
         </BottomSection>
 
