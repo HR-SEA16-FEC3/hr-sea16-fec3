@@ -9,17 +9,17 @@ const Subtitle = styled.h3`
   font-size: 18px;
 `;
 const Button = styled.button`
-  border: 1px solid orange;
+  border: 0px solid;
   margin-top: 10px;
   margin-right: 10px;
-  background: orange;
+  background: ${(props) => (props.colorScheme ? 'purple' : 'orange')};
   padding: 7px;
   font-size: 10px;
   color: white;
   text-transform: uppercase;
   width: 175px;
-  &:hover{ background: #ffc457; color: white; }
-  &:active{ background: darkorange; color: white; }
+  &:hover{ background: ${(props) => (props.colorScheme ? '#a64ca6' : '#ffc04c')}; }
+  &:active{ background: ${(props) => (props.colorScheme ? '#660066' : '#cc8400')}; }
 `;
 const Label = styled.label`
   margin: 1em 0;
@@ -39,7 +39,15 @@ const Input = styled.input`
   box-sizing: border-box;
   transition: 0.3s;
   cursor: pointer;
-  background: whitesmoke;
+  color: ${(props) => (props.colorScheme ? 'whitesmoke' : 'black')};
+  background: ${(props) => (props.colorScheme ? '#494949' : 'whitesmoke')};
+  ::placeholder,
+  ::-webkit-input-placeholder {
+    color: ${(props) => (props.colorScheme ? 'lightgrey' : 'darkgrey')};
+  }
+  :-ms-input-placeholder {
+     color: ${(props) => (props.colorScheme ? 'lightgrey' : 'darkgrey')};
+  }
   height: 30px;
 
   &:focus {

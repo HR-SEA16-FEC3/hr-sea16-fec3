@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import Modal from 'react-modal';
+import Highlighter from 'react-highlight-words';
 import AnswersList from './AnswersList';
 import AddAnAnswerModal from './AddAnAnswerModal';
 
@@ -49,7 +50,12 @@ const Question = (props) => {
       {/* Question */}
       <QuestionSection>
         <QAHeader>Q:</QAHeader>
-        <QuestionBody>{props.question.question_body}</QuestionBody>
+        <Highlighter
+          highlightClassName="highlightedBody"
+          searchWords={[props.searchTerm]}
+          autoEscape
+          textToHighlight={props.question.question_body}
+        />
         <QuestionInteractions>
           Helpful?&ensp;
           <HelpfulYes onClick={handleYesClick}>Yes</HelpfulYes>
@@ -72,12 +78,14 @@ const Question = (props) => {
               width: '60vw',
               height: 'max-content',
               margin: 'auto',
-              background: 'whitesmoke',
+              background: (props.colorScheme ? '#494949' : 'whitesmoke'),
+              color: (props.colorScheme ? 'whitesmoke' : 'black'),
             },
           }
         }
       >
         <AddAnAnswerModal
+          colorScheme={props.colorScheme}
           toggleModal={toggleModal}
           question={props.question.question_body}
           questionId={props.question.question_id}

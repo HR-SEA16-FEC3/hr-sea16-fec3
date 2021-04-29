@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import axios from 'axios';
 import modalStyles from '../../../sharedStyles/modalStyles';
 
@@ -17,10 +18,7 @@ const AddAQuestionModal = (props) => {
         email,
         product_id: props.productId,
       })
-      .then(() => {
-        props.toggleModal();
-        props.handleAddQuestion();
-      })
+      .then(() => props.toggleModal())
       .catch((error) => console.log(error));
   };
 
@@ -29,42 +27,49 @@ const AddAQuestionModal = (props) => {
       <modalStyles.Title>Ask Your Question</modalStyles.Title>
       <modalStyles.Subtitle>
         About the
-        {' '}
         {props.productName}
       </modalStyles.Subtitle>
       <modalStyles.Label htmlFor="question">
         {/* Your Answer* */}
+        <br />
         <modalStyles.BodyInput
           as="textarea"
           id="question"
           required
           type="text"
+          colorScheme={props.colorScheme}
           value={questionBody}
           onChange={(e) => setQuestionBody(e.target.value)}
           placeholder="Enter your question here"
           maxLength="1000"
         />
       </modalStyles.Label>
-      <modalStyles.Label htmlFor="nickname">
+      <br />
+      <modalStyles.Label colorScheme={props.colorScheme} htmlFor="nickname">
         What is your nickname?*
+        <br />
         <modalStyles.Input
           id="nickname"
           required
           type="text"
           value={nickname}
+          colorScheme={props.colorScheme}
           onChange={(e) => setNickname(e.target.value)}
           placeholder="Example: jack543!"
           maxLength="60"
         />
+        <br />
         <modalStyles.Disclaimer>
           For privacy reasons, do not use your full name or email address
         </modalStyles.Disclaimer>
       </modalStyles.Label>
       <modalStyles.Label htmlFor="email">
         Your email*
+        <br />
         <modalStyles.Input
           id="email"
           required
+          colorScheme={props.colorScheme}
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -74,7 +79,7 @@ const AddAQuestionModal = (props) => {
           For authentication reasons, you will not be emailed
         </modalStyles.Disclaimer>
       </modalStyles.Label>
-      <modalStyles.Button type="submit">Submit Answer</modalStyles.Button>
+      <modalStyles.Button colorScheme={props.colorScheme} type="submit">Submit Answer</modalStyles.Button>
     </modalStyles.Wrapper>
   );
 };

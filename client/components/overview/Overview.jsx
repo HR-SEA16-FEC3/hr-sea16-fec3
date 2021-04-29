@@ -25,6 +25,7 @@ function Overview(props) {
   const [selectedStyle, setSelectedStyle] = useState(null);
   const [displayPrice, setDisplayPrice] = useState(null);
   const [skus, setSkus] = useState({});
+  const [showModal, setShowModal] = useState(false);
 
   // Fetch: Product Info
   function fetchProductInfo() {
@@ -77,8 +78,8 @@ function Overview(props) {
             {/* Image Gallery */}
             <Subcomponent>
               {selectedStyle === null
-                ? <Gallery style={defaultStyle} /> // TEMP FIX FOR 1ST IMAGE RENDER
-                : <Gallery style={selectedStyle} />}
+                ? <Gallery style={defaultStyle} showModal={showModal} setShowModal={setShowModal} /> // TEMP FIX FOR 1ST IMAGE RENDER
+                : <Gallery style={selectedStyle} showModal={showModal} setShowModal={setShowModal} />}
             </Subcomponent>
           </LeftSection>
 

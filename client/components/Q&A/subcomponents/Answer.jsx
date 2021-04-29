@@ -41,7 +41,7 @@ const Answer = (props) => {
         ? (
           <ImagesDiv>
             {props.answer.photos.map(
-              (url) => (<AnswerImage url={url} key={url} />),
+              (img) => (<AnswerImage url={img.url || img} key={img.url || img} />),
             )}
           </ImagesDiv>
         )

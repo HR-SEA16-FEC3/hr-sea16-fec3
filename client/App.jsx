@@ -11,7 +11,7 @@ const App = () => {
   const [productName, setProductName] = useState('');
   const [productList, setProductList] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [colorScheme, setColorScheme] = useState(true);
+  const [colorScheme, setColorScheme] = useState(false);
   // initializing
   useEffect(() => {
     // TODO: Set product id based on the URL

@@ -5,13 +5,13 @@ import { ArrowLeft, ArrowRight, ChevronUp, ChevronDown } from '@styled-icons/oct
 import { StarThreeQuarter } from '@styled-icons/fluentui-system-filled';
 import { Expand } from '@styled-icons/fa-solid';
 
-const Gallery = ({ style }) => {
+const Gallery = ({ style, showModal, setShowModal }) => {
   const { name, photos } = style;
 
   const [index, setIndex] = useState(0);
   const [display, setDisplay] = useState(null);
   const [current, setCurrent] = useState(0);
-  const [showModal, setShowModal] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
 
   // TODO:
   // display default image upon initial render
@@ -69,14 +69,14 @@ const Overlay = styled.div`
 `;
 
 const Dialog = styled.div`
-  background: white;
+  background: whitesmoke;
   border-radius: 5px;
   padding: 20px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1;
+  /* z-index: 1; */
 `;
 
 /* =================== MODAL =================== */
@@ -118,7 +118,7 @@ const MainImage = styled.img`
   display: block;
   border: 1px solid black;
   margin: auto auto;
-  max-height: 980px;
+  max-height: 800px;
   max-width: 100%;
   height: auto;
   width: auto;

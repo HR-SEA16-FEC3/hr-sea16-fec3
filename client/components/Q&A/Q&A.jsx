@@ -71,7 +71,11 @@ const QandA = ({ productId, productName, colorScheme }) => {
         ) : null}
       {/* Questions List */}
       <div>
-        <QuestionsList questionsList={currentList} colorScheme={colorScheme} />
+        <QuestionsList
+          questionsList={currentList}
+          colorScheme={colorScheme}
+          searchTerm={searchTerm}
+        />
         {/* More Answered Questions Button */}
         {(() => {
           if (filteredList.length > 2 && shownQuestions <= filteredList.length) {
@@ -113,12 +117,17 @@ const QandA = ({ productId, productName, colorScheme }) => {
               width: '60vw',
               height: 'max-content',
               margin: 'auto',
-              background: 'whitesmoke',
+              background: (colorScheme ? '#494949' : 'whitesmoke'),
+              color: (colorScheme ? 'whitesmoke' : 'black'),
+            },
+            overlay: {
+              backgroundColor: (colorScheme ? '#49494990' : '#f5f5f575'),
             },
           }
         }
         >
           <AddAQuestionModal
+            colorScheme={colorScheme}
             toggleModal={toggleModal}
             productId={productId}
             productName={productName}
