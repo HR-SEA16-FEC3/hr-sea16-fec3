@@ -1,23 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-const ReviewSort = (props) => {
+const ReviewSort = ({ setParentFilter, parentFilter, dummyData }) => {
+  // const { setParentFilter, parentFilter } = props;
+
   const [sortMethod, setSortMethod] = useState('');
-  const [filteredData, setFilteredData] = useState(props.dummyData.results);
+  // const [filteredData, setFilteredData] = useState(props.dummyData.results);
 
   useEffect(() => {
+    const filteredList = parentFilter.slice();
     if (sortMethod === 'Newest') {
-      setFilteredData(filteredData.sort((a, b) => new Date(b.date) - new Date(a.date)));
+      filteredList.sort((a, b) => new Date(b.date) - new Date(a.date));
     } else if (sortMethod === 'Helpful') {
-      setFilteredData(filteredData.sort((a, b) => b.helpfulness - a.helpfulness));
+      filteredList.sort((a, b) => b.helpfulness - a.helpfulness);
     } else if (sortMethod === 'Relevance') {
-      setFilteredData(filteredData.sort((a, b) => new Date(b.date) - new Date(a.date) || b.helpfulness - a.helpfulness));
+      filteredList.sort((a, b) => new Date(b.date) - new Date(a.date) || b.helpfulness - a.helpfulness);
     }
+    setParentFilter(filteredList);
   }, [sortMethod]);
+
+  // useEffect(() => {
+  //   setParentFilter(filteredData);
+  // }, [filteredData]);
 
   return (
     <div>
-      {props.dummyData.results.length}
+      {dummyData.results.length}
 &nbsp;reviews, sorted by&nbsp;
       <Select
         id="sort-reviews"

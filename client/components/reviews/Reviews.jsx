@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import ReviewList from './subcomponents/ReviewList.jsx';
 import ReviewMeta from './subcomponents/ReviewMeta.jsx';
@@ -11,7 +11,13 @@ import metaDummyData from './subcomponents/DummyData/product_metaData_example';
 function Reviews({ metadata, data }) {
   const [tiles, setTiles] = useState(2);
   const [modal, setModal] = useState(false);
+  // const [displayData, setDisplayData]
+  const [parentFilter, setParentFilter] = useState(dummyData.results);
 
+  // useEffect(() => {
+  //   console.log((parentFilter));
+  // }, [parentFilter]);
+  // useffect on slice, asynch having multiple states, replace native states with parent state
   return (
     <div data-testid="Reviews">
       <ReviewListStyle>
@@ -23,11 +29,13 @@ function Reviews({ metadata, data }) {
             <div>
               <ReviewSort
                 dummyData={dummyData}
+                parentFilter={parentFilter}
+                setParentFilter={setParentFilter}
               />
 
             </div>
           </RightTopSection>
-          <ReviewList dummyData={dummyData.results.slice(0, tiles)} />
+          <ReviewList dummyData={parentFilter.slice(0, tiles)} />
           <ButtonStyle>
             <span>
               <Button
