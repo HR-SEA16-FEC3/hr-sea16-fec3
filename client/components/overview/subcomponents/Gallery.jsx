@@ -13,6 +13,10 @@ const Gallery = ({ style, showModal, setShowModal }) => {
   const [current, setCurrent] = useState(0);
   // const [showModal, setShowModal] = useState(false);
 
+  // useEffect(() => {
+  //   if (showModal)
+  // }, [showModal]);
+
   // TODO:
   // display default image upon initial render
   // arrows part of main image div
@@ -23,8 +27,8 @@ const Gallery = ({ style, showModal, setShowModal }) => {
 
       {/* MAIN IMAGE */}
       <MainContainer data-testid="Gallery"> {/* ADD ENLARGE IMAGE ICON */}
-        <MainImage src={photos[index].url} alt={name} onClick={() => {setShowModal(true)}} />
-        <ExpandContainer><Expand size="24" /></ExpandContainer>
+        <MainImage src={photos[index].url} alt={name} />
+        <ExpandContainer onClick={() => {setShowModal(true)}}><Expand size="24" /></ExpandContainer>
         <LeftArrow><ArrowLeft size="36" /></LeftArrow>
         <RightArrow><ArrowRight size="36" /></RightArrow>
 
@@ -66,6 +70,7 @@ const Overlay = styled.div`
   bottom: 0;
   right: 0;
   background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
 `;
 
 const Dialog = styled.div`
@@ -76,7 +81,7 @@ const Dialog = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* z-index: 1; */
+  z-index: 2;
 `;
 
 /* =================== MODAL =================== */
