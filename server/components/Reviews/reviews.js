@@ -32,7 +32,7 @@ reviewMeta.get('/reviews/meta', (req, res) => {
     });
 });
 
-QandA.post('/qa/questions/:question_id/answers', (req, res) => {
+reviews.post('/reviews', (req, res) => {
   axios.post(`${apiUrl}/qa/questions/${req.params.question_id}/answers`, req.body, {
     headers: header,
   })
@@ -40,15 +40,20 @@ QandA.post('/qa/questions/:question_id/answers', (req, res) => {
     .catch((error) => res.status(500).send(error));
 });
 
-QandA.post('/qa/questions/:question_id/answers', (req, res) => {
-  axios.post(`${apiUrl}/qa/questions/${req.params.question_id}/answers`, req.body, {
+reviewHelpful.put('/reviews/:review_id/helpful, (req, res) => {
+  axios.put(`${apiUrl}/qa/${req.params.QorA}/${req.params.id}/report`, {}, {
     headers: header,
   })
-    .then(() => res.sendStatus(201))
-    .catch((error) => res.status(500).send(error));
+    .then(() => {
+      res.status(204).send();
+    })
+    .catch((error) => {
+      res.sendStatus(500);
+      throw error;
+    });
 });
 
-QandA.put('/qa/:QorA/:id/report', (req, res) => {
+reviewReport.put('/reviews/:review_id/report', (req, res) => {
   axios.put(`${apiUrl}/qa/${req.params.QorA}/${req.params.id}/report`, {}, {
     headers: header,
   })
