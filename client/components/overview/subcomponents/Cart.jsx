@@ -45,6 +45,8 @@ const Cart = ({ style /* skus */}) => {
     setCopySuccess('Copied!');
   }
 
+  const socialMessage = 'Check+out+my+new+kicks+at%3A+http%3A%2F%2F34.208.75.214';
+
   return (
     <form data-testid="Cart">
 
@@ -98,9 +100,8 @@ const Cart = ({ style /* skus */}) => {
       <Socials>
         {/* Facebook, Twitter, Pinterest = min required */}
 
-        <Icon as="a" href="https://www.facebook.com/sharer/sharer.php?u=http://34.208.75.214/"><faBrands.Facebook data-testid="icon-facebook" size="36" /></Icon>
-
-        <Icon><faBrands.Twitter data-testid="icon-twitter" size="36" /></Icon>
+        <Icon as="a" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://34.208.75.214/"><faBrands.Facebook data-testid="icon-facebook" size="36" /></Icon>
+        <Icon as="a" target="_blank" href={`https://twitter.com/intent/tweet?text=${socialMessage}`}><faBrands.Twitter data-testid="icon-twitter" size="36" /></Icon>
         <Icon><faBrands.Pinterest data-testid="icon-pinterest" size="36" /></Icon>
         <Icon><faBrands.Instagram size="36" /></Icon>
         <Icon><faBrands.Whatsapp size="36" /></Icon>
@@ -109,9 +110,6 @@ const Cart = ({ style /* skus */}) => {
         <span>{copySuccess}</span>
       </Socials>
 
-      {/* Facebook Script */}
-      <div id="fb-root"></div>
-      <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0&appId=783451485639402&autoLogAppEvents=1" nonce="0HQIBBSB"></script>
     </form>
   );
 };
