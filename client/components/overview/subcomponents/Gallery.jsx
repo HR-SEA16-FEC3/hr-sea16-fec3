@@ -6,7 +6,7 @@ import { StarThreeQuarter } from '@styled-icons/fluentui-system-filled';
 import { Expand } from '@styled-icons/fa-solid';
 import { Close } from '@styled-icons/ionicons-solid';
 
-const Gallery = ({ style }) => {
+const Gallery = ({ style, styleIndex, setStyleIndex }) => {
   const { name, photos } = style;
 
   const [index, setIndex] = useState(0);
@@ -15,15 +15,21 @@ const Gallery = ({ style }) => {
   const [showModal, setShowModal] = useState(false);
 
   function handleUp() {
-    const addIndex = index - 1;
-    if (photos[addIndex].url) setIndex(addIndex);
-    if (!photos[addIndex].url) setIndex(photos.length - 1);
+    const subtractIndex = index - 1;
+    if (photos[subtractIndex] === undefined) {
+      setIndex(photos.length - 1);
+    } else {
+      setIndex(subtractIndex);
+    }
   }
 
   function handleDown() {
     const addIndex = index + 1;
-    if (photos[addIndex].url) setIndex(addIndex);
-    if (!photos[addIndex].url) setIndex(0);
+    if (photos[addIndex] === undefined) {
+      setIndex(0);
+    } else {
+      setIndex(addIndex);
+    }
   }
 
   // TODO:
