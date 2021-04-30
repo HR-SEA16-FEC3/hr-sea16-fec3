@@ -1,8 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
-import Reviews from '../Reviews.jsx';
 import AddReviews from './AddReviews.jsx';
 
 const modalVariant = {
