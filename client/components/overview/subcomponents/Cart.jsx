@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import * as faBrands from '@styled-icons/fa-brands';
@@ -20,6 +20,9 @@ const Cart = ({ style /* skus */}) => {
   const [options, setOptions] = useState([]);
   const [cart, setCart] = useState([]);
 
+  const [copySuccess, setCopySuccess] = useState(''); // copy link
+  const textAreaRef = useRef(null); // copy link ref
+
   useEffect(() => {
     const array = [];
     for (let i = 1; i < maxQuantity + 1; i++) {
@@ -36,6 +39,16 @@ const Cart = ({ style /* skus */}) => {
     addItem.quantity = selQuantity;
     newCart.push(addItem);
     setCart(newCart);
+  }
+
+  function copyToClipboard(e) {
+    textAreaRef.current.select();
+    document.execCommand('copy');
+    navigator.clipboard.writeText('http://34.208.75.214/');
+    // This is just personal preference.
+    // I prefer to not show the whole text area selected.
+    e.target.focus();
+    setCopySuccess('Link copied!');
   }
 
   return (
@@ -98,12 +111,16 @@ const Cart = ({ style /* skus */}) => {
         <Icon><faBrands.Instagram size="36" /></Icon>
         <Icon><faBrands.Whatsapp size="36" /></Icon>
         <Icon><Email size="36" /></Icon>
-        <Icon onClick={() => {navigator.clipboard.writeText('http://34.208.75.214/')}}><Link size="36" /></Icon>
-      </Socials>
+        <Icon onClick={copyToClipboard}><Link size="36" /></Icon>
 
+      </Socials>
+      {copySuccess}
       {/* Facebook Script */}
       <div id="fb-root"></div>
       <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0&appId=783451485639402&autoLogAppEvents=1" nonce="0HQIBBSB"></script>
+
+      {/* Copy Link */}
+      <form><textarea ref={textAreaRef} value='http://34.208.75.214' hidden /></form>
     </form>
   );
 };
