@@ -90,16 +90,21 @@ const Cart = ({ style /* skus */}) => {
       {/* Share on Social Media */}
       <Socials>
         {/* Facebook, Twitter, Pinterest = min required */}
-        <Icon><faBrands.Facebook data-testid="icon-facebook" size="36" /></Icon>
+
+        <Icon as="a" href="https://www.facebook.com/sharer/sharer.php?u=http://34.208.75.214/"><faBrands.Facebook data-testid="icon-facebook" size="36" /></Icon>
+
         <Icon><faBrands.Twitter data-testid="icon-twitter" size="36" /></Icon>
         <Icon><faBrands.Pinterest data-testid="icon-pinterest" size="36" /></Icon>
         <Icon><faBrands.Instagram size="36" /></Icon>
         <Icon><faBrands.Whatsapp size="36" /></Icon>
         <Icon><Email size="36" /></Icon>
-        <Icon><Link size="36" /></Icon>
+        <Icon onClick={() => {navigator.clipboard.writeText('http://34.208.75.214/')}}><Link size="36" /></Icon>
       </Socials>
-    </form>
 
+      {/* Facebook Script */}
+      <div id="fb-root"></div>
+      <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0&appId=783451485639402&autoLogAppEvents=1" nonce="0HQIBBSB"></script>
+    </form>
   );
 };
 
@@ -138,7 +143,9 @@ const Socials = styled.div`
 
 const Icon = styled.span` // ONCLICK SHOULD BE DARKER THAN REST STATE
   margin: 10px 16px 0 0;
-  &:hover{ color: #ffbf00 } // HOVER SHOULD BE A LIGHTER COLOR THAN REST STATE
+  &:visited{ color: orange; text-decoration: none; };
+  &:link{ color: orange; text-decoration: none; };
+  &:hover{ color: #ffbf00 }; // HOVER SHOULD BE A LIGHTER COLOR THAN REST STATE
 `;
 
 export default Cart;
