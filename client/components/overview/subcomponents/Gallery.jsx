@@ -6,7 +6,7 @@ import { StarThreeQuarter } from '@styled-icons/fluentui-system-filled';
 import { Expand } from '@styled-icons/fa-solid';
 import { Close } from '@styled-icons/ionicons-solid';
 
-const Gallery = ({ style/* , showModal, setShowModal */ }) => {
+const Gallery = ({ style }) => {
   const { name, photos } = style;
 
   const [index, setIndex] = useState(0);
@@ -14,9 +14,17 @@ const Gallery = ({ style/* , showModal, setShowModal */ }) => {
   const [current, setCurrent] = useState(0);
   const [showModal, setShowModal] = useState(false);
 
-  // useEffect(() => {
-  //   if (showModal)
-  // }, [showModal]);
+  function handleUp() {
+    const addIndex = index - 1;
+    if (photos[addIndex].url) setIndex(addIndex);
+    if (!photos[addIndex].url) setIndex(photos.length - 1);
+  }
+
+  function handleDown() {
+    const addIndex = index + 1;
+    if (photos[addIndex].url) setIndex(addIndex);
+    if (!photos[addIndex].url) setIndex(0);
+  }
 
   // TODO:
   // arrows part of main image div
@@ -25,7 +33,7 @@ const Gallery = ({ style/* , showModal, setShowModal */ }) => {
     <OuterContainer>
 
       {/* MAIN IMAGE */}
-      <MainContainer data-testid="Gallery"> {/* ADD ENLARGE IMAGE ICON */}
+      <MainContainer data-testid="Gallery">
         <MainImage src={photos[index].url} alt={name} />
         <ExpandContainer onClick={() => {setShowModal(true)}}><Expand size="24" /></ExpandContainer>
         <LeftArrow><ArrowLeft size="36" /></LeftArrow>
@@ -33,7 +41,7 @@ const Gallery = ({ style/* , showModal, setShowModal */ }) => {
 
         {/* THUMBNAILS */}
         <ThumbnailContainer>
-          <ChevronUp size="20" />
+          <ChevronUp size="20" onClick={() => handleUp()} />
           {photos.map((photo, key) => (
             <ThumbnailSquare
               key={key} image={photo.url}
@@ -43,14 +51,14 @@ const Gallery = ({ style/* , showModal, setShowModal */ }) => {
               }}
             />
           ))}
-          <ChevronDown size="20" />
+          <ChevronDown onClick={() => handleDown()} size="20" />
         </ThumbnailContainer>
       </MainContainer>
 
       {showModal && (
         <Overlay>
           <Dialog>
-          <CloseButton><Close size="36" onClick={() => setShowModal(false)} /></CloseButton>
+            <CloseButton><Close size="36" onClick={() => setShowModal(false)} /></CloseButton>
             <ModalImage src={photos[index].url} onClick={() => setShowModal(false)} />
           </Dialog>
         </Overlay>
@@ -124,12 +132,9 @@ const ThumbnailSquare = styled.div`
 const OuterContainer = styled.div`
   display: flex;
   justify-content: center;
-  /* width: 100%; */
-  /* flex: auto; */
 `;
 
 const MainContainer = styled.div`
-  /* display: block; */
   position: relative;
   width: 100%;
   max-width: 768px;
