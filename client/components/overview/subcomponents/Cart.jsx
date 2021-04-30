@@ -45,7 +45,7 @@ const Cart = ({ style /* skus */}) => {
     setCopySuccess('Copied!');
   }
 
-  const socialMessage = 'Check+out+my+new+kicks+at%3A+http%3A%2F%2F34.208.75.214';
+  const socialMessage = 'Check%20out%20my%20slick%20new%20kicks%20from%20FEC%20Group%203%20at%3A%20http%3A%2F%2F34.208.75.214';
 
   return (
     <form data-testid="Cart">
@@ -105,7 +105,7 @@ const Cart = ({ style /* skus */}) => {
         <Icon as="a" target="_blank" href={`https://pinterest.com/pin/create/link/?url=${socialMessage}`}><faBrands.Pinterest data-testid="icon-pinterest" size="36" /></Icon>
         <Icon><faBrands.Instagram size="36" /></Icon>
         <Icon><faBrands.Whatsapp size="36" /></Icon>
-        <Icon as="a" target="_blank" href={`mailto:?subject=Hello&body=${socialMessage}`}><Email size="36" /></Icon>
+        <Icon as="a" target="_blank" href={`mailto:?subject=Hello!&body=${socialMessage}`}><Email size="36" /></Icon>
         <Icon onClick={copyToClipboard}><Link size="36" /></Icon>
         <span>{copySuccess}</span>
       </Socials>
