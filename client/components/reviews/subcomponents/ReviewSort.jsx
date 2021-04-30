@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const ReviewSort = ({ setParentFilter, parentFilter, dummyData }) => {
   // const { setParentFilter, parentFilter } = props;
@@ -40,6 +41,12 @@ const ReviewSort = ({ setParentFilter, parentFilter, dummyData }) => {
     </div>
   );
 };
+
+ReviewSort.propTypes = {
+  dummyData: PropTypes.object.isRequired,
+};
+
+// setParentFilter, parentFilter, dummyData
 
 const Select = styled.select`
   width: auto;

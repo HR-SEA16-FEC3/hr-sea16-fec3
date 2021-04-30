@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import modalStyles from '../../../sharedStyles/modalStyles';
 
-const AddReviews = (props) => (
+const AddReviews = () => (
   <div className="Add-Review-Modal">
     <modalStyles.Title>
       Submit your Review!

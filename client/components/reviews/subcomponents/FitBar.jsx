@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const FitBar = ({ data, value }) => {
   let meaningLow;
@@ -66,6 +67,11 @@ const FitBar = ({ data, value }) => {
       </TextWrapper>
     </div>
   );
+};
+
+FitBar.propTypes = {
+  data: PropTypes.object.isRequired,
+  value: PropTypes.string.isRequired,
 };
 
 const TextWrapper = styled.div`

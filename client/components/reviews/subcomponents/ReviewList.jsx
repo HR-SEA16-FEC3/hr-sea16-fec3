@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import RatingStar from './RatingStar.jsx';
 
 const ReviewList = ({ dummyData }) => (
@@ -52,6 +53,10 @@ const ReviewList = ({ dummyData }) => (
     ))}
   </div>
 );
+
+ReviewList.propTypes = {
+  dummyData: PropTypes.array.isRequired,
+};
 
 const RightFloat = styled.div`
   float: right;

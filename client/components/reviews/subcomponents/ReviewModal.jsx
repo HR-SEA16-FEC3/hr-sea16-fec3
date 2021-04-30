@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
+import PropTypes from 'prop-types';
 import AddReviews from './AddReviews.jsx';
 
 const modalVariant = {
@@ -64,8 +65,6 @@ const ReviewModal = ({ open, onClose }) => {
     </AnimatePresence>
   );
 };
-
-ReviewModal.propTypes = {};
 
 const Overlay = styled(motion.div)`
   position: fixed;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const RatingsBar = ({ rating, maxRatingWidth }) => {
   const fillerWidth = (maxRatingWidth) * 100;
@@ -33,6 +34,11 @@ const RatingsBar = ({ rating, maxRatingWidth }) => {
       </div>
     </div>
   );
+};
+
+RatingsBar.propTypes = {
+  rating: PropTypes.string.isRequired,
+  maxRatingWidth: PropTypes.number.isRequired,
 };
 
 export default RatingsBar;

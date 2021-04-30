@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import RatingStar from './RatingStar.jsx';
 import RatingsBar from './RatingsBar.jsx';
 import FitBar from './FitBar.jsx';
@@ -87,6 +88,13 @@ const ReviewMeta = ({ metaDummyData }) => {
     </div>
   );
 };
+
+ReviewMeta.propTypes = {
+  // ratings: PropTypes.object.isRequired,
+  // recommended: PropTypes.object.isRequired,
+  metaDummyData: PropTypes.object.isRequired,
+};
+
 const MetaHeader = styled.div`
   flex-direction:row;
   font-size: 30px;
