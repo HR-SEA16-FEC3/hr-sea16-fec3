@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import axios from 'axios';
 import Modal from 'react-modal';
@@ -18,6 +19,11 @@ const QandA = ({ productId, productName, colorScheme }) => {
   const handleShowMore = () => setShownQuestions(shownQuestions + 2);
   const handleShowLess = () => setShownQuestions(2);
   // Initialize questions list
+  const sortQuestionsList = (list) => {
+    const newList = list.sort((a, b) => b.question_helpfulness - a.question_helpfulness);
+    return newList;
+  };
+
   useEffect(() => {
     axios.get(`/qa/questions/${productId}`)
       .then((data) => (
@@ -75,6 +81,7 @@ const QandA = ({ productId, productName, colorScheme }) => {
           questionsList={currentList}
           colorScheme={colorScheme}
           searchTerm={searchTerm}
+          productName={productName}
         />
         {/* More Answered Questions Button */}
         {(() => {
@@ -148,9 +155,10 @@ const QandA = ({ productId, productName, colorScheme }) => {
   );
 };
 
-const sortQuestionsList = (list) => {
-  const newList = list.sort((a, b) => b.question_helpfulness - a.question_helpfulness);
-  return newList;
+QandA.propTypes = {
+  productId: PropTypes.number.isRequired,
+  colorScheme: PropTypes.bool.isRequired,
+  productName: PropTypes.string.isRequired,
 };
 
 const Button = styled.button`

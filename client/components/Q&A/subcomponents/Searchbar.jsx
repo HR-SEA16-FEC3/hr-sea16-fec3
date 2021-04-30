@@ -1,16 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 const Searchbar = ({ searchTerm, setSearchTerm, colorScheme }) => {
-  //const [text, setText] = useState('');
   const handleChange = async (event) => {
-    //setText(event.target.value);
     setSearchTerm(event.target.value);
   };
   const clearInput = async () => {
-    //setText('');
     setSearchTerm('');
   };
 
@@ -39,6 +37,12 @@ const Searchbar = ({ searchTerm, setSearchTerm, colorScheme }) => {
     </form>
 
   );
+};
+
+Searchbar.propTypes = {
+  searchTerm: PropTypes.string.isRequired,
+  colorScheme: PropTypes.bool.isRequired,
+  setSearchTerm: PropTypes.func.isRequired,
 };
 
 const StyledInput = styled.div`
