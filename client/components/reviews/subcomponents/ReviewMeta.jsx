@@ -59,13 +59,14 @@ const ReviewMeta = ({ metaDummyData }) => {
       <br />
       <br />
       {(Object.entries(clonedRatingObject).reverse().map(([key, value], i) => (
-        <div>
+        <div
+          key={i}
+        >
           {key}
           &nbsp;Stars
           <RatingsBar
             rating={value}
             maxRatingWidth={value / maxRatingWidth}
-            key={i}
           />
         </div>
       )))}
