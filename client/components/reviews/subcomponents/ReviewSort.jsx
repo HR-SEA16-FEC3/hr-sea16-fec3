@@ -44,6 +44,8 @@ const ReviewSort = ({ setParentFilter, parentFilter, dummyData }) => {
 
 ReviewSort.propTypes = {
   dummyData: PropTypes.object.isRequired,
+  setParentFilter: PropTypes.func.isRequired,
+  parentFilter: PropTypes.array.isRequired,
 };
 
 // setParentFilter, parentFilter, dummyData

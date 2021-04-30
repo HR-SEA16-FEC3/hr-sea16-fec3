@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 import ReviewList from './subcomponents/ReviewList.jsx';
 import ReviewMeta from './subcomponents/ReviewMeta.jsx';
 import ReviewModal from './subcomponents/ReviewModal.jsx';
@@ -8,11 +9,21 @@ import dummyData from './subcomponents/DummyData/product_reviews_example';
 import metaDummyData from './subcomponents/DummyData/product_metaData_example';
 
 // destructure the props, change var naming
-function Reviews({ metadata, data }) {
+function Reviews({ productId, setProductName }) {
   const [tiles, setTiles] = useState(2);
   const [modal, setModal] = useState(false);
   // const [displayData, setDisplayData]
   const [parentFilter, setParentFilter] = useState(dummyData.results);
+
+  useEffect(() => {
+    axios.get(`/qa/questions/${productId}`)
+      .then((data) => (
+        setQuestionsList(sortQuestionsList(data.data.results))
+      ))
+      .catch((error) => {
+        throw error;
+      });
+  }, [productId]);
 
   // useEffect(() => {
   //   console.log((parentFilter));
