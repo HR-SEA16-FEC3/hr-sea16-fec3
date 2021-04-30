@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import RatingStar from './RatingStar.jsx';
 
-const ReviewList = (props) => (
+const ReviewList = ({ dummyData }) => (
   // rename wrapper, use props
   <div className="review-list">
-    {props.dummyData.map((item, i) => (
+    {dummyData.map((item, i) => (
       <ReviewListStyling className="review-tile" key={i}>
         <div className="review-reviewer">
           <RatingStar

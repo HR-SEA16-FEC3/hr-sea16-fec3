@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import RatingStar from './RatingStar.jsx';
-import RatingsBar from './RatingBar.jsx';
+import RatingsBar from './RatingsBar.jsx';
 import FitBar from './FitBar.jsx';
 
 const getAverageRating = ({ ratings }) => {
@@ -35,11 +35,11 @@ const maxWidth = ({ ratings }) => {
   return Math.max(...values);
 };
 
-const ReviewMeta = (props) => {
-  const averageRating = getAverageRating(props.metaDummyData);
-  const averageRecommendation = getAverageRecommendation(props.metaDummyData);
-  const clonedRatingObject = cloneObject(props.metaDummyData);
-  const maxRatingWidth = maxWidth(props.metaDummyData);
+const ReviewMeta = ({ metaDummyData }) => {
+  const averageRating = getAverageRating(metaDummyData);
+  const averageRecommendation = getAverageRecommendation(metaDummyData);
+  const clonedRatingObject = cloneObject(metaDummyData);
+  const maxRatingWidth = maxWidth(metaDummyData);
 
   return (
     <div>
@@ -73,13 +73,13 @@ const ReviewMeta = (props) => {
       Size
       <br />
       <FitBar
-        data={props.metaDummyData.characteristics.Fit}
+        data={metaDummyData.characteristics.Fit}
         value="Fit"
       />
       <br />
       Comfort
       <FitBar
-        data={props.metaDummyData.characteristics.Comfort}
+        data={metaDummyData.characteristics.Comfort}
         value="Comfort"
       />
       <br />

@@ -1,9 +1,7 @@
 import React from 'react';
-import { reduce } from 'underscore';
-import metaDummyData from './DummyData/product_metaData_example.js';
 
-const RatingsBar = (props) => {
-  const fillerWidth = (props.maxRatingWidth) * 100;
+const RatingsBar = ({ rating, maxRatingWidth }) => {
+  const fillerWidth = (maxRatingWidth) * 100;
 
   const containerStyles = {
     height: 20,
@@ -31,7 +29,7 @@ const RatingsBar = (props) => {
   return (
     <div style={containerStyles}>
       <div style={fillerStyles}>
-        <span style={labelStyles}>{`${props.rating}`}</span>
+        <span style={labelStyles}>{`${rating}`}</span>
       </div>
     </div>
   );

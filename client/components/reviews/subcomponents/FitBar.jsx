@@ -1,12 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { reduce } from 'underscore';
-import metaDummyData from './DummyData/product_metaData_example.js';
 
-const FitBar = (props) => {
+const FitBar = ({ data, value }) => {
   let meaningLow;
   let meaningHigh;
-  const position = props.data.value * 10;
+  const position = data.value * 10;
 
   const emptyBar = {
     width: '100%',
@@ -23,7 +21,7 @@ const FitBar = (props) => {
 
   };
 
-  switch (props.value) {
+  switch (value) {
     case 'Size':
       meaningLow = 'Too small';
       meaningHigh = 'Too large';
