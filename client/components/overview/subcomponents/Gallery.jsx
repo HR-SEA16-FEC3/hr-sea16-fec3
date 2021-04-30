@@ -4,23 +4,22 @@ import styled from 'styled-components';
 import { ArrowLeft, ArrowRight, ChevronUp, ChevronDown } from '@styled-icons/octicons';
 import { StarThreeQuarter } from '@styled-icons/fluentui-system-filled';
 import { Expand } from '@styled-icons/fa-solid';
+import { Close } from '@styled-icons/ionicons-solid';
 
-const Gallery = ({ style, showModal, setShowModal }) => {
+const Gallery = ({ style/* , showModal, setShowModal */ }) => {
   const { name, photos } = style;
 
   const [index, setIndex] = useState(0);
   const [display, setDisplay] = useState(null);
   const [current, setCurrent] = useState(0);
-  // const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   // useEffect(() => {
   //   if (showModal)
   // }, [showModal]);
 
   // TODO:
-  // display default image upon initial render
   // arrows part of main image div
-  // display modal
 
   return (
     <OuterContainer>
@@ -51,8 +50,8 @@ const Gallery = ({ style, showModal, setShowModal }) => {
       {showModal && (
         <Overlay>
           <Dialog>
-            <button onClick={() => setShowModal(false)}>CLOSE MODAL</button>
-            <img src={photos[index].url} />
+          <CloseButton><Close size="36" onClick={() => setShowModal(false)} /></CloseButton>
+            <ModalImage src={photos[index].url} onClick={() => setShowModal(false)} />
           </Dialog>
         </Overlay>
       )}
@@ -69,7 +68,7 @@ const Overlay = styled.div`
   left: 0;
   bottom: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.5);
   z-index: 1;
 `;
 
@@ -82,6 +81,24 @@ const Dialog = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
+  color: whitesmoke;
+  width: max-content;
+  margin: auto;
+  height: max-content;
+`;
+
+const CloseButton = styled.div`
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  border-radius: 50%;
+  background-color:rgba(128, 128, 128, 0.85);
+`;
+
+const ModalImage = styled.img`
+  width: auto;
+  max-height: 90vh;
+  margin: auto;
 `;
 
 /* =================== MODAL =================== */
@@ -152,7 +169,7 @@ const RightArrow = styled.div`
   border-radius: 50%;
   background-color:rgba(0, 0, 0, 0.25);
 `;
-// stop
+
 const ThumbnailContainer = styled.div`
   display: block;
   position: absolute;

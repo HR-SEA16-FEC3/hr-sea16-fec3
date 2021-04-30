@@ -10,7 +10,6 @@ import StylesExample from './product_styles_example.json';
 import axios from 'axios';
 
 // TODO:
-// - modal
 // - overlay checkmark on selected image's thumbnail
 
 function Overview(props) {
@@ -23,9 +22,9 @@ function Overview(props) {
   const [stylesList, setStylesList] = useState(StylesExample.results);
   const [defaultStyle, setDefaultStyle] = useState(StylesExample.results[0]);
   const [selectedStyle, setSelectedStyle] = useState(null);
+  const [styleIndex, setStyleIndex] = useState(0);
   const [displayPrice, setDisplayPrice] = useState(null);
   const [skus, setSkus] = useState({});
-  const [showModal, setShowModal] = useState(false);
 
   // Fetch: Product Info
   function fetchProductInfo() {
@@ -78,8 +77,8 @@ function Overview(props) {
             {/* Image Gallery */}
             <Subcomponent>
               {selectedStyle === null
-                ? <Gallery style={defaultStyle} showModal={showModal} setShowModal={setShowModal} /> // TEMP FIX FOR 1ST IMAGE RENDER
-                : <Gallery style={selectedStyle} showModal={showModal} setShowModal={setShowModal} />}
+                ? <Gallery style={defaultStyle} /> // TEMP FIX FOR 1ST IMAGE RENDER
+                : <Gallery style={selectedStyle} />}
             </Subcomponent>
           </LeftSection>
 
