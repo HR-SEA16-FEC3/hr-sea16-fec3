@@ -8,9 +8,7 @@ const header = { Authorization: config.TOKEN };
 
 reviews.get('/reviews', (req, res) => {
   axios.get(`${apiUrl}/reviews`, {
-    headers: {
-      Authorization: header,
-    },
+    headers: header,
   })
     .then((response) => {
       res.status(200).send(response.data);
@@ -23,9 +21,7 @@ reviews.get('/reviews', (req, res) => {
 
 reviewMeta.get('/reviews/meta', (req, res) => {
   axios.get(`${apiUrl}/reviews/meta/`, {
-    headers: {
-      Authorization: header,
-    },
+    headers: header,
   })
     .then((response) => {
       res.status(200).send(response.data);
@@ -36,22 +32,33 @@ reviewMeta.get('/reviews/meta', (req, res) => {
     });
 });
 
-products.get('/products/:product_id/styles', (req, res) => {
-  const productId = req.params.product_id;
-  axios.get(`${apiUrl}/products/${productId}/styles`, {
-    headers: {
-      Authorization: config.TOKEN,
-    },
+QandA.post('/qa/questions/:question_id/answers', (req, res) => {
+  axios.post(`${apiUrl}/qa/questions/${req.params.question_id}/answers`, req.body, {
+    headers: header,
   })
-    .then((response) => {
-      if (response.data.results.length === 0) {
-        res.status(500).send(`No styles found for selected productId: ${productId}`);
-      } else { res.status(200).send(response.data); }
+    .then(() => res.sendStatus(201))
+    .catch((error) => res.status(500).send(error));
+});
+
+QandA.post('/qa/questions/:question_id/answers', (req, res) => {
+  axios.post(`${apiUrl}/qa/questions/${req.params.question_id}/answers`, req.body, {
+    headers: header,
+  })
+    .then(() => res.sendStatus(201))
+    .catch((error) => res.status(500).send(error));
+});
+
+QandA.put('/qa/:QorA/:id/report', (req, res) => {
+  axios.put(`${apiUrl}/qa/${req.params.QorA}/${req.params.id}/report`, {}, {
+    headers: header,
+  })
+    .then(() => {
+      res.status(204).send();
     })
     .catch((error) => {
-      console.log('Error:', error);
       res.sendStatus(500);
+      throw error;
     });
 });
 
-module.exports = products;
+module.exports = reviews;
