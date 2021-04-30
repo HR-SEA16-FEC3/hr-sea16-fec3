@@ -20,8 +20,7 @@ const Cart = ({ style /* skus */}) => {
   const [options, setOptions] = useState([]);
   const [cart, setCart] = useState([]);
 
-  const [copySuccess, setCopySuccess] = useState(''); // copy link
-  const textAreaRef = useRef(null); // copy link ref
+  const [copySuccess, setCopySuccess] = useState(''); // copy link state
 
   useEffect(() => {
     const array = [];
@@ -42,13 +41,8 @@ const Cart = ({ style /* skus */}) => {
   }
 
   function copyToClipboard(e) {
-    textAreaRef.current.select();
-    document.execCommand('copy');
     navigator.clipboard.writeText('http://34.208.75.214/');
-    // This is just personal preference.
-    // I prefer to not show the whole text area selected.
-    e.target.focus();
-    setCopySuccess('Link copied!');
+    setCopySuccess('Copied!');
   }
 
   return (
@@ -112,15 +106,12 @@ const Cart = ({ style /* skus */}) => {
         <Icon><faBrands.Whatsapp size="36" /></Icon>
         <Icon><Email size="36" /></Icon>
         <Icon onClick={copyToClipboard}><Link size="36" /></Icon>
-
+        <span>{copySuccess}</span>
       </Socials>
-      {copySuccess}
+
       {/* Facebook Script */}
       <div id="fb-root"></div>
       <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0&appId=783451485639402&autoLogAppEvents=1" nonce="0HQIBBSB"></script>
-
-      {/* Copy Link */}
-      <form><textarea ref={textAreaRef} value='http://34.208.75.214' hidden /></form>
     </form>
   );
 };
@@ -156,6 +147,7 @@ const Socials = styled.div`
   flex-flow: row wrap;
   padding: 8px 0;
   margin: 0;
+  align-items: center;
 `;
 
 const Icon = styled.span` // ONCLICK SHOULD BE DARKER THAN REST STATE
