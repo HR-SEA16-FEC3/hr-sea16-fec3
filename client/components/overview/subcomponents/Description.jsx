@@ -3,14 +3,16 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Features from './Features';
 
-function Description(props) {
+function Description({ productInfo }) {
+  let receivedProductInfo = true;
+  if (!productInfo || !Object.keys(productInfo).length) receivedProductInfo = false;
+  if (!receivedProductInfo) return <div>Loading</div>;
+
   const {
-    descExample: {
-      description,
-      slogan,
-      features: allFeatures,
-    },
-  } = props;
+    description,
+    slogan,
+    features: featuresList,
+  } = productInfo;
 
   return (
     <>
@@ -24,23 +26,21 @@ function Description(props) {
 
         {/* FEATURES */}
         <Right>
-          {allFeatures.map((feature, i) => (
+          {featuresList.map((feature, i) => (
             <Features feature={feature} key={i} />
           ))}
         </Right>
       </BottomSection>
-
-      <br />
     </>
   );
 }
 
 Description.propTypes = {
-  descExample: PropTypes.shape({
-    slogan: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    features: PropTypes.array,
-  })
+  // descExample: PropTypes.shape({
+  //   slogan: PropTypes.string.isRequired,
+  //   description: PropTypes.string.isRequired,
+  //   features: PropTypes.array,
+  // })
 };
 
 const SloganStyled = styled.section`
