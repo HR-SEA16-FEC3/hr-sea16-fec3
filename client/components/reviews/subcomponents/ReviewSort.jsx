@@ -3,10 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const ReviewSort = ({ setParentFilter, parentFilter, dummyData }) => {
-  // const { setParentFilter, parentFilter } = props;
-
   const [sortMethod, setSortMethod] = useState('');
-  // const [filteredData, setFilteredData] = useState(props.dummyData.results);
 
   useEffect(() => {
     const filteredList = parentFilter.slice();
@@ -19,10 +16,6 @@ const ReviewSort = ({ setParentFilter, parentFilter, dummyData }) => {
     }
     setParentFilter(filteredList);
   }, [sortMethod]);
-
-  // useEffect(() => {
-  //   setParentFilter(filteredData);
-  // }, [filteredData]);
 
   return (
     <div>
@@ -43,9 +36,9 @@ const ReviewSort = ({ setParentFilter, parentFilter, dummyData }) => {
 };
 
 ReviewSort.propTypes = {
-  dummyData: PropTypes.object.isRequired,
-  setParentFilter: PropTypes.func.isRequired,
-  parentFilter: PropTypes.array.isRequired,
+  // dummyData: PropTypes.object.isRequired,
+  // setParentFilter: PropTypes.func.isRequired,
+  // parentFilter: PropTypes.array.isRequired,
 };
 
 // setParentFilter, parentFilter, dummyData

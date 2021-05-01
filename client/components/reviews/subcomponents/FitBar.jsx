@@ -70,8 +70,8 @@ const FitBar = ({ data, value }) => {
 };
 
 FitBar.propTypes = {
-  data: PropTypes.object.isRequired,
-  value: PropTypes.string.isRequired,
+  // data: PropTypes.object.isRequired,
+  // value: PropTypes.string.isRequired,
 };
 
 const TextWrapper = styled.div`

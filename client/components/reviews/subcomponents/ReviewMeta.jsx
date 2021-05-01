@@ -74,10 +74,14 @@ const ReviewMeta = ({ metaDummyData }) => {
       <br />
       Size
       <br />
-      <FitBar
-        data={metaDummyData.characteristics.Fit}
-        value="Fit"
-      />
+      {metaDummyData.characteristics.Fit === null || metaDummyData.characteristics.Fit === undefined
+        ? (
+          <FitBar
+            data={metaDummyData.characteristics.Fit}
+            value="Fit"
+          />
+        )
+        : <div>No Data!</div>}
       <br />
       Comfort
       <FitBar

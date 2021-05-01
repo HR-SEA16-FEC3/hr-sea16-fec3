@@ -11,7 +11,6 @@ import metaDummyData from './subcomponents/DummyData/product_metaData_example';
 function Reviews({ productId }) {
   const [reviewResults, setReviewResults] = useState({});
   const [metaData, setMetaData] = useState({});
-  // const [reviewMetaData, setReviewMetaData] - useState([])
   const [tiles, setTiles] = useState(2);
   const [modal, setModal] = useState(false);
   const [parentFilter, setParentFilter] = useState(dummyData.results);
@@ -30,8 +29,7 @@ function Reviews({ productId }) {
   const fetchMetaReviewData = () => {
     axios.get(`/reviews/meta/${productId}`)
       .then((data) => (
-        setMetaData(data.data),
-        console.log(data.data)
+        setMetaData(data.data)
       ))
       .catch((error) => {
         throw error;
