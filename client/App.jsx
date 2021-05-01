@@ -33,7 +33,7 @@ const App = () => {
     <AppStyles.Outside colorScheme={colorScheme}>
       <AppStyles.Wrapper>
         <AppStyles.Header colorScheme={colorScheme}>
-          <AppStyles.LogoImg src="./logo.png" alt="logo" />
+          <a href="/"><AppStyles.LogoImg src="./logo.png" alt="logo" /></a>
           <AppStyles.Title>
             ELDER-LY FASHION
           </AppStyles.Title>
