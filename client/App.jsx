@@ -38,7 +38,7 @@ const App = () => {
             ELDER-LY FASHION
           </AppStyles.Title>
         </AppStyles.Header>
-        <Overview productId={productId} />
+        <Overview productId={productId} colorScheme={colorScheme} />
         <AppStyles.Divider />
         <QandA productId={productId} productName={productName} colorScheme={colorScheme} />
         <AppStyles.Divider />
