@@ -92,8 +92,8 @@ const Cart = ({ style /* skus */}) => {
 
       {/* Add to Cart button */}
       <Buttons>
-        <Button data-testid="btnAddToCart" onClick={(e) => { e.preventDefault(); addToCart(); }}>Add to Cart</Button> {/* TODO: RESIZE BUTTON */}
-        <Button data-testid="btnStar" onClick={(e) => { e.preventDefault(); }}><Heart size="16px" /></Button>
+        <Button data-testid="btnAddToCart" onClick={(e) => { e.preventDefault(); addToCart(); }}>Add to Cart</Button>
+        <Button data-testid="btnStar" onClick={(e) => { e.preventDefault(); }}><Heart size="12px" /></Button>
       </Buttons>
 
       {/* Share on Social Media */}
@@ -114,9 +114,15 @@ const Cart = ({ style /* skus */}) => {
   );
 };
 
-const Dropdowns = styled.div``;
+const Dropdowns = styled.div`
+  display: flex;
+`;
 
-const Buttons = styled.div``;
+const Buttons = styled.div`
+  display: flex;
+  flex: 1 0 100%;
+  margin-right: 8px;
+`;
 
 const Select = styled.select`
   border: 1px solid black;
@@ -125,7 +131,6 @@ const Select = styled.select`
   padding: 16px;
   text-transform: uppercase;
   font-weight: bold;
-  /* text-align-last:center; */
 `;
 
 const Button = styled.button`
@@ -136,7 +141,9 @@ const Button = styled.button`
   padding: 16px;
   text-transform: uppercase;
   font-weight: bold;
-  &:hover{ background: #ffbf00 }
+  display: flex;
+  &:hover{ cursor: pointer; color: #ffbf00 };
+  &:active{ cursor: pointer; opacity: 0.50; };
 `;
 
 const Socials = styled.div`
@@ -148,11 +155,12 @@ const Socials = styled.div`
   align-items: center;
 `;
 
-const Icon = styled.span` // ONCLICK SHOULD BE DARKER THAN REST STATE
+const Icon = styled.span`
   margin: 10px 16px 0 0;
   &:visited{ color: orange; text-decoration: none; };
   &:link{ color: orange; text-decoration: none; };
-  &:hover{ color: #ffbf00 }; // HOVER SHOULD BE A LIGHTER COLOR THAN REST STATE
+  &:hover{ cursor: pointer; color: #ffbf00 };
+  &:active{ cursor: pointer; opacity: 0.50; };
 `;
 
 export default Cart;

@@ -39,7 +39,7 @@ function Information({ productInfo, price }) {
         <Category>{category}</Category>
         <ProductName>{name}</ProductName>
         <Price>
-          {onSale === true
+          {onSale
             ? <span><Sale>${price} </Sale><Strike>${defaultPrice}</Strike></span>
             : <span>${price}</span>
           }
@@ -51,10 +51,10 @@ function Information({ productInfo, price }) {
 }
 
 Information.propTypes = {
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
-  default_price: PropTypes.string.isRequired,
+  id: PropTypes.number,
+  name: PropTypes.string,
+  category: PropTypes.string,
+  default_price: PropTypes.string,
 };
 
 // STYLED-COMPONENTS
