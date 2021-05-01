@@ -7,7 +7,7 @@ const apiUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sea';
 const header = { Authorization: config.TOKEN };
 
 reviews.get('/reviews', (req, res) => {
-  axios.get(`${apiUrl}/reviews`, {
+  axios.get(`${apiUrl}/reviews/${req.params.product_id}`, {
     headers: header,
   })
     .then((response) => {
@@ -19,8 +19,8 @@ reviews.get('/reviews', (req, res) => {
     });
 });
 
-reviewMeta.get('/reviews/meta', (req, res) => {
-  axios.get(`${apiUrl}/reviews/meta/`, {
+reviews.get('/reviews/meta', (req, res) => {
+  axios.get(`${apiUrl}/reviews/meta/${req.params.product_id}`, {
     headers: header,
   })
     .then((response) => {
@@ -33,15 +33,15 @@ reviewMeta.get('/reviews/meta', (req, res) => {
 });
 
 reviews.post('/reviews', (req, res) => {
-  axios.post(`${apiUrl}/qa/questions/${req.params.question_id}/answers`, req.body, {
+  axios.post(`${apiUrl}/reviews/${req.params.product_id}`, req.body, {
     headers: header,
   })
     .then(() => res.sendStatus(201))
     .catch((error) => res.status(500).send(error));
 });
 
-reviewHelpful.put('/reviews/:review_id/helpful, (req, res) => {
-  axios.put(`${apiUrl}/qa/${req.params.QorA}/${req.params.id}/report`, {}, {
+reviews.put('/reviews/:review_id/helpful', (req, res) => {
+  axios.put(`${apiUrl}/reviews/${req.params.id}/helpful`, {}, {
     headers: header,
   })
     .then(() => {
@@ -53,8 +53,8 @@ reviewHelpful.put('/reviews/:review_id/helpful, (req, res) => {
     });
 });
 
-reviewReport.put('/reviews/:review_id/report', (req, res) => {
-  axios.put(`${apiUrl}/qa/${req.params.QorA}/${req.params.id}/report`, {}, {
+reviews.put('/reviews/:review_id/report', (req, res) => {
+  axios.put(`${apiUrl}/reviews/${req.params.id}/report`, {}, {
     headers: header,
   })
     .then(() => {

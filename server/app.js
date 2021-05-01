@@ -4,6 +4,7 @@ const path = require('path');
 const config = require('../config');
 const products = require('./components/products/products');
 const QandA = require('./components/Q&A/Q&A');
+const Reviews = require('./components/Reviews/reviews');
 
 const app = express();
 const apiUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sea';
@@ -13,7 +14,7 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 app.use(express.json());
 app.use(products);
 app.use(QandA);
-app.use(reviews);
+app.use(Reviews);
 
 app.get('/products', (req, res) => {
   axios.get(`${apiUrl}/qa/questions?product_id=${req.params.product_id}`, {
