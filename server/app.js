@@ -13,6 +13,7 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 app.use(express.json());
 app.use(products);
 app.use(QandA);
+app.use(reviews);
 
 app.get('/products', (req, res) => {
   axios.get(`${apiUrl}/qa/questions?product_id=${req.params.product_id}`, {
