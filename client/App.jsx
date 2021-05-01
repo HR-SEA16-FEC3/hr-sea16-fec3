@@ -5,6 +5,7 @@ import Overview from './components/overview/Overview';
 import QandA from './components/Q&A/Q&A';
 import Reviews from './components/reviews/Reviews';
 import AppStyles from './AppStyles';
+import Track from './Track';
 
 const {
   Header,
@@ -54,15 +55,23 @@ const App = (props) => {
 
   // automatically change name when id changes
 
+  const ClickWrapper = (props) => {
+    console.log(props);
+    return props.children;
+  };
+
   return (
     <Outside colorScheme={colorScheme}>
+
       <Wrapper>
+
         <Header colorScheme={colorScheme}>
           <LogoImg src="./logo.png" alt="logo" />
           <Title>
             ELDER-LY FASHION
           </Title>
         </Header>
+
         {isLoading
           ? <Contents>Loading</Contents>
           : (isValidId
@@ -70,33 +79,43 @@ const App = (props) => {
               <Contents>
                 <Overview productId={productId} />
                 <Divider />
-                <QandA productId={productId} productName={productName} colorScheme={colorScheme} />
+                <QandA
+                  productId={productId}
+                  productName={productName}
+                  colorScheme={colorScheme}
+                />
                 <Divider />
                 <Reviews productId={productId} />
               </Contents>
             )
             : <Contents>This page seems to be empty!</Contents>)}
         <Footer colorScheme={colorScheme}>
-          <select
-            onChange={(e) => {
-              setProductId(parseInt(e.target.value, 10));
-              if (props.history) {
-                props.history.push(`/${e.target.value}`);
-              }
-            }}
-          >
-            <option value="" disabled selected>Select your product</option>
-            {productList.map((item) => (
-              <option key={item.id} value={item.id}>
-                  {item.name}
-              </option>
-            ))}
-          </select>
-          <label htmlFor="colorToggle">
-            <input id="colorToggle" type="checkbox" onClick={handleColorSchemeChange} />
-          </label>
+          <Track>
+            <ClickWrapper>
+              <select
+                defaultValue=""
+                onChange={(e) => {
+                  setProductId(parseInt(e.target.value, 10));
+                  if (props.history) {
+                    props.history.push(`/${e.target.value}`);
+                  }
+                }}
+              >
+                <option value="" disabled>Select your product</option>
+                {productList.map((item) => (
+                  <option key={item.id} value={item.id}>
+                    {item.name}
+                  </option>
+                ))}
+              </select>
+              <label htmlFor="colorToggle">
+                <input id="colorToggle" type="checkbox" onClick={handleColorSchemeChange} />
+              </label>
+            </ClickWrapper>
+          </Track>
         </Footer>
       </Wrapper>
+
     </Outside>
 
   );

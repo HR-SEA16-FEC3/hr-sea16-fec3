@@ -5,7 +5,6 @@ import App from './App';
 
 ReactDOM.render(
   <BrowserRouter>
-    <Route path='/100' render={()=>(<div>bro</div>)} />
     <Route path="/" component={App} />
   </BrowserRouter>,
   document.getElementById('App'),

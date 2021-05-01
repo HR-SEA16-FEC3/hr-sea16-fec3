@@ -7,7 +7,7 @@ import QuestionsList from './subcomponents/QuestionsList';
 import Searchbar from './subcomponents/Searchbar';
 import AddAQuestionModal from './subcomponents/AddAQuestionModal';
 
-const QandA = ({ productId, productName, colorScheme }) => {
+const QandA = ({ productId, productName, colorScheme, children }) => {
   const [questionsList, setQuestionsList] = useState([]);
   const [shownQuestions, setShownQuestions] = useState(2);
   const [searchTerm, setSearchTerm] = useState('');
@@ -57,7 +57,7 @@ const QandA = ({ productId, productName, colorScheme }) => {
       });
   };
 
-  return (
+  return children, (
     <Wrapper
       data-testid="QA"
       colorScheme={colorScheme}
