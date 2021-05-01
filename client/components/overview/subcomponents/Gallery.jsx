@@ -62,13 +62,13 @@ const Gallery = ({ style, styleIndex, setStyleIndex, stylesList }) => {
 
       {/* THUMBNAILS */}
       <ThumbContainer>
-        <ChevronUp size="20" onClick={() => handleUp()} />
+        <Chevron><ChevronUp size="20" onClick={() => handleUp()} /></Chevron>
         {photos.map((photo, key) => (
           <ThumbSquare key={key} onClick={() => { setIndex(key); }}>
             <ThumbImage src={photo.url} alt="a thumbnail of the product" />
           </ThumbSquare>
         ))}
-        <ChevronDown onClick={() => handleDown()} size="20" />
+        <Chevron><ChevronDown onClick={() => handleDown()} size="20" /></Chevron>
       </ThumbContainer>
       {showModal && (
         <Overlay>
@@ -200,6 +200,11 @@ const RightArrow = styled.div`
   right: 100px;
   color: whitesmoke;
   filter: drop-shadow(0 2px 2px #1a1a1a);
+  &:hover{ cursor: pointer; opacity: 0.75; };
+  &:active{ cursor: pointer; opacity: 0.50; };
+`;
+
+const Chevron = styled.span`
   &:hover{ cursor: pointer; opacity: 0.75; };
   &:active{ cursor: pointer; opacity: 0.50; };
 `;
