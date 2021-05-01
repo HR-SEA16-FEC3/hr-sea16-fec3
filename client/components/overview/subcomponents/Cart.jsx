@@ -103,8 +103,8 @@ const Cart = ({ style /* skus */}) => {
         <Icon as="a" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://34.208.75.214/"><faBrands.Facebook data-testid="icon-facebook" size="36" /></Icon>
         <Icon as="a" target="_blank" href={`https://twitter.com/intent/tweet?text=${socialMessage}`}><faBrands.Twitter data-testid="icon-twitter" size="36" /></Icon>
         <Icon as="a" target="_blank" href={`https://pinterest.com/pin/create/link/?url=${socialMessage}`}><faBrands.Pinterest data-testid="icon-pinterest" size="36" /></Icon>
-        <Icon><faBrands.Instagram size="36" /></Icon>
-        <Icon><faBrands.Whatsapp size="36" /></Icon>
+        {/* <Icon><faBrands.Instagram size="36" /></Icon> */}
+        {/* <Icon><faBrands.Whatsapp size="36" /></Icon> */}
         <Icon as="a" target="_blank" href={`mailto:?subject=Hello!&body=${socialMessage}`}><Email size="36" /></Icon>
         <Icon onClick={copyToClipboard}><Link size="36" /></Icon>
         <span>{copySuccess}</span>
