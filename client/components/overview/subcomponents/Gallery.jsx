@@ -178,11 +178,6 @@ const MainImage = styled.img`
   top: 50%;
 `;
 
-const Arrows = styled.div`
-  display: block;
-  position: relative;
-`;
-
 const LeftArrow = styled.div`
   display: block;
   position: absolute;
