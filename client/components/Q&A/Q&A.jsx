@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import axios from 'axios';
 import Modal from 'react-modal';
@@ -18,6 +19,11 @@ const QandA = ({ productId, productName, colorScheme }) => {
   const handleShowMore = () => setShownQuestions(shownQuestions + 2);
   const handleShowLess = () => setShownQuestions(2);
   // Initialize questions list
+  const sortQuestionsList = (list) => {
+    const newList = list.sort((a, b) => b.question_helpfulness - a.question_helpfulness);
+    return newList;
+  };
+
   useEffect(() => {
     axios.get(`/qa/questions/${productId}`)
       .then((data) => (
@@ -71,7 +77,12 @@ const QandA = ({ productId, productName, colorScheme }) => {
         ) : null}
       {/* Questions List */}
       <div>
-        <QuestionsList questionsList={currentList} colorScheme={colorScheme} />
+        <QuestionsList
+          questionsList={currentList}
+          colorScheme={colorScheme}
+          searchTerm={searchTerm}
+          productName={productName}
+        />
         {/* More Answered Questions Button */}
         {(() => {
           if (filteredList.length > 2 && shownQuestions <= filteredList.length) {
@@ -113,12 +124,17 @@ const QandA = ({ productId, productName, colorScheme }) => {
               width: '60vw',
               height: 'max-content',
               margin: 'auto',
-              background: 'whitesmoke',
+              background: (colorScheme ? '#494949' : 'whitesmoke'),
+              color: (colorScheme ? 'whitesmoke' : 'black'),
+            },
+            overlay: {
+              backgroundColor: (colorScheme ? '#49494990' : '#f5f5f575'),
             },
           }
         }
         >
           <AddAQuestionModal
+            colorScheme={colorScheme}
             toggleModal={toggleModal}
             productId={productId}
             productName={productName}
@@ -139,9 +155,10 @@ const QandA = ({ productId, productName, colorScheme }) => {
   );
 };
 
-const sortQuestionsList = (list) => {
-  const newList = list.sort((a, b) => b.question_helpfulness - a.question_helpfulness);
-  return newList;
+QandA.propTypes = {
+  productId: PropTypes.number.isRequired,
+  colorScheme: PropTypes.bool.isRequired,
+  productName: PropTypes.string.isRequired,
 };
 
 const Button = styled.button`

@@ -1,21 +1,31 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Question from './Question';
 
-const QuestionsList = (props) => (
-    <Wrapper colorScheme={props.colorScheme} data-testid="QuestionsList">
-      {props.questionsList.map((item) => (
-        <Question question={item} key={item.question_id} colorScheme={props.colorScheme} />
-      ))}
-    </Wrapper>
+const QuestionsList = (
+  {
+    questionsList, colorScheme, searchTerm, productName,
+  },
+) => (
+  <Wrapper colorScheme={colorScheme} data-testid="QuestionsList">
+    {questionsList.map((item) => (
+      <Question
+        question={item}
+        key={item.question_id}
+        colorScheme={colorScheme}
+        searchTerm={searchTerm}
+        productName={productName}
+      />
+    ))}
+  </Wrapper>
 );
 
 QuestionsList.propTypes = {
-  questionsList: PropTypes.arrayOf(PropTypes.object),
-};
-QuestionsList.defaultProps = {
-  questionsList: [],
+  questionsList: PropTypes.arrayOf(PropTypes.object).isRequired,
+  colorScheme: PropTypes.bool.isRequired,
+  searchTerm: PropTypes.string.isRequired,
+  productName: PropTypes.string.isRequired,
 };
 
 const Wrapper = styled.div`

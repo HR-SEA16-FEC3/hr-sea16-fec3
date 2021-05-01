@@ -1,43 +1,56 @@
+/* eslint-disable no-param-reassign */
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import axios from 'axios';
 import Modal from 'react-modal';
+import Highlighter from 'react-highlight-words';
 import AnswersList from './AnswersList';
 import AddAnAnswerModal from './AddAnAnswerModal';
 
 Modal.setAppElement('body');
 
-const Question = (props) => {
+const Question = (
+  {
+    question,
+    colorScheme,
+    searchTerm,
+    productName,
+  },
+) => {
   const [reported, setReported] = useState(false);
   const [clickedYes, setClickedYes] = useState(false);
-  const [helpfulness, setHelpfulness] = useState(props.question.question_helpfulness);
+  const [helpfulness, setHelpfulness] = useState(question.question_helpfulness);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [answersList, setAnswersList] = useState(props.question.answers);
+  const [answersList, setAnswersList] = useState(Object.values(question.answers));
 
   const toggleModal = () => setIsModalOpen(!isModalOpen);
 
   const handleYesClick = () => {
-    if (!clickedYes) {
-      axios.put(`/qa/questions/${props.question.question_id}/helpful`)
+    if (!clickedYes && !question.clickedYes) {
+      axios.put(`/qa/questions/${question.question_id}/helpful`)
         .then(() => {
           setHelpfulness(helpfulness + 1);
           setClickedYes(true);
+          question.question_helpfulness += 1;
+          question.clickedYes = true;
         })
         .catch((error) => { throw error; });
     }
   };
   const handleReport = () => {
-    if (!reported) {
-      axios.put(`/qa/questions/${props.question.question_id}/report`)
+    if (!reported && !question.reported) {
+      axios.put(`/qa/questions/${question.question_id}/report`)
         .then(() => {
           setReported(true);
+          question.reported = true;
         })
-        .catch(() => console.log('Failed to update'));
+        .catch((error) => { throw error; });
     }
   };
 
   const handleAddAnswer = () => {
-    axios.get(`qa/questions/${props.question.question_id}/answers`)
+    axios.get(`qa/questions/${question.question_id}/answers`)
       .then((response) => {
         setAnswersList(response.data.results);
       })
@@ -45,11 +58,17 @@ const Question = (props) => {
   };
 
   return (
-    <Wrapper colorScheme={props.colorScheme}>
+    <Wrapper colorScheme={colorScheme}>
       {/* Question */}
       <QuestionSection>
         <QAHeader>Q:</QAHeader>
-        <QuestionBody>{props.question.question_body}</QuestionBody>
+        &ensp;
+        <Highlighter
+          highlightClassName="highlightedBody"
+          searchWords={[searchTerm]}
+          autoEscape
+          textToHighlight={question.question_body}
+        />
         <QuestionInteractions>
           Helpful?&ensp;
           <HelpfulYes onClick={handleYesClick}>Yes</HelpfulYes>
@@ -59,7 +78,7 @@ const Question = (props) => {
           &ensp;|&ensp;
           <AddAnAnswer onClick={toggleModal}>Add an Answer</AddAnAnswer>
           &ensp;|&ensp;
-          <Report colorScheme={props.colorScheme} onClick={handleReport} reported={reported}>{reported ? 'Reported' : 'Report'}</Report>
+          <Report colorScheme={colorScheme} onClick={handleReport} reported={reported || question.reported}>{reported || question.reported ? 'Reported' : 'Report'}</Report>
         </QuestionInteractions>
       </QuestionSection>
       <Modal
@@ -72,21 +91,24 @@ const Question = (props) => {
               width: '60vw',
               height: 'max-content',
               margin: 'auto',
-              background: 'whitesmoke',
+              background: (colorScheme ? '#494949' : 'whitesmoke'),
+              color: (colorScheme ? 'whitesmoke' : 'black'),
             },
           }
         }
       >
         <AddAnAnswerModal
+          colorScheme={colorScheme}
           toggleModal={toggleModal}
-          question={props.question.question_body}
-          questionId={props.question.question_id}
+          question={question.question_body}
+          questionId={question.question_id}
           handleAddAnswer={handleAddAnswer}
+          productName={productName}
         />
       </Modal>
       {/* Answer List */}
       {(() => {
-        if (Object.keys(props.question.answers).length === 0) {
+        if (answersList.length === 0) {
           return (
             <AnswerSection>
               There are no answers to this question currently.
@@ -96,7 +118,7 @@ const Question = (props) => {
         return (
           <AnswerSection>
             <QAHeader>A:</QAHeader>
-            <AnswersList list={answersList} colorScheme={props.colorScheme} />
+            <AnswersList list={answersList} colorScheme={colorScheme} />
           </AnswerSection>
         );
       })()}
@@ -104,12 +126,30 @@ const Question = (props) => {
   );
 };
 
+Question.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  question: PropTypes.object.isRequired,
+  colorScheme: PropTypes.bool.isRequired,
+  searchTerm: PropTypes.string.isRequired,
+  productName: PropTypes.string.isRequired,
+};
+
 const AddAnAnswer = styled.span`
   cursor: pointer;
 `;
+
+// const setReportColor = (props) => {
+//   if (props.reported) {
+//     return 'red';
+//   }
+//   if (props.colorScheme) {
+//     return 'whitesmoke';
+//   }
+//   return 'black';
+// };
 const Report = styled.span`
   cursor: pointer;
-  color: ${(props) => (props.reported ? 'red' : (props.colorScheme ? 'whitesmoke': 'black'))};
+  ${(props) => (props.reported ? 'color: red;' : null)}
 `;
 
 const HelpfulYes = styled.span`
@@ -134,12 +174,6 @@ width: 100%;
 flex-wrap: nowrap;
 margin: 0px;
 padding: 0px;
-`;
-
-const QuestionBody = styled.p`.
-font-weight: bold;
-font-size: 16px;
-margin: 7px;
 `;
 
 const QuestionInteractions = styled.p`

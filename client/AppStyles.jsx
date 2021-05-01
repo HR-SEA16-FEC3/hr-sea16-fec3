@@ -2,12 +2,14 @@ import styled from 'styled-components';
 
 const Header = styled.div`
 background: ${(props) => (props.colorScheme ? 'purple' : 'orange')};
-height: 40px;
+height: 100px;
 display: flex;
 flex-direction: row;
-align-items: center;
+flex-wrap: nowrap;
 color: white;
-padding: 5px;
+padding: 0px;
+padding-right: 35px;
+align-items: center;
 `;
 
 const Footer = styled.div`
@@ -43,11 +45,18 @@ height: max-content;
 min-height:100vh;
 `;
 
-const Logo = styled.span`
-margin-left: 16px;
-margin-right: 8px;
+const LogoImg = styled.img`
+max-height:100px;
+margin-left: 15px;
+`;
+
+const Title = styled.h1`
+align-self: center;
+margin-left: auto;
+font-size: 2em;
+font-weight: bolder;
 `;
 
 export default {
-  Header, Footer, Divider, Wrapper, Outside, Logo,
+  Header, Footer, Divider, Wrapper, Outside, LogoImg, Title,
 };
