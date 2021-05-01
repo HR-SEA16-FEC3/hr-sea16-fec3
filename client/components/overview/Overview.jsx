@@ -92,24 +92,26 @@ function Overview({ productId }) {
           <RightSection>
             {/* Product Information */}
             <Subcomponent>
-              <Information productInfo={productInfo} price={displayPrice} />
+              {productInfo && displayPrice && (
+                <Information productInfo={productInfo} price={displayPrice} />
+              )}
             </Subcomponent>
 
             {/* Style Selector */}
             <Subcomponent>
-              <StylesList
-                stylesList={stylesList}
-                /* IF NO STYLE SELECTED, DISPLAY DEFAULT STYLE */
-                displayStyle={selectedStyle === null ? defaultStyle : selectedStyle}
-                setSelectedStyle={setSelectedStyle}
-              />
+              {stylesList && selectedStyle && (
+                <StylesList
+                  stylesList={stylesList}
+                  /* IF NO STYLE SELECTED, DISPLAY DEFAULT STYLE */
+                  displayStyle={selectedStyle}
+                  setSelectedStyle={setSelectedStyle}
+                />
+              )}
             </Subcomponent>
 
             {/* Add to Cart */}
             <Subcomponent>
-              {selectedStyle === null
-                ? <Cart style={defaultStyle} /> // TEMP FIX
-                : <Cart style={selectedStyle} />}
+              {selectedStyle && <Cart style={selectedStyle} />}
             </Subcomponent>
           </RightSection>
         </TopSection>
@@ -117,7 +119,7 @@ function Overview({ productId }) {
         <BottomSection>
           {/* Product Description */}
           <LeftSection>
-            <Description productInfo={productInfo} />
+            {productInfo && <Description productInfo={productInfo} />}
           </LeftSection>
         </BottomSection>
 
