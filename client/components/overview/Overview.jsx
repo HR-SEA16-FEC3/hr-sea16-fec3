@@ -12,7 +12,7 @@ import axios from 'axios';
 // TODO:
 // - overlay checkmark on selected image's thumbnail
 
-function Overview({ productId }) {
+function Overview({ productId, colorScheme }) {
   const [productInfo, setProductInfo] = useState({});
   const [stylesList, setStylesList] = useState(StylesExample.results);
   const [defaultStyle, setDefaultStyle] = useState(StylesExample.results[0]);
@@ -92,7 +92,11 @@ function Overview({ productId }) {
             {/* Product Information */}
             <Subcomponent>
               {productInfo && displayPrice && (
-                <Information productInfo={productInfo} price={displayPrice} />
+                <Information
+                  productInfo={productInfo}
+                  price={displayPrice}
+                  colorScheme={colorScheme}
+                />
               )}
             </Subcomponent>
 
@@ -129,7 +133,8 @@ const OverviewStyle = styled.section`
   font-family: sans-serif;
   display: flex;
   flex-direction: column;
-  background: whitesmoke;
+  background: ${(props) => (props.colorScheme ? 'whitesmoke' : '#whitesmoke')};
+  color: ${(props) => (props.colorScheme ? 'whitesmoke' : 'black')}
 `;
 
 const TopSection = styled.div`
@@ -165,7 +170,8 @@ const RightSection = styled.div`
 `;
 
 const Subcomponent = styled.div`
-  background: ${(props) => props.background};
+  background: ${(props) => (props.colorScheme ? 'whitesmoke' : '#whitesmoke')};
+  color: ${(props) => (props.colorScheme ? 'whitesmoke' : 'whitesmoke')}
   order: ${(props) => props.order};
   padding: 10px 0;
 `;
