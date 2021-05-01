@@ -140,10 +140,7 @@ const ThumbSquare = styled.div`
   justify-content: center;
   position: relative;
   overflow: hidden;
-  &:hover{
-    cursor: pointer;
-    opacity: 0.75;
-  };
+  &:hover{ cursor: pointer; opacity: 0.75; };
 `;
 
 const ThumbImage = styled.img`
@@ -185,10 +182,7 @@ const LeftArrow = styled.div`
   top: 50%;
   color: whitesmoke;
   filter: drop-shadow(0 2px 2px #1a1a1a);
-  &:hover{
-    cursor: pointer;
-    opacity: 0.75;
-  };
+  &:hover{ cursor: pointer; opacity: 0.75; };
 `;
 
 const RightArrow = styled.div`
@@ -198,10 +192,7 @@ const RightArrow = styled.div`
   top: 50%;
   color: whitesmoke;
   filter: drop-shadow(0 2px 2px #1a1a1a);
-  &:hover{
-    cursor: pointer;
-    opacity: 0.75;
-  };
+  &:hover{ cursor: pointer; opacity: 0.75; };
 `;
 
 const ThumbnailContainer = styled.div`
@@ -226,8 +217,6 @@ const ExpandContainer = styled.div`
   filter: drop-shadow(0 2px 2px #1a1a1a);
   &:hover{ cursor: pointer; opacity: 0.75; };
 `;
-
-/* =============================================================================== */
 
 Gallery.propTypes = {
   style: PropTypes.object,
