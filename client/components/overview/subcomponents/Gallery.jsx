@@ -64,13 +64,9 @@ const Gallery = ({ style, styleIndex, setStyleIndex, stylesList }) => {
         <ThumbnailContainer>
           <ChevronUp size="20" onClick={() => handleUp()} />
           {photos.map((photo, key) => (
-            <ThumbnailSquare
-              key={key} image={photo.url}
-              onClick={(event) => {
-                event.preventDefault();
-                setIndex(key);
-              }}
-            />
+            <ThumbSquare key={key} onClick={(event) => { setIndex(key); }}>
+              <ThumbImage src={photo.url} alt="a thumbnail of the product" />
+            </ThumbSquare>
           ))}
           <ChevronDown onClick={() => handleDown()} size="20" />
         </ThumbnailContainer>
@@ -123,6 +119,7 @@ const CloseButton = styled.div`
   border-radius: 50%;
   color: whitesmoke;
   filter: drop-shadow(0 2px 2px #1a1a1a);
+  &:hover{ cursor: pointer; opacity: 0.75; };
 `;
 
 const ModalImage = styled.img`
@@ -133,22 +130,26 @@ const ModalImage = styled.img`
 
 /* =================== MODAL =================== */
 
-const ThumbnailSquare = styled.div`
+const ThumbSquare = styled.div`
   border: 1px solid black;
   display: flex;
-  flex-flow: row wrap;
-  height: 50px;
-  width: 50px;
+  max-height: 50px;
+  max-width: 50px;
   margin: 10px 10px;
-  object-fit: contain;
+  object-fit: cover;
   justify-content: center;
-  background-image: url(${(props) => props.image});
-  background-size: 50px 50px;
-  background-position: cover;
+  position: relative;
+  overflow: hidden;
   &:hover{
     cursor: pointer;
     opacity: 0.75;
   };
+`;
+
+const ThumbImage = styled.img`
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: cover;
 `;
 
 const OuterContainer = styled.div`
@@ -184,6 +185,10 @@ const LeftArrow = styled.div`
   top: 50%;
   color: whitesmoke;
   filter: drop-shadow(0 2px 2px #1a1a1a);
+  &:hover{
+    cursor: pointer;
+    opacity: 0.75;
+  };
 `;
 
 const RightArrow = styled.div`
@@ -193,6 +198,10 @@ const RightArrow = styled.div`
   top: 50%;
   color: whitesmoke;
   filter: drop-shadow(0 2px 2px #1a1a1a);
+  &:hover{
+    cursor: pointer;
+    opacity: 0.75;
+  };
 `;
 
 const ThumbnailContainer = styled.div`
@@ -215,6 +224,7 @@ const ExpandContainer = styled.div`
   padding: 4px;
   color: whitesmoke;
   filter: drop-shadow(0 2px 2px #1a1a1a);
+  &:hover{ cursor: pointer; opacity: 0.75; };
 `;
 
 /* =============================================================================== */
