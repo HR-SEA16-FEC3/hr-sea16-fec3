@@ -37,10 +37,9 @@ Styles.propTypes = {
 
 const ThumbnailCircle = styled.div`
   border: 1px solid black;
-  display: block;
+  display: flex;
   border-radius: 50%;
   height: 84px;
-  /* max-width: 74px; */
   width: auto;
   object-fit: contain;
   align-items: center;
@@ -49,7 +48,7 @@ const ThumbnailCircle = styled.div`
   background-size: cover;
   background-position: center;
   margin: 8px 12px 0 0;
-  flex: 0 0 21%;
+  flex: 0 0 19%;
   &:hover{
     cursor: pointer;
     opacity: 0.75;
