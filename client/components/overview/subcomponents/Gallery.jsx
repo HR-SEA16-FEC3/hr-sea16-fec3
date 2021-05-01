@@ -51,11 +51,10 @@ const Gallery = ({ style, styleIndex, setStyleIndex, stylesList }) => {
   }
 
   return (
-    <OuterContainer>
-
+    <div>
       {/* MAIN IMAGE */}
       <MainContainer data-testid="Gallery">
-        <MainImage src={photos[index].url} alt={name} />
+        <MainImageContainer><MainImage src={photos[index].url} alt={name} /></MainImageContainer>
         <ExpandContainer onClick={() => {setShowModal(true)}}><Expand size="24" /></ExpandContainer>
         <LeftArrow onClick={handleLeft}><ChevronLeft size="48" /></LeftArrow>
         <RightArrow onClick={handleRight}><ChevronRight size="48" /></RightArrow>
@@ -81,7 +80,7 @@ const Gallery = ({ style, styleIndex, setStyleIndex, stylesList }) => {
         </Overlay>
       )}
 
-    </OuterContainer>
+    </div>
   );
 };
 
@@ -123,8 +122,8 @@ const CloseButton = styled.div`
 `;
 
 const ModalImage = styled.img`
-  width: auto;
   max-height: 90vh;
+  width: auto;
   margin: auto;
 `;
 
@@ -133,8 +132,8 @@ const ModalImage = styled.img`
 const ThumbSquare = styled.div`
   border: 1px solid black;
   display: flex;
-  max-height: 50px;
-  max-width: 50px;
+  height: 50px;
+  width: 50px;
   margin: 10px 10px;
   object-fit: cover;
   justify-content: center;
@@ -144,35 +143,34 @@ const ThumbSquare = styled.div`
 `;
 
 const ThumbImage = styled.img`
-  max-height: 100%;
-  max-width: 100%;
   object-fit: cover;
-`;
-
-const OuterContainer = styled.div`
-  display: flex;
-  justify-content: center;
+  height: 100%;
+  width: 100%;
 `;
 
 const MainContainer = styled.div`
-  display: block;
+  display: flex;
   position: relative;
   width: 100%;
   max-width: 768px;
   color: white;
-  top: 50%;
+  justify-content: center;
+  align-items: center;
+`;
+
+const MainImageContainer = styled.div`
+  display: flex;
+  /* position: relative; */
+  justify-content: center;
+  align-items: center;
+  /* max-height: 100%; */
 `;
 
 const MainImage = styled.img`
-  display: block;
   border: 1px solid black;
-  margin: auto auto;
   max-height: 800px;
   max-width: 100%;
-  height: auto;
-  width: auto;
-  object-fit: contain;
-  top: 50%;
+  overflow: hidden;
 `;
 
 const LeftArrow = styled.div`
