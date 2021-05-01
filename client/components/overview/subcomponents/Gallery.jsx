@@ -51,26 +51,25 @@ const Gallery = ({ style, styleIndex, setStyleIndex, stylesList }) => {
   }
 
   return (
-    <div>
+    <GalleryContainer data-testid="Gallery">
       {/* MAIN IMAGE */}
-      <MainContainer data-testid="Gallery">
-        <MainImageContainer><MainImage src={photos[index].url} alt={name} /></MainImageContainer>
-        <ExpandContainer onClick={() => {setShowModal(true)}}><Expand size="24" /></ExpandContainer>
+      <MainImageContainer>
+        <MainImage src={photos[index].url} alt={name} />
+        <ExpandContainer onClick={() => { setShowModal(true); }}><Expand size="24" /></ExpandContainer>
         <LeftArrow onClick={handleLeft}><ChevronLeft size="48" /></LeftArrow>
         <RightArrow onClick={handleRight}><ChevronRight size="48" /></RightArrow>
+      </MainImageContainer>
 
-        {/* THUMBNAILS */}
-        <ThumbnailContainer>
-          <ChevronUp size="20" onClick={() => handleUp()} />
-          {photos.map((photo, key) => (
-            <ThumbSquare key={key} onClick={(event) => { setIndex(key); }}>
-              <ThumbImage src={photo.url} alt="a thumbnail of the product" />
-            </ThumbSquare>
-          ))}
-          <ChevronDown onClick={() => handleDown()} size="20" />
-        </ThumbnailContainer>
-      </MainContainer>
-
+      {/* THUMBNAILS */}
+      <ThumbContainer>
+        <ChevronUp size="20" onClick={() => handleUp()} />
+        {photos.map((photo, key) => (
+          <ThumbSquare key={key} onClick={() => { setIndex(key); }}>
+            <ThumbImage src={photo.url} alt="a thumbnail of the product" />
+          </ThumbSquare>
+        ))}
+        <ChevronDown onClick={() => handleDown()} size="20" />
+      </ThumbContainer>
       {showModal && (
         <Overlay>
           <Dialog>
@@ -79,8 +78,7 @@ const Gallery = ({ style, styleIndex, setStyleIndex, stylesList }) => {
           </Dialog>
         </Overlay>
       )}
-
-    </div>
+    </GalleryContainer>
   );
 };
 
@@ -148,61 +146,28 @@ const ThumbImage = styled.img`
   width: 100%;
 `;
 
-const MainContainer = styled.div`
+const GalleryContainer = styled.div`
   display: flex;
   position: relative;
   width: 100%;
-  max-width: 768px;
+  height: 100%;
   color: white;
   justify-content: center;
   align-items: center;
+  margin: auto;
 `;
 
 const MainImageContainer = styled.div`
   display: flex;
-  /* position: relative; */
-  justify-content: center;
   align-items: center;
-  /* max-height: 100%; */
 `;
 
 const MainImage = styled.img`
   border: 1px solid black;
+  position: relative;
   max-height: 800px;
   max-width: 100%;
   overflow: hidden;
-`;
-
-const LeftArrow = styled.div`
-  display: block;
-  position: absolute;
-  left: 80px;
-  top: 50%;
-  color: whitesmoke;
-  filter: drop-shadow(0 2px 2px #1a1a1a);
-  &:hover{ cursor: pointer; opacity: 0.75; };
-`;
-
-const RightArrow = styled.div`
-  display: block;
-  position: absolute;
-  right: 60px;
-  top: 50%;
-  color: whitesmoke;
-  filter: drop-shadow(0 2px 2px #1a1a1a);
-  &:hover{ cursor: pointer; opacity: 0.75; };
-`;
-
-const ThumbnailContainer = styled.div`
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  text-align: center;
-  padding: 4px;
-  margin: 12px 12px;
-  filter: drop-shadow(0 2px 2px #1a1a1a);
-  color: whitesmoke;
 `;
 
 const ExpandContainer = styled.div`
@@ -214,6 +179,35 @@ const ExpandContainer = styled.div`
   color: whitesmoke;
   filter: drop-shadow(0 2px 2px #1a1a1a);
   &:hover{ cursor: pointer; opacity: 0.75; };
+`;
+
+const LeftArrow = styled.div`
+  display: block;
+  position: absolute;
+  left: 100px;
+  color: whitesmoke;
+  filter: drop-shadow(0 2px 2px #1a1a1a);
+  &:hover{ cursor: pointer; opacity: 0.75; };
+`;
+
+const RightArrow = styled.div`
+  display: block;
+  position: absolute;
+  right: 100px;
+  color: whitesmoke;
+  filter: drop-shadow(0 2px 2px #1a1a1a);
+  &:hover{ cursor: pointer; opacity: 0.75; };
+`;
+
+const ThumbContainer = styled.div`
+  display: block;
+  position: absolute;
+  left: 0;
+  text-align: center;
+  padding: 4px;
+  margin: auto 12px;
+  filter: drop-shadow(0 2px 2px #1a1a1a);
+  color: whitesmoke;
 `;
 
 Gallery.propTypes = {
