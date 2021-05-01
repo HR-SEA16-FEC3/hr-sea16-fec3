@@ -76,7 +76,7 @@ function Overview({ productId }) {
         <TopSection>
           <LeftSection>
             {/* Image Gallery */}
-            <Subcomponent>
+            <GalleryComponents>
               {selectedStyle && (
                 <Gallery
                   style={selectedStyle}
@@ -85,7 +85,7 @@ function Overview({ productId }) {
                   stylesList={stylesList}
                 />
               )}
-            </Subcomponent>
+            </GalleryComponents>
           </LeftSection>
 
           <RightSection>
@@ -117,9 +117,7 @@ function Overview({ productId }) {
 
         <BottomSection>
           {/* Product Description */}
-          <LeftSection>
-            {productInfo && <Description productInfo={productInfo} />}
-          </LeftSection>
+          {productInfo && <Description productInfo={productInfo} />}
         </BottomSection>
 
       </OverviewStyle>
@@ -151,21 +149,33 @@ const BottomSection = styled.div`
 `;
 
 const LeftSection = styled.div`
-  flex-direction: column;
-  flex: 1 1 60%;
-  margin: 10px;
+  flex-direction: row;
+  flex: 0 0 60%;
+  margin: 12px;
+  justify-content: center;
+  align-items: center;
+  max-height: 100%;
+  height: 800px;
 `;
 
 const RightSection = styled.div`
   flex-direction: column;
   flex: 1 1 40%;
-  margin: 10px 40px;
+  margin: 12px;
 `;
 
 const Subcomponent = styled.div`
   background: ${(props) => props.background};
   order: ${(props) => props.order};
   padding: 10px 0;
+`;
+
+const GalleryComponents = styled.div`
+  padding: 10px 0;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  height: 100%;
 `;
 
 export default Overview;
