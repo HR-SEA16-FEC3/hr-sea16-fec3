@@ -6,7 +6,7 @@ import { StarThreeQuarter } from '@styled-icons/fluentui-system-filled';
 import { Expand } from '@styled-icons/fa-solid';
 import { Close } from '@styled-icons/ionicons-solid';
 
-const Gallery = ({ style, styleIndex, setStyleIndex }) => {
+const Gallery = ({ style, styleIndex, setStyleIndex, stylesList }) => {
   const { name, photos } = style;
 
   const [index, setIndex] = useState(0);
@@ -32,6 +32,23 @@ const Gallery = ({ style, styleIndex, setStyleIndex }) => {
     }
   }
 
+  function handleLeft() {
+    const subtractIndex = styleIndex - 1;
+    if (stylesList[subtractIndex] === undefined) {
+      setStyleIndex(stylesList.length - 1);
+    } else {
+      setStyleIndex(subtractIndex);
+    }
+  }
+
+  function handleRight() {
+    const addIndex = styleIndex + 1;
+    if (stylesList[addIndex] === undefined) {
+      setStyleIndex(0);
+    } else {
+      setStyleIndex(addIndex);
+    }
+  }
   // TODO:
   // arrows part of main image div
 
@@ -42,8 +59,8 @@ const Gallery = ({ style, styleIndex, setStyleIndex }) => {
       <MainContainer data-testid="Gallery">
         <MainImage src={photos[index].url} alt={name} />
         <ExpandContainer onClick={() => {setShowModal(true)}}><Expand size="24" /></ExpandContainer>
-        <LeftArrow><ArrowLeft size="36" /></LeftArrow>
-        <RightArrow><ArrowRight size="36" /></RightArrow>
+        <LeftArrow onClick={handleLeft}><ArrowLeft size="36" /></LeftArrow>
+        <RightArrow onClick={handleRight}><ArrowRight size="36" /></RightArrow>
 
         {/* THUMBNAILS */}
         <ThumbnailContainer>
@@ -141,10 +158,12 @@ const OuterContainer = styled.div`
 `;
 
 const MainContainer = styled.div`
+  display: block;
   position: relative;
   width: 100%;
   max-width: 768px;
   color: white;
+  top: 50%;
 `;
 
 const MainImage = styled.img`
@@ -156,6 +175,7 @@ const MainImage = styled.img`
   height: auto;
   width: auto;
   object-fit: contain;
+  top: 50%;
 `;
 
 const Arrows = styled.div`
