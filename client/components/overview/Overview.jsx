@@ -114,7 +114,7 @@ function Overview({ productId, colorScheme }) {
 
             {/* Add to Cart */}
             <Subcomponent>
-              {selectedStyle && <Cart style={selectedStyle} />}
+              {selectedStyle && <Cart style={selectedStyle} colorScheme={colorScheme} />}
             </Subcomponent>
           </RightSection>
         </TopSection>
@@ -135,6 +135,7 @@ const OverviewStyle = styled.section`
   flex-direction: column;
   background: ${(props) => (props.colorScheme ? 'whitesmoke' : '#whitesmoke')};
   color: ${(props) => (props.colorScheme ? 'whitesmoke' : 'black')}
+  margin: 16px 16px;
 `;
 
 const TopSection = styled.div`
@@ -150,7 +151,7 @@ const BottomSection = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 4px 4px 8px 4px;
+  margin: 16px 16px;
 `;
 
 const LeftSection = styled.div`

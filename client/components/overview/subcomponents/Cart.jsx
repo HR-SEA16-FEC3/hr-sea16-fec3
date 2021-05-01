@@ -8,7 +8,7 @@ import { Email } from '@styled-icons/material-outlined';
 
 // TODO: pass in skus? challenge is render timing
 
-const Cart = ({ style /* skus */}) => {
+const Cart = ({ style, colorScheme }) => {
   if (style === null) return <div>Loading</div>;
 
   const { skus } = style;
@@ -92,8 +92,8 @@ const Cart = ({ style /* skus */}) => {
 
       {/* Add to Cart button */}
       <Buttons>
-        <Button data-testid="btnAddToCart" onClick={(e) => { e.preventDefault(); addToCart(); }}>Add to Cart</Button>
-        <Button data-testid="btnStar" onClick={(e) => { e.preventDefault(); }}><Heart size="12px" /></Button>
+        <Button data-testid="btnAddToCart" onClick={(e) => { e.preventDefault(); addToCart(); }} colorScheme={colorScheme}>Add to Cart</Button>
+        <Button data-testid="btnStar" onClick={(e) => { e.preventDefault(); }} colorScheme={colorScheme}><Heart size="12px" /></Button>
       </Buttons>
 
       {/* Share on Social Media */}
@@ -137,30 +137,34 @@ const Button = styled.button`
   border: 1px solid black;
   margin-top: 16px;
   margin-right: 16px;
-  background: orange;
   padding: 16px;
   text-transform: uppercase;
   font-weight: bold;
   display: flex;
-  &:hover{ cursor: pointer; color: #ffbf00 };
-  &:active{ cursor: pointer; opacity: 0.50; };
+  /* &:hover{ cursor: pointer; color: #ffbf00 }; */
+  /* &:active{ cursor: pointer; opacity: 0.50; }; */
+  background: ${(props) => (props.colorScheme ? 'purple' : 'orange')};
+  &:hover{ cursor: pointer; background: ${(props) => (props.colorScheme ? '#a64ca6' : '#ffc04c')}; }
+  &:active{ cursor: pointer; background: ${(props) => (props.colorScheme ? '#660066' : '#cc8400')}; }
 `;
 
 const Socials = styled.div`
-  color: orange;
+  /* color: orange; */
   display: flex;
   flex-flow: row wrap;
   padding: 8px 0;
   margin: 0;
   align-items: center;
+  color: ${(props) => (props.colorScheme ? 'purple' : 'orange')};
 `;
 
 const Icon = styled.span`
   margin: 10px 16px 0 0;
-  &:visited{ color: orange; text-decoration: none; };
-  &:link{ color: orange; text-decoration: none; };
+  &:visited{ text-decoration: none; };
+  &:link{ text-decoration: none; };
   &:hover{ cursor: pointer; color: #ffbf00 };
   &:active{ cursor: pointer; opacity: 0.50; };
+  color: ${(props) => (props.colorScheme ? 'purple' : 'orange')};
 `;
 
 export default Cart;
