@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import axios from 'axios';
 import Modal from 'react-modal';
 import QuestionsList from './subcomponents/QuestionsList';
-// import exampleData from './questions_example.json';
 import Searchbar from './subcomponents/Searchbar';
 import AddAQuestionModal from './subcomponents/AddAQuestionModal';
 
