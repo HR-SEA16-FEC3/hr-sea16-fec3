@@ -40,7 +40,6 @@ const ThumbCircle = styled.div`
   width: 84px;
   object-fit: cover;
   justify-content: center;
-  /* position: relative; */
   overflow: hidden;
   border-radius: 50%;
   align-items: center;
