@@ -51,7 +51,6 @@ function Overview({ productId }) {
 
   // Update: Default Style
   useEffect(() => {
-    // setDefaultStyle(stylesList[0]);
     setDefaultStyle(stylesList[styleIndex]);
     if (defaultStyle !== null) setSkus(stylesList[0].skus);
   }, [stylesList]);
