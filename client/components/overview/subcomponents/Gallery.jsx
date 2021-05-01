@@ -49,8 +49,6 @@ const Gallery = ({ style, styleIndex, setStyleIndex, stylesList }) => {
       setStyleIndex(addIndex);
     }
   }
-  // TODO:
-  // arrows part of main image div
 
   return (
     <OuterContainer>
@@ -219,12 +217,10 @@ const ExpandContainer = styled.div`
 /* =============================================================================== */
 
 Gallery.propTypes = {
-  styles: PropTypes.shape({
-    product_id: PropTypes.string,
-    results: PropTypes.arrayOf(PropTypes.shape({
-      style_id: PropTypes.number,
-    })),
-  }),
+  style: PropTypes.object,
+  styleIndex: PropTypes.number.isRequired,
+  setStyleIndex: PropTypes.func.isRequired,
+  stylesList: PropTypes.array.isRequired,
 };
 
 export default Gallery;
