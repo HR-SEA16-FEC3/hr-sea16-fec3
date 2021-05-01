@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Modal from 'react-modal';
 
-const AnswerImage = (props) => {
+const AnswerImage = ({ url }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleModal = () => setIsModalOpen(!isModalOpen);
 
   return (
     <div>
-      <AnswerImg src={props.url} onClick={toggleModal} alt="image posted by a user" />
+      <AnswerImg src={url} onClick={toggleModal} alt="image posted by a user" />
       <Modal
         isOpen={isModalOpen}
         onRequestClose={toggleModal}
@@ -25,10 +26,14 @@ const AnswerImage = (props) => {
           }
         }
       >
-        <ModalImg src={props.url} onClick={toggleModal} alt="image posted by a user" />
+        <ModalImg src={url} onClick={toggleModal} alt="image posted by a user" />
       </Modal>
     </div>
   );
+};
+
+AnswerImage.propTypes = {
+  url: PropTypes.string.isRequired,
 };
 
 const AnswerImg = styled.img`
