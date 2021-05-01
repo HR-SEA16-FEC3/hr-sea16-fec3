@@ -117,6 +117,7 @@ const CloseButton = styled.div`
   color: whitesmoke;
   filter: drop-shadow(0 2px 2px #1a1a1a);
   &:hover{ cursor: pointer; opacity: 0.75; };
+  &:active{ cursor: pointer; opacity: 0.50; };
 `;
 
 const ModalImage = styled.img`
@@ -138,6 +139,7 @@ const ThumbSquare = styled.div`
   position: relative;
   overflow: hidden;
   &:hover{ cursor: pointer; opacity: 0.75; };
+  &:active{ cursor: pointer; opacity: 0.50; };
 `;
 
 const ThumbImage = styled.img`
@@ -179,6 +181,7 @@ const ExpandContainer = styled.div`
   color: whitesmoke;
   filter: drop-shadow(0 2px 2px #1a1a1a);
   &:hover{ cursor: pointer; opacity: 0.75; };
+  &:active{ cursor: pointer; opacity: 0.50; };
 `;
 
 const LeftArrow = styled.div`
@@ -188,6 +191,7 @@ const LeftArrow = styled.div`
   color: whitesmoke;
   filter: drop-shadow(0 2px 2px #1a1a1a);
   &:hover{ cursor: pointer; opacity: 0.75; };
+  &:active{ cursor: pointer; opacity: 0.50; };
 `;
 
 const RightArrow = styled.div`
@@ -197,6 +201,7 @@ const RightArrow = styled.div`
   color: whitesmoke;
   filter: drop-shadow(0 2px 2px #1a1a1a);
   &:hover{ cursor: pointer; opacity: 0.75; };
+  &:active{ cursor: pointer; opacity: 0.50; };
 `;
 
 const ThumbContainer = styled.div`
