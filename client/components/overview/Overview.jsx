@@ -12,12 +12,7 @@ import axios from 'axios';
 // TODO:
 // - overlay checkmark on selected image's thumbnail
 
-function Overview(props) {
-  const { productId, setProductName } = props;
-  // const { default_price: defaultPrice } = InfoExample;
-  // const { results } = StylesExample; // TEMP FIX FOR 1ST IMAGE RENDER
-  // const tempStyle = results[0]; // TEMP FIX FOR 1ST IMAGE RENDER
-
+function Overview({ productId }) {
   const [productInfo, setProductInfo] = useState({});
   const [stylesList, setStylesList] = useState(StylesExample.results);
   const [defaultStyle, setDefaultStyle] = useState(StylesExample.results[0]);
@@ -39,7 +34,10 @@ function Overview(props) {
   // Fetch: Styles List
   function fetchStylesInfo() {
     axios.get(`/products/${productId}/styles`)
-      .then((styles) => { setStylesList(styles.data.results); })
+      .then((styles) => {
+        setStylesList(styles.data.results);
+        setSelectedStyle(styles.data.results[styleIndex]); // Initialize w/ index = 0
+      })
       .catch((error) => console.log('Styles useEffect:', error));
   }
 
@@ -53,7 +51,8 @@ function Overview(props) {
 
   // Update: Default Style
   useEffect(() => {
-    setDefaultStyle(stylesList[0]);
+    // setDefaultStyle(stylesList[0]);
+    setDefaultStyle(stylesList[styleIndex]);
     if (defaultStyle !== null) setSkus(stylesList[0].skus);
   }, [stylesList]);
 
@@ -68,6 +67,9 @@ function Overview(props) {
     return null;
   }, [selectedStyle]);
 
+  // Update: Selected Style (upon changing Style Index)
+  useEffect(() => { setSelectedStyle(stylesList[styleIndex]); }, [styleIndex]);
+
   return (
     <div data-testid="Overview">
       <OverviewStyle>
@@ -76,9 +78,14 @@ function Overview(props) {
           <LeftSection>
             {/* Image Gallery */}
             <Subcomponent>
-              {selectedStyle === null
-                ? <Gallery style={defaultStyle} /> // TEMP FIX FOR 1ST IMAGE RENDER
-                : <Gallery style={selectedStyle} />}
+              {selectedStyle && (
+                <Gallery
+                  style={selectedStyle}
+                  styleIndex={styleIndex}
+                  setStyleIndex={setStyleIndex}
+                  stylesList={stylesList}
+                />
+              )}
             </Subcomponent>
           </LeftSection>
 
@@ -144,7 +151,6 @@ const BottomSection = styled.div`
 
 const LeftSection = styled.div`
   flex-direction: column;
-  /* width: 60%; */
   flex: 1 1 60%;
   margin: 10px;
 `;
