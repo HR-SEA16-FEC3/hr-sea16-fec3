@@ -3,24 +3,17 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faStar, faHashtag } from '@fortawesome/free-solid-svg-icons';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { Twitter, Facebook, Instagram, Whatsapp, Pinterest } from '@styled-icons/fa-brands';
 import { Link } from '@styled-icons/boxicons-regular';
 import { Email } from '@styled-icons/material-outlined';
-
-// Star Rating (# of reviews)
-// Product Category
-// Product Title
-// Price
-// Product Overview/Description
-// Share on Social Media
 
 function Information({ productInfo, price }) {
   const {
     id,
     name,
     category,
-    default_price, // use destructuring w/ alias to avoid snake_case
+    default_price,
   } = productInfo;
 
   const defaultPrice = Number(default_price);
@@ -58,10 +51,10 @@ function Information({ productInfo, price }) {
 }
 
 Information.propTypes = {
-    id: PropTypes.number,
-    name: PropTypes.string,
-    category: PropTypes.string,
-    default_price: PropTypes.string,
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+  default_price: PropTypes.string.isRequired,
 };
 
 // STYLED-COMPONENTS
