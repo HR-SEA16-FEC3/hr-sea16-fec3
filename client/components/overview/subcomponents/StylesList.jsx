@@ -39,7 +39,8 @@ const Circles = styled.div`
   flex-wrap: wrap;
   margin: 8px 0;
   justify-content: flex-start;
-  /* flex: 1 0 21% */
+  flex: 0 0 21%;
+  width: 100%;
 `;
 
 const StyleName = styled.span`

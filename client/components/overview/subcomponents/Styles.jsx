@@ -35,25 +35,24 @@ Styles.propTypes = {
 
 const ThumbCircle = styled.div`
   border: 1px solid black;
-  display: flex;
   height: 84px;
   width: 84px;
   object-fit: cover;
-  justify-content: center;
   overflow: hidden;
   border-radius: 50%;
-  align-items: center;
-  margin: 12px 24px 0 0;
-  flex: 0 0 19%;
+  margin: 8px;
+  justify-content: flex-start;
   &:hover{ cursor: pointer; opacity: 0.75; };
+  &:active{ cursor: pointer; opacity: 0.50; };
   filter: drop-shadow(0 2px 2px #1a1a1a);
 `;
 
 const ThumbImage = styled.img`
   object-fit: cover;
-  border-radius: 50%;
+  /* border-radius: 50%; */
   height: 100%;
   width: 100%;
+  /* display: block; */
 `;
 
 export default Styles;
