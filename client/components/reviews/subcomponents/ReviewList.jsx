@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import RatingStar from './RatingStar.jsx';
 
 const ReviewList = ({ dummyData }) => (
-  // rename wrapper, use props
   <div className="review-list">
     {dummyData.map((item, i) => (
       <ReviewListStyling className="review-tile" key={i}>
@@ -67,5 +66,20 @@ const ReviewListStyling = styled.div`
   border-bottom: 2px solid grey;
   padding-top: 20px;
   `;
+
+const Wrapper = styled.div`
+padding: 0em;
+max-height: 67vh;
+overflow: auto;
+&::-webkit-scrollbar {
+  width: auto;
+  height: auto;
+}
+&::-webkit-scrollbar-thumb
+{
+  border-radius: 10px;
+  background-color: ${(props) => (props.colorScheme ? 'lightgrey' : 'darkgrey')};
+}
+`;
 
 export default ReviewList;

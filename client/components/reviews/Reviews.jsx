@@ -8,32 +8,50 @@ import ReviewSort from './subcomponents/ReviewSort.jsx';
 import dummyData from './subcomponents/DummyData/product_reviews_example';
 import metaDummyData from './subcomponents/DummyData/product_metaData_example';
 
-// destructure the props, change var naming
-function Reviews({ productId, setProductName }) {
+function Reviews({ productId }) {
+  const [reviewResults, setReviewResults] = useState({});
+  const [metaData, setMetaData] = useState({});
+  // const [reviewMetaData, setReviewMetaData] - useState([])
   const [tiles, setTiles] = useState(2);
   const [modal, setModal] = useState(false);
-  // const [displayData, setDisplayData]
   const [parentFilter, setParentFilter] = useState(dummyData.results);
 
-  useEffect(() => {
-    axios.get(`/qa/questions/${productId}`)
+  const fetchReviewData = () => {
+    axios.get(`/reviews/${productId}`)
       .then((data) => (
-        setQuestionsList(sortQuestionsList(data.data.results))
+        setReviewResults(data.data.results),
+        setTiles(2)
       ))
       .catch((error) => {
         throw error;
       });
+  };
+
+  const fetchMetaReviewData = () => {
+    axios.get(`/reviews/meta/${productId}`)
+      .then((data) => (
+        setMetaData(data.data),
+        console.log(data.data)
+      ))
+      .catch((error) => {
+        throw error;
+      });
+  };
+
+  useEffect(() => {
+    if (productId) {
+      fetchReviewData();
+      fetchMetaReviewData();
+    }
   }, [productId]);
 
-  // useEffect(() => {
-  //   console.log((parentFilter));
-  // }, [parentFilter]);
-  // useffect on slice, asynch having multiple states, replace native states with parent state
   return (
     <div data-testid="Reviews">
-      <ReviewListStyle>
+      <Wrapper>
         <LeftSection>
-          <ReviewMeta metaDummyData={metaDummyData} />
+          {Object.keys(metaData).length > 0
+            ? <ReviewMeta metaDummyData={metaData} />
+            : <div>Loading!</div>}
         </LeftSection>
         <RightSection>
           <RightTopSection>
@@ -46,7 +64,11 @@ function Reviews({ productId, setProductName }) {
 
             </div>
           </RightTopSection>
-          <ReviewList dummyData={parentFilter.slice(0, tiles)} />
+          <PseudoScroll>
+            {reviewResults.length
+              ? <ReviewList dummyData={reviewResults.slice(0, tiles)} />
+              : <div>No Reviews!</div> }
+          </PseudoScroll>
           <ButtonStyle>
             <span>
               <Button
@@ -71,17 +93,21 @@ function Reviews({ productId, setProductName }) {
             reviewData={dummyData.results}
           />
         </RightSection>
-      </ReviewListStyle>
+      </Wrapper>
     </div>
   );
 }
 
-const ReviewListStyle = styled.section`
+const Wrapper = styled.section`
   font-family: sans-serif;
   display: flex;
   flex-direction: row;
-  padding:24px;
+  padding: 1em;
+  background: ${(props) => (props.colorScheme ? '#ababab' : '#c4c4c4')};
+  color: ${(props) => (props.colorScheme ? 'whitesmoke' : 'black')}
+  max-height: 100vh;
 `;
+
 const LeftSection = styled.div`
   display: flex;
   flex-direction: column;
@@ -102,6 +128,21 @@ const RightTopSection = styled.div`
 display:flex;
 padding:16px;
 flex-direction: column;
+`;
+
+const PseudoScroll = styled.div`
+padding: 0em;
+max-height: 38vh;
+overflow: auto;
+&::-webkit-scrollbar {
+  width: auto;
+  height: auto;
+}
+&::-webkit-scrollbar-thumb
+{
+  border-radius: 10px;
+  background-color: ${(props) => (props.colorScheme ? 'lightgrey' : 'darkgrey')};
+}
 `;
 
 const Button = styled.button`

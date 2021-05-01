@@ -92,7 +92,7 @@ const ReviewMeta = ({ metaDummyData }) => {
 ReviewMeta.propTypes = {
   // ratings: PropTypes.object.isRequired,
   // recommended: PropTypes.object.isRequired,
-  metaDummyData: PropTypes.object.isRequired,
+  // metaDummyData: PropTypes.array.isRequired,
 };
 
 const MetaHeader = styled.div`

@@ -6,8 +6,8 @@ const reviews = express.Router();
 const apiUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sea';
 const header = { Authorization: config.TOKEN };
 
-reviews.get('/reviews', (req, res) => {
-  axios.get(`${apiUrl}/reviews/${req.params.product_id}`, {
+reviews.get('/reviews/:product_id/', (req, res) => {
+  axios.get(`${apiUrl}/reviews/?product_id=${req.params.product_id}&count=20`, {
     headers: header,
   })
     .then((response) => {
@@ -19,8 +19,8 @@ reviews.get('/reviews', (req, res) => {
     });
 });
 
-reviews.get('/reviews/meta', (req, res) => {
-  axios.get(`${apiUrl}/reviews/meta/${req.params.product_id}`, {
+reviews.get('/reviews/meta/:product_id/', (req, res) => {
+  axios.get(`${apiUrl}/reviews/meta/?product_id=${req.params.product_id}`, {
     headers: header,
   })
     .then((response) => {
@@ -32,7 +32,7 @@ reviews.get('/reviews/meta', (req, res) => {
     });
 });
 
-reviews.post('/reviews', (req, res) => {
+reviews.post('/reviews/:product_id/', (req, res) => {
   axios.post(`${apiUrl}/reviews/${req.params.product_id}`, req.body, {
     headers: header,
   })
