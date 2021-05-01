@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { ArrowLeft, ArrowRight, ChevronUp, ChevronDown } from '@styled-icons/octicons';
-import { StarThreeQuarter } from '@styled-icons/fluentui-system-filled';
+import { StarThreeQuarter, ChevronLeft, ChevronRight } from '@styled-icons/fluentui-system-filled';
 import { Expand } from '@styled-icons/fa-solid';
 import { Close } from '@styled-icons/ionicons-solid';
 
@@ -57,8 +57,8 @@ const Gallery = ({ style, styleIndex, setStyleIndex, stylesList }) => {
       <MainContainer data-testid="Gallery">
         <MainImage src={photos[index].url} alt={name} />
         <ExpandContainer onClick={() => {setShowModal(true)}}><Expand size="24" /></ExpandContainer>
-        <LeftArrow onClick={handleLeft}><ArrowLeft size="36" /></LeftArrow>
-        <RightArrow onClick={handleRight}><ArrowRight size="36" /></RightArrow>
+        <LeftArrow onClick={handleLeft}><ChevronLeft size="48" /></LeftArrow>
+        <RightArrow onClick={handleRight}><ChevronRight size="48" /></RightArrow>
 
         {/* THUMBNAILS */}
         <ThumbnailContainer>
@@ -121,7 +121,8 @@ const CloseButton = styled.div`
   right: 16px;
   top: 16px;
   border-radius: 50%;
-  background-color:rgba(128, 128, 128, 0.85);
+  color: whitesmoke;
+  filter: drop-shadow(0 2px 2px #1a1a1a);
 `;
 
 const ModalImage = styled.img`
@@ -179,19 +180,19 @@ const MainImage = styled.img`
 const LeftArrow = styled.div`
   display: block;
   position: absolute;
-  left: 12px;
+  left: 80px;
   top: 50%;
-  border-radius: 50%;
-  background-color:rgba(0, 0, 0, 0.25);
+  color: whitesmoke;
+  filter: drop-shadow(0 2px 2px #1a1a1a);
 `;
 
 const RightArrow = styled.div`
   display: block;
   position: absolute;
-  right: 12px;
+  right: 60px;
   top: 50%;
-  border-radius: 50%;
-  background-color:rgba(0, 0, 0, 0.25);
+  color: whitesmoke;
+  filter: drop-shadow(0 2px 2px #1a1a1a);
 `;
 
 const ThumbnailContainer = styled.div`
@@ -199,10 +200,11 @@ const ThumbnailContainer = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  background-color:rgba(0, 0, 0, 0.25);
   text-align: center;
   padding: 4px;
   margin: 12px 12px;
+  filter: drop-shadow(0 2px 2px #1a1a1a);
+  color: whitesmoke;
 `;
 
 const ExpandContainer = styled.div`
@@ -211,7 +213,8 @@ const ExpandContainer = styled.div`
   top: 12px;
   position: absolute;
   padding: 4px;
-  background-color:rgba(0, 0, 0, 0.25);
+  color: whitesmoke;
+  filter: drop-shadow(0 2px 2px #1a1a1a);
 `;
 
 /* =============================================================================== */
