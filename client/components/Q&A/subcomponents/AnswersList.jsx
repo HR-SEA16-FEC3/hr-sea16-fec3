@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Answer from './Answer';
 
@@ -18,9 +19,9 @@ const sortAndFilterAnswers = (objs) => {
   return answersList;
 };
 
-const AnswersList = (props) => {
+const AnswersList = ({ list, colorScheme }) => {
   const [shownAnswers, setShownAnswers] = useState(2);
-  const sortedAnswers = sortAndFilterAnswers(props.list);
+  const sortedAnswers = sortAndFilterAnswers(list);
 
   const handleShowMore = () => setShownAnswers(shownAnswers + 2);
   const handleShowLess = () => setShownAnswers(2);
@@ -28,7 +29,7 @@ const AnswersList = (props) => {
     <Wrapper>
       {sortedAnswers.slice(0, shownAnswers).map((item) => (
         <Answer
-          colorScheme={props.colorScheme}
+          colorScheme={colorScheme}
           answer={item}
           key={item.id || item.answer_id}
         />
@@ -39,7 +40,7 @@ const AnswersList = (props) => {
             && shownAnswers < sortedAnswers.length) {
             return (
               <Button
-                colorScheme={props.colorScheme}
+                colorScheme={colorScheme}
                 onClick={handleShowMore}
               >
                 Load more answers
@@ -53,7 +54,7 @@ const AnswersList = (props) => {
             && shownAnswers > 2) {
             return (
               <Button
-                colorScheme={props.colorScheme}
+                colorScheme={colorScheme}
                 onClick={handleShowLess}
               >
                 Collapse Answers
@@ -65,6 +66,11 @@ const AnswersList = (props) => {
       </AnswerButtons>
     </Wrapper>
   );
+};
+
+AnswersList.propTypes = {
+  list: PropTypes.arrayOf(PropTypes.object).isRequired,
+  colorScheme: PropTypes.bool.isRequired,
 };
 
 const Wrapper = styled.div`

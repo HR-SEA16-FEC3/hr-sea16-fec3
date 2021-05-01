@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { LogoOctocat } from '@styled-icons/ionicons-solid';
 import axios from 'axios';
 import Overview from './components/overview/Overview';
 import QandA from './components/Q&A/Q&A';
@@ -34,14 +33,10 @@ const App = () => {
     <AppStyles.Outside colorScheme={colorScheme}>
       <AppStyles.Wrapper>
         <AppStyles.Header colorScheme={colorScheme}>
-          <h1>
-            <a href="/">
-              <AppStyles.Logo>
-                <LogoOctocat size="36" />
-              </AppStyles.Logo>
-            </a>
-            Project Catwalk
-          </h1>
+          <AppStyles.LogoImg src="./logo.png" alt="logo" />
+          <AppStyles.Title>
+            ELDER-LY FASHION
+          </AppStyles.Title>
         </AppStyles.Header>
         <Overview productId={productId} />
         <AppStyles.Divider />

@@ -1,19 +1,29 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import axios from 'axios';
 import modalStyles from '../../../sharedStyles/modalStyles';
 
-const AddAnAnswerModal = (props) => {
+const AddAnAnswerModal = (
+  {
+    productName,
+    questionId,
+    toggleModal,
+    handleAddAnswer,
+    question,
+    colorScheme,
+  },
+) => {
   const [answerBody, setAnswerBody] = useState('');
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
-  const [file, setFile] = useState('');
+  // const [file, setFile] = useState('');
   const [imgPreviewUrl, setImgPreviewUrl] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post(`/qa/questions/${props.questionId}/answers`,
+    axios.post(`/qa/questions/${questionId}/answers`,
       {
         body: answerBody,
         name: nickname,
@@ -21,19 +31,19 @@ const AddAnAnswerModal = (props) => {
         photos: [],
       })
       .then(() => {
-        props.toggleModal();
-        props.handleAddAnswer();
+        toggleModal();
+        handleAddAnswer();
       })
-      .catch((error) => console.log(error));
+      .catch((error) => { throw error; });
   };
 
   const handleImageUpload = (e) => {
     e.preventDefault();
-    let reader = new FileReader();
-    let file = e.target.files[0];
+    const reader = new FileReader();
+    const file = e.target.files[0];
 
     reader.onloadend = () => {
-      setFile(file);
+      // setFile(file);
       setImgPreviewUrl(reader.result);
     };
     reader.readAsDataURL(file);
@@ -41,14 +51,18 @@ const AddAnAnswerModal = (props) => {
   return (
     <modalStyles.Wrapper onSubmit={handleSubmit}>
       <modalStyles.Title>Submit your Answer</modalStyles.Title>
-      <modalStyles.Subtitle>{props.question}</modalStyles.Subtitle>
+      <modalStyles.Subtitle>
+        {productName}
+        :&nbsp;
+        {question}
+      </modalStyles.Subtitle>
       <modalStyles.Label htmlFor="youranswer">
         {/* Your Answer* */}
         <modalStyles.BodyInput
           as="textarea"
           id="youranswer"
           required
-          colorScheme={props.colorScheme}
+          colorScheme={colorScheme}
           type="text"
           value={answerBody}
           onChange={(e) => setAnswerBody(e.target.value)}
@@ -61,7 +75,7 @@ const AddAnAnswerModal = (props) => {
         <modalStyles.Input
           id="nickname"
           required
-          colorScheme={props.colorScheme}
+          colorScheme={colorScheme}
           type="text"
           value={nickname}
           onChange={(e) => setNickname(e.target.value)}
@@ -78,7 +92,7 @@ const AddAnAnswerModal = (props) => {
         <modalStyles.Input
           id="email"
           required
-          colorScheme={props.colorScheme}
+          colorScheme={colorScheme}
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -91,7 +105,7 @@ const AddAnAnswerModal = (props) => {
       <UploadLabel
         htmlFor="image-upload"
         className="custom-file-upload"
-        colorScheme={props.colorScheme}
+        colorScheme={colorScheme}
       >
         Upload Images
       </UploadLabel>
@@ -103,9 +117,20 @@ const AddAnAnswerModal = (props) => {
         onChange={handleImageUpload}
       />
       {imgPreviewUrl ? <div><UploadImg src={imgPreviewUrl} /></div> : null}
-      <modalStyles.Button colorScheme={props.colorScheme} type="submit">Submit Answer</modalStyles.Button>
+      <modalStyles.Button colorScheme={colorScheme} type="submit">Submit Answer</modalStyles.Button>
     </modalStyles.Wrapper>
   );
+};
+
+AddAnAnswerModal.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  productName: PropTypes.string.isRequired,
+  questionId: PropTypes.number.isRequired,
+  toggleModal: PropTypes.func.isRequired,
+  handleAddAnswer: PropTypes.func.isRequired,
+  question: PropTypes.string.isRequired,
+  colorScheme: PropTypes.bool.isRequired,
+
 };
 
 const UploadImg = styled.img`
