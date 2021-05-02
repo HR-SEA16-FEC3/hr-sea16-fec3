@@ -24,7 +24,7 @@ function Description({ productInfo, colorScheme }) {
       </Left>
 
       {/* FEATURES */}
-      <Right>
+      <Right colorScheme={colorScheme}>
         {featuresList.map((feature, i) => (
           <Features feature={feature} key={i} />
         ))}
@@ -59,7 +59,7 @@ const Left = styled.section`
 const Right = styled.section`
   flex-basis: 40%;
   padding: 30px;
-  border-left: 2px solid black;
+  border-left: 2px solid ${(props) => (props.colorScheme ? 'whitesmoke' : 'black')};
 `;
 
 export default Description;

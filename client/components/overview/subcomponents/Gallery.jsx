@@ -167,7 +167,7 @@ const MainImageContainer = styled.div`
 const MainImage = styled.img`
   border: 1px solid black;
   position: relative;
-  max-height: 800px;
+  max-height: 768px;
   max-width: 100%;
   overflow: hidden;
 `;

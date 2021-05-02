@@ -161,7 +161,7 @@ const LeftSection = styled.div`
   justify-content: center;
   align-items: center;
   max-height: 100%;
-  height: 800px;
+  height: 768px;
 `;
 
 const RightSection = styled.div`
