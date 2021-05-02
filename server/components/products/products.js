@@ -11,6 +11,10 @@ products.get('/products', (req, res) => {
     headers: {
       Authorization: config.TOKEN,
     },
+    params: {
+      page: 10,
+      count: 100,
+    },
   })
     .then((response) => {
       res.status(200).send(response.data);
