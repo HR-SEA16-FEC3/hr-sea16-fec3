@@ -10,6 +10,7 @@ color: white;
 padding: 0px;
 padding-right: 35px;
 align-items: center;
+margin-bottom: 0px;
 `;
 
 const Footer = styled.div`
@@ -17,9 +18,12 @@ background: ${(props) => (props.colorScheme ? 'purple' : 'orange')};
 height: 80px;
 display: flex;
 flex-direction: row;
+flex-wrap: nowrap;
 align-items: center;
 color: white;
-padding: 5px;
+padding: 0px;
+bottom: 0;
+width: 100%;
 `;
 
 const Divider = styled.hr`
@@ -37,12 +41,14 @@ scroll-behavior: smooth;
 max-width: 1200px;
 margin: auto;
 left: 50%;
+min-height: 100vh;
 `;
 
 const Outside = styled.div`
 background: ${(props) => (props.colorScheme ? '#494949' : '#dcdcdc')};
 height: max-content;
 min-height:100vh;
+position: relative;
 `;
 
 const LogoImg = styled.img`
@@ -57,6 +63,12 @@ font-size: 2em;
 font-weight: bolder;
 `;
 
+const Contents = styled.div`
+background: whitesmoke;
+min-height: 100vh;
+margin-top: 0px;
+`;
+
 export default {
-  Header, Footer, Divider, Wrapper, Outside, LogoImg, Title,
+  Header, Footer, Divider, Wrapper, Outside, LogoImg, Title, Contents,
 };

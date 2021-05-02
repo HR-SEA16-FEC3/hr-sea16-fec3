@@ -18,11 +18,9 @@ const Styles = ({ style, setSelectedStyle }) => {
   return (
     <>
       {/* DISPLAY THUMBNAILS IN ROWS OF 4 */}
-      <ThumbnailCircle
-        data-testid="style-thumbnail"
-        image={thumbnailUrl}
-        onClick={() => clickStyle(event)}
-      />
+      <ThumbCircle data-testid="style-thumbnail" onClick={() => clickStyle(event)}>
+        <ThumbImage src={thumbnailUrl} alt="a thumbnail of a style" />
+      </ThumbCircle>
     </>
   );
 };
@@ -35,37 +33,26 @@ Styles.propTypes = {
   }),
 };
 
-const ThumbnailCircle = styled.div`
+const ThumbCircle = styled.div`
   border: 1px solid black;
-  display: block;
+  height: 84px;
+  width: 84px;
+  object-fit: cover;
+  overflow: hidden;
   border-radius: 50%;
-  height: 74px;
-  /* max-width: 74px; */
-  width: auto;
-  object-fit: contain;
-  align-items: center;
-  justify-content: center;
-  background-image: url(${(props) => props.image});
-  background-size: cover;
-  background-position: center;
-  margin: 8px 12px 0 0;
-  flex: 0 0 21%;
-  &:hover{
-    cursor: pointer;
-    opacity: 0.75;
-  };
+  margin: 8px;
+  justify-content: flex-start;
+  &:hover{ cursor: pointer; opacity: 0.75; };
+  &:active{ cursor: pointer; opacity: 0.50; };
+  filter: drop-shadow(0 2px 2px #1a1a1a);
+`;
+
+const ThumbImage = styled.img`
+  object-fit: cover;
+  /* border-radius: 50%; */
+  height: 100%;
+  width: 100%;
+  /* display: block; */
 `;
 
 export default Styles;
-
-// style_id: styleId,
-// name,
-// original_price: originalPrice,
-// sale_price: salePrice,
-// 'default?': isDefault,
-
-// style_id: PropTypes.number,
-// name: PropTypes.string,
-// original_price: PropTypes.string,
-// sale_price: PropTypes.string,
-// 'default?': PropTypes.boolean,

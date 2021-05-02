@@ -10,8 +10,11 @@ const app = express();
 const apiUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sea';
 const header = { Authorization: config.TOKEN };
 
-app.use(express.static(path.join(__dirname, '..', 'public')));
+const distPath = path.resolve(__dirname, '..', 'public');
+
 app.use(express.json());
+app.use('/', express.static(distPath));
+app.use(/\/\d*(?![A-Za-z])/, express.static(distPath));
 app.use(products);
 app.use(QandA);
 app.use(Reviews);
