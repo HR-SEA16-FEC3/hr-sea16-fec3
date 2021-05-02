@@ -8,7 +8,7 @@ import { Twitter, Facebook, Instagram, Whatsapp, Pinterest } from '@styled-icons
 import { Link } from '@styled-icons/boxicons-regular';
 import { Email } from '@styled-icons/material-outlined';
 
-function Information({ productInfo, price }) {
+function Information({ productInfo, price, colorScheme }) {
   const {
     id,
     name,
@@ -21,7 +21,7 @@ function Information({ productInfo, price }) {
 
   return (
     <div data-testid="Information">
-      <Section>
+      <Section colorScheme={colorScheme}>
         {/* Star Rating (# of reviews) */}
         <span>
           <FontAwesomeIcon icon={faStar} data-testid="iconStar" color="orange" />
@@ -58,9 +58,9 @@ Information.propTypes = {
 };
 
 // STYLED-COMPONENTS
-const Section = styled.div`
-  background: ${(props) => props.background};
+const Section = styled.section`
   border-radius: 3px;
+  color: ${(props) => (props.colorScheme ? 'whitesmoke' : 'black')};
 `;
 
 const Category = styled.div`
@@ -72,16 +72,6 @@ const ProductName = styled.div`
   font-weight: bold;
   font-size: 40px;
   margin: 10px 0;
-`;
-
-const Socials = styled.div`
-  color: orange;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  padding: 10px 10px;
-  margin: 10px 0;
-  /* justify-content: center; */
 `;
 
 const Price = styled.div`

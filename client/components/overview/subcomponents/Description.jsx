@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Features from './Features';
 
-function Description({ productInfo }) {
+function Description({ productInfo, colorScheme }) {
   let receivedProductInfo = true;
   if (!productInfo || !Object.keys(productInfo).length) receivedProductInfo = false;
   if (!receivedProductInfo) return <div>Loading</div>;
@@ -15,23 +15,21 @@ function Description({ productInfo }) {
   } = productInfo;
 
   return (
-    <>
-      <BottomSection>
-        {/* DESCRIPTION */}
-        <Left>
-          <SloganStyled>{slogan}</SloganStyled>
-          <br />
-          {description}
-        </Left>
+    <DescriptionComponent colorScheme={colorScheme}>
+      {/* DESCRIPTION */}
+      <Left>
+        <SloganStyled>{slogan}</SloganStyled>
+        <br />
+        {description}
+      </Left>
 
-        {/* FEATURES */}
-        <Right>
-          {featuresList.map((feature, i) => (
-            <Features feature={feature} key={i} />
-          ))}
-        </Right>
-      </BottomSection>
-    </>
+      {/* FEATURES */}
+      <Right>
+        {featuresList.map((feature, i) => (
+          <Features feature={feature} key={i} />
+        ))}
+      </Right>
+    </DescriptionComponent>
   );
 }
 
@@ -43,13 +41,14 @@ Description.propTypes = {
   // })
 };
 
+const DescriptionComponent = styled.section`
+  display: flex;
+  color: ${(props) => (props.colorScheme ? 'whitesmoke' : 'black')};
+`;
+
 const SloganStyled = styled.section`
   text-transform: uppercase;
   font-weight: bold;
-`;
-
-const BottomSection = styled.section`
-  display: flex;
 `;
 
 const Left = styled.section`

@@ -71,7 +71,7 @@ function Overview({ productId, colorScheme }) {
 
   return (
     <div data-testid="Overview">
-      <OverviewStyle>
+      <OverviewStyle colorScheme={colorScheme}>
 
         <TopSection>
           <LeftSection>
@@ -108,6 +108,7 @@ function Overview({ productId, colorScheme }) {
                   /* IF NO STYLE SELECTED, DISPLAY DEFAULT STYLE */
                   displayStyle={selectedStyle}
                   setSelectedStyle={setSelectedStyle}
+                  colorScheme={colorScheme}
                 />
               )}
             </Subcomponent>
@@ -121,7 +122,7 @@ function Overview({ productId, colorScheme }) {
 
         <BottomSection>
           {/* Product Description */}
-          {productInfo && <Description productInfo={productInfo} />}
+          {productInfo && <Description productInfo={productInfo} colorScheme={colorScheme} />}
         </BottomSection>
 
       </OverviewStyle>
@@ -130,11 +131,10 @@ function Overview({ productId, colorScheme }) {
 }
 
 const OverviewStyle = styled.section`
-  font-family: sans-serif;
   display: flex;
   flex-direction: column;
-  background: ${(props) => (props.colorScheme ? 'whitesmoke' : '#whitesmoke')};
-  color: ${(props) => (props.colorScheme ? 'whitesmoke' : 'black')}
+  /* background: ${(props) => (props.colorScheme ? '#ababab' : 'whitesmoke')}; */
+  /* color: ${(props) => (props.colorScheme ? 'whitesmoke' : 'black')} */
   margin: 16px 16px;
 `;
 
@@ -171,8 +171,8 @@ const RightSection = styled.div`
 `;
 
 const Subcomponent = styled.div`
-  background: ${(props) => (props.colorScheme ? 'whitesmoke' : '#whitesmoke')};
-  color: ${(props) => (props.colorScheme ? 'whitesmoke' : 'whitesmoke')}
+  /* background: ${(props) => (props.colorScheme ? 'whitesmoke' : 'whitesmoke')}; */
+  /* color: ${(props) => (props.colorScheme ? 'whitesmoke' : 'black')} */
   order: ${(props) => props.order};
   padding: 10px 0;
 `;

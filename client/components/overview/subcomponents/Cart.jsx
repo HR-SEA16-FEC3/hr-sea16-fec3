@@ -97,16 +97,16 @@ const Cart = ({ style, colorScheme }) => {
       </Buttons>
 
       {/* Share on Social Media */}
-      <Socials>
+      <Socials colorScheme={colorScheme}>
         {/* Facebook, Twitter, Pinterest = min required */}
 
-        <Icon as="a" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://34.208.75.214/"><faBrands.Facebook data-testid="icon-facebook" size="36" /></Icon>
-        <Icon as="a" target="_blank" href={`https://twitter.com/intent/tweet?text=${socialMessage}`}><faBrands.Twitter data-testid="icon-twitter" size="36" /></Icon>
-        <Icon as="a" target="_blank" href={`https://pinterest.com/pin/create/link/?url=${socialMessage}`}><faBrands.Pinterest data-testid="icon-pinterest" size="36" /></Icon>
+        <Icon as="a" target="_blank" colorScheme={colorScheme} href="https://www.facebook.com/sharer/sharer.php?u=http://34.208.75.214/"><faBrands.Facebook data-testid="icon-facebook" size="36" /></Icon>
+        <Icon as="a" target="_blank" colorScheme={colorScheme} href={`https://twitter.com/intent/tweet?text=${socialMessage}`}><faBrands.Twitter data-testid="icon-twitter" size="36" /></Icon>
+        <Icon as="a" target="_blank" colorScheme={colorScheme} href={`https://pinterest.com/pin/create/link/?url=${socialMessage}`}><faBrands.Pinterest data-testid="icon-pinterest" size="36" /></Icon>
         {/* <Icon><faBrands.Instagram size="36" /></Icon> */}
         {/* <Icon><faBrands.Whatsapp size="36" /></Icon> */}
-        <Icon as="a" target="_blank" href={`mailto:?subject=Hello!&body=${socialMessage}`}><Email size="36" /></Icon>
-        <Icon onClick={copyToClipboard}><Link size="36" /></Icon>
+        <Icon as="a" target="_blank" colorScheme={colorScheme} href={`mailto:?subject=Hello!&body=${socialMessage}`} colorScheme={colorScheme}><Email size="36" /></Icon>
+        <Icon onClick={copyToClipboard} colorScheme={colorScheme}><Link size="36" /></Icon>
         <span>{copySuccess}</span>
       </Socials>
 
@@ -141,30 +141,28 @@ const Button = styled.button`
   text-transform: uppercase;
   font-weight: bold;
   display: flex;
-  /* &:hover{ cursor: pointer; color: #ffbf00 }; */
-  /* &:active{ cursor: pointer; opacity: 0.50; }; */
+  color: ${(props) => (props.colorScheme ? 'whitesmoke' : 'black')};
   background: ${(props) => (props.colorScheme ? 'purple' : 'orange')};
   &:hover{ cursor: pointer; background: ${(props) => (props.colorScheme ? '#a64ca6' : '#ffc04c')}; }
   &:active{ cursor: pointer; background: ${(props) => (props.colorScheme ? '#660066' : '#cc8400')}; }
 `;
 
 const Socials = styled.div`
-  /* color: orange; */
   display: flex;
   flex-flow: row wrap;
   padding: 8px 0;
   margin: 0;
   align-items: center;
-  color: ${(props) => (props.colorScheme ? 'purple' : 'orange')};
+  color: ${(props) => (props.colorScheme ? 'whitesmoke' : 'orange')};
 `;
 
 const Icon = styled.span`
   margin: 10px 16px 0 0;
-  &:visited{ text-decoration: none; };
-  &:link{ text-decoration: none; };
-  &:hover{ cursor: pointer; color: #ffbf00 };
-  &:active{ cursor: pointer; opacity: 0.50; };
-  color: ${(props) => (props.colorScheme ? 'purple' : 'orange')};
+  &:visited{ text-decoration: none; color: ${(props) => (props.colorScheme ? 'whitesmoke' : 'orange')}; };
+  &:link{ text-decoration: none; color: ${(props) => (props.colorScheme ? 'whitesmoke' : 'orange')}; };
+  &:hover{ cursor: pointer; color: ${(props) => (props.colorScheme ? '#a64ca6' : '#ffbf00')}; };
+  &:active{ cursor: pointer; color: ${(props) => (props.colorScheme ? '#660066' : '#cc8400')};};
+  color: ${(props) => (props.colorScheme ? 'whitesmoke' : 'orange')};
 `;
 
 export default Cart;
