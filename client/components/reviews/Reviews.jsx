@@ -17,12 +17,13 @@ function Reviews(
   const [metaData, setMetaData] = useState({});
   const [tiles, setTiles] = useState(2);
   const [modal, setModal] = useState(false);
-  const [parentFilter, setParentFilter] = useState(dummyData.results);
+  const [parentFilter, setParentFilter] = useState({});
 
   const fetchReviewData = () => {
     axios.get(`/reviews/${productId}`)
       .then((data) => (
         setReviewResults(data.data.results),
+        setParentFilter(data.data.results),
         setTiles(2)
       ))
       .catch((error) => {
@@ -63,7 +64,7 @@ function Reviews(
         <RightSection>
           <RightTopSection>
             <div>
-              {reviewResults.length
+              {reviewResults.length && Object.keys(parentFilter).length > 0
                 ? (
                   <ReviewSort
                     dummyData={reviewResults}
@@ -75,8 +76,8 @@ function Reviews(
             </div>
           </RightTopSection>
           <PseudoScroll>
-            {reviewResults.length
-              ? <ReviewList dummyData={reviewResults.slice(0, tiles)} />
+            {reviewResults.length && Object.values(parentFilter).length > 0
+              ? <ReviewList dummyData={parentFilter.slice(0, tiles)} />
               : <div>No Reviews!</div> }
           </PseudoScroll>
           <ButtonStyle>
