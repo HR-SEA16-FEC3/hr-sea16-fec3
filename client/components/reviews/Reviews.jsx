@@ -6,9 +6,13 @@ import ReviewMeta from './subcomponents/ReviewMeta.jsx';
 import ReviewModal from './subcomponents/ReviewModal.jsx';
 import ReviewSort from './subcomponents/ReviewSort.jsx';
 import dummyData from './subcomponents/DummyData/product_reviews_example';
-import metaDummyData from './subcomponents/DummyData/product_metaData_example';
 
-function Reviews({ productId }) {
+function Reviews(
+  {
+    productId,
+    colorScheme,
+  },
+) {
   const [reviewResults, setReviewResults] = useState({});
   const [metaData, setMetaData] = useState({});
   const [tiles, setTiles] = useState(2);
@@ -43,23 +47,31 @@ function Reviews({ productId }) {
     }
   }, [productId]);
 
+  console.log((reviewResults.length));
+  // && Object.keys(metaData.ratings).length
+
   return (
     <div data-testid="Reviews">
-      <Wrapper>
+      <Wrapper
+        colorScheme={colorScheme}
+      >
         <LeftSection>
-          {Object.keys(metaData).length > 0
-            ? <ReviewMeta metaDummyData={metaData} />
-            : <div>Loading!</div>}
+          {Object.keys(metaData).length > 0 && Object.values(metaData.ratings).length > 0
+            ? <ReviewMeta metaDummyData={metaData} colorScheme={colorScheme} />
+            : <div>No reviews yet! ¯\_( ͡° ͜ʖ ͡°)_/¯ </div>}
         </LeftSection>
         <RightSection>
           <RightTopSection>
             <div>
-              <ReviewSort
-                dummyData={dummyData}
-                parentFilter={parentFilter}
-                setParentFilter={setParentFilter}
-              />
-
+              {reviewResults.length
+                ? (
+                  <ReviewSort
+                    dummyData={reviewResults}
+                    parentFilter={parentFilter}
+                    setParentFilter={setParentFilter}
+                  />
+                )
+                : <div>No Reviews!</div>}
             </div>
           </RightTopSection>
           <PseudoScroll>
@@ -72,6 +84,7 @@ function Reviews({ productId }) {
               <Button
                 type="button"
                 onClick={() => setTiles(tiles + 2)}
+                colorScheme={colorScheme}
               >
                 More Reviews
               </Button>
@@ -80,6 +93,7 @@ function Reviews({ productId }) {
               <Button
                 type="button"
                 onClick={() => setModal(true)}
+                colorScheme={colorScheme}
               >
                 Add A Review +
               </Button>
@@ -101,8 +115,8 @@ const Wrapper = styled.section`
   display: flex;
   flex-direction: row;
   padding: 1em;
-  background: ${(props) => (props.colorScheme ? '#ababab' : '#c4c4c4')};
-  color: ${(props) => (props.colorScheme ? 'whitesmoke' : 'black')}
+  background: ${(props) => (props.colorScheme ? '#494949 ' : '#D0D0D0')};
+  color: ${(props) => (props.colorScheme ? 'whitesmoke' : 'black')};
   max-height: 100vh;
 `;
 
@@ -144,14 +158,17 @@ overflow: auto;
 `;
 
 const Button = styled.button`
-flex-direction:column
-  border: 1px solid black;
-  margin-top: 15px;
-  margin-right: 15px;
-  background: white;
-  padding: 15px;
+  border: 0px solid;
+  margin-top: 10px;
+  margin-right: 10px;
+  background: ${(props) => (props.colorScheme ? 'purple' : 'orange')};
+  padding: 7px;
+  font-size: 10px;
+  color: white;
   text-transform: uppercase;
-  &:hover{ background: lightgrey }
+  width: 175px;
+  &:hover{ background: ${(props) => (props.colorScheme ? '#a64ca6' : '#ffc04c')}; }
+  &:active{ background: ${(props) => (props.colorScheme ? '#660066' : '#cc8400')}; }
 `;
 
 const ButtonStyle = styled.div`

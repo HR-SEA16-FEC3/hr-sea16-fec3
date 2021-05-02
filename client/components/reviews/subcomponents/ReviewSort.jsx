@@ -12,14 +12,15 @@ const ReviewSort = ({ setParentFilter, parentFilter, dummyData }) => {
     } else if (sortMethod === 'Helpful') {
       filteredList.sort((a, b) => b.helpfulness - a.helpfulness);
     } else if (sortMethod === 'Relevance') {
-      filteredList.sort((a, b) => new Date(b.date) - new Date(a.date) || b.helpfulness - a.helpfulness);
+      filteredList.sort((a, b) => new Date(b.date) - new Date(a.date)
+      || b.helpfulness - a.helpfulness);
     }
     setParentFilter(filteredList);
   }, [sortMethod]);
 
   return (
     <div>
-      {dummyData.results.length}
+      {dummyData.length}
 &nbsp;reviews, sorted by&nbsp;
       <Select
         id="sort-reviews"
@@ -46,7 +47,7 @@ ReviewSort.propTypes = {
 const Select = styled.select`
   width: auto;
   height: 35px;
-  background: whitesmoke;
+  background: #E7E7E7;
   color: gray;
   font-size: 14px;
   border: none;

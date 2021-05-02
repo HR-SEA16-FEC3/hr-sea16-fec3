@@ -42,7 +42,7 @@ const App = () => {
         <AppStyles.Divider />
         <QandA productId={productId} productName={productName} colorScheme={colorScheme} />
         <AppStyles.Divider />
-        <Reviews productId={productId} />
+        <Reviews productId={productId} colorScheme={colorScheme} />
         <AppStyles.Footer colorScheme={colorScheme}>
           <select
             value={currentIndex}

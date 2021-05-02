@@ -2,7 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const FitBar = ({ data, value }) => {
+const FitBar = (
+  {
+    data,
+    value,
+    colorScheme,
+  },
+) => {
   let meaningLow;
   let meaningHigh;
   const position = data.value * 10;
@@ -51,11 +57,21 @@ const FitBar = ({ data, value }) => {
       break;
   }
 
+  const pointerStyle = {
+    color: colorScheme ? 'purple' : 'black',
+  };
+
   return (
     <div className="characteristic-bar">
       <div id="char-empty-bar" style={emptyBar}>
         <div style={innerBar} />
-        <span id="rating-pointer">&#9650;</span>
+        <span
+          id="rating-pointer"
+          style={pointerStyle}
+        >
+          &#9650;
+
+        </span>
       </div>
       <TextWrapper>
         <Text className="charMeaning">

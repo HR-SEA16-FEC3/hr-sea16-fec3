@@ -36,7 +36,12 @@ const maxWidth = ({ ratings }) => {
   return Math.max(...values);
 };
 
-const ReviewMeta = ({ metaDummyData }) => {
+const ReviewMeta = (
+  {
+    metaDummyData,
+    colorScheme,
+  },
+) => {
   const averageRating = getAverageRating(metaDummyData);
   const averageRecommendation = getAverageRecommendation(metaDummyData);
   const clonedRatingObject = cloneObject(metaDummyData);
@@ -68,26 +73,34 @@ const ReviewMeta = ({ metaDummyData }) => {
           <RatingsBar
             rating={value}
             maxRatingWidth={value / maxRatingWidth}
+            colorScheme={colorScheme}
           />
         </div>
       )))}
       <br />
       Size
       <br />
-      {metaDummyData.characteristics.Fit === null || metaDummyData.characteristics.Fit === undefined
+      {metaDummyData.characteristics.Fit !== undefined && metaDummyData.characteristics.Fit !== null
         ? (
           <FitBar
             data={metaDummyData.characteristics.Fit}
             value="Fit"
+            colorScheme={colorScheme}
           />
         )
-        : <div>No Data!</div>}
+        : 'No reviews yet! ᶘ ◕ᴥ◕ᶅ'}
       <br />
       Comfort
-      <FitBar
-        data={metaDummyData.characteristics.Comfort}
-        value="Comfort"
-      />
+      <br />
+      {metaDummyData.characteristics.Comfort !== undefined && metaDummyData.characteristics.Comfort !== null
+        ? (
+          <FitBar
+            data={metaDummyData.characteristics.Comfort}
+            value="Comfort"
+            colorScheme={colorScheme}
+          />
+        )
+        : 'No reviews yet! (ง ͠° ͟ل͜ ͡°)ง'}
       <br />
     </div>
   );
@@ -105,10 +118,3 @@ const MetaHeader = styled.div`
   `;
 
 export default ReviewMeta;
-// keys.map((star, i) => (
-//   <RatingsBar
-//   key={i}
-//   starNum={star}
-//   starRating={ratings}
-//   totalRatings={props.totalRatings}
-//   />
