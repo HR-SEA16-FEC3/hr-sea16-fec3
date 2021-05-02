@@ -115,7 +115,7 @@ const Wrapper = styled.section`
   display: flex;
   flex-direction: row;
   padding: 1em;
-  background: ${(props) => (props.colorScheme ? '#494949 ' : '#D0D0D0')};
+  background: ${(props) => (props.colorScheme ? '#6f6f6f ' : '#D0D0D0')};
   color: ${(props) => (props.colorScheme ? 'whitesmoke' : 'black')};
   max-height: 100vh;
 `;
