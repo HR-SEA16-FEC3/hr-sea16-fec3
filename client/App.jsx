@@ -63,7 +63,7 @@ const App = (props) => {
     <Outside colorScheme={colorScheme}>
       <Wrapper>
         <Header colorScheme={colorScheme}>
-          <LogoImg src="./logo.png" alt="logo" />
+          <a href="/"><LogoImg src="./logo.png" alt="logo" /></a>
           <Title>
             ELDER-LY FASHION
           </Title>

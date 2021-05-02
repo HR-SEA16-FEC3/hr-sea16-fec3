@@ -13,7 +13,7 @@ const Cart = ({ style, colorScheme }) => {
 
   const { skus } = style;
 
-  const [size, setSize] = useState('none');
+  const [size, setSize] = useState('');
   const [maxQuantity, setMaxQuantity] = useState(null);
   const [selQuantity, setSelQuantity] = useState(null);
   const [selSku, setSelSku] = useState(null); // may not need if importing skus from parent
@@ -55,24 +55,24 @@ const Cart = ({ style, colorScheme }) => {
         <Select
           data-testid="sizeDropdown"
           name="sizeDropdown"
-          value={selSku}
+          /* value={selSku} */
           onChange={(e) => {
             setMaxQuantity(Number(event.target.selectedOptions[0].getAttribute('quantity')));
             setSize(e.target.value);
             setSelQuantity(1);
           }}
         >
-          <option value="none">Select Size</option>
+          <option value="">Select Size</option>
           {Object.entries(skus).map(([key, value]) => (
             <option key={key} value={value.size} quantity={value.quantity}>{value.size}</option>
           ))}
         </Select>
 
         {/* Quantity Selector */}
-        {size === 'none'
+        {size === ''
           ? (
             <Select data-testid="quantityDropdown" disabled>
-              <option value="none">-</option>
+              <option value="">-</option>
             </Select>
           )
           : (

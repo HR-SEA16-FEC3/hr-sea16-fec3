@@ -133,9 +133,9 @@ function Overview({ productId, colorScheme }) {
 const OverviewStyle = styled.section`
   display: flex;
   flex-direction: column;
-  /* background: ${(props) => (props.colorScheme ? '#ababab' : 'whitesmoke')}; */
+  background: ${(props) => (props.colorScheme ? '#6f6f6f' : 'whitesmoke')};
   /* color: ${(props) => (props.colorScheme ? 'whitesmoke' : 'black')} */
-  margin: 16px 16px;
+  padding: 16px 16px;
   margin-top: 0px;
 `;
 
