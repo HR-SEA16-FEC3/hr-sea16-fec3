@@ -3,8 +3,11 @@ import ReactDOM from 'react-dom';
 import QandA from '../Q&A';
 import { render } from '@testing-library/react';
 
+import questionsExample from './question_example';
+import answersExample from './answers_example';
+
 describe ('Q&A Section', () => {
-const { queryByTestId, queryAllByTestId } = render(<QandA />);
+const { queryByTestId, queryAllByTestId } = render(<QandA productId={20100} productName={'Camo Onesie'} colorScheme={false}/>);
 it('should not crash', () => {
   expect(queryByTestId).toBeTruthy();
 });

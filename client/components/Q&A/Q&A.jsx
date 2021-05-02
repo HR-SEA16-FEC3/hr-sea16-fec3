@@ -4,11 +4,10 @@ import styled from 'styled-components';
 import axios from 'axios';
 import Modal from 'react-modal';
 import QuestionsList from './subcomponents/QuestionsList';
-// import exampleData from './questions_example.json';
 import Searchbar from './subcomponents/Searchbar';
 import AddAQuestionModal from './subcomponents/AddAQuestionModal';
 
-const QandA = ({ productId, productName, colorScheme }) => {
+const QandA = ({ productId, productName, colorScheme, children }) => {
   const [questionsList, setQuestionsList] = useState([]);
   const [shownQuestions, setShownQuestions] = useState(2);
   const [searchTerm, setSearchTerm] = useState('');
@@ -58,7 +57,7 @@ const QandA = ({ productId, productName, colorScheme }) => {
       });
   };
 
-  return (
+  return children, (
     <Wrapper
       data-testid="QA"
       colorScheme={colorScheme}

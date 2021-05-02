@@ -15,7 +15,7 @@ module.exports = {
       {
         test: /\.(js|jsx|eot|svg|ttf|woff|woff2|png|jpg|gif)$/,
         exclude: /node_modules/,
-        use: ['babel-loader'],
+        use: ['babel-loader', 'source-map-loader'],
       },
 
     ],
