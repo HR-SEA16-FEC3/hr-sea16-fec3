@@ -61,7 +61,6 @@ const App = (props) => {
   };
 
   return (
-<<<<<<< HEAD
     <Outside colorScheme={colorScheme}>
 
       <Wrapper>
@@ -118,32 +117,6 @@ const App = (props) => {
       </Wrapper>
 
     </Outside>
-=======
-    <AppStyles.Outside colorScheme={colorScheme}>
-      <AppStyles.Wrapper>
-        <AppStyles.Header colorScheme={colorScheme}>
-          <a href="/"><AppStyles.LogoImg src="./logo.png" alt="logo" /></a>
-          <AppStyles.Title>
-            ELDER-LY FASHION
-          </AppStyles.Title>
-        </AppStyles.Header>
-        <Overview productId={productId} colorScheme={colorScheme} />
-        <AppStyles.Divider />
-        <QandA productId={productId} productName={productName} colorScheme={colorScheme} />
-        <AppStyles.Divider />
-        <Reviews productId={productId} />
-        <AppStyles.Footer colorScheme={colorScheme}>
-          <select
-            value={currentIndex}
-            onChange={(e) => { setCurrentIndex(parseInt(e.target.value, 10)); }}
-          >
-            {productList.map((item) => (
-              <option key={item.id} value={productList.indexOf(item)}>
-                {item.name}
-              </option>
-            ))}
-          </select>
->>>>>>> 36992f3d2987a8cb69a2bf7839effb3790b5e6d9
 
   );
 };
