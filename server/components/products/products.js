@@ -12,8 +12,8 @@ products.get('/products', (req, res) => {
       Authorization: config.TOKEN,
     },
     params: {
-      page: 10,
-      count: 100,
+      page: 1,
+      count: 20,
     },
   })
     .then((response) => {
