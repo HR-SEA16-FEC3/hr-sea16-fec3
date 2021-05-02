@@ -48,7 +48,10 @@ function Reviews(
   }, [productId]);
 
   return (
-    <div data-testid="Reviews">
+    <div
+      data-testid="Reviews"
+      id="reviews"
+    >
       <Wrapper
         colorScheme={colorScheme}
       >
