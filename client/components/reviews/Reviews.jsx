@@ -47,9 +47,6 @@ function Reviews(
     }
   }, [productId]);
 
-  console.log((reviewResults.length));
-  // && Object.keys(metaData.ratings).length
-
   return (
     <div data-testid="Reviews">
       <Wrapper
