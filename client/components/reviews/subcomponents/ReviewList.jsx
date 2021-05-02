@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import RatingStar from './RatingStar.jsx';
 
-const ReviewList = (props) => (
-  // rename wrapper, use props
+const ReviewList = ({ dummyData }) => (
   <div className="review-list">
-    {props.dummyData.map((item, i) => (
+    {dummyData.map((item, i) => (
       <ReviewListStyling className="review-tile" key={i}>
         <div className="review-reviewer">
           <RatingStar
@@ -53,6 +53,10 @@ const ReviewList = (props) => (
   </div>
 );
 
+ReviewList.propTypes = {
+  dummyData: PropTypes.array.isRequired,
+};
+
 const RightFloat = styled.div`
   float: right;
   text-transform: capitalize;
@@ -62,5 +66,20 @@ const ReviewListStyling = styled.div`
   border-bottom: 2px solid grey;
   padding-top: 20px;
   `;
+
+const Wrapper = styled.div`
+padding: 0em;
+max-height: 67vh;
+overflow: auto;
+&::-webkit-scrollbar {
+  width: auto;
+  height: auto;
+}
+&::-webkit-scrollbar-thumb
+{
+  border-radius: 10px;
+  background-color: ${(props) => (props.colorScheme ? 'lightgrey' : 'darkgrey')};
+}
+`;
 
 export default ReviewList;

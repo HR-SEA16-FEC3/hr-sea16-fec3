@@ -82,7 +82,7 @@ const App = (props) => {
                   colorScheme={colorScheme}
                 />
                 <Divider />
-                <Reviews productId={productId} />
+                <Reviews productId={productId} colorScheme={colorScheme} />
               </Contents>
             )
             : <Contents>This page seems to be empty!</Contents>)}
