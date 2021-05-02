@@ -56,7 +56,6 @@ const App = (props) => {
   // automatically change name when id changes
 
   const ClickWrapper = (props) => {
-    console.log(props);
     return props.children;
   };
 
