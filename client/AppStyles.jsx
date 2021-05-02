@@ -10,6 +10,7 @@ color: white;
 padding: 0px;
 padding-right: 35px;
 align-items: center;
+margin-bottom: 0px;
 `;
 
 const Footer = styled.div`
@@ -66,6 +67,7 @@ const Contents = styled.div`
 padding-bottom: 80px;
 background: whitesmoke;
 min-height: 100vh;
+margin-top: 0px;
 `;
 
 export default {

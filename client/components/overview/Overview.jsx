@@ -136,6 +136,7 @@ const OverviewStyle = styled.section`
   /* background: ${(props) => (props.colorScheme ? '#ababab' : 'whitesmoke')}; */
   /* color: ${(props) => (props.colorScheme ? 'whitesmoke' : 'black')} */
   margin: 16px 16px;
+  margin-top: 0px;
 `;
 
 const TopSection = styled.div`

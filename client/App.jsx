@@ -62,22 +62,19 @@ const App = (props) => {
 
   return (
     <Outside colorScheme={colorScheme}>
-
       <Wrapper>
-
         <Header colorScheme={colorScheme}>
           <LogoImg src="./logo.png" alt="logo" />
           <Title>
             ELDER-LY FASHION
           </Title>
         </Header>
-
         {isLoading
           ? <Contents>Loading</Contents>
           : (isValidId
             ? (
               <Contents>
-                <Overview productId={productId} />
+                <Overview productId={productId} colorScheme={colorScheme} />
                 <Divider />
                 <QandA
                   productId={productId}
@@ -115,7 +112,6 @@ const App = (props) => {
           </Track>
         </Footer>
       </Wrapper>
-
     </Outside>
 
   );
