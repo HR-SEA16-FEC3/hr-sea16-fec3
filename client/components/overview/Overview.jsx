@@ -10,34 +10,52 @@ import StylesExample from './product_styles_example.json';
 import axios from 'axios';
 
 // TODO:
-// - modal
 // - overlay checkmark on selected image's thumbnail
-// - dynamically render size and quantity
 
-function Overview(props) {
-  const { productId, setProductName } = props;
-  const { default_price: defaultPrice } = InfoExample;
-  const { results } = StylesExample; // TEMP FIX FOR 1ST IMAGE RENDER
-  const tempStyle = results[0]; // TEMP FIX FOR 1ST IMAGE RENDER
-
-  const [stylesList, setStylesList] = useState([]);
-  const [defaultStyle, setDefaultStyle] = useState(tempStyle);
+function Overview({ productId, colorScheme }) {
+  const [productInfo, setProductInfo] = useState({});
+  const [stylesList, setStylesList] = useState(StylesExample.results);
+  const [defaultStyle, setDefaultStyle] = useState(StylesExample.results[0]);
   const [selectedStyle, setSelectedStyle] = useState(null);
+  const [styleIndex, setStyleIndex] = useState(0);
   const [displayPrice, setDisplayPrice] = useState(null);
+  const [skus, setSkus] = useState({});
+
+  // Fetch: Product Info
+  function fetchProductInfo() {
+    axios.get(`/products/${productId}`)
+      .then((product) => {
+        setProductInfo(product.data);
+        setDisplayPrice(Number(product.data.default_price));
+      })
+      .catch((error) => console.log('Product Info useEffect:', error));
+  }
 
   // Fetch: Styles List
-  useEffect(() => {
-    setStylesList(StylesExample.results);
-    setDisplayPrice(Number(defaultPrice));
-  }, []);
+  function fetchStylesInfo() {
+    axios.get(`/products/${productId}/styles`)
+      .then((styles) => {
+        setStylesList(styles.data.results);
+        setSelectedStyle(styles.data.results[styleIndex]); // Initialize w/ index = 0
+      })
+      .catch((error) => console.log('Styles useEffect:', error));
+  }
 
-  // Fetch: Default Style
+  // Initialize: Product Info, Styles List
   useEffect(() => {
-    const selectDefaultStyle = stylesList.find((object) => object['default?'] === true);
-    setDefaultStyle(selectDefaultStyle);
+    if (productId !== 0) {
+      fetchProductInfo();
+      fetchStylesInfo();
+    }
+  }, [productId]);
+
+  // Update: Default Style
+  useEffect(() => {
+    setDefaultStyle(stylesList[styleIndex]);
+    if (defaultStyle !== null) setSkus(stylesList[0].skus);
   }, [stylesList]);
 
-  // Update: display price
+  // Update: Display Price (upon selecting new style)
   useEffect(() => {
     if (selectedStyle !== null) {
       const originalPrice = selectedStyle.original_price;
@@ -48,57 +66,63 @@ function Overview(props) {
     return null;
   }, [selectedStyle]);
 
-  /* selectedStyle === null
-    ? <p>LOADING</p>
-    : <Gallery style={selectedStyle} />
-  */
-
-  // FETCH API DATA FOUND BELOW
+  // Update: Selected Style (upon changing Style Index)
+  useEffect(() => { setSelectedStyle(stylesList[styleIndex]); }, [styleIndex]);
 
   return (
     <div data-testid="Overview">
-      <OverviewStyle>
+      <OverviewStyle colorScheme={colorScheme}>
 
         <TopSection>
           <LeftSection>
             {/* Image Gallery */}
-            <Subcomponent>
-              {selectedStyle === null
-                ? <Gallery style={tempStyle} /> // TEMP FIX FOR 1ST IMAGE RENDER
-                : <Gallery style={selectedStyle} />}
-            </Subcomponent>
+            <GalleryComponents>
+              {selectedStyle && (
+                <Gallery
+                  style={selectedStyle}
+                  styleIndex={styleIndex}
+                  setStyleIndex={setStyleIndex}
+                  stylesList={stylesList}
+                />
+              )}
+            </GalleryComponents>
           </LeftSection>
 
           <RightSection>
             {/* Product Information */}
             <Subcomponent>
-              <Information infoList={InfoExample} price={displayPrice} />
+              {productInfo && displayPrice && (
+                <Information
+                  productInfo={productInfo}
+                  price={displayPrice}
+                  colorScheme={colorScheme}
+                />
+              )}
             </Subcomponent>
 
             {/* Style Selector */}
             <Subcomponent>
-              <StylesList
-                stylesList={stylesList}
-                /* IF NO STYLE SELECTED, DISPLAY DEFAULT STYLE */
-                displayStyle={selectedStyle === null ? defaultStyle : selectedStyle}
-                setSelectedStyle={setSelectedStyle}
-              />
+              {stylesList && selectedStyle && (
+                <StylesList
+                  stylesList={stylesList}
+                  /* IF NO STYLE SELECTED, DISPLAY DEFAULT STYLE */
+                  displayStyle={selectedStyle}
+                  setSelectedStyle={setSelectedStyle}
+                  colorScheme={colorScheme}
+                />
+              )}
             </Subcomponent>
 
             {/* Add to Cart */}
             <Subcomponent>
-              {selectedStyle === null
-                ? <Cart style={tempStyle} /> // TEMP FIX
-                : <Cart style={selectedStyle} />}
+              {selectedStyle && <Cart style={selectedStyle} colorScheme={colorScheme} />}
             </Subcomponent>
           </RightSection>
         </TopSection>
 
         <BottomSection>
           {/* Product Description */}
-          <LeftSection>
-            <Description descExample={InfoExample} />
-          </LeftSection>
+          {productInfo && <Description productInfo={productInfo} colorScheme={colorScheme} />}
         </BottomSection>
 
       </OverviewStyle>
@@ -107,17 +131,17 @@ function Overview(props) {
 }
 
 const OverviewStyle = styled.section`
-  font-family: sans-serif;
   display: flex;
   flex-direction: column;
-  background: whitesmoke;
+  /* background: ${(props) => (props.colorScheme ? '#ababab' : 'whitesmoke')}; */
+  /* color: ${(props) => (props.colorScheme ? 'whitesmoke' : 'black')} */
+  margin: 16px 16px;
 `;
 
 const TopSection = styled.div`
   display: flex;
   flex-direction: row;
   height: 100%;
-  /* min-height: 768px; */
   margin: 8px 4px 4px 4px;
 `;
 
@@ -127,53 +151,38 @@ const BottomSection = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 4px 4px 8px 4px;
+  margin: 16px 16px;
 `;
 
 const LeftSection = styled.div`
-  flex-direction: column;
-  /* width: 60%; */
-  flex: 1 1 60%;
-  margin: 10px;
+  flex-direction: row;
+  flex: 0 0 60%;
+  margin: 12px;
+  justify-content: center;
+  align-items: center;
+  max-height: 100%;
+  height: 768px;
 `;
 
 const RightSection = styled.div`
   flex-direction: column;
   flex: 1 1 40%;
-  margin: 10px 40px;
+  margin: 12px;
 `;
 
 const Subcomponent = styled.div`
-  background: ${(props) => props.background};
+  /* background: ${(props) => (props.colorScheme ? 'whitesmoke' : 'whitesmoke')}; */
+  /* color: ${(props) => (props.colorScheme ? 'whitesmoke' : 'black')} */
   order: ${(props) => props.order};
   padding: 10px 0;
 `;
 
+const GalleryComponents = styled.div`
+  padding: 10px 0;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  height: 100%;
+`;
+
 export default Overview;
-
-/* ==================== READY TO GO LIVE ====================
-const [productsList, setProductsList] = useState([]);
-const [overviewProductId, setOverviewProductId] = useState(0);
-
-// FETCH PRODUCTS LIST
-  useEffect(() => {
-    axios.get('/products')
-      .then(async (products) => {
-        // console.log('product results:', results);
-        await setProductsList(products.data);
-        await setOverviewProductId(products.data[0].id); // sets first item as default product
-        await console.log('productsList updated:', productsList);
-      })
-      .catch((error) => console.log(error));
-  }, []); // empty dependency array will run effect only once (similar to componentDidMount)
-
-  // FETCH STYLES LIST (INVOKED ONLY AFTER PRODUCT LIST UPDATES)
-  useEffect(() => {
-    axios.get(`/products/${productId}/styles`)
-      .then(async (styles) => {
-        await setStylesList(styles.data.results);
-        await console.log('styles results:', styles);
-      })
-      .catch((error) => console.log(error));
-  }, [productId]);
-*/

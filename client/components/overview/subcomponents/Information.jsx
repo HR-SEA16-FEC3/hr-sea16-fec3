@@ -3,33 +3,25 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faStar, faHashtag } from '@fortawesome/free-solid-svg-icons';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { Twitter, Facebook, Instagram, Whatsapp, Pinterest } from '@styled-icons/fa-brands';
 import { Link } from '@styled-icons/boxicons-regular';
 import { Email } from '@styled-icons/material-outlined';
 
-// Star Rating (# of reviews)
-// Product Category
-// Product Title
-// Price
-// Product Overview/Description
-// Share on Social Media
-
-function Information({ infoList, price }) {
+function Information({ productInfo, price, colorScheme }) {
   const {
-    // infoList: { // NESTED DESTRUCTURING
     id,
     name,
     category,
-    default_price, // use destructuring w/ alias to avoid snake_case
-  } = infoList;
+    default_price,
+  } = productInfo;
 
   const defaultPrice = Number(default_price);
   const onSale = price < defaultPrice;
 
   return (
     <div data-testid="Information">
-      <Section>
+      <Section colorScheme={colorScheme}>
         {/* Star Rating (# of reviews) */}
         <span>
           <FontAwesomeIcon icon={faStar} data-testid="iconStar" color="orange" />
@@ -47,7 +39,7 @@ function Information({ infoList, price }) {
         <Category>{category}</Category>
         <ProductName>{name}</ProductName>
         <Price>
-          {onSale === true
+          {onSale
             ? <span><Sale>${price} </Sale><Strike>${defaultPrice}</Strike></span>
             : <span>${price}</span>
           }
@@ -59,16 +51,16 @@ function Information({ infoList, price }) {
 }
 
 Information.propTypes = {
-    id: PropTypes.number,
-    name: PropTypes.string,
-    category: PropTypes.string,
-    default_price: PropTypes.string,
+  id: PropTypes.number,
+  name: PropTypes.string,
+  category: PropTypes.string,
+  default_price: PropTypes.string,
 };
 
 // STYLED-COMPONENTS
-const Section = styled.div`
-  background: ${(props) => props.background};
+const Section = styled.section`
   border-radius: 3px;
+  color: ${(props) => (props.colorScheme ? 'whitesmoke' : 'black')};
 `;
 
 const Category = styled.div`
@@ -80,16 +72,6 @@ const ProductName = styled.div`
   font-weight: bold;
   font-size: 40px;
   margin: 10px 0;
-`;
-
-const Socials = styled.div`
-  color: orange;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  padding: 10px 10px;
-  margin: 10px 0;
-  /* justify-content: center; */
 `;
 
 const Price = styled.div`
