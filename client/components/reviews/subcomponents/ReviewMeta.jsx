@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import RatingStar from './RatingStar.jsx';
-import RatingsBar from './RatingBar.jsx';
+import RatingsBar from './RatingsBar.jsx';
 import FitBar from './FitBar.jsx';
 
 const getAverageRating = ({ ratings }) => {
@@ -35,11 +36,16 @@ const maxWidth = ({ ratings }) => {
   return Math.max(...values);
 };
 
-const ReviewMeta = (props) => {
-  const averageRating = getAverageRating(props.metaDummyData);
-  const averageRecommendation = getAverageRecommendation(props.metaDummyData);
-  const clonedRatingObject = cloneObject(props.metaDummyData);
-  const maxRatingWidth = maxWidth(props.metaDummyData);
+const ReviewMeta = (
+  {
+    metaDummyData,
+    colorScheme,
+  },
+) => {
+  const averageRating = getAverageRating(metaDummyData);
+  const averageRecommendation = getAverageRecommendation(metaDummyData);
+  const clonedRatingObject = cloneObject(metaDummyData);
+  const maxRatingWidth = maxWidth(metaDummyData);
 
   return (
     <div>
@@ -59,41 +65,56 @@ const ReviewMeta = (props) => {
       <br />
       <br />
       {(Object.entries(clonedRatingObject).reverse().map(([key, value], i) => (
-        <div>
+        <div
+          key={i}
+        >
           {key}
           &nbsp;Stars
           <RatingsBar
             rating={value}
             maxRatingWidth={value / maxRatingWidth}
-            key={i}
+            colorScheme={colorScheme}
           />
         </div>
       )))}
       <br />
       Size
       <br />
-      <FitBar
-        values={props.metaDummyData}
-      />
+      {metaDummyData.characteristics.Fit !== undefined && metaDummyData.characteristics.Fit !== null
+        ? (
+          <FitBar
+            data={metaDummyData.characteristics.Fit}
+            value="Fit"
+            colorScheme={colorScheme}
+          />
+        )
+        : 'No reviews yet! ᶘ ◕ᴥ◕ᶅ'}
       <br />
       Comfort
-      <FitBar
-        values={props.metaDummyData}
-      />
+      <br />
+      {metaDummyData.characteristics.Comfort !== undefined && metaDummyData.characteristics.Comfort !== null
+        ? (
+          <FitBar
+            data={metaDummyData.characteristics.Comfort}
+            value="Comfort"
+            colorScheme={colorScheme}
+          />
+        )
+        : 'No reviews yet! (ง ͠° ͟ل͜ ͡°)ง'}
       <br />
     </div>
   );
 };
+
+ReviewMeta.propTypes = {
+  // ratings: PropTypes.object.isRequired,
+  // recommended: PropTypes.object.isRequired,
+  // metaDummyData: PropTypes.array.isRequired,
+};
+
 const MetaHeader = styled.div`
   flex-direction:row;
   font-size: 30px;
   `;
 
 export default ReviewMeta;
-// keys.map((star, i) => (
-//   <RatingsBar
-//   key={i}
-//   starNum={star}
-//   starRating={ratings}
-//   totalRatings={props.totalRatings}
-//   />

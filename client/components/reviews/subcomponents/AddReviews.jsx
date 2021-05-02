@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import ReviewList from './ReviewList.jsx';
 import modalStyles from '../../../sharedStyles/modalStyles';
-import dummyData from './DummyData/product_reviews_example.js';
 
-const AddReviews = (props) => (
+const AddReviews = () => (
   <div className="Add-Review-Modal">
     <modalStyles.Title>
       Submit your Review!

@@ -56,28 +56,24 @@ const App = (props) => {
   // automatically change name when id changes
 
   const ClickWrapper = (props) => {
-    console.log(props);
     return props.children;
   };
 
   return (
     <Outside colorScheme={colorScheme}>
-
       <Wrapper>
-
         <Header colorScheme={colorScheme}>
           <a href="/"><LogoImg src="./logo.png" alt="logo" /></a>
           <Title>
             ELDER-LY FASHION
           </Title>
         </Header>
-
         {isLoading
           ? <Contents>Loading</Contents>
           : (isValidId
             ? (
               <Contents>
-                <Overview productId={productId} />
+                <Overview productId={productId} colorScheme={colorScheme} />
                 <Divider />
                 <QandA
                   productId={productId}
@@ -85,7 +81,7 @@ const App = (props) => {
                   colorScheme={colorScheme}
                 />
                 <Divider />
-                <Reviews productId={productId} />
+                <Reviews productId={productId} colorScheme={colorScheme} />
               </Contents>
             )
             : <Contents>This page seems to be empty!</Contents>)}
@@ -115,7 +111,6 @@ const App = (props) => {
           </Track>
         </Footer>
       </Wrapper>
-
     </Outside>
 
   );

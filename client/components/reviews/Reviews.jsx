@@ -1,38 +1,87 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 import ReviewList from './subcomponents/ReviewList.jsx';
 import ReviewMeta from './subcomponents/ReviewMeta.jsx';
 import ReviewModal from './subcomponents/ReviewModal.jsx';
 import ReviewSort from './subcomponents/ReviewSort.jsx';
 import dummyData from './subcomponents/DummyData/product_reviews_example';
-import metaDummyData from './subcomponents/DummyData/product_metaData_example';
 
-// destructure the props, change var naming
-function Reviews({ metadata, data }) {
+function Reviews(
+  {
+    productId,
+    colorScheme,
+  },
+) {
+  const [reviewResults, setReviewResults] = useState({});
+  const [metaData, setMetaData] = useState({});
   const [tiles, setTiles] = useState(2);
   const [modal, setModal] = useState(false);
+  const [parentFilter, setParentFilter] = useState(dummyData.results);
+
+  const fetchReviewData = () => {
+    axios.get(`/reviews/${productId}`)
+      .then((data) => (
+        setReviewResults(data.data.results),
+        setTiles(2)
+      ))
+      .catch((error) => {
+        throw error;
+      });
+  };
+
+  const fetchMetaReviewData = () => {
+    axios.get(`/reviews/meta/${productId}`)
+      .then((data) => (
+        setMetaData(data.data)
+      ))
+      .catch((error) => {
+        throw error;
+      });
+  };
+
+  useEffect(() => {
+    if (productId) {
+      fetchReviewData();
+      fetchMetaReviewData();
+    }
+  }, [productId]);
 
   return (
     <div data-testid="Reviews">
-      <ReviewListStyle>
+      <Wrapper
+        colorScheme={colorScheme}
+      >
         <LeftSection>
-          <ReviewMeta metaDummyData={metaDummyData} />
+          {Object.keys(metaData).length > 0 && Object.values(metaData.ratings).length > 0
+            ? <ReviewMeta metaDummyData={metaData} colorScheme={colorScheme} />
+            : <div>No reviews yet! ¯\_( ͡° ͜ʖ ͡°)_/¯ </div>}
         </LeftSection>
         <RightSection>
           <RightTopSection>
             <div>
-              <ReviewSort
-                dummyData={dummyData}
-              />
-
+              {reviewResults.length
+                ? (
+                  <ReviewSort
+                    dummyData={reviewResults}
+                    parentFilter={parentFilter}
+                    setParentFilter={setParentFilter}
+                  />
+                )
+                : <div>No Reviews!</div>}
             </div>
           </RightTopSection>
-          <ReviewList dummyData={dummyData.results.slice(0, tiles)} />
+          <PseudoScroll>
+            {reviewResults.length
+              ? <ReviewList dummyData={reviewResults.slice(0, tiles)} />
+              : <div>No Reviews!</div> }
+          </PseudoScroll>
           <ButtonStyle>
             <span>
               <Button
                 type="button"
                 onClick={() => setTiles(tiles + 2)}
+                colorScheme={colorScheme}
               >
                 More Reviews
               </Button>
@@ -41,6 +90,7 @@ function Reviews({ metadata, data }) {
               <Button
                 type="button"
                 onClick={() => setModal(true)}
+                colorScheme={colorScheme}
               >
                 Add A Review +
               </Button>
@@ -52,22 +102,26 @@ function Reviews({ metadata, data }) {
             reviewData={dummyData.results}
           />
         </RightSection>
-      </ReviewListStyle>
+      </Wrapper>
     </div>
   );
 }
 
-const ReviewListStyle = styled.section`
+const Wrapper = styled.section`
   font-family: sans-serif;
   display: flex;
   flex-direction: row;
-  padding:24px;
+  padding: 1em;
+  background: ${(props) => (props.colorScheme ? '#6f6f6f ' : '#D0D0D0')};
+  color: ${(props) => (props.colorScheme ? 'whitesmoke' : 'black')};
+  max-height: 100vh;
 `;
+
 const LeftSection = styled.div`
   display: flex;
   flex-direction: column;
   order: 1;
-  flex-basis: 30%;
+  flex-basis: 20%;
   padding:16px;
 `;
 
@@ -85,15 +139,33 @@ padding:16px;
 flex-direction: column;
 `;
 
+const PseudoScroll = styled.div`
+padding: 0em;
+max-height: 38vh;
+overflow: auto;
+&::-webkit-scrollbar {
+  width: auto;
+  height: auto;
+}
+&::-webkit-scrollbar-thumb
+{
+  border-radius: 10px;
+  background-color: ${(props) => (props.colorScheme ? 'lightgrey' : 'darkgrey')};
+}
+`;
+
 const Button = styled.button`
-flex-direction:column
-  border: 1px solid black;
-  margin-top: 15px;
-  margin-right: 15px;
-  background: white;
-  padding: 15px;
+  border: 0px solid;
+  margin-top: 10px;
+  margin-right: 10px;
+  background: ${(props) => (props.colorScheme ? 'purple' : 'orange')};
+  padding: 7px;
+  font-size: 10px;
+  color: white;
   text-transform: uppercase;
-  &:hover{ background: lightgrey }
+  width: 175px;
+  &:hover{ background: ${(props) => (props.colorScheme ? '#a64ca6' : '#ffc04c')}; }
+  &:active{ background: ${(props) => (props.colorScheme ? '#660066' : '#cc8400')}; }
 `;
 
 const ButtonStyle = styled.div`
