@@ -64,7 +64,6 @@ font-weight: bolder;
 `;
 
 const Contents = styled.div`
-padding-bottom: 80px;
 background: whitesmoke;
 min-height: 100vh;
 margin-top: 0px;
